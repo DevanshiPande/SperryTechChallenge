@@ -1,0 +1,753 @@
+[
+  {
+    "id": "DESC_1",
+    "utility": "DESC",
+    "utility_name": "Dominion Energy South Carolina",
+    "state": "SC",
+    "name": "Stevens Creek - Hooks 115 kV / LR Plumb Branch 46 kV Rebuilds",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2024-12-31",
+    "construction_window": {
+      "start": "2023-01-01",
+      "end": "2024-12-31",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "Stevens Creek Sub",
+        "lat": 33.562599,
+        "lon": -82.051362,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Edgefield County, SC"
+      },
+      {
+        "name": "Hooks Sub",
+        "lat": null,
+        "lon": null,
+        "confidence": "not_found",
+        "source": null,
+        "county": null
+      }
+    ],
+    "center": {
+      "lat": 33.562599,
+      "lon": -82.051362
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -82.051362,
+        33.562599
+      ]
+    },
+    "location_confidence": "medium",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": {
+      "currency": "USD",
+      "by_year": {
+        "2024": 800000,
+        "2025": 2500000,
+        "2026": 0,
+        "2027": 0,
+        "2028": 0,
+        "previous": 1200000
+      },
+      "total": 4500000,
+      "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+    },
+    "source": {
+      "document": "DESC 2024-2028 project descriptions",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "ENDPOINT_NOT_FOUND",
+        "message": "One endpoint could not be located; center uses the located endpoint only."
+      }
+    ],
+    "overlap_ids": [
+      "OVL_1"
+    ],
+    "short_name": "Stevens Creek–Hooks",
+    "work_type_label": "Line rebuild",
+    "counties": [
+      "Edgefield County, SC"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "DESC_2",
+    "utility": "DESC",
+    "utility_name": "Dominion Energy South Carolina",
+    "state": "SC",
+    "name": "Hooks - Thurmond 115 kV Tie: Rebuild",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2024-12-31",
+    "construction_window": {
+      "start": "2023-06-01",
+      "end": "2024-12-31",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "Hooks Sub",
+        "lat": null,
+        "lon": null,
+        "confidence": "not_found",
+        "source": null,
+        "county": null
+      },
+      {
+        "name": "Thurmond Sub",
+        "lat": 33.660127,
+        "lon": -82.195931,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Columbia County, GA"
+      }
+    ],
+    "center": {
+      "lat": 33.660127,
+      "lon": -82.195931
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -82.195931,
+        33.660127
+      ]
+    },
+    "location_confidence": "medium",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": {
+      "currency": "USD",
+      "by_year": {
+        "2024": 800000,
+        "2025": 2500000,
+        "2026": 0,
+        "2027": 0,
+        "2028": 0,
+        "previous": 1200000
+      },
+      "total": 4500000,
+      "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+    },
+    "source": {
+      "document": "DESC 2024-2028 project descriptions",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "ENDPOINT_NOT_FOUND",
+        "message": "One endpoint could not be located; center uses the located endpoint only."
+      }
+    ],
+    "overlap_ids": [
+      "OVL_2"
+    ],
+    "short_name": "Hooks–Thurmond",
+    "work_type_label": "Line rebuild",
+    "counties": [
+      "Columbia County, GA"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "DESC_3",
+    "utility": "DESC",
+    "utility_name": "Dominion Energy South Carolina",
+    "state": "SC",
+    "name": "Jasper - Okatie 230 kV #2: Construct",
+    "voltage_kv": 230,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2025-12-31",
+    "construction_window": {
+      "start": "2024-01-01",
+      "end": "2025-12-31",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "Jasper Sub",
+        "lat": 32.35912,
+        "lon": -81.1246,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Jasper County, SC"
+      },
+      {
+        "name": "Okatie Sub",
+        "lat": 32.333758,
+        "lon": -81.032495,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Jasper County, SC"
+      }
+    ],
+    "center": {
+      "lat": 32.346439,
+      "lon": -81.078547
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.1246,
+          32.35912
+        ],
+        [
+          -81.032495,
+          32.333758
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": {
+      "currency": "USD",
+      "by_year": {
+        "2024": 800000,
+        "2025": 2500000,
+        "2026": 0,
+        "2027": 0,
+        "2028": 0,
+        "previous": 1200000
+      },
+      "total": 4500000,
+      "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+    },
+    "source": {
+      "document": "DESC 2024-2028 project descriptions",
+      "page": null
+    },
+    "quality_flags": [],
+    "overlap_ids": [
+      "OVL_3",
+      "OVL_4"
+    ],
+    "short_name": "Jasper–Okatie",
+    "work_type_label": "New transmission line",
+    "counties": [
+      "Jasper County, SC"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "DESC_4",
+    "utility": "DESC",
+    "utility_name": "Dominion Energy South Carolina",
+    "state": "SC",
+    "name": "Queensboro - Ft Johnson 115 kV & Queensboro-Bayfront 115 kV (Queensboro-James Island Sect)",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2023-12-31",
+    "construction_window": {
+      "start": "2022-01-01",
+      "end": "2024-12-31",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "Queensboro Sub",
+        "lat": 32.722793,
+        "lon": -79.967332,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Charleston County, SC"
+      },
+      {
+        "name": "Ft Johnson Sub",
+        "lat": null,
+        "lon": null,
+        "confidence": "not_found",
+        "source": null,
+        "county": null
+      }
+    ],
+    "center": {
+      "lat": 32.722793,
+      "lon": -79.967332
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -79.967332,
+        32.722793
+      ]
+    },
+    "location_confidence": "medium",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": {
+      "currency": "USD",
+      "by_year": {
+        "2024": 800000,
+        "2025": 2500000,
+        "2026": 0,
+        "2027": 0,
+        "2028": 0,
+        "previous": 1200000
+      },
+      "total": 4500000,
+      "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+    },
+    "source": {
+      "document": "DESC 2024-2028 project descriptions",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "ENDPOINT_NOT_FOUND",
+        "message": "One endpoint could not be located; center uses the located endpoint only."
+      },
+      {
+        "code": "POSSIBLY_COMPLETE",
+        "message": "In-service date is in the past; project may already be complete."
+      }
+    ],
+    "overlap_ids": [],
+    "short_name": "Queensboro–Ft Johnson",
+    "work_type_label": "Transmission project",
+    "counties": [
+      "Charleston County, SC"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "DESC_5",
+    "utility": "DESC",
+    "utility_name": "Dominion Energy South Carolina",
+    "state": "SC",
+    "name": "Okatie-Bluffton 115 kV: Rebuild",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2025-06-01",
+    "construction_window": {
+      "start": "2024-01-01",
+      "end": "2025-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "Okatie Sub",
+        "lat": 32.333758,
+        "lon": -81.032495,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Jasper County, SC"
+      },
+      {
+        "name": "Bluffton Sub",
+        "lat": 32.235027,
+        "lon": -80.853384,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Beaufort County, SC"
+      }
+    ],
+    "center": {
+      "lat": 32.284393,
+      "lon": -80.942939
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.032495,
+          32.333758
+        ],
+        [
+          -80.853384,
+          32.235027
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": {
+      "currency": "USD",
+      "by_year": {
+        "2024": 800000,
+        "2025": 2500000,
+        "2026": 0,
+        "2027": 0,
+        "2028": 0,
+        "previous": 1200000
+      },
+      "total": 4500000,
+      "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+    },
+    "source": {
+      "document": "DESC 2024-2028 project descriptions",
+      "page": null
+    },
+    "quality_flags": [],
+    "overlap_ids": [
+      "OVL_5",
+      "OVL_6"
+    ],
+    "short_name": "Okatie–Bluffton",
+    "work_type_label": "Line rebuild",
+    "counties": [
+      "Jasper County, SC",
+      "Beaufort County, SC"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "GPC_1",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "EVANS PRIMARY - THURMOND DAM (USA) #5 115KV REBUILD",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2033-06-01",
+    "construction_window": {
+      "start": "2031-06-01",
+      "end": "2033-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "EVANS PRIMARY",
+        "lat": 33.543994,
+        "lon": -82.168648,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Columbia County, GA"
+      },
+      {
+        "name": "THURMOND DAM #5",
+        "lat": 33.660127,
+        "lon": -82.195931,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Columbia County, GA"
+      }
+    ],
+    "center": {
+      "lat": 33.602061,
+      "lon": -82.182289
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -82.168648,
+          33.543994
+        ],
+        [
+          -82.195931,
+          33.660127
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [],
+    "overlap_ids": [
+      "OVL_2",
+      "OVL_1"
+    ],
+    "short_name": "Evans–Thurmond",
+    "work_type_label": "Line rebuild",
+    "counties": [
+      "Columbia County, GA"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "GPC_2",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+    "voltage_kv": 230,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2026-06-01",
+    "construction_window": {
+      "start": "2024-01-01",
+      "end": "2026-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "MCINTOSH",
+        "lat": 32.352116,
+        "lon": -81.175112,
+        "confidence": "medium",
+        "source": "Sperry starter file",
+        "county": "Effingham County, GA"
+      },
+      {
+        "name": "PURRYSBURG",
+        "lat": null,
+        "lon": null,
+        "confidence": "not_found",
+        "source": null,
+        "county": null
+      }
+    ],
+    "center": {
+      "lat": 32.352116,
+      "lon": -81.175112
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -81.175112,
+        32.352116
+      ]
+    },
+    "location_confidence": "medium",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "ENDPOINT_NOT_FOUND",
+        "message": "One endpoint could not be located; center uses the located endpoint only."
+      },
+      {
+        "code": "COORD_CONFLICT",
+        "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+      }
+    ],
+    "overlap_ids": [
+      "OVL_3",
+      "OVL_5"
+    ],
+    "short_name": "McIntosh–Purrysburg",
+    "work_type_label": "Equipment upgrade (reactors)",
+    "counties": [
+      "Effingham County, GA"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "GPC_3",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2027-06-01",
+    "construction_window": {
+      "start": "2025-06-01",
+      "end": "2027-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "GOSHEN",
+        "lat": 32.248701,
+        "lon": -81.209472,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Effingham County, GA"
+      },
+      {
+        "name": "MCINTOSH",
+        "lat": 32.352116,
+        "lon": -81.182105,
+        "confidence": "medium",
+        "source": "Sperry starter file",
+        "county": "Effingham County, GA"
+      }
+    ],
+    "center": {
+      "lat": 32.300409,
+      "lon": -81.195789
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.209472,
+          32.248701
+        ],
+        [
+          -81.182105,
+          32.352116
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "COORD_CONFLICT",
+        "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+      }
+    ],
+    "overlap_ids": [
+      "OVL_4",
+      "OVL_6"
+    ],
+    "short_name": "Goshen–McIntosh",
+    "work_type_label": "Line rebuild",
+    "counties": [
+      "Effingham County, GA"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "GPC_4",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "MITCHELL - NORTH TIFTON 230KV RECONDUCTOR",
+    "voltage_kv": 230,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2025-05-01",
+    "construction_window": {
+      "start": "2023-05-01",
+      "end": "2025-05-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "Mitchell Substation",
+        "lat": 31.447121,
+        "lon": -84.133843,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Dougherty County, GA"
+      },
+      {
+        "name": "North Tifton Substation",
+        "lat": 31.478089,
+        "lon": -83.54913,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Tift County, GA"
+      }
+    ],
+    "center": {
+      "lat": 31.462605,
+      "lon": -83.841487
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -84.133843,
+          31.447121
+        ],
+        [
+          -83.54913,
+          31.478089
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [],
+    "overlap_ids": [],
+    "short_name": "Mitchell–North Tifton",
+    "work_type_label": "Line reconductor",
+    "counties": [
+      "Dougherty County, GA",
+      "Tift County, GA"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  },
+  {
+    "id": "GPC_5",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "JESUP - LUDOWICI PRIMARY 115KV REBUILD",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2025-06-01",
+    "construction_window": {
+      "start": "2023-06-01",
+      "end": "2025-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "JESUP",
+        "lat": 31.603106,
+        "lon": -81.924947,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Wayne County, GA"
+      },
+      {
+        "name": "LUDOWICI PRIMARY",
+        "lat": 31.721597,
+        "lon": -81.743703,
+        "confidence": "high",
+        "source": "Sperry starter file",
+        "county": "Long County, GA"
+      }
+    ],
+    "center": {
+      "lat": 31.662351,
+      "lon": -81.834325
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.924947,
+          31.603106
+        ],
+        [
+          -81.743703,
+          31.721597
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [],
+    "overlap_ids": [],
+    "short_name": "Jesup–Ludowici",
+    "work_type_label": "Line rebuild",
+    "counties": [
+      "Wayne County, GA",
+      "Long County, GA"
+    ],
+    "county_source": "mock (real backend: Census county boundaries)"
+  }
+]

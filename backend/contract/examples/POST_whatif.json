@@ -1,0 +1,70 @@
+{
+  "proposed": {
+    "name": "Proposed: Hardeeville 230 kV Tap",
+    "utility": "DESC",
+    "voltage_kv": 230,
+    "endpoints": [
+      {
+        "name": "Hardeeville",
+        "lat": 32.2866,
+        "lon": -81.0801
+      }
+    ],
+    "construction_window": {
+      "start": "2027-09-01",
+      "end": "2029-03-01"
+    },
+    "center": {
+      "lat": 32.2866,
+      "lon": -81.0801
+    },
+    "geocoded": null
+  },
+  "overlaps": [
+    {
+      "project_id": "GPC_3",
+      "short_name": "Goshen–McIntosh",
+      "name": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "construction_window": {
+        "start": "2025-06-01",
+        "end": "2027-06-01",
+        "source": "estimated"
+      },
+      "center_distance_mi": 6.82,
+      "closest_distance_km": 10.96,
+      "tier": "shared_crews",
+      "window_overlap_months": 0
+    },
+    {
+      "project_id": "GPC_2",
+      "short_name": "McIntosh–Purrysburg",
+      "name": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2026-06-01",
+        "source": "estimated"
+      },
+      "center_distance_mi": 7.16,
+      "closest_distance_km": 11.51,
+      "tier": "shared_crews",
+      "window_overlap_months": 0
+    }
+  ],
+  "closure_conflicts": [],
+  "closure_data_available": false,
+  "closure_note": "No public road-closure data is connected. Closure conflicts are not evaluated.",
+  "suggestion": {
+    "shift_months": -11,
+    "suggested_window": {
+      "start": "2026-10-01",
+      "end": "2028-04-01"
+    },
+    "window_overlap_months_before": 0,
+    "window_overlap_months_after": 8,
+    "explanation": "Moving the window 11 months earlier increases shared construction time with nearby projects from 0 to 8 months, so crews and equipment can be shared."
+  }
+}

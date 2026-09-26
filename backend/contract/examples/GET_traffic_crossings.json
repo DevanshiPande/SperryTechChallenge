@@ -1,0 +1,437 @@
+[
+  {
+    "id": "XING_DESC_23_3",
+    "project_id": "DESC_23",
+    "road_name": null,
+    "road_ref": "I-95",
+    "road_refs": [
+      "I-95"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 55500,
+    "aadt_source": "SCDOT 2025 statewide traffic counts (I-95, station 4.1 km away)",
+    "osm_id": 156558742,
+    "point": {
+      "lat": 32.338528,
+      "lon": -81.048702
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2023-01-01",
+      "end": "2025-12-31",
+      "source": "desc_spend_years"
+    },
+    "owner": "DESC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "19:00–03:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 5128,
+    "delay_cost_usd": 0,
+    "worst_window": "14:00–22:00",
+    "worst_delay_veh_hours": 11600.2
+  },
+  {
+    "id": "XING_DESC_29_5",
+    "project_id": "DESC_29",
+    "road_name": null,
+    "road_ref": "I-95",
+    "road_refs": [
+      "I-95"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 49900,
+    "aadt_source": "SCDOT 2025 statewide traffic counts (I-95, station 1.4 km away)",
+    "osm_id": 157407691,
+    "point": {
+      "lat": 33.321804,
+      "lon": -80.545354
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2024-01-01",
+      "end": "2025-12-31",
+      "source": "desc_spend_years"
+    },
+    "owner": "DESC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "19:00–03:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 4611,
+    "delay_cost_usd": 0,
+    "worst_window": "13:00–21:00",
+    "worst_delay_veh_hours": 5042.6
+  },
+  {
+    "id": "XING_GPC_20784_8",
+    "project_id": "GPC_20784",
+    "road_name": null,
+    "road_ref": "I-95",
+    "road_refs": [
+      "I-95"
+    ],
+    "road_class": "motorway",
+    "lanes": 3,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 90900,
+    "aadt_source": "GDOT traffic counts (2017 AADT) (station 127 m away)",
+    "osm_id": 56628969,
+    "point": {
+      "lat": 32.125657,
+      "lon": -81.239108
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2029-06-01",
+      "end": "2032-06-01",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "18:00–02:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 11249,
+    "delay_cost_usd": 0,
+    "worst_window": "12:00–20:00",
+    "worst_delay_veh_hours": 4094.8
+  },
+  {
+    "id": "XING_DESC_29_4",
+    "project_id": "DESC_29",
+    "road_name": null,
+    "road_ref": "I-26",
+    "road_refs": [
+      "I-26"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 44100,
+    "aadt_source": "SCDOT 2025 statewide traffic counts (I-26, station 2.8 km away)",
+    "osm_id": 173038610,
+    "point": {
+      "lat": 33.317377,
+      "lon": -80.547044
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2024-01-01",
+      "end": "2025-12-31",
+      "source": "desc_spend_years"
+    },
+    "owner": "DESC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "18:00–02:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 5457,
+    "delay_cost_usd": 0,
+    "worst_window": "12:00–20:00",
+    "worst_delay_veh_hours": 1273.7
+  },
+  {
+    "id": "XING_DESC_35_9",
+    "project_id": "DESC_35",
+    "road_name": "Whiskey Road",
+    "road_ref": "SC-19",
+    "road_refs": [
+      "SC-19"
+    ],
+    "road_class": "secondary",
+    "lanes": 4,
+    "lanes_assumed": false,
+    "oneway": false,
+    "aadt": 42400,
+    "aadt_source": "SCDOT 2025 statewide traffic counts (SC-19, station 0.3 km away)",
+    "osm_id": 1010858749,
+    "point": {
+      "lat": 33.515359,
+      "lon": -81.715243
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2023-01-01",
+      "end": "2026-08-12",
+      "source": "desc_spend_years"
+    },
+    "owner": "DESC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "18:00–02:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9540,
+    "delay_cost_usd": 0,
+    "worst_window": "11:00–19:00",
+    "worst_delay_veh_hours": 847.4
+  },
+  {
+    "id": "XING_GPC_17977_5",
+    "project_id": "GPC_17977",
+    "road_name": "Outer Loop 10",
+    "road_ref": "US-29",
+    "road_refs": [
+      "US-29",
+      "US-129",
+      "US-441",
+      "GA-8",
+      "GA-10",
+      "GA-15"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 29019453,
+    "point": {
+      "lat": 33.946696,
+      "lon": -83.356038
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2024-08-01",
+      "end": "2027-12-31",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "08:00–16:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9900,
+    "delay_cost_usd": 0,
+    "worst_window": "10:00–18:00",
+    "worst_delay_veh_hours": 260.0
+  },
+  {
+    "id": "XING_GPC_17993_4",
+    "project_id": "GPC_17993",
+    "road_name": "Carl Sanders Highway",
+    "road_ref": "I-20",
+    "road_refs": [
+      "I-20"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 157769094,
+    "point": {
+      "lat": 33.495086,
+      "lon": -82.302266
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2031-01-01",
+      "end": "2034-12-31",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "08:00–16:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9900,
+    "delay_cost_usd": 0,
+    "worst_window": "10:00–18:00",
+    "worst_delay_veh_hours": 260.0
+  },
+  {
+    "id": "XING_GPC_20066_21",
+    "project_id": "GPC_20066",
+    "road_name": "Harry Truman Parkway",
+    "road_ref": null,
+    "road_refs": [],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 124710989,
+    "point": {
+      "lat": 32.060609,
+      "lon": -81.071758
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2025-06-01",
+      "end": "2026-06-01",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "08:00–16:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9900,
+    "delay_cost_usd": 0,
+    "worst_window": "10:00–18:00",
+    "worst_delay_veh_hours": 260.0
+  },
+  {
+    "id": "XING_GPC_20783_3",
+    "project_id": "GPC_20783",
+    "road_name": "William F. Lynes Parkway",
+    "road_ref": "I-516",
+    "road_refs": [
+      "I-516",
+      "GA-21",
+      "GA-25"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 51902710,
+    "point": {
+      "lat": 32.093892,
+      "lon": -81.13413
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2025-06-01",
+      "end": "2028-06-01",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "08:00–16:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9900,
+    "delay_cost_usd": 0,
+    "worst_window": "10:00–18:00",
+    "worst_delay_veh_hours": 260.0
+  },
+  {
+    "id": "XING_GPC_21006_9",
+    "project_id": "GPC_21006",
+    "road_name": "Harry Truman Parkway",
+    "road_ref": null,
+    "road_refs": [],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 1160331119,
+    "point": {
+      "lat": 32.023319,
+      "lon": -81.088167
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2027-01-01",
+      "end": "2029-06-01",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "08:00–16:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9900,
+    "delay_cost_usd": 0,
+    "worst_window": "10:00–18:00",
+    "worst_delay_veh_hours": 260.0
+  },
+  {
+    "id": "XING_GPC_21023_1",
+    "project_id": "GPC_21023",
+    "road_name": "Jim Gillis Historic Savannah Parkway",
+    "road_ref": "I-16",
+    "road_refs": [
+      "I-16"
+    ],
+    "road_class": "motorway",
+    "lanes": 2,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 9085584,
+    "point": {
+      "lat": 32.069808,
+      "lon": -81.200238
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2026-01-01",
+      "end": "2029-06-01",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "08:00–16:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 9900,
+    "delay_cost_usd": 0,
+    "worst_window": "10:00–18:00",
+    "worst_delay_veh_hours": 260.0
+  },
+  {
+    "id": "XING_GPC_20785_3",
+    "project_id": "GPC_20785",
+    "road_name": null,
+    "road_ref": "I-95",
+    "road_refs": [
+      "I-95"
+    ],
+    "road_class": "motorway",
+    "lanes": 3,
+    "lanes_assumed": false,
+    "oneway": true,
+    "aadt": 40000,
+    "aadt_source": "estimated by road class",
+    "osm_id": 265002078,
+    "point": {
+      "lat": 32.205846,
+      "lon": -81.182397
+    },
+    "point_approximate": true,
+    "est_closure_hours": 8,
+    "work_window": {
+      "start": "2024-06-01",
+      "end": "2027-06-01",
+      "source": "gpc_start_date"
+    },
+    "owner": "GPC",
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "00:00–08:00",
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 4158,
+    "delay_cost_usd": 0,
+    "worst_window": "00:00–08:00",
+    "worst_delay_veh_hours": 0.0
+  }
+]

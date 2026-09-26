@@ -1,0 +1,106 @@
+{
+  "action": {
+    "id": "ACT_1D31EJ",
+    "thread_id": "THR_S7NGFC",
+    "company_id": "CMP_A",
+    "tool": "add_resource",
+    "args": {
+      "name": "Crane",
+      "type": "equipment",
+      "quantity": 2
+    },
+    "summary": "Add 2 cranes to Demo Contractor A's inventory at Savannah, GA, available Sep 26, 2026 to Oct 26, 2026, rate on request. (location defaulted to the company yard (Savannah, GA); dates defaulted to today for 30 days; edit if needed.)",
+    "preview": {
+      "collection": "resources",
+      "fields": {
+        "name": "Crane",
+        "type": "equipment",
+        "quantity": 2,
+        "location": {
+          "label": "Savannah, GA",
+          "lat": 32.0809,
+          "lon": -81.0912
+        },
+        "available_from": "2026-09-26",
+        "available_to": "2026-10-26",
+        "date_label": "Sep 26 – Oct 26, 2026",
+        "daily_rate": null,
+        "rate_label": "Rate on request",
+        "notes": null
+      },
+      "location_point": {
+        "lat": 32.0809,
+        "lon": -81.0912
+      }
+    },
+    "status": "confirmed",
+    "created_at": "2026-09-26T22:27:31.602573+00:00",
+    "expires_at": "2026-09-26T22:57:31+00:00",
+    "result": {
+      "id": "RES_AZT7KB",
+      "company_id": "CMP_A",
+      "company_name": "Demo Contractor A",
+      "name": "Crane",
+      "type": "equipment",
+      "quantity": 2,
+      "location": {
+        "label": "Savannah, GA",
+        "lat": 32.0809,
+        "lon": -81.0912
+      },
+      "available_from": "2026-09-26",
+      "available_to": "2026-10-26",
+      "date_label": "Sep 26 – Oct 26, 2026",
+      "daily_rate": null,
+      "rate_label": "Rate on request",
+      "notes": null,
+      "nearby_project_ids": [
+        "GPC_3",
+        "USR_J7QJFE",
+        "DESC_5",
+        "DESC_3",
+        "GPC_2"
+      ],
+      "created_at": "2026-09-26T22:27:31.611877+00:00",
+      "updated_at": "2026-09-26T22:27:31.611877+00:00"
+    },
+    "error": null,
+    "updated_at": "2026-09-26T22:27:31.611877+00:00"
+  },
+  "result": {
+    "id": "RES_AZT7KB",
+    "company_id": "CMP_A",
+    "company_name": "Demo Contractor A",
+    "name": "Crane",
+    "type": "equipment",
+    "quantity": 2,
+    "location": {
+      "label": "Savannah, GA",
+      "lat": 32.0809,
+      "lon": -81.0912
+    },
+    "available_from": "2026-09-26",
+    "available_to": "2026-10-26",
+    "date_label": "Sep 26 – Oct 26, 2026",
+    "daily_rate": null,
+    "rate_label": "Rate on request",
+    "notes": null,
+    "nearby_project_ids": [
+      "GPC_3",
+      "USR_J7QJFE",
+      "DESC_5",
+      "DESC_3",
+      "GPC_2"
+    ],
+    "created_at": "2026-09-26T22:27:31.611877+00:00",
+    "updated_at": "2026-09-26T22:27:31.611877+00:00"
+  },
+  "changes": [
+    {
+      "collection": "resources",
+      "op": "insert",
+      "id": "RES_AZT7KB"
+    }
+  ],
+  "reply": "Added 2 cranes to your inventory. They're now visible to other companies."
+}

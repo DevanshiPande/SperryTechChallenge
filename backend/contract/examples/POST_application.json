@@ -1,0 +1,19 @@
+{
+  "id": "APP_2OBL1H",
+  "job_id": "JOB_Z3RS60",
+  "job_title": "Transmission lineworker",
+  "company_id": "CMP_B",
+  "worker_id": "WRK_1",
+  "applicant": {
+    "name": "Jordan Davis (demo)",
+    "qualifications": [
+      "OSHA 10",
+      "CDL Class A",
+      "Journeyman Lineworker"
+    ],
+    "availability": "Available from June 2027"
+  },
+  "status": "submitted",
+  "created_at": "2026-09-26T22:27:31.536758+00:00",
+  "updated_at": "2026-09-26T22:27:31.536758+00:00"
+}

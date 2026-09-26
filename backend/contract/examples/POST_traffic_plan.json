@@ -1,0 +1,189 @@
+{
+  "road": {
+    "road_name": "Whyte Hardee Boulevard",
+    "road_ref": "US-17",
+    "road_refs": [
+      "US-17"
+    ],
+    "road_class": "primary",
+    "lanes": 4,
+    "lanes_assumed": false,
+    "oneway": false,
+    "aadt": 11100,
+    "aadt_source": "SCDOT 2025 statewide traffic counts (US-17, station 0.2 km away)",
+    "osm_id": 138272923
+  },
+  "closure_type": "lane_closure",
+  "closure_hours": 8,
+  "recommended_window": "00:00–08:00",
+  "recommended_start_hour": 0,
+  "delay_veh_hours": 0.0,
+  "vehicles_affected": 2098,
+  "delay_cost_usd": 0,
+  "worst_window": "00:00–08:00",
+  "worst_delay_veh_hours": 0.0,
+  "worst_delay_cost_usd": 0,
+  "hourly": [
+    {
+      "hour": 0,
+      "demand": 111,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 1,
+      "demand": 89,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 2,
+      "demand": 78,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 3,
+      "demand": 78,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 4,
+      "demand": 111,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 5,
+      "demand": 244,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 6,
+      "demand": 555,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 7,
+      "demand": 832,
+      "capacity": 3200,
+      "queue": 0
+    },
+    {
+      "hour": 8,
+      "demand": 777,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 9,
+      "demand": 577,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 10,
+      "demand": 522,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 11,
+      "demand": 555,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 12,
+      "demand": 588,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 13,
+      "demand": 599,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 14,
+      "demand": 644,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 15,
+      "demand": 733,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 16,
+      "demand": 844,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 17,
+      "demand": 866,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 18,
+      "demand": 710,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 19,
+      "demand": 511,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 20,
+      "demand": 400,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 21,
+      "demand": 322,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 22,
+      "demand": 233,
+      "capacity": 7600,
+      "queue": 0
+    },
+    {
+      "hour": 23,
+      "demand": 122,
+      "capacity": 7600,
+      "queue": 0
+    }
+  ],
+  "sources": [
+    {
+      "name": "MoDOT EPG 616.13 Work Zone Capacity, Queue and Travel Delay (base work zone capacity 1600 pc/h/ln)",
+      "value_used": "1600 veh/h/lane in a work zone",
+      "url": "https://epg.modot.org/index.php/616.13_Work_Zone_Capacity,_Queue_and_Travel_Delay"
+    },
+    {
+      "name": "USDOT Benefit-Cost Analysis Guidance, 2026 update (federal values as restated in Caltrans Cal-B/C federal comparison, 2026)",
+      "value_used": "$29.15/vehicle-hour (2024$)",
+      "url": "https://www.transportation.gov/sites/dot.gov/files/2025-12/Benefit%20Cost%20Analysis%20Guidance%202026%20Update%20(Final).pdf"
+    }
+  ],
+  "assumptions": [
+    "8-hour closure (assumption)",
+    "Typical weekday hourly profile (assumption)",
+    "Peak-direction split 55% (assumption)"
+  ]
+}

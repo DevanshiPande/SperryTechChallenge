@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "BAD_REQUEST",
+    "message": "kind must be project, resource or job"
+  }
+}

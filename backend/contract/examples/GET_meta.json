@@ -1,0 +1,59 @@
+{
+  "utilities": [
+    {
+      "code": "DESC",
+      "name": "Dominion Energy South Carolina",
+      "color": "#1F6FB2"
+    },
+    {
+      "code": "GPC",
+      "name": "Georgia Power",
+      "color": "#D9822B"
+    }
+  ],
+  "threshold_mi": 25,
+  "generated_at": "2026-09-26",
+  "tiers": [
+    {
+      "code": "crossing",
+      "label": "Touching / crossing",
+      "max_km": 0.05
+    },
+    {
+      "code": "shared_land",
+      "label": "Under 1.6 km",
+      "max_km": 1.6
+    },
+    {
+      "code": "shared_site",
+      "label": "Under 8 km",
+      "max_km": 8
+    },
+    {
+      "code": "shared_crews",
+      "label": "Under 40 km",
+      "max_km": 40
+    }
+  ],
+  "potential_levels": [
+    {
+      "code": "high",
+      "label": "High potential",
+      "min_score": 60
+    },
+    {
+      "code": "moderate",
+      "label": "Moderate potential",
+      "min_score": 35
+    },
+    {
+      "code": "lower",
+      "label": "Lower potential",
+      "min_score": 0
+    }
+  ],
+  "in_service_years": [
+    2023,
+    2033
+  ]
+}

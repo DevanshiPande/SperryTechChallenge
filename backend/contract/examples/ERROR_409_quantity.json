@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "INSUFFICIENT_QUANTITY",
+    "message": "Only 1 of 3 available for those dates"
+  }
+}

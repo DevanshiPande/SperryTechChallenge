@@ -1,0 +1,101 @@
+{
+  "id": "OVL_3",
+  "project_a": "DESC_3",
+  "project_b": "GPC_2",
+  "center_distance_mi": 5.65,
+  "closest_distance_km": 4.82,
+  "closest_points": {
+    "a": {
+      "lat": 32.35912,
+      "lon": -81.1246
+    },
+    "b": {
+      "lat": 32.352116,
+      "lon": -81.175112
+    }
+  },
+  "tier": "shared_site",
+  "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+  "shared_endpoint": false,
+  "time_gap_days": 152,
+  "window_overlap_months": 24,
+  "score": 77.6,
+  "rank": 1,
+  "cost_estimate": {
+    "shared_row_acres": null,
+    "mobilization_savings_usd": null,
+    "total_estimated_savings_usd": 17000,
+    "assumptions": [
+      "Unit rates are placeholders; replace with real bids.",
+      "Trucks are shared only when construction windows overlap (yes for this pair).",
+      "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+    ]
+  },
+  "brief": null,
+  "label": "Jasper–Okatie ↔ McIntosh–Purrysburg",
+  "potential": "high",
+  "cost_scenario": {
+    "illustrative": true,
+    "unit_rates": {
+      "mobilization_per_event": 3000,
+      "bucket_truck_per_day": 1500,
+      "laydown_per_site": 5000
+    },
+    "separate": {
+      "a": {
+        "mobilization_events": 1,
+        "truck_days": 10,
+        "laydown_sites": 1,
+        "start_date": "2024-01-01"
+      },
+      "b": {
+        "mobilization_events": 1,
+        "truck_days": 10,
+        "laydown_sites": 1,
+        "start_date": "2024-01-01"
+      }
+    },
+    "coordinated": {
+      "mobilization_events_a": 1,
+      "mobilization_events_b": 1,
+      "shared_truck_days": 12,
+      "laydown_sites": 1,
+      "start_date_a": "2024-01-01",
+      "start_date_b": "2024-01-01"
+    },
+    "totals": {
+      "separate": 46000,
+      "coordinated": 29000,
+      "savings": 17000,
+      "savings_pct": 37,
+      "separate_by_project": {
+        "a": 23000,
+        "b": 23000
+      },
+      "coordinated_by_project": {
+        "a": 14500,
+        "b": 14500
+      }
+    },
+    "range": {
+      "separate": [
+        39100,
+        52899
+      ],
+      "coordinated": [
+        24650,
+        33350
+      ],
+      "savings": [
+        12750,
+        21250
+      ]
+    },
+    "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+    "assumptions": [
+      "Unit rates are placeholders; replace with real bids.",
+      "Trucks are shared only when construction windows overlap (yes for this pair).",
+      "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "resource",
+  "fields": {
+    "name": {
+      "value": "Bucket trucks with operators",
+      "confidence": "high"
+    },
+    "quantity": {
+      "value": 2,
+      "confidence": "high"
+    },
+    "location": {
+      "value": "Savannah, GA",
+      "confidence": "high"
+    },
+    "dates": {
+      "value": "2027-06-03 to 2027-06-10",
+      "confidence": "medium"
+    },
+    "rate": {
+      "value": "$1,250",
+      "confidence": "high"
+    }
+  },
+  "missing": [],
+  "ready": true,
+  "follow_up_questions": [],
+  "location_point": {
+    "lat": 32.0809,
+    "lon": -81.0912,
+    "label": "Savannah, GA"
+  },
+  "source": "gemini",
+  "note": "(mock Gemini) Draft only. Nothing is saved until the user reviews it."
+}

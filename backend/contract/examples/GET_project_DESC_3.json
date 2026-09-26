@@ -1,0 +1,81 @@
+{
+  "id": "DESC_3",
+  "utility": "DESC",
+  "utility_name": "Dominion Energy South Carolina",
+  "state": "SC",
+  "name": "Jasper - Okatie 230 kV #2: Construct",
+  "voltage_kv": 230,
+  "project_type": "line",
+  "status": "Planned",
+  "in_service_date": "2025-12-31",
+  "construction_window": {
+    "start": "2024-01-01",
+    "end": "2025-12-31",
+    "source": "estimated"
+  },
+  "endpoints": [
+    {
+      "name": "Jasper Sub",
+      "lat": 32.35912,
+      "lon": -81.1246,
+      "confidence": "high",
+      "source": "Sperry starter file",
+      "county": "Jasper County, SC"
+    },
+    {
+      "name": "Okatie Sub",
+      "lat": 32.333758,
+      "lon": -81.032495,
+      "confidence": "high",
+      "source": "Sperry starter file",
+      "county": "Jasper County, SC"
+    }
+  ],
+  "center": {
+    "lat": 32.346439,
+    "lon": -81.078547
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        -81.1246,
+        32.35912
+      ],
+      [
+        -81.032495,
+        32.333758
+      ]
+    ]
+  },
+  "location_confidence": "high",
+  "description": "(mock) Full description parsed from the utility PDF goes here.",
+  "cost": {
+    "currency": "USD",
+    "by_year": {
+      "2024": 800000,
+      "2025": 2500000,
+      "2026": 0,
+      "2027": 0,
+      "2028": 0,
+      "previous": 1200000
+    },
+    "total": 4500000,
+    "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+  },
+  "source": {
+    "document": "DESC 2024-2028 project descriptions",
+    "page": null
+  },
+  "quality_flags": [],
+  "overlap_ids": [
+    "OVL_3",
+    "OVL_4"
+  ],
+  "short_name": "Jasper–Okatie",
+  "work_type_label": "New transmission line",
+  "counties": [
+    "Jasper County, SC"
+  ],
+  "county_source": "mock (real backend: Census county boundaries)"
+}

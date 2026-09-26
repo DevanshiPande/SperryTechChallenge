@@ -1,0 +1,16 @@
+{
+  "crossings_count": 158,
+  "projects_with_crossings": 19,
+  "high_volume_crossings": 28,
+  "conflicts_count": 0,
+  "total_delay_avoidable_veh_hours": 0,
+  "daytime_vs_night_delay_veh_hours": {
+    "worst_windows": 33242.6,
+    "recommended_windows": 0
+  },
+  "data_sources": [
+    "OpenStreetMap roads (Overpass)",
+    "SCDOT 2025 statewide traffic counts",
+    "GDOT traffic counts (2017 AADT)"
+  ]
+}

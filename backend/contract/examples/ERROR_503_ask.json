@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "GEMINI_UNAVAILABLE",
+    "message": "Gemini is not responding. Try again in a moment."
+  }
+}

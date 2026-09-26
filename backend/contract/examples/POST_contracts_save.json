@@ -1,0 +1,2712 @@
+{
+  "contract_id": "CTR_KVJ70G",
+  "project": {
+    "id": "USR_KI52MI",
+    "utility": "USER",
+    "utility_name": "Demo Contractor A",
+    "state": null,
+    "name": "Hardeeville Area Reliability Project - Jasper to Bluffton 115 kV Line Rebuild",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2027-12-15",
+    "construction_window": {
+      "start": "2027-06-01",
+      "end": "2027-12-15",
+      "source": "user"
+    },
+    "endpoints": [
+      {
+        "name": "Jasper Substation",
+        "lat": 32.360699,
+        "lon": -81.124152,
+        "confidence": "high",
+        "source": "user",
+        "county": null
+      },
+      {
+        "name": "Bluffton Substation",
+        "lat": 32.235027,
+        "lon": -80.853384,
+        "confidence": "high",
+        "source": "user",
+        "county": null
+      }
+    ],
+    "center": {
+      "lat": 32.297863,
+      "lon": -80.988768
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.124152,
+          32.360699
+        ],
+        [
+          -80.853384,
+          32.235027
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "Transmission line rebuild",
+    "cost": null,
+    "source": {
+      "document": null,
+      "page": null,
+      "type": "user"
+    },
+    "quality_flags": [],
+    "overlap_ids": [
+      "OVL_USR_KI52MI__DESC_3",
+      "OVL_USR_KI52MI__DESC_6",
+      "OVL_USR_KI52MI__DESC_7",
+      "OVL_USR_KI52MI__DESC_10",
+      "OVL_USR_KI52MI__DESC_23",
+      "OVL_USR_KI52MI__GPC_20067",
+      "OVL_USR_KI52MI__GPC_20066",
+      "OVL_USR_KI52MI__GPC_20277",
+      "OVL_USR_KI52MI__GPC_20785",
+      "OVL_USR_KI52MI__GPC_20065",
+      "OVL_USR_KI52MI__GPC_20783",
+      "OVL_USR_KI52MI__GPC_20407",
+      "OVL_USR_KI52MI__GPC_21006",
+      "OVL_USR_KI52MI__GPC_21023",
+      "OVL_USR_KI52MI__GPC_20784",
+      "OVL_USR_KI52MI__GPC_20796",
+      "OVL_USR_KI52MI__USR_J7QJFE"
+    ],
+    "short_name": "Hardeeville Area Reliability Project - …",
+    "work_type_label": "Transmission line rebuild",
+    "counties": [],
+    "county_source": null,
+    "company_id": "CMP_A",
+    "work_type": "Transmission line rebuild",
+    "roads_affected": [
+      "US-17",
+      "I-95"
+    ],
+    "lane_closures": "Nighttime northbound lane closure on US-17 near Hardeeville",
+    "work_hours": "21:00-05:00",
+    "planning_authority": null,
+    "location_text": null,
+    "geocoded": null,
+    "contract_text_hash": "2d93bbbbfa1b6cfc5f26657dce78de245db5059ea9435ab9d5868bf372d85ca6",
+    "budget_usd": 9850000,
+    "budget_source": "contract",
+    "budget_note": "Stated in the uploaded contract",
+    "created_at": "2026-09-26T22:27:32.254421+00:00",
+    "updated_at": "2026-09-26T22:27:32.254421+00:00"
+  },
+  "overlaps": [
+    {
+      "id": "OVL_USR_KI52MI__DESC_3",
+      "project_a": "USR_KI52MI",
+      "project_b": "DESC_3",
+      "center_distance_mi": 3.56,
+      "closest_distance_km": 1.51,
+      "closest_points": {
+        "a": {
+          "lat": 32.32182,
+          "lon": -81.04017
+        },
+        "b": {
+          "lat": 32.333758,
+          "lon": -81.032495
+        }
+      },
+      "tier": "shared_land",
+      "tier_explanation": "Under 1.6 km: can share right-of-way, access roads, permits",
+      "shared_endpoint": false,
+      "time_gap_days": 1079,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 33.4,
+      "score_breakdown": {
+        "proximity": 33.4,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 9,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Okatie",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 527400,
+          "savings": 5000,
+          "savings_pct": 0.9,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 263700,
+            "b": 263700
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            448290,
+            606510
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__DESC_6",
+      "project_a": "USR_KI52MI",
+      "project_b": "DESC_6",
+      "center_distance_mi": 18.33,
+      "closest_distance_km": 25.57,
+      "closest_points": {
+        "a": {
+          "lat": 32.235027,
+          "lon": -80.853384
+        },
+        "b": {
+          "lat": 32.436488,
+          "lon": -80.721016
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 1079,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.5,
+      "score_breakdown": {
+        "proximity": 9.5,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 19,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 8580000,
+        "reference_budget_source": "filing",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Dominion Energy SC filing (budget): Burton–St Helena",
+            "value_used": "$8,580,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Burton–St Helena",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 214500,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-01-01"
+        },
+        "totals": {
+          "separate": 469000,
+          "coordinated": 469000,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 234500,
+            "b": 234500
+          },
+          "coordinated_by_project": {
+            "a": 234500,
+            "b": 234500
+          }
+        },
+        "range": {
+          "separate": [
+            398650,
+            539350
+          ],
+          "coordinated": [
+            398650,
+            539350
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__DESC_7",
+      "project_a": "USR_KI52MI",
+      "project_b": "DESC_7",
+      "center_distance_mi": 18.33,
+      "closest_distance_km": 25.57,
+      "closest_points": {
+        "a": {
+          "lat": 32.235027,
+          "lon": -80.853384
+        },
+        "b": {
+          "lat": 32.436488,
+          "lon": -80.721016
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 714,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.5,
+      "score_breakdown": {
+        "proximity": 9.5,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 20,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 6925000,
+        "reference_budget_source": "filing",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Dominion Energy SC filing (budget): Burton–St Helena",
+            "value_used": "$6,925,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Burton–St Helena",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 173100,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-01-01"
+        },
+        "totals": {
+          "separate": 386200,
+          "coordinated": 386200,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 193100,
+            "b": 193100
+          },
+          "coordinated_by_project": {
+            "a": 193100,
+            "b": 193100
+          }
+        },
+        "range": {
+          "separate": [
+            328270,
+            444130
+          ],
+          "coordinated": [
+            328270,
+            444130
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__DESC_10",
+      "project_a": "USR_KI52MI",
+      "project_b": "DESC_10",
+      "center_distance_mi": 2.83,
+      "closest_distance_km": 0.0,
+      "closest_points": {
+        "a": {
+          "lat": 32.235027,
+          "lon": -80.853384
+        },
+        "b": {
+          "lat": 32.235027,
+          "lon": -80.853384
+        }
+      },
+      "tier": "crossing",
+      "tier_explanation": "Touching/crossing: must coordinate outages and crossing structures",
+      "shared_endpoint": true,
+      "time_gap_days": 927,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 40.0,
+      "score_breakdown": {
+        "proximity": 40.0,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 3,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap",
+            "acres": 139.5
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": 139.5,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Okatie–Bluffton",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 527400,
+          "savings": 5000,
+          "savings_pct": 0.9,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 263700,
+            "b": 263700
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            448290,
+            606510
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__DESC_23",
+      "project_a": "USR_KI52MI",
+      "project_b": "DESC_23",
+      "center_distance_mi": 6.24,
+      "closest_distance_km": 0.0,
+      "closest_points": {
+        "a": {
+          "lat": 32.360699,
+          "lon": -81.124152
+        },
+        "b": {
+          "lat": 32.360699,
+          "lon": -81.124152
+        }
+      },
+      "tier": "crossing",
+      "tier_explanation": "Touching/crossing: must coordinate outages and crossing structures",
+      "shared_endpoint": true,
+      "time_gap_days": 714,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 40.0,
+      "score_breakdown": {
+        "proximity": 40.0,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 4,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap",
+            "acres": 89.8
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": 89.8,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Jasper–Okatie",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 527400,
+          "savings": 5000,
+          "savings_pct": 0.9,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 263700,
+            "b": 263700
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            448290,
+            606510
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20067",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20067",
+      "center_distance_mi": 18.08,
+      "closest_distance_km": 25.18,
+      "closest_points": {
+        "a": {
+          "lat": 32.266173,
+          "lon": -80.920304
+        },
+        "b": {
+          "lat": 32.066828,
+          "lon": -81.048384
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 927,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.6,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 17,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Deptford–Magnolia",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 532400,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 266200,
+            "b": 266200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            452540,
+            612260
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20066",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20066",
+      "center_distance_mi": 17.99,
+      "closest_distance_km": 25.18,
+      "closest_points": {
+        "a": {
+          "lat": 32.266173,
+          "lon": -80.920304
+        },
+        "b": {
+          "lat": 32.066828,
+          "lon": -81.048384
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 562,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.6,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 16,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Boulevard–Deptford",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 532400,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 266200,
+            "b": 266200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            452540,
+            612260
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20277",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20277",
+      "center_distance_mi": 11.51,
+      "closest_distance_km": 4.89,
+      "closest_points": {
+        "a": {
+          "lat": 32.360699,
+          "lon": -81.124152
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.175112
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 562,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 24.4,
+      "score_breakdown": {
+        "proximity": 24.4,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 11,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ McIntosh–Purrysburg",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2024-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 527400,
+          "savings": 5000,
+          "savings_pct": 0.9,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 263700,
+            "b": 263700
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            448290,
+            606510
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20785",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20785",
+      "center_distance_mi": 13.01,
+      "closest_distance_km": 14.79,
+      "closest_points": {
+        "a": {
+          "lat": 32.360699,
+          "lon": -81.124152
+        },
+        "b": {
+          "lat": 32.248701,
+          "lon": -81.209472
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 197,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": true,
+      "score": 27.5,
+      "score_breakdown": {
+        "proximity": 11.4,
+        "savings": 10.1,
+        "timing": 6.0
+      },
+      "rank": 10,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 124089,
+        "range_usd": [
+          49425,
+          250193
+        ],
+        "components": {
+          "mobilization": {
+            "low": 49250,
+            "point": 123125,
+            "high": 246250,
+            "applies": true,
+            "requires_schedule_shift": true
+          },
+          "logistics": {
+            "low": 175,
+            "point": 964,
+            "high": 3943,
+            "applies": true,
+            "site_to_site_road_miles": 15.6
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 123125,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Mobilization savings halved: the construction windows only overlap after a schedule shift",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Goshen–Kraft",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2024-06-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 532400,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 266200,
+            "b": 266200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            452540,
+            612260
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20065",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20065",
+      "center_distance_mi": 11.89,
+      "closest_distance_km": 4.89,
+      "closest_points": {
+        "a": {
+          "lat": 32.360699,
+          "lon": -81.124152
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.175112
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 197,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": true,
+      "score": 40.5,
+      "score_breakdown": {
+        "proximity": 24.4,
+        "savings": 10.1,
+        "timing": 6.0
+      },
+      "rank": 2,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 124127,
+        "range_usd": [
+          49451,
+          250255
+        ],
+        "components": {
+          "mobilization": {
+            "low": 49250,
+            "point": 123125,
+            "high": 246250,
+            "applies": true,
+            "requires_schedule_shift": true
+          },
+          "logistics": {
+            "low": 201,
+            "point": 1002,
+            "high": 4005,
+            "applies": true,
+            "site_to_site_road_miles": 14.3
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 123125,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Mobilization savings halved: the construction windows only overlap after a schedule shift",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Goshen–McIntosh",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 527400,
+          "savings": 5000,
+          "savings_pct": 0.9,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 263700,
+            "b": 263700
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            448290,
+            606510
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20783",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20783",
+      "center_distance_mi": 17.23,
+      "closest_distance_km": 25.27,
+      "closest_points": {
+        "a": {
+          "lat": 32.297455,
+          "lon": -80.987638
+        },
+        "b": {
+          "lat": 32.09732,
+          "lon": -81.116077
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 169,
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 39.7,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "rank": 5,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 247072,
+        "range_usd": [
+          98581,
+          496206
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 81,
+            "point": 822,
+            "high": 3706,
+            "applies": true,
+            "site_to_site_road_miles": 20.7
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Coleman–Dean Forest",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 520400,
+          "savings": 12000,
+          "savings_pct": 2.3,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 260200,
+            "b": 260200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            442340,
+            598460
+          ],
+          "savings": [
+            9000,
+            15000
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20407",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20407",
+      "center_distance_mi": 19.85,
+      "closest_distance_km": 31.19,
+      "closest_points": {
+        "a": {
+          "lat": 32.269593,
+          "lon": -80.927658
+        },
+        "b": {
+          "lat": 32.022687,
+          "lon": -81.086181
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 169,
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 38.6,
+      "score_breakdown": {
+        "proximity": 8.5,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "rank": 8,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 165734,
+        "range_usd": [
+          66022,
+          333559
+        ],
+        "components": {
+          "mobilization": {
+            "low": 66000,
+            "point": 165000,
+            "high": 330000,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 22,
+            "point": 734,
+            "high": 3559,
+            "applies": true,
+            "site_to_site_road_miles": 23.8
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 6600000,
+        "reference_budget_source": "estimated_miso",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 165000,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
+            "value_used": "$6,600,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Magnolia–Truman Parkway",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 165000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 370000,
+          "coordinated": 358000,
+          "savings": 12000,
+          "savings_pct": 3.2,
+          "separate_by_project": {
+            "a": 185000,
+            "b": 185000
+          },
+          "coordinated_by_project": {
+            "a": 179000,
+            "b": 179000
+          }
+        },
+        "range": {
+          "separate": [
+            314500,
+            425500
+          ],
+          "coordinated": [
+            304300,
+            411700
+          ],
+          "savings": [
+            9000,
+            15000
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_21006",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_21006",
+      "center_distance_mi": 19.81,
+      "closest_distance_km": 31.19,
+      "closest_points": {
+        "a": {
+          "lat": 32.269593,
+          "lon": -80.927658
+        },
+        "b": {
+          "lat": 32.022687,
+          "lon": -81.086181
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 534,
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 38.6,
+      "score_breakdown": {
+        "proximity": 8.5,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "rank": 7,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 246985,
+        "range_usd": [
+          98523,
+          496061
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 23,
+            "point": 735,
+            "high": 3561,
+            "applies": true,
+            "site_to_site_road_miles": 23.8
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Boulevard–Magnolia",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2027-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 520400,
+          "savings": 12000,
+          "savings_pct": 2.3,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 260200,
+            "b": 260200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            442340,
+            598460
+          ],
+          "savings": [
+            9000,
+            15000
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_21023",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_21023",
+      "center_distance_mi": 22.12,
+      "closest_distance_km": 29.89,
+      "closest_points": {
+        "a": {
+          "lat": 32.320323,
+          "lon": -81.036941
+        },
+        "b": {
+          "lat": 32.08351,
+          "lon": -81.188722
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 534,
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 38.9,
+      "score_breakdown": {
+        "proximity": 8.8,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "rank": 6,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 246908,
+        "range_usd": [
+          98471,
+          495932
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": -29,
+            "point": 658,
+            "high": 3432,
+            "applies": true,
+            "site_to_site_road_miles": 26.5
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Dean Forest–Little Ogeechee",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2026-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2026-01-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 520400,
+          "savings": 12000,
+          "savings_pct": 2.3,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 260200,
+            "b": 260200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            442340,
+            598460
+          ],
+          "savings": [
+            9000,
+            15000
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20784",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20784",
+      "center_distance_mi": 18.98,
+      "closest_distance_km": 25.27,
+      "closest_points": {
+        "a": {
+          "lat": 32.297455,
+          "lon": -80.987638
+        },
+        "b": {
+          "lat": 32.09732,
+          "lon": -81.116077
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 1630,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.6,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 18,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 6600000,
+        "reference_budget_source": "estimated_miso",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
+            "value_used": "$6,600,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Coleman–Meldrim",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 165000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2029-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2029-06-01"
+        },
+        "totals": {
+          "separate": 370000,
+          "coordinated": 370000,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 185000,
+            "b": 185000
+          },
+          "coordinated_by_project": {
+            "a": 185000,
+            "b": 185000
+          }
+        },
+        "range": {
+          "separate": [
+            314500,
+            425500
+          ],
+          "coordinated": [
+            314500,
+            425500
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__GPC_20796",
+      "project_a": "USR_KI52MI",
+      "project_b": "GPC_20796",
+      "center_distance_mi": 24.28,
+      "closest_distance_km": 32.37,
+      "closest_points": {
+        "a": {
+          "lat": 32.360699,
+          "lon": -81.124152
+        },
+        "b": {
+          "lat": 32.155282,
+          "lon": -81.368377
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 1995,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 8.3,
+      "score_breakdown": {
+        "proximity": 8.3,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 21,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Meldrim",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1260
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2030-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2030-06-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 532400,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 266200,
+            "b": 266200
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            452540,
+            612260
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_KI52MI__USR_J7QJFE",
+      "project_a": "USR_KI52MI",
+      "project_b": "USR_J7QJFE",
+      "center_distance_mi": 5.32,
+      "closest_distance_km": 5.13,
+      "closest_points": {
+        "a": {
+          "lat": 32.327722,
+          "lon": -81.052907
+        },
+        "b": {
+          "lat": 32.2871,
+          "lon": -81.079
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 48,
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 54.4,
+      "score_breakdown": {
+        "proximity": 24.3,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "rank": 1,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 247473,
+        "range_usd": [
+          98848,
+          496874
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 348,
+            "point": 1223,
+            "high": 4374,
+            "applies": true,
+            "site_to_site_road_miles": 6.4
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Hardeeville Area Reliability Project - … ↔ Corridor upgrade",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 246200,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2027-06-01"
+        },
+        "totals": {
+          "separate": 532400,
+          "coordinated": 515400,
+          "savings": 17000,
+          "savings_pct": 3.2,
+          "separate_by_project": {
+            "a": 266200,
+            "b": 266200
+          },
+          "coordinated_by_project": {
+            "a": 257700,
+            "b": 257700
+          }
+        },
+        "range": {
+          "separate": [
+            452540,
+            612260
+          ],
+          "coordinated": [
+            438090,
+            592710
+          ],
+          "savings": [
+            12750,
+            21250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    }
+  ],
+  "closure_conflicts": [
+    {
+      "project_id": "USR_J7QJFE",
+      "short_name": "Corridor upgrade",
+      "road": "US-17",
+      "overlap_start": "2027-06-01",
+      "overlap_end": "2027-12-15",
+      "hours": "21:00-05:00",
+      "severity": "requires_review"
+    }
+  ]
+}

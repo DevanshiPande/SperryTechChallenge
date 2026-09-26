@@ -1,0 +1,21 @@
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+pydantic==2.13.5
+pymongo[srv]==4.18.2
+dnspython==2.8.0
+shapely==2.1.2
+pyproj==3.7.2
+rapidfuzz==3.14.6
+requests==2.34.2
+python-dateutil==2.9.0.post0
+openpyxl==3.1.5
+google-genai==2.25.0
+pdfplumber==0.11.10
+python-multipart==0.0.32
+numpy
+
+# tests
+pytest==9.1.1
+httpx==0.28.1
+mongomock==4.3.0
+fpdf2==2.8.8  # scripts/make_sample_contract.py and tests

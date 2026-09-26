@@ -1,0 +1,108 @@
+{
+  "proposed": {
+    "name": "Corridor upgrade",
+    "utility": null,
+    "voltage_kv": null,
+    "endpoints": [
+      {
+        "name": "Hardeeville, SC",
+        "lat": 32.2871,
+        "lon": -81.079
+      }
+    ],
+    "construction_window": {
+      "start": "2027-06-01",
+      "end": "2027-12-15"
+    },
+    "center": {
+      "lat": 32.2871,
+      "lon": -81.079
+    },
+    "geocoded": {
+      "lat": 32.2871,
+      "lon": -81.079,
+      "label": "Hardeeville, SC",
+      "query": "Near Hardeeville, SC",
+      "source": "mock gazetteer"
+    }
+  },
+  "overlaps": [
+    {
+      "project_id": "DESC_3",
+      "short_name": "Jasper–Okatie",
+      "name": "Jasper - Okatie 230 kV #2: Construct",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2025-12-31",
+        "source": "estimated"
+      },
+      "center_distance_mi": 4.1,
+      "closest_distance_km": 6.26,
+      "tier": "shared_site",
+      "window_overlap_months": 0
+    },
+    {
+      "project_id": "GPC_3",
+      "short_name": "Goshen–McIntosh",
+      "name": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "construction_window": {
+        "start": "2025-06-01",
+        "end": "2027-06-01",
+        "source": "estimated"
+      },
+      "center_distance_mi": 6.88,
+      "closest_distance_km": 11.05,
+      "tier": "shared_crews",
+      "window_overlap_months": 0
+    },
+    {
+      "project_id": "GPC_2",
+      "short_name": "McIntosh–Purrysburg",
+      "name": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2026-06-01",
+        "source": "estimated"
+      },
+      "center_distance_mi": 7.19,
+      "closest_distance_km": 11.55,
+      "tier": "shared_crews",
+      "window_overlap_months": 0
+    },
+    {
+      "project_id": "DESC_5",
+      "short_name": "Okatie–Bluffton",
+      "name": "Okatie-Bluffton 115 kV: Rebuild",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2025-06-01",
+        "source": "estimated"
+      },
+      "center_distance_mi": 7.95,
+      "closest_distance_km": 6.77,
+      "tier": "shared_site",
+      "window_overlap_months": 0
+    }
+  ],
+  "closure_conflicts": [],
+  "closure_data_available": false,
+  "closure_note": "No public road-closure data is connected. Closure conflicts are not evaluated.",
+  "suggestion": {
+    "shift_months": -6,
+    "suggested_window": {
+      "start": "2026-12-01",
+      "end": "2027-06-15"
+    },
+    "window_overlap_months_before": 0,
+    "window_overlap_months_after": 6,
+    "explanation": "Moving the window 6 months earlier increases shared construction time with nearby projects from 0 to 6 months, so crews and equipment can be shared."
+  }
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "JOB_Z3RS60",
+    "company_id": "CMP_B",
+    "company_name": "Demo Contractor B",
+    "title": "Transmission lineworker",
+    "openings": 3,
+    "location": {
+      "label": "Hardeeville, SC",
+      "lat": 32.2871,
+      "lon": -81.079
+    },
+    "pay_min": 38,
+    "pay_max": 46,
+    "pay_label": "$38–$46/hr",
+    "start_date": "2027-06-01",
+    "end_date": "2027-12-15",
+    "date_label": "Jun 1 – Dec 15, 2027",
+    "qualifications": [
+      "Journeyman Lineworker",
+      "CDL Class A"
+    ],
+    "project_id": null,
+    "status": "open",
+    "created_at": "2026-09-26T22:27:31.520419+00:00",
+    "updated_at": "2026-09-26T22:27:31.520419+00:00"
+  },
+  {
+    "id": "JOB_DEMO1",
+    "company_id": "CMP_B",
+    "company_name": "Demo Contractor B",
+    "title": "Transmission lineworker",
+    "openings": 3,
+    "location": {
+      "label": "Hardeeville, SC",
+      "lat": 32.2871,
+      "lon": -81.079
+    },
+    "pay_min": 38,
+    "pay_max": 46,
+    "pay_label": "$38–$46/hr",
+    "start_date": "2027-06-01",
+    "end_date": "2027-12-15",
+    "date_label": "Jun 1 – Dec 15, 2027",
+    "qualifications": [
+      "Journeyman Lineworker",
+      "CDL Class A",
+      "OSHA 10"
+    ],
+    "project_id": null,
+    "status": "open",
+    "demo": true,
+    "created_at": "2026-09-26T22:27:31.243731+00:00",
+    "updated_at": "2026-09-26T22:27:31.243731+00:00"
+  },
+  {
+    "id": "JOB_DEMO3",
+    "company_id": "CMP_C",
+    "company_name": "Coastal Crane (demo)",
+    "title": "Bucket truck operator",
+    "openings": 1,
+    "location": {
+      "label": "Pooler, GA",
+      "lat": 32.1155,
+      "lon": -81.247
+    },
+    "pay_min": 28,
+    "pay_max": 34,
+    "pay_label": "$28–$34/hr",
+    "start_date": "2027-05-01",
+    "end_date": "2027-08-31",
+    "date_label": "May 1 – Aug 31, 2027",
+    "qualifications": [
+      "CDL Class A",
+      "Aerial lift certification"
+    ],
+    "project_id": null,
+    "status": "open",
+    "demo": true,
+    "created_at": "2026-09-26T22:27:31.243731+00:00",
+    "updated_at": "2026-09-26T22:27:31.243731+00:00"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "kind": "job",
+  "fields": {
+    "role": {
+      "value": "Transmission lineworker",
+      "confidence": "high"
+    },
+    "openings": {
+      "value": 5,
+      "confidence": "high"
+    },
+    "project": {
+      "value": null,
+      "confidence": null
+    },
+    "dates": {
+      "value": "2026-12-01 to 2026-12-31",
+      "confidence": "medium"
+    },
+    "requirements": {
+      "value": "Relevant certification required",
+      "confidence": "medium"
+    }
+  },
+  "missing": [
+    "project"
+  ],
+  "ready": true,
+  "follow_up_questions": [
+    "Which project is this for?"
+  ],
+  "location_point": {
+    "lat": 32.0809,
+    "lon": -81.0912,
+    "label": "Savannah, GA"
+  },
+  "source": "gemini",
+  "note": "(mock Gemini) Draft only. Nothing is saved until the user reviews it."
+}

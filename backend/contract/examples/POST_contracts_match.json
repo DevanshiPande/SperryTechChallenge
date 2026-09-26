@@ -1,0 +1,2068 @@
+{
+  "contract_id": "CTR_KVJ70G",
+  "project": {
+    "id": "CTR_KVJ70G",
+    "utility": "USER",
+    "utility_name": "Lowcountry Line Builders LLC (fictional)",
+    "state": null,
+    "name": "Hardeeville Area Reliability Project - Jasper to Bluffton 115 kV Line Rebuild",
+    "short_name": "Hardeeville Area Reliability Project - …",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2027-12-15",
+    "construction_window": {
+      "start": "2027-06-01",
+      "end": "2027-12-15",
+      "source": "contract"
+    },
+    "endpoints": [
+      {
+        "name": "Jasper Substation",
+        "lat": 32.360699,
+        "lon": -81.124152,
+        "confidence": "medium",
+        "source": "OSM way/185380597 \"Jasper Substation\"",
+        "county": null
+      },
+      {
+        "name": "Bluffton Substation",
+        "lat": 32.235027,
+        "lon": -80.853384,
+        "confidence": "high",
+        "source": "OSM way/498967268 \"Bluffton Substation\"",
+        "county": null
+      }
+    ],
+    "center": {
+      "lat": 32.297863,
+      "lon": -80.988768
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.124152,
+          32.360699
+        ],
+        [
+          -80.853384,
+          32.235027
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "Transmission line rebuild",
+    "cost": null,
+    "source": {
+      "document": "Uploaded contract",
+      "page": null,
+      "type": "contract"
+    },
+    "quality_flags": [],
+    "overlap_ids": [],
+    "work_type_label": "Transmission line rebuild",
+    "counties": [],
+    "company_id": "CMP_A",
+    "roads_affected": [
+      "US-17",
+      "I-95"
+    ],
+    "lane_closures": "Nighttime northbound lane closure on US-17 near Hardeeville",
+    "work_hours": "21:00-05:00",
+    "geocoded": null,
+    "line_miles": 17.5,
+    "budget_usd": 9850000,
+    "budget_source": "contract",
+    "budget_note": "Stated in the uploaded contract"
+  },
+  "work_timing": {
+    "headline": "Do the road-crossing work at night, 8 PM to 4 AM. Other construction nearby runs through your whole schedule, so the month doesn't change much.",
+    "best_hours": {
+      "start_hour": 20,
+      "hours": 8,
+      "label": "8 PM to 4 AM"
+    },
+    "best_months": [
+      "Jun–Dec 2027"
+    ],
+    "reasons": [
+      "I-95 is one of the busiest roads in the area. Closing a lane there during the day would cause very long backups, with traffic stopped for hours; from 8 PM to 4 AM traffic keeps moving.",
+      "Buckwalter Parkway is a busy road. Closing a lane there during the day would cause very long backups, with traffic stopped for hours; from 8 PM to 4 AM traffic keeps moving.",
+      "SC-46 is a busy road. Closing a lane there during the day would cause long backups; from 7 PM to 3 AM traffic keeps moving.",
+      "US-278, Bruin Road, US-17, SC-170 and US-321 are quiet enough to work on at any time of day.",
+      "Corridor upgrade (Demo Contractor B) will also be working on US-17 during Jun–Dec 2027. Avoid those months for that road, or agree on one shared closure with them so drivers are only disrupted once.",
+      "Coleman–Dean Forest, Magnolia–Truman Parkway, Boulevard–Magnolia and 1 more are also under construction within 25 miles during your schedule, which adds trucks and crews to the area's roads."
+    ],
+    "nearby_active": [
+      {
+        "project_id": "GPC_20783",
+        "short_name": "Coleman–Dean Forest",
+        "window": {
+          "start": "2025-06-01",
+          "end": "2028-06-01",
+          "source": "gpc_start_date"
+        },
+        "shared_roads": []
+      },
+      {
+        "project_id": "GPC_20407",
+        "short_name": "Magnolia–Truman Parkway",
+        "window": {
+          "start": "2025-06-01",
+          "end": "2028-06-01",
+          "source": "gpc_start_date"
+        },
+        "shared_roads": []
+      },
+      {
+        "project_id": "GPC_21006",
+        "short_name": "Boulevard–Magnolia",
+        "window": {
+          "start": "2027-01-01",
+          "end": "2029-06-01",
+          "source": "gpc_start_date"
+        },
+        "shared_roads": []
+      },
+      {
+        "project_id": "GPC_21023",
+        "short_name": "Dean Forest–Little Ogeechee",
+        "window": {
+          "start": "2026-01-01",
+          "end": "2029-06-01",
+          "source": "gpc_start_date"
+        },
+        "shared_roads": []
+      },
+      {
+        "project_id": "USR_J7QJFE",
+        "short_name": "Corridor upgrade",
+        "window": {
+          "start": "2027-06-01",
+          "end": "2028-02-01",
+          "source": "user"
+        },
+        "shared_roads": [
+          "US-17"
+        ]
+      }
+    ],
+    "basis": "Road traffic counts (SCDOT/GDOT, else road-class estimates), a work-zone queue model, and the construction windows of every planned project within 25 miles."
+  },
+  "matches": [
+    {
+      "project_id": "USR_J7QJFE",
+      "short_name": "Corridor upgrade",
+      "name": "Corridor upgrade",
+      "utility": "USER",
+      "utility_name": "Demo Contractor B",
+      "center_distance_mi": 5.32,
+      "closest_distance_km": 5.13,
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 54.4,
+      "score_breakdown": {
+        "proximity": 24.3,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 247473,
+        "range_usd": [
+          98848,
+          496874
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 348,
+            "point": 1223,
+            "high": 4374,
+            "applies": true,
+            "site_to_site_road_miles": 6.4
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 1,
+        "suggested_window": {
+          "start": "2027-07-01",
+          "end": "2028-01-15"
+        },
+        "explanation": "Moving the window 1 months later increases shared construction time with nearby projects from 6 to 7 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20065",
+      "short_name": "Goshen–McIntosh",
+      "name": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 11.89,
+      "closest_distance_km": 4.89,
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": true,
+      "score": 40.5,
+      "score_breakdown": {
+        "proximity": 24.4,
+        "savings": 10.1,
+        "timing": 6.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 124127,
+        "range_usd": [
+          49451,
+          250255
+        ],
+        "components": {
+          "mobilization": {
+            "low": 49250,
+            "point": 123125,
+            "high": 246250,
+            "applies": true,
+            "requires_schedule_shift": true
+          },
+          "logistics": {
+            "low": 201,
+            "point": 1002,
+            "high": 4005,
+            "applies": true,
+            "site_to_site_road_miles": 14.3
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 123125,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Mobilization savings halved: the construction windows only overlap after a schedule shift",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": -6,
+        "suggested_window": {
+          "start": "2026-12-01",
+          "end": "2027-06-15"
+        },
+        "explanation": "Moving the window 6 months earlier increases shared construction time with nearby projects from 0 to 6 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "DESC_10",
+      "short_name": "Okatie–Bluffton",
+      "name": "Okatie-Bluffton 115kV: Rebuild",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "center_distance_mi": 2.83,
+      "closest_distance_km": 0.0,
+      "tier": "crossing",
+      "tier_explanation": "Touching/crossing: must coordinate outages and crossing structures",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 40.0,
+      "score_breakdown": {
+        "proximity": 40.0,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap",
+            "acres": 139.5
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": 139.5,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "DESC_23",
+      "short_name": "Jasper–Okatie",
+      "name": "Jasper – Okatie 230 kV #2: Construct",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "center_distance_mi": 6.24,
+      "closest_distance_km": 0.0,
+      "tier": "crossing",
+      "tier_explanation": "Touching/crossing: must coordinate outages and crossing structures",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 40.0,
+      "score_breakdown": {
+        "proximity": 40.0,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap",
+            "acres": 89.8
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": 89.8,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20783",
+      "short_name": "Coleman–Dean Forest",
+      "name": "SAV: COLEMAN - DEAN FOREST 115KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 17.23,
+      "closest_distance_km": 25.27,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 39.7,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 247072,
+        "range_usd": [
+          98581,
+          496206
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 81,
+            "point": 822,
+            "high": 3706,
+            "applies": true,
+            "site_to_site_road_miles": 20.7
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": -1,
+        "suggested_window": {
+          "start": "2027-05-01",
+          "end": "2027-11-15"
+        },
+        "explanation": "Moving the window 1 months earlier increases shared construction time with nearby projects from 6 to 7 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_21023",
+      "short_name": "Dean Forest–Little Ogeechee",
+      "name": "SAV: DEAN FOREST - LITTLE OGEECHEE 230 KV REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 22.12,
+      "closest_distance_km": 29.89,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 38.9,
+      "score_breakdown": {
+        "proximity": 8.8,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 246908,
+        "range_usd": [
+          98471,
+          495932
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": -29,
+            "point": 658,
+            "high": 3432,
+            "applies": true,
+            "site_to_site_road_miles": 26.5
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": -1,
+        "suggested_window": {
+          "start": "2027-05-01",
+          "end": "2027-11-15"
+        },
+        "explanation": "Moving the window 1 months earlier increases shared construction time with nearby projects from 6 to 7 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_21006",
+      "short_name": "Boulevard–Magnolia",
+      "name": "SAV: BOULEVARD - MAGNOLIA 115 KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 19.81,
+      "closest_distance_km": 31.19,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 38.6,
+      "score_breakdown": {
+        "proximity": 8.5,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 246985,
+        "range_usd": [
+          98523,
+          496061
+        ],
+        "components": {
+          "mobilization": {
+            "low": 98500,
+            "point": 246250,
+            "high": 492500,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 23,
+            "point": 735,
+            "high": 3561,
+            "applies": true,
+            "site_to_site_road_miles": 23.8
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 246250,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": -1,
+        "suggested_window": {
+          "start": "2027-05-01",
+          "end": "2027-11-15"
+        },
+        "explanation": "Moving the window 1 months earlier increases shared construction time with nearby projects from 6 to 7 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20407",
+      "short_name": "Magnolia–Truman Parkway",
+      "name": "SAV: MAGNOLIA - TRUMAN PARKWAY 115KV REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 19.85,
+      "closest_distance_km": 31.19,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 6,
+      "schedule_shift_possible": false,
+      "score": 38.6,
+      "score_breakdown": {
+        "proximity": 8.5,
+        "savings": 20.1,
+        "timing": 10.0
+      },
+      "potential": "moderate",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 165734,
+        "range_usd": [
+          66022,
+          333559
+        ],
+        "components": {
+          "mobilization": {
+            "low": 66000,
+            "point": 165000,
+            "high": 330000,
+            "applies": true,
+            "requires_schedule_shift": false
+          },
+          "logistics": {
+            "low": 22,
+            "point": 734,
+            "high": 3559,
+            "applies": true,
+            "site_to_site_road_miles": 23.8
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 6600000,
+        "reference_budget_source": "estimated_miso",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 165000,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
+            "value_used": "$6,600,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": -1,
+        "suggested_window": {
+          "start": "2027-05-01",
+          "end": "2027-11-15"
+        },
+        "explanation": "Moving the window 1 months earlier increases shared construction time with nearby projects from 6 to 7 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "DESC_3",
+      "short_name": "Okatie",
+      "name": "Okatie 230-115kV Substation, Jasper – Yemassee 230kV #1 Fold-in",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "center_distance_mi": 3.56,
+      "closest_distance_km": 1.51,
+      "tier": "shared_land",
+      "tier_explanation": "Under 1.6 km: can share right-of-way, access roads, permits",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 33.4,
+      "score_breakdown": {
+        "proximity": 33.4,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20785",
+      "short_name": "Goshen–Kraft",
+      "name": "SAV: GOSHEN (SAV) - KRAFT 115KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 13.01,
+      "closest_distance_km": 14.79,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": true,
+      "score": 27.5,
+      "score_breakdown": {
+        "proximity": 11.4,
+        "savings": 10.1,
+        "timing": 6.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 124089,
+        "range_usd": [
+          49425,
+          250193
+        ],
+        "components": {
+          "mobilization": {
+            "low": 49250,
+            "point": 123125,
+            "high": 246250,
+            "applies": true,
+            "requires_schedule_shift": true
+          },
+          "logistics": {
+            "low": 175,
+            "point": 964,
+            "high": 3943,
+            "applies": true,
+            "site_to_site_road_miles": 15.6
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": 123125,
+        "assumptions": [
+          "Share of one mobilization that can be shared: 25%–50% (assumption)",
+          "Mobilization savings halved: the construction windows only overlap after a schedule shift",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          },
+          {
+            "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+            "value_used": "4%–10% of the budget",
+            "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+          },
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": -6,
+        "suggested_window": {
+          "start": "2026-12-01",
+          "end": "2027-06-15"
+        },
+        "explanation": "Moving the window 6 months earlier increases shared construction time with nearby projects from 0 to 6 months, so crews and equipment can be shared."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20277",
+      "short_name": "McIntosh–Purrysburg",
+      "name": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 11.51,
+      "closest_distance_km": 4.89,
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 24.4,
+      "score_breakdown": {
+        "proximity": 24.4,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20066",
+      "short_name": "Boulevard–Deptford",
+      "name": "SAV: BOULEVARD - DEPTFORD 115KV RECONDUCTOR",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 17.99,
+      "closest_distance_km": 25.18,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.6,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20067",
+      "short_name": "Deptford–Magnolia",
+      "name": "SAV: DEPTFORD - MAGNOLIA 115KV RECONDUCTOR",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 18.08,
+      "closest_distance_km": 25.18,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.6,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20784",
+      "short_name": "Coleman–Meldrim",
+      "name": "SAV: COLEMAN - MELDRIM 115KV LINE REBUILD",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 18.98,
+      "closest_distance_km": 25.27,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.6,
+      "score_breakdown": {
+        "proximity": 9.6,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 6600000,
+        "reference_budget_source": "estimated_miso",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
+            "value_used": "$6,600,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "DESC_6",
+      "short_name": "Burton–St Helena",
+      "name": "Burton-St Helena 115kV: Rebuild Burton-Frogmore Transmission Section",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "center_distance_mi": 18.33,
+      "closest_distance_km": 25.57,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.5,
+      "score_breakdown": {
+        "proximity": 9.5,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 8580000,
+        "reference_budget_source": "filing",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Dominion Energy SC filing (budget): Burton–St Helena",
+            "value_used": "$8,580,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "DESC_7",
+      "short_name": "Burton–St Helena",
+      "name": "Burton-St Helena 115kV: Frogmore Distribution - St Helena",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "center_distance_mi": 18.33,
+      "closest_distance_km": 25.57,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 9.5,
+      "score_breakdown": {
+        "proximity": 9.5,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 6925000,
+        "reference_budget_source": "filing",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Dominion Energy SC filing (budget): Burton–St Helena",
+            "value_used": "$6,925,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    },
+    {
+      "project_id": "GPC_20796",
+      "short_name": "Meldrim",
+      "name": "SAV: MELDRIM BANK D REPLACEMENT",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "center_distance_mi": 24.28,
+      "closest_distance_km": 32.37,
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "score": 8.3,
+      "score_breakdown": {
+        "proximity": 8.3,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "potential": "lower",
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap within 12 months"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": 9850000,
+        "reference_budget_source": "contract",
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [],
+        "sources": [
+          {
+            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
+            "value_used": "$9,850,000"
+          }
+        ]
+      },
+      "suggestion": {
+        "shift_months": 0,
+        "suggested_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15"
+        },
+        "explanation": "Nearby projects finish before this one could start, so no future shift creates shared construction time. Coordinate on staging yards and permits instead."
+      },
+      "shared_roads": []
+    }
+  ],
+  "best_match": "USR_J7QJFE",
+  "traffic": {
+    "crossings": [
+      {
+        "id": "XING_CTR_KVJ70G_1",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Deerfield Road",
+        "road_ref": "US-321",
+        "road_refs": [
+          "US-321"
+        ],
+        "road_class": "primary",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": false,
+        "aadt": 4400,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (US-321, station 1.6 km away)",
+        "osm_id": 358992417,
+        "point": {
+          "lat": 32.346021,
+          "lon": -81.092423
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 832,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_2",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "North Whyte Hardee Boulevard",
+        "road_ref": "US-17",
+        "road_refs": [
+          "US-17",
+          "US-278"
+        ],
+        "road_class": "primary",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": false,
+        "aadt": 6300,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (US-278, station 2.0 km away)",
+        "osm_id": 12428605,
+        "point": {
+          "lat": 32.329202,
+          "lon": -81.056101
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 1191,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_3",
+        "project_id": "CTR_KVJ70G",
+        "road_name": null,
+        "road_ref": "I-95",
+        "road_refs": [
+          "I-95"
+        ],
+        "road_class": "motorway",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": true,
+        "aadt": 65900,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (I-95, station 4.8 km away)",
+        "osm_id": 156558742,
+        "point": {
+          "lat": 32.328111,
+          "lon": -81.053746
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "lane_closure",
+        "closure_hours": 8,
+        "recommended_window": "20:00–04:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 4676,
+        "delay_cost_usd": 0,
+        "worst_window": "13:00–21:00",
+        "worst_delay_veh_hours": 25582.5
+      },
+      {
+        "id": "XING_CTR_KVJ70G_4",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Tradition Avenue",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 2500,
+        "aadt_source": "estimated by road class",
+        "osm_id": 111768001,
+        "point": {
+          "lat": 32.312565,
+          "lon": -81.020207
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 472,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_5",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Independence Boulevard",
+        "road_ref": "US-278",
+        "road_refs": [
+          "US-278"
+        ],
+        "road_class": "trunk",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": true,
+        "aadt": 20000,
+        "aadt_source": "estimated by road class",
+        "osm_id": 459241516,
+        "point": {
+          "lat": 32.307111,
+          "lon": -81.008449
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "lane_closure",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 2079,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_6",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Okatie Highway",
+        "road_ref": "SC-170",
+        "road_refs": [
+          "SC-170"
+        ],
+        "road_class": "secondary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 6000,
+        "aadt_source": "estimated by road class",
+        "osm_id": 1268117705,
+        "point": {
+          "lat": 32.278305,
+          "lon": -80.946403
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 1134,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_7",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Hampton Parkway",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 2500,
+        "aadt_source": "estimated by road class",
+        "osm_id": 71135538,
+        "point": {
+          "lat": 32.271181,
+          "lon": -80.931076
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 472,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_8",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Bluffton Parkway",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 2500,
+        "aadt_source": "estimated by road class",
+        "osm_id": 260415726,
+        "point": {
+          "lat": 32.267682,
+          "lon": -80.923548
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 472,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_9",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Buckwalter Parkway",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 26400,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (station 118 m away)",
+        "osm_id": 42207742,
+        "point": {
+          "lat": 32.258505,
+          "lon": -80.903816
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "20:00–04:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 3406,
+        "delay_cost_usd": 0,
+        "worst_window": "13:00–21:00",
+        "worst_delay_veh_hours": 24879.2
+      },
+      {
+        "id": "XING_CTR_KVJ70G_10",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Bluffton Parkway",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": true,
+        "aadt": 2500,
+        "aadt_source": "estimated by road class",
+        "osm_id": 189259580,
+        "point": {
+          "lat": 32.257781,
+          "lon": -80.902261
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "lane_closure",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 260,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_11",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Buck Island Road",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 2500,
+        "aadt_source": "estimated by road class",
+        "osm_id": 12130469,
+        "point": {
+          "lat": 32.248161,
+          "lon": -80.881589
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 472,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_12",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Simmonsville Road",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": true,
+        "oneway": false,
+        "aadt": 2500,
+        "aadt_source": "estimated by road class",
+        "osm_id": 765908496,
+        "point": {
+          "lat": 32.246133,
+          "lon": -80.877233
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 472,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_13",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Bluffton Road",
+        "road_ref": "SC-46",
+        "road_refs": [
+          "SC-46"
+        ],
+        "road_class": "secondary",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": false,
+        "aadt": 17700,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (SC-46, station 1.2 km away)",
+        "osm_id": 12128039,
+        "point": {
+          "lat": 32.238248,
+          "lon": -80.860299
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "19:00–03:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 2974,
+        "delay_cost_usd": 0,
+        "worst_window": "14:00–22:00",
+        "worst_delay_veh_hours": 4125.9
+      },
+      {
+        "id": "XING_CTR_KVJ70G_14",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Bruin Road",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": false,
+        "aadt": 7500,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (station 209 m away)",
+        "osm_id": 12127099,
+        "point": {
+          "lat": 32.236925,
+          "lon": -80.857458
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 1418,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      },
+      {
+        "id": "XING_CTR_KVJ70G_15",
+        "project_id": "CTR_KVJ70G",
+        "road_name": "Burnt Church Road",
+        "road_ref": null,
+        "road_refs": [],
+        "road_class": "tertiary",
+        "lanes": 2,
+        "lanes_assumed": false,
+        "oneway": false,
+        "aadt": 4200,
+        "aadt_source": "SCDOT 2025 statewide traffic counts (station 83 m away)",
+        "osm_id": 12130728,
+        "point": {
+          "lat": 32.235225,
+          "lon": -80.853808
+        },
+        "point_approximate": true,
+        "est_closure_hours": 8,
+        "work_window": {
+          "start": "2027-06-01",
+          "end": "2027-12-15",
+          "source": "contract"
+        },
+        "owner": "CMP_A",
+        "closure_type": "flagging",
+        "closure_hours": 8,
+        "recommended_window": "00:00–08:00",
+        "delay_veh_hours": 0.0,
+        "vehicles_affected": 794,
+        "delay_cost_usd": 0,
+        "worst_window": "00:00–08:00",
+        "worst_delay_veh_hours": 0.0
+      }
+    ],
+    "access_roads": [],
+    "conflicts": []
+  },
+  "summary": {
+    "matches_count": 17,
+    "total_savings_range_usd": [
+      98848,
+      496874
+    ],
+    "best_savings_usd": 247473,
+    "best_savings_project_id": "USR_J7QJFE",
+    "savings_range_basis": "best single partner (savings from several partners are not added: they mostly share the same mobilization of this contract, which happens once)",
+    "high_potential": 0
+  }
+}
