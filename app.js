@@ -14,7 +14,7 @@ const demoJobs = [
 ];
 const state = {
   role: 'contractor', page: 'map', selectedOverlap: overlaps[1], selectedProject: projects[2], selectedJob: demoJobs[0],
-  hoverProject: null, hoverClosed: true, pairClosed: true, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, resourceManual: false, resourceChat: [], jobDraft: {},
+  hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, resourceManual: false, resourceChat: [], jobDraft: {},
   resources: [...demoResources], jobs: [...demoJobs], reservations: [], applications: [],
   cost: { mobilization: 3000, truckRate: 1300, separateDays: 20, coordinatedDays: 12, yard: 5000 },
   closure: { lanes: 1, start: '2027-06-01', end: '2027-12-15', hours: '21:00–05:00' },
@@ -41,11 +41,25 @@ function mapHtml({small=false, hover=true, pair=true, jobs=false}={}) {
   const valid = projects.filter(p => Number.isFinite(p.lat_center) && Number.isFinite(p.lon_center));
   const x = lon => 8 + (lon + 82.3) / 1.65 * 84;
   const y = lat => 91 - (lat - 31.8) / 2.15 * 82;
-  const markers = jobs ? demoJobs.map((j,i) => `<button title="${esc(j.name)}" class="pin ${i?'gpc':'desc'} ${state.selectedJob.id===j.id?'selected':''}" style="left:${42+i*13}%;top:${38+i*16}%" data-job="${j.id}"></button>`).join('') : valid.map(p => `<button title="${esc(p.project_name)}" class="pin ${p.utility.includes('Dominion')?'desc':'gpc'} ${state.selectedProject.project_id===p.project_id?'selected':''}" style="left:${Math.max(4,Math.min(96,x(p.lon_center)))}%;top:${Math.max(4,Math.min(96,y(p.lat_center)))}%" data-project="${p.project_id}"></button>`).join('');
+  const markers = jobs ? demoJobs.map((j,i) => `<button title="${esc(j.name)}" class="pin ${i?'gpc':'desc'} ${state.selectedJob.id===j.id?'selected':''}" style="left:${42+i*13}%;top:${38+i*16}%" data-job="${j.id}"></button>`).join('') : valid.map(p => `<button title="${esc(p.project_name)}" class="pin ${p.utility.includes('Dominion')?'desc':'gpc'} ${selectedPinIds().includes(p.project_id)?'selected':''}" style="left:${Math.max(4,Math.min(96,x(p.lon_center)))}%;top:${Math.max(4,Math.min(96,y(p.lat_center)))}%" data-project="${p.project_id}"></button>`).join('');
   const hv = state.hoverProject || state.selectedProject;
-  const hcard = hover && !state.hoverClosed ? `<div class="hovercard"><button class="close-x" data-action="closeHover" aria-label="Close" title="Close">×</button><div class="row wrap">${pill(jobs?'Job preview':hv.utility.includes('Dominion')?'Dominion Energy SC':'Georgia Power',jobs?'amber':'')}</div><h3>${esc(jobs?state.selectedJob.name:hv.project_name)}</h3><p>${jobs?`${state.selectedJob.openings} openings · ${state.selectedJob.place} · ${state.selectedJob.pay}`:`In-service: ${String(hv.in_service_date).slice(0,10)} · ${hv.state}. Inventory and closure details are not in the public filing.`}</p>${btn(jobs?'View job details':'View full project',jobs?'jobDetail':'projectDetail','primary')}</div>` : '';
+  const closeX='<button class="close-x" data-action="closeHover" aria-label="Close" title="Close">×</button>';
+  const projectCard=(p,place='')=>`<div class="hovercard" data-anchor="${p.project_id}" data-place="${place}">${closeX}<div class="row wrap">${pill(p.utility.includes('Dominion')?'Dominion Energy SC':'Georgia Power',p.utility.includes('Dominion')?'':'amber')}</div><h3>${esc(p.project_name)}</h3><p>In-service: ${String(p.in_service_date).slice(0,10)} · ${p.state}. Inventory and closure details are not in the public filing.</p>${btn('View full project','selectProject:'+p.project_id,'primary')}</div>`;
+  let hcard='';
+  if(hover&&!state.hoverClosed){
+    if(jobs){const j=state.selectedJob;hcard=`<div class="hovercard" data-anchor="${j.id}">${closeX}<div class="row wrap">${pill('Job preview','amber')}</div><h3>${esc(j.name)}</h3><p>${j.openings} openings · ${esc(j.place)} · ${esc(j.pay)}</p>${btn('View job details','jobDetail','primary')}</div>`}
+    else if(state.pairFocus){
+      // One card per project in the selected pair: the northern one above its pin, the southern one below.
+      const pair=pairProjects().filter(hasXY).sort((x,y)=>y.lat_center-x.lat_center);
+      hcard=pair.map((p,i)=>projectCard(p,pair.length>1?(i?'below':'above'):'')).join('');
+    }
+    else hcard=projectCard(hv);
+  }
   return `<div class="map ${small?'mini-map':''}"><svg viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true"><rect width="1000" height="700" fill="#e4f1e9"/><path d="M450 0 C510 170 410 300 510 440 S500 630 580 700" stroke="#98c9dc" stroke-width="55" fill="none"/><path d="M450 0 C510 170 410 300 510 440 S500 630 580 700" stroke="#bbdfea" stroke-width="33" fill="none"/><g stroke="#fff" stroke-width="7" opacity=".85"><path d="M0 85L1000 190M0 275L1000 330M0 530L1000 480M120 0L260 700M770 0L630 700M960 0L830 700"/></g><path d="M210 60L460 640" stroke="#d3a95a" stroke-width="6" fill="none"/><text x="130" y="68" fill="#667f86" font-size="20">GEORGIA</text><text x="685" y="68" fill="#667f86" font-size="20">SOUTH CAROLINA</text><text x="416" y="445" fill="#237d9c" font-size="18" transform="rotate(-76 416 445)">SAVANNAH RIVER</text><text x="175" y="540" fill="#315a6d" font-size="25">Savannah</text><text x="610" y="264" fill="#315a6d" font-size="19">Okatie</text></svg>${markers}<div class="map-label">${jobs?'Job locations':window.gridlockMapLive?'Project locations · Google Maps':'Project locations · schematic map'}</div><div class="map-legend"><span class="dot desc"></span>${jobs?'Selected job':'Dominion Energy SC'}<br><span class="dot gpc"></span>${jobs?'Other jobs':'Georgia Power'}<br>Click a pin for details</div>${hcard}</div>`;
 }
+const hasXY=p=>Number.isFinite(p?.lat_center)&&Number.isFinite(p?.lon_center);
+const pairProjects=()=>[byId[state.selectedOverlap.project_id_a],byId[state.selectedOverlap.project_id_b]].filter(Boolean);
+const selectedPinIds=()=>state.pairFocus?pairProjects().map(p=>p.project_id):[state.selectedProject.project_id];
 function opportunityButton(o) {
   const selected = state.selectedOverlap.overlap_id === o.overlap_id;
   return `<button class="opportunity ${selected?'selected':''}" data-overlap="${o.overlap_id}"><strong>${esc(byId[o.project_id_a]?.project_name.split(':')[0])} ↔ ${esc(byId[o.project_id_b]?.project_name.split(':')[0])}</strong><span class="muted">Dominion Energy SC ↔ Georgia Power</span><div class="stats"><span><b>${o.distance_mi} mi</b>center-point distance</span><span><b>${Number(o['time_gap (day)']).toLocaleString()} days</b>in-service date gap</span></div></button>`;
@@ -193,15 +207,16 @@ function workerJobDetail(){const j=state.selectedJob;return head(j.name,`${j.own
 function applicationsPage(){return head('Your applications','Track sample status and next steps.',btn('Find jobs','findjobs'))+`<div class="card"><h2>Applications ${demo}</h2>${state.applications.length?state.applications.map(a=>`<div class="item statusline"><div><h3>${esc(a.name)}</h3><p class="muted">${esc(a.place)} · ${esc(a.date)}</p></div>${pill(a.status,'amber')}</div>`).join(''):'<div class="note">No applications yet. Open a job and try the review flow.</div>'}</div>`;}
 function workerProfilePage(){return head('Worker profile','Update skills, certifications and availability.',btn('Find matching jobs','findjobs'))+`<div class="grid two"><div class="card"><h2>Jordan Davis ${demo}</h2>${[['Trade','Transmission lineworker'],['Certifications','OSHA 30, CDL Class A'],['Experience','Five years of utility construction'],['Availability','Dec 2026–Mar 2027'],['Service area','Savannah, GA · 25 miles']].map(([k,v])=>`<div class="fieldgroup"><label>${k}</label><input class="field" value="${esc(v)}"></div>`).join('')}${btn('Save demo profile','saveProfile','primary accent')}</div><div class="card"><h2>Jobs near your profile</h2>${state.jobs.map(j=>`<div class="item"><h3>${esc(j.name)}</h3><p class="muted">${esc(j.place)} · ${esc(j.pay)}</p>${btn('View job','job:'+j.id)}</div>`).join('')}</div></div>`;}
 // Anchor the map preview card to the selected pin instead of a fixed spot.
-function positionHovercard(){
-  const card=$('.stage-map .hovercard');if(!card)return;
-  const pin=$(window.gridlockMapLive?'.gpin.selected':'.stage-map .pin.selected');
+function positionHovercard(){document.querySelectorAll('.stage-map .hovercard').forEach(placeHovercard)}
+function placeHovercard(card){
+  const id=card.dataset.anchor;
+  const pin=$(window.gridlockMapLive?`.gpin[data-pid="${id}"]`:`.stage-map .pin[data-project="${id}"],.stage-map .pin[data-job="${id}"]`);
   const r=pin?.getBoundingClientRect();
   if(!r||!r.width){card.classList.remove('anchored','below');card.style.cssText='';return}
   const onScreen=r.right>0&&r.left<innerWidth&&r.bottom>0&&r.top<innerHeight;
   card.classList.add('anchored');card.style.visibility=onScreen?'':'hidden';
   const w=card.offsetWidth,h=card.offsetHeight,gap=14,cx=r.left+r.width/2;
-  const below=r.top-h-gap<90;
+  const below=card.dataset.place==='below'||(card.dataset.place!=='above'&&r.top-h-gap<90);
   card.classList.toggle('below',below);
   // Keep the card in the open map area between the floating panels when there is room.
   let minX=8,maxX=innerWidth-8;
@@ -293,10 +308,11 @@ function handleAction(act){
   state.page=act;render();
 }
 document.addEventListener('click',e=>{
+  const compact=e.target.closest('.stage-map .hovercard');if(compact&&document.body.classList.contains('cards-compact')){window.expandMapCards?.();return}
   const role=e.target.closest('[data-role]');if(role){state.role=role.dataset.role;state.page=state.role==='worker'?'findjobs':'map';render();return}
   const page=e.target.closest('[data-page]');if(page){state.page=page.dataset.page;render();return}
-  const over=e.target.closest('[data-overlap]');if(over){state.pairClosed=state.hoverClosed=false;state.selectedOverlap=overlaps.find(o=>o.overlap_id===over.dataset.overlap);state.hoverProject=state.selectedProject=byId[state.selectedOverlap.project_id_a];render();return}
-  const project=e.target.closest('[data-project]');if(project){state.hoverClosed=false;state.hoverProject=byId[project.dataset.project];state.selectedProject=state.hoverProject;render();return}
+  const over=e.target.closest('[data-overlap]');if(over){state.pairClosed=state.hoverClosed=false;state.pairFocus=true;state.selectedOverlap=overlaps.find(o=>o.overlap_id===over.dataset.overlap);state.hoverProject=state.selectedProject=byId[state.selectedOverlap.project_id_a];render();return}
+  const project=e.target.closest('[data-project]');if(project){state.hoverClosed=false;state.pairFocus=false;state.hoverProject=byId[project.dataset.project];state.selectedProject=state.hoverProject;render();return}
   const job=e.target.closest('[data-job]');if(job){state.hoverClosed=false;state.selectedJob=state.jobs.find(j=>j.id===job.dataset.job);render();return}
   const suggest=e.target.closest('[data-suggest]');if(suggest){$('#chatText').value=suggest.dataset.suggest;$('#chatText').focus();return}
   const action=e.target.closest('[data-action]');if(action)handleAction(action.dataset.action);

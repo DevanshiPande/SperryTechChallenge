@@ -150,3 +150,17 @@
 .rm-desc{padding:2px 0;margin:0}
 .rm-match strong{text-transform:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .rm-map{height:170px}
+
+/* Sidebar: fixed, full-height rectangle flush with the left edge */
+@media(min-width:741px){
+  .sidebar{top:0;bottom:0;left:0;width:200px;box-sizing:border-box;padding:24px 12px;border:0;border-right:1px solid #e3eaee;border-radius:0;background:#fffffff5;box-shadow:4px 0 24px #1a3b5a14}
+  .main{margin-left:216px}
+  .chatbar{left:216px}
+  .stage-map .map-label,.stage-map .map-legend{left:216px}
+}
+
+/* Zoomed far out: preview cards collapse to name labels (click to expand) */
+.cards-compact .stage-map .hovercard{width:auto;max-width:230px;padding:8px 12px;border-radius:12px;cursor:pointer}
+.cards-compact .stage-map .hovercard>:not(h3){display:none}
+.cards-compact .stage-map .hovercard h3{margin:0;font-size:12.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cards-compact .stage-map .hovercard:hover{background:#f4fafb}
