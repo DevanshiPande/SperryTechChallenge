@@ -5,7 +5,7 @@
   const key = (config.googleMapsApiKey || '').trim();
   if (!key) return;
 
-  let map, AdvancedMarker, markers = [], focusedPair = null, cardZoom = null, cardKey = '';
+  let map, AdvancedMarker, markers = [], focusedPair = null, focusedWorkerJob = null, cardZoom = null, cardKey = '';
   // Zooming out two levels past where the preview cards opened shrinks them to name-only labels.
   const COMPACT_AFTER = 2;
   const updateCompact = () => document.body.classList.toggle('cards-compact', cardZoom != null && map.getZoom() <= cardZoom - COMPACT_AFTER);
@@ -70,6 +70,8 @@
     if (key !== cardKey) { cardKey = key; cardZoom = key ? map.getZoom() : null; updateCompact(); }
     if (!worker && state.pairFocus && state.selectedOverlap.overlap_id !== focusedPair) focusPair();
     if (!state.pairFocus) focusedPair = null;
+    if (worker && state.page === 'findjobs' && state.selectedJob.id !== focusedWorkerJob) focusWorkerJob();
+    if (!worker || state.page !== 'findjobs') focusedWorkerJob = null;
     // Marker elements attach asynchronously; position the card once the selected one is laid out.
     let tries = 0;
     (function waitForPin() {
@@ -101,6 +103,26 @@
       if (map.getZoom() > 13) map.setZoom(13);
       cardZoom = map.getZoom(); updateCompact(); positionHovercard();
     });
+  }
+
+  function focusWorkerJob() {
+    const job = state.selectedJob;
+    const pin = document.querySelector(`.gpin[data-pid="${job.id}"]`);
+    if (!pin) { requestAnimationFrame(focusWorkerJob); return; }
+    const list = document.querySelector('.page-findjobs .joblayout > .card')?.getBoundingClientRect();
+    const openLeft = Math.max((list?.right || 216) + 24, 240);
+    const targetX = Math.min(innerWidth - 72, openLeft + 120);
+    const alignPin = () => {
+      const pinRect = pin.getBoundingClientRect();
+      const dx = targetX - (pinRect.left + pinRect.width / 2);
+      focusedWorkerJob = job.id;
+      if (Math.abs(dx) > 24) map.panBy(-dx, 0);
+      requestAnimationFrame(positionHovercard);
+    };
+    if (map.getZoom() < 12) {
+      google.maps.event.addListenerOnce(map, 'idle', alignPin);
+      map.setZoom(12);
+    } else alignPin();
   }
 
   function hasCoords(o) {

@@ -1,15 +1,17 @@
 # Gridlock design handoff
 
-This is an editable, local frontend prototype of the Gridlock application. Open `index.html` in a browser. No build step, account, API key, or network connection is required. The map fills the entire viewport; navigation, search, opportunity cards, project previews, and chat float above it. Use the left navigation and role switch to view each screen.
+This is an editable, local frontend prototype of the Gridlock application. Open `index.html` in a browser. No build step, account, or API key is required for the base experience. The optional Google Maps layer and contract PDF extraction load browser libraries over the network; without them, the base experience and illustrative map still work. The map fills the entire viewport; navigation, search, opportunity cards, project previews, and chat float above it. Use the left navigation and role switch to view each screen.
 
 The Figma design remains at https://www.figma.com/design/uG5z5D3tOYbP3OxkvENwxm. The Figma Starter plan blocked export, so this package is **not** a native `.fig` file and does not contain a byte-for-byte export of that design. It recreates the screen structure and flows in HTML, CSS, and JavaScript for transfer to another developer or account.
 
 ## Included flows
 
-- Contractor: explore both utilities on an interactive schematic map; inspect ranked overlaps and project detail; check project feasibility; compare cost scenarios; add a project through a chat-style draft or manual form; list equipment; request a reservation; post jobs; discuss a shared cost scenario in messages.
+- Contractor: explore both utilities on an interactive schematic map; inspect ranked overlaps and project detail; check project feasibility; compare cost scenarios; upload a contract PDF to extract an editable project record; list equipment; request a reservation; post jobs; discuss a shared cost scenario in messages.
 - Worker: search jobs on cards and map; inspect a role; apply; review applications and profile.
 
 The map uses coordinates in the supplied starter workbook, plotted over an illustrative Lowcountry background image. Its geography, roads, and pin alignment are schematic, not an authoritative GIS map. The workbook contains in-service dates, not construction start/end windows. Resource listings, jobs, contacts, road closures, traffic, and savings are labeled demo data or illustrative assumptions. No data is sent to a server. The assistant is a local scripted prototype, not a Gemini connection.
+
+Contract uploads use PDF.js in the browser to extract selectable text and suggest project name, company or utility, location, dates, scope, roads, and contact fields. The extracted record remains editable and requires review before it is added to the company project page. Scanned image-only PDFs are not supported by this prototype because OCR is not included.
 
 ## Google Maps
 

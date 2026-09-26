@@ -14,8 +14,8 @@ const demoJobs = [
 ];
 const state = {
   role: 'contractor', page: 'map', selectedOverlap: overlaps[1], selectedProject: projects[2], selectedJob: demoJobs[0],
-  hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, oppRadius: 25, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, invFind: true, invSelected: null, invQuery: '', invCat: 'All', invFrom: '', invTo: '', resourceManual: false, resourceChat: [], jobDraft: {},
-  resources: [...demoResources], jobs: [...demoJobs], reservations: [], applications: [],
+  hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, oppRadius: 25, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, invFind: true, invSelected: null, invQuery: '', invCat: 'All', invFrom: '', invTo: '', resourceManual: false, resourceChat: [], jobDraft: {}, projectUpload: null,
+  companyProjects: [], resources: [...demoResources], jobs: [...demoJobs], savedJobs: [], reservations: [], applications: [],
   cost: { mobilization: 3000, truckRate: 1300, separateDays: 20, coordinatedDays: 12, yard: 5000 },
   closure: { lanes: 1, start: '2027-06-01', end: '2027-12-15', hours: '21:00–05:00' },
   proposed: { name: 'Savannah corridor upgrade', location: 'Near Hardeeville, SC', start: '2027-06-01', end: '2027-12-15' },
@@ -86,7 +86,8 @@ function mapPage() {
 function feasibilityPage() {return head('Check project feasibility','Contractor-led review of nearby work and a proposed closure.',btn('Describe a new project','addProject','primary'))+`<div class="grid three"><div class="card"><h2>Proposed work</h2><p class="muted">Editable demo scenario</p>${[['Project name','name'],['Location','location'],['Start date','start'],['End date','end']].map(([l,k])=>`<div class="fieldgroup"><label>${l}</label><input class="field" data-proposed="${k}" value="${esc(state.proposed[k])}" type="${k==='start'||k==='end'?'date':'text'}"></div>`).join('')}<div class="formgrid"><div class="fieldgroup"><label>Closed lanes</label><input class="field" type="number" min="0" max="4" data-closure="lanes" value="${state.closure.lanes}"></div><div class="fieldgroup"><label>Work hours</label><input class="field" data-closure="hours" value="${esc(state.closure.hours)}"></div></div>${btn('Analyze scenario','analyze','primary accent')}</div>${mapHtml({hover:false})}<div class="card stack"><h2>Feasibility review</h2><div class="item"><h3>Existing work nearby</h3><p class="muted">Projects in the starter workbook appear within the selected 25-mile planning radius.</p></div><div class="item"><h3>Closure conflict</h3><p class="muted">Requires road segment and permit data. The sample closure is illustrative.</p></div><div class="item"><h3>Historical traffic</h3><p class="muted">No traffic history was included in the challenge files. Add a source before estimating congestion.</p><div class="bar amber" style="width:65%">Illustrative peak baseline</div><div class="bar" style="width:82%">Illustrative closure scenario</div></div><div class="note">Possible alternative: test nighttime work. This is a scenario for review, not a feasibility decision.</div>${btn('Compare cost impact','cost')}</div></div>`;}
 function costTotals(){const c=state.cost;return {separate:2*c.mobilization+c.separateDays*c.truckRate+2*c.yard,coordinated:2*c.mobilization+c.coordinatedDays*c.truckRate+c.yard};}
 function costPage(){const c=state.cost,t=costTotals(),save=t.separate-t.coordinated,pct=t.separate?Math.round(save/t.separate*1000)/10:0;return head('Estimate the value of coordination','Compare separate work with a shared-resource scenario. All inputs are illustrative.',btn('Share scenario in conversation','messages','primary'))+`<div class="grid two"><div class="stack"><div class="card"><h2>Two projects on the map</h2><p class="muted">${esc(byId[state.selectedOverlap.project_id_a].project_name)} ↔ ${esc(byId[state.selectedOverlap.project_id_b].project_name)}</p>${mapHtml({small:true,hover:false})}</div><div class="grid two"><div class="card"><h2>Separate work</h2><p class="muted">Two mobilizations · ${c.separateDays} truck-days · two yards</p><div class="metric">$${t.separate.toLocaleString()}</div></div><div class="card"><h2>Coordinated work</h2><p class="muted">Two mobilizations · ${c.coordinatedDays} truck-days · one yard</p><div class="metric green">$${t.coordinated.toLocaleString()}</div></div></div></div><div class="card stack"><div>${pill('Illustrative estimate','amber')}</div><h2>Edit assumptions</h2>${[['Mobilization per event','mobilization'],['Truck rate per day','truckRate'],['Separate truck-days','separateDays'],['Coordinated truck-days','coordinatedDays'],['Yard cost per site','yard']].map(([l,k])=>`<div class="statusline"><label class="muted" for="cost-${k}">${l}</label><input id="cost-${k}" class="field" style="max-width:145px" type="number" min="0" data-cost="${k}" value="${c[k]}"></div>`).join('')}<hr class="divider"><div class="calcout">$${save.toLocaleString()}</div><strong>${pct}% potential reduction</strong><div class="warning">In-service dates do not prove construction overlap. Actual rates, logistics, and schedules must be verified before treating this as savings.</div><div class="tiny">Separate = 2 × mobilization + separate truck-days × rate + 2 × yard. Coordinated = 2 × mobilization + coordinated truck-days × rate + 1 × yard.</div></div></div>`;}
-function projectDetailPage(){const p=state.selectedProject;return head(esc(p.project_name),'Project record from the supplied starter workbook.',btn('Back to map','map'))+`<div class="grid two"><div class="stack">${mapHtml({hover:false})}<div class="card"><h2>Project evidence</h2><p>Utility: ${esc(p.utility)} · ${esc(p.state)}</p><p>In-service target: ${esc(String(p.in_service_date).slice(0,10))}</p><p class="muted">Named endpoints: ${esc(p.name_a)} and ${esc(p.name_b)}. Some endpoint coordinates in the starter workbook are missing; the map is schematic.</p></div></div><div class="card stack"><h2>Coordination context</h2>${pill('Public-plan data')}<div class="item"><h3>Nearby matches: ${p.overlap_count}</h3><p class="muted">Review distance and timing in Coordination opportunities on the Explore map.</p>${btn('View matches','map')}</div><div class="item"><h3>Available inventory</h3><p class="muted">Not listed in the public filing. Demo marketplace resources are separate.</p>${btn('Open inventory','inventory')}</div><div class="item"><h3>Road access</h3><p class="muted">Closure and traffic history were not included in the public project record.</p>${btn('Check feasibility','feasibility')}</div></div></div>`;}
+function projectsPage(){const all=[...state.companyProjects,...projects];return head('My projects','Imported public plans and projects extracted from your contracts.',btn('Upload contract PDF','addProject','primary'))+`<div class="grid two"><div class="card"><h2>Project portfolio</h2>${all.map(p=>`<div class="item"><div class="statusline"><div><h3>${esc(p.project_name)}</h3><div class="muted">${esc(p.utility||'Your company')} · ${esc(p.state||p.location||'Location to confirm')} · ${p.in_service_date?'in-service '+String(p.in_service_date).slice(0,10):esc(p.start_date||'Dates to confirm')}</div></div>${pill(p.source==='contract-upload'?'Contract upload':'Imported plan',p.source==='contract-upload'?'':'amber')}</div>${p.description?`<p class="muted">${esc(p.description)}</p>`:''}<div class="action">${btn('View project','selectProject:'+p.project_id)}</div></div>`).join('')}</div>${mapHtml({hover:false})}</div>`;}
+function projectDetailPage(){const p=state.selectedProject;const uploaded=p.source==='contract-upload';return head(esc(p.project_name),uploaded?'Project extracted from your uploaded contract.':'Project record from the supplied starter workbook.',btn('Back to projects','projects'))+`<div class="grid two"><div class="stack">${mapHtml({hover:false})}<div class="card"><h2>Project evidence</h2><p>${uploaded?`Company / utility: ${esc(p.utility||'Not provided')}`:`Utility: ${esc(p.utility)} · ${esc(p.state)}`}</p><p>${uploaded?`Location: ${esc(p.location||'Not provided')}`:`In-service target: ${esc(String(p.in_service_date).slice(0,10))}`}</p><p class="muted">${uploaded?esc(p.description||'Review the uploaded contract for complete scope details.'):`Named endpoints: ${esc(p.name_a)} and ${esc(p.name_b)}. Some endpoint coordinates in the starter workbook are missing; the map is schematic.`}</p></div></div><div class="card stack"><h2>Coordination context</h2>${pill(uploaded?'Contract upload':'Public-plan data',uploaded?'':'amber')}<div class="item"><h3>${uploaded?'Contract details reviewed':'Nearby matches: '+p.overlap_count}</h3><p class="muted">${uploaded?'This company project is available for coordination after review.':'Review distance and timing on the Opportunities page.'}</p>${btn(uploaded?'Check feasibility':'View matches',uploaded?'feasibility':'opportunities')}</div><div class="item"><h3>Available inventory</h3><p class="muted">Not listed in the project record. Demo marketplace resources are separate.</p>${btn('Open inventory','inventory')}</div></div></div>`;}
 function chatPage(kind,manual=false){
   const resource=kind==='resource', job=kind==='job';
   const title=resource?'Describe an available resource':job?'Describe a job requirement':'Describe a new project';
@@ -96,6 +97,43 @@ function chatPage(kind,manual=false){
   const fields=resource?['name','quantity','location','dates','rate']:job?['role','openings','project','dates','requirements']:['name','location','start','end','closure'];
   const labels={name:'Name',quantity:'Quantity',location:'Location',dates:'Dates',rate:'Daily rate',role:'Role',openings:'Openings',project:'Linked project',requirements:'Requirements',start:'Start date',end:'End date',closure:'Road closure'};
   return head(title,manual?'Manual entry is an alternative. You can return to chat anytime.':'Chat creates a reviewable draft. Nothing is published automatically.',btn(manual?'Use chat instead':'Use manual form',manual?'chat:'+kind:'manual:'+kind))+`<div class="page-chat"><div class="card conversation"><h2>${manual?'Manual details':'✦ Ask Gridlock'}</h2><p class="muted">${manual?'Fill the fields and review the result.':question}</p>${manual?`<div class="formgrid">${fields.map(k=>`<div class="fieldgroup"><label>${labels[k]}</label><input class="field" data-draft="${k}" data-kind="${kind}" value="${esc(draft[k]||'')}" placeholder="${labels[k]}"></div>`).join('')}</div>`:`<div class="bubbles"><div class="bubble">${question}</div>${state.chatMode===kind?state.chat.map(m=>`<div class="bubble ${m.by==='user'?'user':''}">${esc(m.text)}</div>`).join(''):''}</div><div class="chat-entry"><input class="field" id="chatText" placeholder="Describe it in your own words"><button class="primary" data-action="sendChat:${kind}">Send</button></div><div class="row wrap" style="margin-top:12px">${hints.map(h=>`<button class="ghostlink" data-suggest="${esc(h)}">${esc(h)}</button>`).join('')}</div>`}</div><div class="stack"><div class="card"><div class="statusline"><h2>Editable draft</h2>${pill('Not published','amber')}</div><p class="muted">Review every extracted field before sharing it.</p>${fields.map(k=>`<div class="fieldgroup"><label>${labels[k]}</label><input class="field" data-draft="${k}" data-kind="${kind}" value="${esc(draft[k]||'')}" placeholder="Not provided yet"></div>`).join('')}<div class="row wrap">${btn('Review and publish','publish:'+kind,'primary accent')}${btn('Use manual form','manual:'+kind)}</div></div><div class="note">AI extraction is mocked locally. A real Gemini connection should return structured fields, cite source input, and require the same review step.</div></div></div>`;
+}
+
+function projectUploadPage(){
+  const upload=state.projectUpload, d=upload?.draft||{};
+  const fields=[['project_name','Project name'],['utility','Company / utility'],['location','Location'],['start_date','Start date'],['end_date','End date'],['description','Scope of work'],['roads','Affected roads'],['contact','Contract contact']];
+  return head('Add a project from a contract','Upload a PDF and Gridlock will prepare an editable project record for your company.',btn('Back to projects','projects'))+`<div class="project-upload-layout"><div class="card upload-card"><div class="upload-icon">PDF</div><h2>Upload contract details</h2><p class="muted">Choose a project contract or scope PDF. The file is read in your browser and is not sent anywhere.</p><label class="upload-drop"><input id="projectPdf" type="file" accept="application/pdf"><strong>${upload?.name?esc(upload.name):'Choose a PDF contract'}</strong><span>${upload?.status||'PDF files only · maximum 15 MB'}</span></label>${upload?.error?`<div class="warning">${esc(upload.error)}</div>`:''}<div class="note">Extracted fields are suggestions. Review dates, location, scope, roads, and contacts before adding this project.</div></div><div class="card project-draft"><div class="statusline"><div><h2>Project details</h2><p class="muted">${upload?'Review the extracted information below.':'Your extracted details will appear here.'}</p></div>${pill(upload?.parsed?'Needs review':'Waiting for PDF','amber')}</div>${fields.map(([key,label])=>`<label class="fieldgroup"><span>${label}</span>${key==='description'||key==='roads'?`<textarea class="field" rows="3" data-project-draft="${key}" placeholder="Not found in document">${esc(d[key]||'')}</textarea>`:`<input class="field" data-project-draft="${key}" value="${esc(d[key]||'')}" placeholder="Not found in document" type="${key.includes('date')?'date':'text'}">`}</label>`).join('')}<div class="row wrap">${btn('Add to my projects','publish:project','primary accent')}${btn('Clear upload','clearProjectUpload')}</div></div></div>`;
+}
+
+function projectFromPdfText(text, fileName){
+  const clean=text.replace(/\s+/g,' ').trim();
+  const datePattern='(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\s+\\d{1,2}(?:,?\\s+\\d{4})?';
+  const dates=[...clean.matchAll(new RegExp(datePattern,'gi'))].map(m=>m[0]);
+  const isoDate=value=>{const parsed=new Date(value);return Number.isNaN(parsed.getTime())?'':parsed.toISOString().slice(0,10)};
+  const valueAfter=label=>{const match=clean.match(new RegExp(label+'\\s*[:\\-]\\s*([^.;]{2,100})','i'));return match?match[1].trim():''};
+  const location=valueAfter('(?:project )?location|worksite|service area')||((clean.match(/(?:near|in) ([A-Z][A-Za-z]+(?:,? [A-Z]{2})?)/)||[])[1]||'');
+  const name=valueAfter('project name|project title|contract name')||fileName.replace(/\.pdf$/i,'').replace(/[_-]+/g,' ');
+  const utility=valueAfter('owner|utility|customer|company')||'';
+  const scope=valueAfter('scope of work|scope|description')||'';
+  const roads=valueAfter('affected roads?|roadways?|work area')||'';
+  const contact=valueAfter('contact|project manager')||'';
+  const paragraphs=clean.split(/(?<=[.!?])\s+/);
+  return {project_name:name,utility,location,start_date:isoDate(dates[0]),end_date:isoDate(dates[1]||dates[0]),description:scope||paragraphs.find(p=>/construct|rebuild|upgrade|install|replace/i.test(p))||'',roads,contact,source:'contract-upload',fileName};
+}
+
+async function parseProjectPdf(file){
+  if(!window.pdfjsLib) throw new Error('The PDF parser could not load. Check your internet connection and try again.');
+  if(file.size>15*1024*1024) throw new Error('This PDF is larger than 15 MB.');
+  const buffer=await file.arrayBuffer();
+  const pdf=await window.pdfjsLib.getDocument({data:buffer}).promise;
+  const pages=[];
+  for(let pageNumber=1;pageNumber<=pdf.numPages;pageNumber++){
+    const page=await pdf.getPage(pageNumber), content=await page.getTextContent();
+    pages.push(content.items.map(item=>item.str).join(' '));
+  }
+  const text=pages.join('\n').trim();
+  if(!text) throw new Error('This PDF has no selectable text. A scanned PDF needs OCR before it can be parsed.');
+  return projectFromPdfText(text,file.name);
 }
 
 // ---- Inventory: resource listing pop-up (chat on the left, structured listing on the right) ----
@@ -261,10 +299,12 @@ function applyInvFilter(){
 }
 function jobsPage(){return head('Staff your projects','Post worker requirements and review applicants.',btn('+ Describe job requirement','addJob','primary'))+`<div class="grid two"><div class="card"><h2>Open job postings ${demo}</h2>${state.jobs.map(j=>`<div class="item"><div class="statusline"><h3>${esc(j.name)}</h3>${pill(j.openings+' openings','amber')}</div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><p class="tiny">${esc(j.owner)}</p>${btn('View role','job:'+j.id)}</div>`).join('')}</div><div class="card stack"><h2>Chat-led posting</h2><div class="bubble">Tell me the role, headcount, project, dates and qualifications. I will prepare a draft for your review.</div><div class="bubble user">We need five certified lineworkers in Savannah this winter.</div><div class="bubble">Which project and pay range should I include?</div>${btn('Continue in chat','addJob','primary accent')}<div class="note">Manual entry remains available from the draft screen.</div></div></div>`;}
 function messagesPage(){const t=costTotals(),s=t.separate-t.coordinated;return head('Contractor messages','Discuss inventory and project coordination with another company.',btn('Call contact','call','secondary'))+`<div class="message-layout"><div class="card"><h2>Conversations</h2><div class="item"><strong>Demo Contractor B</strong><p class="muted">Bucket trucks · Jasper–Okatie ↔ McIntosh–Purrysburg</p></div><div class="item"><strong>Coastal Crane (demo)</strong><p class="muted">Crane availability near Savannah</p></div></div><div class="card message-thread"><h2>Resource discussion ${demo}</h2><div class="bubble">We have two bucket trucks available June 3–10. Can you confirm the project window?</div><div class="bubble user">We are still checking the schedule. Could we review a shared-resource scenario?</div><div class="item"><div class="statusline"><strong>Coordination scenario · for review</strong>${pill('Illustrative','amber')}</div><p>Separate $${t.separate.toLocaleString()} · coordinated $${t.coordinated.toLocaleString()}</p><div class="metric green">$${s.toLocaleString()} potential savings</div><p class="tiny">Assumptions have not been agreed by either contractor.</p>${btn('Open cost comparison','cost')}</div><div class="chat-entry"><input class="field" id="messageText" placeholder="Write a message or ask Gridlock to draft one"><button class="primary" data-action="sendMessage">Send</button></div></div><div class="card"><h2>Opportunity context</h2>${mapHtml({small:true,hover:false})}<div class="stats"><span><b>5.65 mi</b>starter distance</span><span><b>152 days</b>date gap</span></div><p class="muted">No real contractor contact was provided. Phone and messaging are interface concepts.</p>${btn('Discuss assumptions','cost','primary accent')}</div></div>`;}
-function workerJobsPage(){return head('Find work on utility projects','Browse sample openings by trade, location and qualifications.',btn('My applications','applications'))+`<div class="joblayout"><div class="card"><div class="row"><input class="field" id="jobSearch" placeholder="Search trade or qualification" aria-label="Search jobs"><button class="primary" data-action="searchJobs">Search</button></div><p class="muted">${state.jobs.length} sample jobs · ${demo}</p>${state.jobs.map(j=>`<div class="item job-card ${j.id===state.selectedJob.id?'selected':''}" data-job="${j.id}"><div class="statusline"><h3>${esc(j.name)}</h3>${pill(j.openings+' openings','amber')}</div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><div class="row wrap">${j.quals.map(q=>pill(q,'gray')).join('')}</div><div class="action">${btn('View job','job:'+j.id,'primary accent')}</div></div>`).join('')}</div>${mapHtml({jobs:true})}</div>`;}
+function jobCard(j){const saved=state.savedJobs.includes(j.id);return `<div class="item job-card ${j.id===state.selectedJob.id?'selected':''}" data-job="${j.id}"><div class="statusline"><h3>${esc(j.name)}</h3><div class="row wrap">${pill(j.openings+' openings','amber')}<button class="save-heart ${saved?'saved':''}" data-save-job="${j.id}" aria-label="${saved?'Remove from saved jobs':'Save job'}" title="${saved?'Remove from saved jobs':'Save job'}">${saved?'♥':'♡'}</button></div></div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><div class="row wrap">${j.quals.map(q=>pill(q,'gray')).join('')}</div><div class="action">${btn('View job','job:'+j.id,'primary accent')}</div></div>`;}
+function workerJobsPage(){return `<div class="joblayout"><div class="card"><div class="row"><input class="field" id="jobSearch" placeholder="Search trade or qualification" aria-label="Search jobs"><button class="primary" data-action="searchJobs">Search</button></div><p class="muted">${state.jobs.length} sample jobs · ${demo}</p>${state.jobs.map(jobCard).join('')}</div>${mapHtml({jobs:true})}</div>`;}
+function savedJobsPage(){const jobs=state.jobs.filter(j=>state.savedJobs.includes(j.id));return `<div class="card saved-jobs"><h2>Saved postings</h2>${jobs.length?jobs.map(jobCard).join(''):'<div class="note">No saved jobs yet. Select the heart on a job posting to save it here.</div>'}</div>`;}
 function workerJobDetail(){const j=state.selectedJob;return head(j.name,`${j.owner} · ${j.place} · ${demo}`,btn('Back to jobs','findjobs'))+`<div class="grid two"><div class="card stack"><h2>${j.openings} openings · ${j.pay}</h2><p>${j.dates}</p><h3>Requirements</h3><div class="row wrap">${j.quals.map(q=>pill(q)).join('')}</div><p class="muted">Detailed scope, employer verification and actual worksite must be confirmed before applying.</p>${mapHtml({small:true,jobs:true,hover:false})}</div><div class="card"><h2>Apply to this role</h2><div class="fieldgroup"><label>Name</label><input class="field" id="applicantName" value="Jordan Davis"></div><div class="fieldgroup"><label>Qualifications</label><input class="field" id="applicantSkills" value="OSHA 30, CDL Class A"></div><div class="fieldgroup"><label>Availability</label><input class="field" id="applicantAvailability" value="Available for the listed dates"></div><div class="note">Demo action only. No application is sent to an employer.</div><div style="margin-top:18px">${btn('Review and apply','apply','primary accent')}</div></div></div>`;}
-function applicationsPage(){return head('Your applications','Track sample status and next steps.',btn('Find jobs','findjobs'))+`<div class="card"><h2>Applications ${demo}</h2>${state.applications.length?state.applications.map(a=>`<div class="item statusline"><div><h3>${esc(a.name)}</h3><p class="muted">${esc(a.place)} · ${esc(a.date)}</p></div>${pill(a.status,'amber')}</div>`).join(''):'<div class="note">No applications yet. Open a job and try the review flow.</div>'}</div>`;}
-function workerProfilePage(){return head('Worker profile','Update skills, certifications and availability.',btn('Find matching jobs','findjobs'))+`<div class="grid two"><div class="card"><h2>Jordan Davis ${demo}</h2>${[['Trade','Transmission lineworker'],['Certifications','OSHA 30, CDL Class A'],['Experience','Five years of utility construction'],['Availability','Dec 2026–Mar 2027'],['Service area','Savannah, GA · 25 miles']].map(([k,v])=>`<div class="fieldgroup"><label>${k}</label><input class="field" value="${esc(v)}"></div>`).join('')}${btn('Save demo profile','saveProfile','primary accent')}</div><div class="card"><h2>Jobs near your profile</h2>${state.jobs.map(j=>`<div class="item"><h3>${esc(j.name)}</h3><p class="muted">${esc(j.place)} · ${esc(j.pay)}</p>${btn('View job','job:'+j.id)}</div>`).join('')}</div></div>`;}
+function applicationsPage(){return `<div class="card"><h2>Applications ${demo}</h2>${state.applications.length?state.applications.map(a=>`<div class="item statusline"><div><h3>${esc(a.name)}</h3><p class="muted">${esc(a.place)} · ${esc(a.date)}</p></div>${pill(a.status,'amber')}</div>`).join(''):'<div class="note">No applications yet. Open a job and try the review flow.</div>'}</div>`;}
+function workerProfilePage(){return `<div class="card"><h2>Jordan Davis ${demo}</h2>${[['Trade','Transmission lineworker'],['Certifications','OSHA 30, CDL Class A'],['Experience','Five years of utility construction'],['Availability','Dec 2026–Mar 2027'],['Service area','Savannah, GA · 25 miles']].map(([k,v])=>`<div class="fieldgroup"><label>${k}</label><input class="field" value="${esc(v)}"></div>`).join('')}${btn('Save demo profile','saveProfile','primary accent')}</div>`;}
 // Anchor the map preview card to the selected pin instead of a fixed spot.
 function positionHovercard(){document.querySelectorAll('.stage-map .hovercard').forEach(placeHovercard)}
 function placeHovercard(card){
@@ -275,6 +315,13 @@ function placeHovercard(card){
   const onScreen=r.right>0&&r.left<innerWidth&&r.bottom>0&&r.top<innerHeight;
   card.classList.add('anchored');card.style.visibility=onScreen?'':'hidden';
   const w=card.offsetWidth,h=card.offsetHeight,gap=14,cx=r.left+r.width/2;
+  if(state.role==='worker'&&state.page==='findjobs'){
+    const list=document.querySelector('.page-findjobs .joblayout > .card')?.getBoundingClientRect();
+    const minX=Math.max((list?.right||216)+24,240), maxX=innerWidth-16;
+    const topbar=document.querySelector('.topbar')?.getBoundingClientRect(), chatbar=document.querySelector('.chatbar')?.getBoundingClientRect();
+    const top=Math.max((topbar?.bottom||80)+16,Math.min(innerHeight-h-16,r.top-h-gap));
+    card.classList.add('anchored');card.classList.remove('below');card.style.left=Math.max(minX,Math.min(maxX-w,minX))+'px';card.style.top=top+'px';card.style.setProperty('--arrow-x',Math.max(18,Math.min(w-18,cx-parseFloat(card.style.left)))+'px');return;
+  }
   const below=card.dataset.place==='below'||(card.dataset.place!=='above'&&r.top-h-gap<90);
   card.classList.toggle('below',below);
   // Keep the card in the open map area between the floating panels when there is room.
@@ -292,9 +339,9 @@ addEventListener('resize',()=>positionHovercard());
 function toast(msg){state.toast=msg;render();setTimeout(()=>{state.toast='';const el=$('#toast');if(el)el.remove();},4200)}
 function assistantHint(){return state.role==='worker'?'Find jobs matching my qualifications':({map:'What could these projects share?',cost:'Try a different cost scenario',feasibility:'Test another work window',inventory:'Find nearby bucket trucks',messages:'Draft a reply',jobs:'Draft a job posting'}[state.page]||'Describe what you need');}
 function render(){
-  const pages={map:mapPage,feasibility:feasibilityPage,cost:costPage,projectDetail:projectDetailPage,inventory:inventoryPage,jobs:jobsPage,messages:messagesPage,findjobs:workerJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
-  const content=state.page==='addProject'?chatPage('project'):state.page==='addResource'?chatPage('resource'):state.page==='addJob'?chatPage('job'):state.page.startsWith('manual:')?chatPage(state.page.split(':')[1],true):(pages[state.page]||mapPage)();
-  const mapFocus = state.page==='map' || state.page==='findjobs';
+  const pages={map:mapPage,feasibility:feasibilityPage,cost:costPage,projects:projectsPage,projectDetail:projectDetailPage,inventory:inventoryPage,jobs:jobsPage,messages:messagesPage,findjobs:workerJobsPage,saved:savedJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
+  const content=state.page==='addProject'?projectUploadPage():state.page==='addResource'?chatPage('resource'):state.page==='addJob'?chatPage('job'):state.page.startsWith('manual:')?chatPage(state.page.split(':')[1],true):(pages[state.page]||mapPage)();
+  const mapFocus=state.page==='map'||state.page==='findjobs';
   $('#app').innerHTML=`<a href="#main" class="skip">Skip to content</a><div class="stage-map ${mapFocus?'map-focus':''} ${state.page==='map'&&!state.pairClosed?'pair-open':''}">${mapHtml({hover:mapFocus,jobs:state.role==='worker'})}</div><div class="shell">${nav()}<div class="main">${topbar()}<main class="workspace page-${state.page}" id="main">${content}</main></div></div><div class="chatbar"><span class="spark">✦</span><input id="globalChat" placeholder="Ask Gridlock: ${assistantHint()}" aria-label="Ask Gridlock"><button class="primary" data-action="globalChat">➜</button></div>${state.toast?`<div id="toast" role="status" style="position:fixed;top:85px;right:25px;z-index:30;background:#113a53;color:white;padding:14px 44px 14px 18px;border-radius:13px;box-shadow:0 8px 30px #2345">${esc(state.toast)}<button class="close-x light" data-action="closeToast" aria-label="Close" title="Close">×</button></div>`:''}`;
   window.syncGoogleMap?.();
   requestAnimationFrame(positionHovercard);
@@ -335,9 +382,26 @@ function handleAction(act){
     state.resourceChat.push({by:'assistant',time:clockTime(),text:missing.length?`I updated the listing. To make it accurate and complete, can you share ${missing.join(', ')}?`:'The listing is complete based on your information. Please review every field before publishing. Anything else to add, like special notes or travel radius?'});
     render();setTimeout(()=>$('#chatText')?.focus());return;
   }
-  if(act.startsWith('selectProject:')){state.selectedProject=byId[act.split(':')[1]];state.page='projectDetail';render();return}
-  if(act.startsWith('invSelect:')){state.invSelected=act.split(':')[1];render();return}
-  if(act.startsWith('reserve:')){state.invSelected=act.split(':')[1];state.invFind=true;state.resourceModal=false;state.page='inventory';render();return}
+  if(act.startsWith('selectProject:')){
+    const id=act.split(':')[1];
+    state.selectedProject=state.companyProjects.find(p=>p.project_id===id)||byId[id];
+    state.page='projectDetail';
+    render();
+    return;
+  }
+  if(act.startsWith('invSelect:')){
+    state.invSelected=act.split(':')[1];
+    render();
+    return;
+  }
+  if(act.startsWith('reserve:')){
+    state.invSelected=act.split(':')[1];
+    state.invFind=true;
+    state.resourceModal=false;
+    state.page='inventory';
+    render();
+    return;
+  }
   if(act.startsWith('job:')){state.selectedJob=state.jobs.find(j=>j.id===act.split(':')[1]);state.page='jobDetail';render();return}
   if(act.startsWith('manual:')){state.page=act;render();return}
   if(act.startsWith('chat:')){state.page={project:'addProject',resource:'addResource',job:'addJob'}[act.split(':')[1]];render();return}
@@ -347,9 +411,9 @@ function handleAction(act){
     state.chat.push({by:'assistant',text:kind==='project'?'I prepared a draft. Please confirm the exact location, construction dates, closure and source.':kind==='resource'?'I prepared a resource draft. Please confirm quantity, dates, rate and owner.':'I prepared a job draft. Please confirm the linked project, qualifications and pay.'});render();return;
   }
   if(act.startsWith('publish:')){
-    const kind=act.split(':')[1],d=kind==='project'?state.draft:kind==='resource'?state.resourceDraft:state.jobDraft;
+    const kind=act.split(':')[1],d=kind==='project'?(state.projectUpload?.draft||{}):kind==='resource'?state.resourceDraft:state.jobDraft;
     if(!Object.values(d).some(Boolean)){toast('Describe the item or fill its fields first.');return}
-    if(kind==='project'){toast('Demo project draft reviewed. No utility filing was changed.');state.page='map'}
+    if(kind==='project'){const project={...state.projectUpload.draft,project_id:'UPLOAD_'+Date.now(),project_name:state.projectUpload.draft.project_name||state.projectUpload.name.replace(/\.pdf$/i,''),source:'contract-upload'};state.companyProjects.unshift(project);state.selectedProject=project;state.projectUpload=null;state.page='projectDetail';toast('Contract details added to your company projects.');}
     else if(kind==='resource'){const miss=resourceMissing(d);if(miss.length){toast('Add '+miss.join(', ')+' before publishing.');return}state.resources.unshift({id:'NEW'+Date.now(),name:d.name||d.category,quantity:Number(d.quantity)||1,date:d.end?`${fmtDate(d.start)} – ${fmtDate(d.end)}`:fmtDate(d.start),start:d.start,end:d.end||d.start,place:d.location,rate:Number(d.rate)||0,type:CATEGORIES[d.category]||'Equipment',owner:'Your company (demo)'});state.resourceDraft={};state.resourceChat=[];state.resourceModal=false;state.invFind=true;state.page='inventory';toast('Demo resource listing added locally.')}
     else{state.jobs.unshift({id:'NEW'+Date.now(),name:d.role||'Untitled opening',openings:Number(d.openings)||1,place:'Location to confirm',pay:'Rate to confirm',dates:d.dates||'Dates to confirm',quals:d.requirements?[d.requirements]:[],owner:'Your company (demo)'});state.page='jobs';toast('Demo job posting added locally.')}
     render();return;
@@ -362,11 +426,13 @@ function handleAction(act){
     toast('Demo order request saved locally. The owner still needs to accept it.');return;
   }
   if(act==='apply'){const j=state.selectedJob;state.applications.unshift({name:j.name,place:j.place,date:new Date().toLocaleDateString(),status:'Submitted (demo)'});state.page='applications';toast('Demo application saved locally. Nothing was sent to an employer.');return}
+  if(act.startsWith('toggleSaveJob:')){const id=act.split(':')[1],index=state.savedJobs.indexOf(id);if(index===-1){state.savedJobs.push(id);toast('Job saved.')}else{state.savedJobs.splice(index,1);toast('Job removed from saved.')}render();return}
   if(act==='globalChat'){const text=$('#globalChat')?.value.trim();if(!text)return; if(/resource|truck|crane|crew/i.test(text)){state.page='inventory';toast('Showing demo resources.')}else if(/cost|sav/i.test(text)){state.page='cost';toast('Opening the editable cost scenario.')}else if(state.role==='worker'&&/job|work|certification/i.test(text)){state.page='findjobs';toast('Showing sample job listings.')}else if(/project|draft|add/i.test(text)){state.page='addProject';state.chatMode='project';state.chat=[{by:'user',text}];draftFromText('project',text);render();toast('Review the project draft before publishing.')}else toast(state.role==='worker'?'Try asking about jobs, trades, or certifications.':'Try asking about projects, cost, or inventory.');return}
   if(act==='analyze'){toast('Scenario refreshed. Traffic values remain illustrative until a data source is connected.');return}
   if(act==='call'){toast('Demo contact only. No phone number is connected.');return}
   if(act==='sendMessage'){const text=$('#messageText')?.value.trim();if(text)toast('Demo message drafted locally; no message was sent.');return}
   if(act==='saveProfile'){toast('Demo profile saved for this session.');return}
+  if(act==='clearProjectUpload'){state.projectUpload=null;render();return}
   if(act==='filterResource'||act==='searchJobs'){toast('Filter UI is a prototype; all demo records remain visible.');return}
   if(act==='closeHover'){state.hoverClosed=true;render();return}
   if(act==='closeOpps'){state.oppsClosed=true;render();return}
@@ -382,12 +448,19 @@ document.addEventListener('click',e=>{
   const page=e.target.closest('[data-page]');if(page){state.page=page.dataset.page;render();return}
   const over=e.target.closest('[data-overlap]');if(over){state.pairClosed=state.hoverClosed=false;state.pairFocus=true;state.selectedOverlap=overlaps.find(o=>o.overlap_id===over.dataset.overlap);state.hoverProject=state.selectedProject=byId[state.selectedOverlap.project_id_a];render();return}
   const project=e.target.closest('[data-project]');if(project){state.hoverClosed=false;state.pairFocus=false;state.hoverProject=byId[project.dataset.project];state.selectedProject=state.hoverProject;render();return}
+  const saved=e.target.closest('[data-save-job]');if(saved){handleAction('toggleSaveJob:'+saved.dataset.saveJob);return}
   const job=e.target.closest('[data-job]');if(job){state.hoverClosed=false;state.selectedJob=state.jobs.find(j=>j.id===job.dataset.job);render();return}
   const suggest=e.target.closest('[data-suggest]');if(suggest){$('#chatText').value=suggest.dataset.suggest;$('#chatText').focus();return}
   const action=e.target.closest('[data-action]');if(action)handleAction(action.dataset.action);
 });
 document.addEventListener('input',e=>{if(e.target.id==='invSearch'){state.invQuery=e.target.value;applyInvFilter()}});
 document.addEventListener('change',e=>{
+  if(e.target.id==='projectPdf'){
+    const file=e.target.files?.[0];if(!file)return;
+    state.projectUpload={name:file.name,status:'Reading PDF…',draft:{}};render();
+    parseProjectPdf(file).then(draft=>{state.projectUpload={name:file.name,status:'Parsed successfully',parsed:true,draft};render()}).catch(error=>{state.projectUpload={name:file.name,status:'Could not parse PDF',error:error.message,draft:{}};render()});
+    return;
+  }
   if(e.target.id==='oppRadius'){
     state.oppRadius=Number(e.target.value);
     // Close cards for a pair or project that the new radius filters out.
@@ -402,6 +475,7 @@ document.addEventListener('change',e=>{
   const p=e.target.dataset.proposed;if(p){state.proposed[p]=e.target.value;return}
   const cl=e.target.dataset.closure;if(cl){state.closure[cl]=e.target.value;return}
   const d=e.target.dataset.draft;if(d){const kind=e.target.dataset.kind,target=kind==='project'?state.draft:kind==='resource'?state.resourceDraft:state.jobDraft;target[d]=e.target.value;const copies=document.querySelectorAll(`[data-draft="${d}"][data-kind="${kind}"]`);copies.forEach(x=>{if(x!==e.target)x.value=e.target.value})}
+  const projectDraft=e.target.dataset.projectDraft;if(projectDraft&&state.projectUpload){state.projectUpload.draft[projectDraft]=e.target.value}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='globalChat'){e.preventDefault();handleAction('globalChat')}if(e.key==='Escape'&&state.resourceModal){handleAction('closeResource');return}if(e.key==='Escape'&&state.invFind&&state.page==='inventory'){handleAction('closeFind');return}if(e.key==='Enter'&&e.target.id==='chatText'){e.preventDefault();handleAction('sendChat:'+(state.resourceModal||state.page==='addResource'?'resource':state.page==='addJob'?'job':'project'))}});
 render();
