@@ -111,12 +111,18 @@
     if (!pin) { requestAnimationFrame(focusWorkerJob); return; }
     const list = document.querySelector('.page-findjobs .joblayout > .card')?.getBoundingClientRect();
     const openLeft = Math.max((list?.right || 216) + 24, 240);
-    const targetX = Math.min(innerWidth - 72, openLeft + 320 + 52);
-    const pinRect = pin.getBoundingClientRect();
-    const dx = targetX - (pinRect.left + pinRect.width / 2);
-    focusedWorkerJob = job.id;
-    if (Math.abs(dx) > 24) map.panBy(-dx, 0);
-    requestAnimationFrame(positionHovercard);
+    const targetX = Math.min(innerWidth - 72, openLeft + 120);
+    const alignPin = () => {
+      const pinRect = pin.getBoundingClientRect();
+      const dx = targetX - (pinRect.left + pinRect.width / 2);
+      focusedWorkerJob = job.id;
+      if (Math.abs(dx) > 24) map.panBy(-dx, 0);
+      requestAnimationFrame(positionHovercard);
+    };
+    if (map.getZoom() < 12) {
+      google.maps.event.addListenerOnce(map, 'idle', alignPin);
+      map.setZoom(12);
+    } else alignPin();
   }
 
   function hasCoords(o) {
