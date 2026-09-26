@@ -53,7 +53,7 @@
           cls: j.id === state.selectedJob.id ? 'desc selected' : 'gpc',
           onClick: () => { state.hoverClosed = false; state.selectedJob = j; render(); }
         }))
-      : projects.filter(hasCoords).map(p => ({
+      : projects.filter(hasCoords).filter(projectVisible).map(p => ({
           id: p.project_id, title: p.project_name, lat: p.lat_center, lng: p.lon_center,
           cls: `${p.utility.includes('Dominion') ? 'desc' : 'gpc'} ${selectedPinIds().includes(p.project_id) ? 'selected' : ''}`,
           onClick: () => { state.hoverClosed = false; state.pairFocus = false; state.hoverProject = state.selectedProject = p; render(); }

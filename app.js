@@ -3,9 +3,9 @@ const projects = source.projects;
 const overlaps = source.overlaps;
 const byId = Object.fromEntries(projects.map(p => [p.project_id, p]));
 const demoResources = [
-  { id: 'R1', name: 'Bucket trucks with operators', quantity: 2, date: 'Jun 3–10, 2027', place: 'Savannah yard', rate: 1250, type: 'Equipment', owner: 'Demo Contractor B' },
-  { id: 'R2', name: '60-ton crane', quantity: 1, date: 'Jun 12–18, 2027', place: 'Pooler, GA', rate: 2100, type: 'Equipment', owner: 'Coastal Crane (demo)' },
-  { id: 'R3', name: 'Certified lineworkers', quantity: 5, date: 'Jul 1–20, 2027', place: 'Savannah, GA', rate: 0, type: 'Crew', owner: 'Line Crews Co. (demo)' }
+  { id: 'R1', name: 'Bucket trucks with operators', quantity: 2, date: 'Jun 3–10, 2027', start: '2027-06-03', end: '2027-06-10', place: 'Savannah yard', rate: 1250, type: 'Equipment', owner: 'Demo Contractor B' },
+  { id: 'R2', name: '60-ton crane', quantity: 1, date: 'Jun 12–18, 2027', start: '2027-06-12', end: '2027-06-18', place: 'Pooler, GA', rate: 2100, type: 'Equipment', owner: 'Coastal Crane (demo)' },
+  { id: 'R3', name: 'Certified lineworkers', quantity: 5, date: 'Jul 1–20, 2027', start: '2027-07-01', end: '2027-07-20', place: 'Savannah, GA', rate: 0, type: 'Crew', owner: 'Line Crews Co. (demo)' }
 ];
 const demoJobs = [
   { id: 'J1', name: 'Transmission lineworker', openings: 5, place: 'Savannah, GA', lat: 32.0809, lon: -81.0912, pay: '$34–$42/hr', dates: 'Dec 2026–Mar 2027', quals: ['OSHA 30', 'CDL Class A', 'Aerial lift'], owner: 'Southeast Power Co. (demo)' },
@@ -14,7 +14,7 @@ const demoJobs = [
 ];
 const state = {
   role: 'contractor', page: 'map', selectedOverlap: overlaps[1], selectedProject: projects[2], selectedJob: demoJobs[0],
-  hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, resourceManual: false, resourceChat: [], jobDraft: {}, projectUpload: null,
+  hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, oppRadius: 25, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, invFind: true, invSelected: null, invQuery: '', invCat: 'All', invFrom: '', invTo: '', resourceManual: false, resourceChat: [], jobDraft: {}, projectUpload: null,
   companyProjects: [], resources: [...demoResources], jobs: [...demoJobs], savedJobs: [], reservations: [], applications: [],
   cost: { mobilization: 3000, truckRate: 1300, separateDays: 20, coordinatedDays: 12, yard: 5000 },
   closure: { lanes: 1, start: '2027-06-01', end: '2027-12-15', hours: '21:00–05:00' },
@@ -28,7 +28,7 @@ const pill = (label, cls = '') => `<span class="pill ${cls}">${esc(label)}</span
 const demo = '<span class="demo">DEMO DATA</span>';
 function nav() {
   const items = state.role === 'contractor' ? [
-    ['map','◫','Explore map'],['opportunities','≡','Opportunities'],['feasibility','△','Feasibility'],['cost','▥','Cost comparison'],['projects','▣','My projects'],['inventory','♧','Inventory'],['messages','▤','Messages']
+    ['map','◫','Explore map'],['feasibility','△','Feasibility'],['cost','▥','Cost comparison'],['inventory','♧','Inventory'],['messages','▤','Messages']
   ] : [['findjobs','⌕','Find jobs'],['saved','♡','Saved'],['applications','▤','Applications'],['workerprofile','♙','Profile']];
   return `<aside class="sidebar"><div class="brand"><span>G</span>Gridlock</div><div class="role">${state.role === 'contractor' ? 'CONTRACT MANAGEMENT COMPANY' : 'PROSPECTIVE WORKER'}</div>${items.map(([id,icon,name]) => `<button class="nav ${state.page === id ? 'active' : ''}" data-page="${id}"><span class="icon">${icon}</span>${name}</button>`).join('')}<div class="sidefoot">Design prototype<br>Public plan fields and illustrative data are labeled separately.</div></aside>`;
 }
@@ -38,7 +38,7 @@ function topbar() {
 const head = (title, subtitle, action = '') => `<div class="heading"><div><h1>${title}</h1><p class="sub">${subtitle}</p></div>${action}</div>`;
 function projectLine(p) { return `${esc(p.project_name)} <span class="tiny">${esc(p.utility)}</span>`; }
 function mapHtml({small=false, hover=true, pair=true, jobs=false}={}) {
-  const valid = projects.filter(p => Number.isFinite(p.lat_center) && Number.isFinite(p.lon_center));
+  const valid = projects.filter(p => Number.isFinite(p.lat_center) && Number.isFinite(p.lon_center) && projectVisible(p));
   const x = lon => 8 + (lon + 82.3) / 1.65 * 84;
   const y = lat => 91 - (lat - 31.8) / 2.15 * 82;
   const markers = jobs ? demoJobs.map((j,i) => `<button title="${esc(j.name)}" class="pin ${i?'gpc':'desc'} ${state.selectedJob.id===j.id?'selected':''}" style="left:${42+i*13}%;top:${38+i*16}%" data-job="${j.id}"></button>`).join('') : valid.map(p => `<button title="${esc(p.project_name)}" class="pin ${p.utility.includes('Dominion')?'desc':'gpc'} ${selectedPinIds().includes(p.project_id)?'selected':''}" style="left:${Math.max(4,Math.min(96,x(p.lon_center)))}%;top:${Math.max(4,Math.min(96,y(p.lat_center)))}%" data-project="${p.project_id}"></button>`).join('');
@@ -69,13 +69,20 @@ function pairPanel() {
   const o=state.selectedOverlap, a=byId[o.project_id_a], b=byId[o.project_id_b];
   return `<div class="card stack closable"><button class="close-x" data-action="closePair" aria-label="Close" title="Close">×</button><div>${pill('Potential coordination','coral')}</div><h2>${esc(a.project_name.split(':')[0])} ↔ ${esc(b.project_name.split(':')[0])}</h2><div class="row wrap">${pill('Dominion SC')}${pill('Georgia Power','amber')}</div><hr class="divider"><div class="metric-grid"><div><strong>${o.distance_mi} mi</strong><div class="tiny">starter workbook center distance</div></div><div><strong>${Number(o['time_gap (day)']).toLocaleString()} days</strong><div class="tiny">in-service date gap</div></div></div><div class="timeline"></div><div class="note">These projects are geographically near. Their construction windows and shared-resource feasibility still need confirmation.</div><div class="card" style="background:#fff5f2"><div class="muted">Illustrative coordination scenario</div><div class="metric green">$15,400</div><div class="tiny">Based on editable rates and quantities; not verified savings.</div></div><div class="row wrap">${btn('Compare costs','cost','primary')}${btn('Check feasibility','feasibility','secondary')}${btn('Discuss resources','messages','secondary')}</div></div>`;
 }
+const OPP_RADII=[0,5,10,15,25,50]; // 0 = any distance
+const oppInRange=o=>!state.oppRadius||Number(o.distance_mi)<=state.oppRadius;
+// Projects shown on the map: with a radius set, only those in a pair within range.
+function projectVisible(p){
+  if(!state.oppRadius)return true;
+  return overlaps.some(o=>oppInRange(o)&&(o.project_id_a===p.project_id||o.project_id_b===p.project_id));
+}
 function mapPage() {
+  const shown=overlaps.filter(oppInRange);
   const list=state.oppsClosed
-    ? `<div><button class="reopen-chip" data-action="openOpps">≡ Coordination opportunities <span>${overlaps.length}</span></button></div>`
-    : `<div class="card closable"><button class="close-x" data-action="closeOpps" aria-label="Close" title="Close">×</button><h2>Coordination opportunities</h2><p class="muted">${overlaps.length} candidate pairs · distance first</p>${overlaps.map(opportunityButton).join('')}</div>`;
+    ? `<div><button class="reopen-chip" data-action="openOpps">≡ Coordination opportunities <span>${shown.length}</span></button></div>`
+    : `<div class="card closable"><button class="close-x" data-action="closeOpps" aria-label="Close" title="Close">×</button><h2>Coordination opportunities</h2><div class="opp-filter"><label for="oppRadius">Within</label><select id="oppRadius" class="field">${OPP_RADII.map(r=>`<option value="${r}" ${r===state.oppRadius?'selected':''}>${r?r+' mi radius':'Any distance'}</option>`).join('')}</select></div><p class="muted">${shown.length} of ${overlaps.length} candidate pairs${state.oppRadius?` within ${state.oppRadius} mi`:''} · distance first</p>${shown.map(opportunityButton).join('')||`<div class="note">No pairs within ${state.oppRadius} mi. Try a larger radius.</div>`}</div>`;
   return `<div class="grid three">${list}${mapHtml()}${pairPanel()}</div>`;
 }
-function opportunityPage() {const o=state.selectedOverlap;return head('Coordination opportunity','Compare two planned projects and the evidence for their match.',btn('Open conversation','messages','primary'))+`<div class="grid two"><div class="stack">${mapHtml({hover:false})}<div class="card"><h2>Source and uncertainty</h2><p class="muted">The starter workbook links these project names to the supplied Dominion and Georgia Power planning PDFs. Coordinates are approximate. Dates are in-service targets, not construction windows.</p><div class="row wrap">${btn('Check feasibility','feasibility')}${btn('Compare costs','cost')}</div></div></div>${pairPanel()}</div>`;}
 function feasibilityPage() {return head('Check project feasibility','Contractor-led review of nearby work and a proposed closure.',btn('Describe a new project','addProject','primary'))+`<div class="grid three"><div class="card"><h2>Proposed work</h2><p class="muted">Editable demo scenario</p>${[['Project name','name'],['Location','location'],['Start date','start'],['End date','end']].map(([l,k])=>`<div class="fieldgroup"><label>${l}</label><input class="field" data-proposed="${k}" value="${esc(state.proposed[k])}" type="${k==='start'||k==='end'?'date':'text'}"></div>`).join('')}<div class="formgrid"><div class="fieldgroup"><label>Closed lanes</label><input class="field" type="number" min="0" max="4" data-closure="lanes" value="${state.closure.lanes}"></div><div class="fieldgroup"><label>Work hours</label><input class="field" data-closure="hours" value="${esc(state.closure.hours)}"></div></div>${btn('Analyze scenario','analyze','primary accent')}</div>${mapHtml({hover:false})}<div class="card stack"><h2>Feasibility review</h2><div class="item"><h3>Existing work nearby</h3><p class="muted">Projects in the starter workbook appear within the selected 25-mile planning radius.</p></div><div class="item"><h3>Closure conflict</h3><p class="muted">Requires road segment and permit data. The sample closure is illustrative.</p></div><div class="item"><h3>Historical traffic</h3><p class="muted">No traffic history was included in the challenge files. Add a source before estimating congestion.</p><div class="bar amber" style="width:65%">Illustrative peak baseline</div><div class="bar" style="width:82%">Illustrative closure scenario</div></div><div class="note">Possible alternative: test nighttime work. This is a scenario for review, not a feasibility decision.</div>${btn('Compare cost impact','cost')}</div></div>`;}
 function costTotals(){const c=state.cost;return {separate:2*c.mobilization+c.separateDays*c.truckRate+2*c.yard,coordinated:2*c.mobilization+c.coordinatedDays*c.truckRate+c.yard};}
 function costPage(){const c=state.cost,t=costTotals(),save=t.separate-t.coordinated,pct=t.separate?Math.round(save/t.separate*1000)/10:0;return head('Estimate the value of coordination','Compare separate work with a shared-resource scenario. All inputs are illustrative.',btn('Share scenario in conversation','messages','primary'))+`<div class="grid two"><div class="stack"><div class="card"><h2>Two projects on the map</h2><p class="muted">${esc(byId[state.selectedOverlap.project_id_a].project_name)} ↔ ${esc(byId[state.selectedOverlap.project_id_b].project_name)}</p>${mapHtml({small:true,hover:false})}</div><div class="grid two"><div class="card"><h2>Separate work</h2><p class="muted">Two mobilizations · ${c.separateDays} truck-days · two yards</p><div class="metric">$${t.separate.toLocaleString()}</div></div><div class="card"><h2>Coordinated work</h2><p class="muted">Two mobilizations · ${c.coordinatedDays} truck-days · one yard</p><div class="metric green">$${t.coordinated.toLocaleString()}</div></div></div></div><div class="card stack"><div>${pill('Illustrative estimate','amber')}</div><h2>Edit assumptions</h2>${[['Mobilization per event','mobilization'],['Truck rate per day','truckRate'],['Separate truck-days','separateDays'],['Coordinated truck-days','coordinatedDays'],['Yard cost per site','yard']].map(([l,k])=>`<div class="statusline"><label class="muted" for="cost-${k}">${l}</label><input id="cost-${k}" class="field" style="max-width:145px" type="number" min="0" data-cost="${k}" value="${c[k]}"></div>`).join('')}<hr class="divider"><div class="calcout">$${save.toLocaleString()}</div><strong>${pct}% potential reduction</strong><div class="warning">In-service dates do not prove construction overlap. Actual rates, logistics, and schedules must be verified before treating this as savings.</div><div class="tiny">Separate = 2 × mobilization + separate truck-days × rate + 2 × yard. Coordinated = 2 × mobilization + coordinated truck-days × rate + 1 × yard.</div></div></div>`;}
@@ -180,8 +187,7 @@ function resourceModal() {
       <span class="rm-bars" aria-hidden="true"><i></i><i></i><i></i></span>
       <span><strong>${esc(shortName(p.project_name))}</strong><small>${esc(p.utility)}</small><small>${mi.toFixed(1)} mi · in-service ${esc(String(p.in_service_date).slice(0, 10))}</small></span><span class="chev">›</span></button>`).join('')
     || `<div class="note">${at ? `No planned projects within ${radius} mi.` : 'Choose a pickup area to see planned projects nearby.'}</div>`;
-  return `<div class="rm-backdrop" data-action="closeResource"></div>
-  <div class="rm-modal ${manual ? 'manual' : ''}" role="dialog" aria-modal="true" aria-label="Resource listing">
+  return `<div class="rm-modal ${manual ? 'manual' : ''}" role="dialog" aria-modal="true" aria-label="Resource listing">
     <button class="close-x" data-action="closeResource" aria-label="Close" title="Close">×</button>
     ${chat}
     <section class="rm-listing">
@@ -205,7 +211,7 @@ function resourceModal() {
         </div>
         <div><h3>Nearby demand ${matches.length ? `<span class="muted">(${matches.length} match${matches.length === 1 ? '' : 'es'})</span>` : ''}</h3>${demand}</div>
       </div>
-      <div class="rm-actions">${btn('➤ Review and publish', 'publish:resource', 'primary')}${manual ? btn('✦ Use chat instead', 'resourceChatMode') : btn('☰ Use manual form instead', 'resourceManual')}</div>
+      <div class="rm-actions">${btn('➤ Review and publish', 'publish:resource', 'primary')}</div>
     </section>
   </div>`;
 }
@@ -235,8 +241,62 @@ function resourceFromText(text) {
   }
 }
 const clockTime = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-function inventoryPage(){return head('Available resources','Find and offer equipment or crews near planned work.',btn('+ Describe resource','addResource','primary'))+`<div class="grid three"><div class="card"><h2>Search inventory</h2><p class="muted">Demo contractor listings</p><div class="fieldgroup"><label>Category</label><select class="field" id="resourceFilter"><option>All</option><option>Equipment</option><option>Crew</option></select></div><div class="fieldgroup"><label>Near</label><input class="field" value="Savannah, GA"></div>${btn('Apply filters','filterResource','primary accent')}<hr class="divider"><h3>My inventory</h3><p class="muted">Create a listing using chat, or open the manual form.</p>${btn('Describe what is free','addResource')}</div><div class="card"><h2>Resource listings ${demo}</h2>${state.resources.map(r=>`<div class="item"><div class="statusline"><h3>${esc(r.name)}</h3>${pill(r.type)}</div><p class="muted">${r.quantity} available · ${esc(r.date)} · ${esc(r.place)}</p><p class="muted">${esc(r.owner)} · ${r.rate?'$'+r.rate.toLocaleString()+'/day per unit':'Rate on request'}</p>${btn('Request reservation','reserve:'+r.id,'primary accent')}</div>`).join('')}</div><div class="card"><h2>Reservation requests</h2><p class="muted">Requests need owner acceptance; no payment occurs here.</p>${state.reservations.length?state.reservations.map(r=>`<div class="item"><strong>${esc(r.name)}</strong><p class="muted">${esc(r.date)} · ${esc(r.status)}</p></div>`).join(''):'<div class="note">No requests yet. Select a resource to create one.</div>'}<hr class="divider"><h3>Nearby coordination</h3><p class="muted">An overlap can prompt a conversation about a resource. Availability remains separate from proximity.</p>${btn('View overlap','opportunities')}</div></div>`;}
-function reservePage(){const r=state.activeResource||state.resources[0];return head(r.name,'Illustrative listing · confirm all details with its owner.',btn('Back to inventory','inventory'))+`<div class="grid two"><div class="card stack"><h2>${esc(r.name)} ${demo}</h2><p>${esc(r.owner)} · ${esc(r.place)}</p><div class="metric">${r.quantity} available</div><p class="muted">${esc(r.date)} · ${r.rate?'$'+r.rate.toLocaleString()+'/day per unit':'Rate on request'}</p><div class="note">This listing is example data. A reservation request does not confirm availability.</div>${btn('Open conversation','messages')}</div><div class="card"><h2>Request reservation</h2><div class="fieldgroup"><label>Quantity</label><input id="reserveQty" class="field" type="number" min="1" max="${r.quantity}" value="1"></div><div class="fieldgroup"><label>Dates</label><input id="reserveDates" class="field" value="${esc(r.date)}"></div><div class="fieldgroup"><label>Project</label><select class="field" id="reserveProject">${projects.slice(0,5).map(p=>`<option>${esc(p.project_name)}</option>`).join('')}</select></div>${btn('Send request','confirmReserve','primary accent')}</div></div>`;}
+function inventoryPage(){
+  const tab=(label,action,on)=>`<button class="inv-tab ${on?'active':''}" data-action="${action}" aria-pressed="${on}">${label}</button>`;
+  return head('Inventory','Share equipment and crews, or find what other contractors have available.',`<div class="inv-tabs">${tab('+ Add inventory','invAdd',state.resourceModal)}${tab('⌕ Find inventory','invFind',state.invFind)}</div>`)+(state.resourceModal?resourceModal():state.invFind?findSheet():'');
+}
+// Bottom sheet: vertical list of listings on the left, details and order form for the selected one on the right.
+function findSheet(){
+  const types=['All',...new Set(state.resources.map(r=>r.type))];
+  const sel=state.resources.find(r=>r.id===state.invSelected)||state.resources[0];
+  if(sel)state.invSelected=sel.id;
+  const rate=r=>r.rate?'$'+r.rate.toLocaleString()+'/day':'Rate on request';
+  const rows=state.resources.map(r=>`<button class="inv-row ${r.id===sel?.id?'active':''}" data-action="invSelect:${r.id}" data-type="${esc(r.type)}" data-start="${r.start||''}" data-end="${r.end||''}" data-text="${esc([r.name,r.place,r.owner,r.type].join(' ').toLowerCase())}">
+      <span class="inv-row-top"><strong>${esc(r.name)}</strong>${pill(r.type)}</span>
+      <small>${r.quantity} available · ${esc(r.date)}</small><small>⌖ ${esc(r.place)} · ${rate(r)}</small><span class="inv-partial" hidden>Partly covers your dates</span></button>`).join('');
+  const mine=state.reservations.filter(x=>x.id===sel?.id);
+  const detail=sel?`<div class="inv-detail-head"><div>${pill(sel.type)}<h2>${esc(sel.name)}</h2><p class="muted">${esc(sel.owner)}</p></div><div class="inv-price">${rate(sel)}<small>per unit</small></div></div>
+      <div class="inv-facts"><div><span>Available</span><strong>${sel.quantity}</strong></div><div><span>Dates</span><strong>${esc(sel.date)}</strong></div><div><span>Pickup</span><strong>${esc(sel.place)}</strong></div></div>
+      <div class="note">Illustrative listing. Confirm availability, rates and terms with the owner before relying on this order.</div>
+      <form class="inv-order" onsubmit="return false"><h3>Place an order</h3>
+        <div class="inv-order-grid"><label>Quantity<input id="orderQty" class="field" type="number" min="1" max="${sel.quantity}" value="1"></label>
+        <label>Dates<input id="orderDates" class="field" value="${esc(state.invFrom&&state.invTo?`${fmtDate(state.invFrom)} – ${fmtDate(state.invTo)}`:sel.date)}"></label>
+        <label class="wide">For project<select id="orderProject" class="field">${projects.map(p=>`<option>${esc(p.project_name)}</option>`).join('')}</select></label></div>
+        ${btn('Place order','placeOrder','primary')}
+        <p class="tiny">Sends a request to the owner. No payment is taken here.</p></form>
+      ${mine.length?`<div class="inv-mine"><h3>Your requests for this listing</h3>${mine.map(x=>`<div class="item"><strong>${esc(x.status)}</strong><p class="muted">${esc(x.date)}${x.project?' · '+esc(x.project):''}</p></div>`).join('')}</div>`:''}`
+    :'<div class="note">No listings yet.</div>';
+  return `<div class="inv-sheet" role="dialog" aria-label="Find inventory"><button class="close-x" data-action="closeFind" aria-label="Close" title="Close">×</button>
+    <div class="inv-split">
+      <section class="inv-list"><div class="inv-find-head"><h2>Find inventory ${demo}</h2><span class="tiny" id="invCount"></span></div>
+        <div class="inv-filters"><input id="invSearch" class="field" placeholder="Search equipment, crews, places, owners" value="${esc(state.invQuery)}">
+        <select id="invCat" class="field" aria-label="Category">${types.map(t=>`<option ${t===state.invCat?'selected':''}>${esc(t)}</option>`).join('')}</select></div>
+        <div class="inv-dates"><label>From<input id="invFrom" class="field" type="date" value="${state.invFrom}"></label><label>To<input id="invTo" class="field" type="date" value="${state.invTo}" min="${state.invFrom}"></label><button class="ghostlink" data-action="invClearDates" ${state.invFrom||state.invTo?'':'hidden'}>Clear dates</button></div>
+        <div class="inv-rows">${rows}<div class="note inv-empty" hidden>No listings match. Try another search or category.</div></div></section>
+      <section class="inv-detail">${detail}</section></div></div>`;
+}
+function applyInvFilter(){
+  const q=state.invQuery.trim().toLowerCase(),cat=state.invCat,from=state.invFrom,to=state.invTo,rows=[...document.querySelectorAll('.inv-row')];
+  let shown=0;
+  rows.forEach(c=>{
+    const {start,end}=c.dataset,dated=!!(start&&end);
+    // Overlap test on ISO dates: available until at least `from`, and starting no later than `to`.
+    const inWindow=(!from&&!to)||(dated&&(!from||end>=from)&&(!to||start<=to));
+    const ok=(cat==='All'||c.dataset.type===cat)&&(!q||c.dataset.text.includes(q))&&inWindow;
+    c.hidden=!ok;if(ok)shown++;
+    const partial=c.querySelector('.inv-partial');if(partial)partial.hidden=!(ok&&from&&to&&dated&&(start>from||end<to));
+  });
+  const count=$('#invCount');if(count)count.textContent=`${shown} of ${rows.length} listings`;
+  const empty=$('.inv-empty');if(empty)empty.hidden=shown>0;
+  // Keep the details pane in step with the filter: move the selection to the first visible listing.
+  const detail=$('.inv-detail');if(detail)detail.classList.toggle('none',!shown);
+  const active=$('.inv-row.active'),first=rows.find(c=>!c.hidden);
+  if(active?.hidden&&first){
+    const focused=document.activeElement?.id,caret=document.activeElement?.selectionStart;
+    state.invSelected=first.dataset.action.split(':')[1];render();
+    if(focused){const el=document.getElementById(focused);el?.focus();if(caret!=null)try{el.setSelectionRange(caret,caret)}catch{}}
+  }
+}
 function jobsPage(){return head('Staff your projects','Post worker requirements and review applicants.',btn('+ Describe job requirement','addJob','primary'))+`<div class="grid two"><div class="card"><h2>Open job postings ${demo}</h2>${state.jobs.map(j=>`<div class="item"><div class="statusline"><h3>${esc(j.name)}</h3>${pill(j.openings+' openings','amber')}</div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><p class="tiny">${esc(j.owner)}</p>${btn('View role','job:'+j.id)}</div>`).join('')}</div><div class="card stack"><h2>Chat-led posting</h2><div class="bubble">Tell me the role, headcount, project, dates and qualifications. I will prepare a draft for your review.</div><div class="bubble user">We need five certified lineworkers in Savannah this winter.</div><div class="bubble">Which project and pay range should I include?</div>${btn('Continue in chat','addJob','primary accent')}<div class="note">Manual entry remains available from the draft screen.</div></div></div>`;}
 function messagesPage(){const t=costTotals(),s=t.separate-t.coordinated;return head('Contractor messages','Discuss inventory and project coordination with another company.',btn('Call contact','call','secondary'))+`<div class="message-layout"><div class="card"><h2>Conversations</h2><div class="item"><strong>Demo Contractor B</strong><p class="muted">Bucket trucks · Jasper–Okatie ↔ McIntosh–Purrysburg</p></div><div class="item"><strong>Coastal Crane (demo)</strong><p class="muted">Crane availability near Savannah</p></div></div><div class="card message-thread"><h2>Resource discussion ${demo}</h2><div class="bubble">We have two bucket trucks available June 3–10. Can you confirm the project window?</div><div class="bubble user">We are still checking the schedule. Could we review a shared-resource scenario?</div><div class="item"><div class="statusline"><strong>Coordination scenario · for review</strong>${pill('Illustrative','amber')}</div><p>Separate $${t.separate.toLocaleString()} · coordinated $${t.coordinated.toLocaleString()}</p><div class="metric green">$${s.toLocaleString()} potential savings</div><p class="tiny">Assumptions have not been agreed by either contractor.</p>${btn('Open cost comparison','cost')}</div><div class="chat-entry"><input class="field" id="messageText" placeholder="Write a message or ask Gridlock to draft one"><button class="primary" data-action="sendMessage">Send</button></div></div><div class="card"><h2>Opportunity context</h2>${mapHtml({small:true,hover:false})}<div class="stats"><span><b>5.65 mi</b>starter distance</span><span><b>152 days</b>date gap</span></div><p class="muted">No real contractor contact was provided. Phone and messaging are interface concepts.</p>${btn('Discuss assumptions','cost','primary accent')}</div></div>`;}
 function jobCard(j){const saved=state.savedJobs.includes(j.id);return `<div class="item job-card ${j.id===state.selectedJob.id?'selected':''}" data-job="${j.id}"><div class="statusline"><h3>${esc(j.name)}</h3><div class="row wrap">${pill(j.openings+' openings','amber')}<button class="save-heart ${saved?'saved':''}" data-save-job="${j.id}" aria-label="${saved?'Remove from saved jobs':'Save job'}" title="${saved?'Remove from saved jobs':'Save job'}">${saved?'♥':'♡'}</button></div></div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><div class="row wrap">${j.quals.map(q=>pill(q,'gray')).join('')}</div><div class="action">${btn('View job','job:'+j.id,'primary accent')}</div></div>`;}
@@ -279,12 +339,13 @@ addEventListener('resize',()=>positionHovercard());
 function toast(msg){state.toast=msg;render();setTimeout(()=>{state.toast='';const el=$('#toast');if(el)el.remove();},4200)}
 function assistantHint(){return state.role==='worker'?'Find jobs matching my qualifications':({map:'What could these projects share?',cost:'Try a different cost scenario',feasibility:'Test another work window',inventory:'Find nearby bucket trucks',messages:'Draft a reply',jobs:'Draft a job posting'}[state.page]||'Describe what you need');}
 function render(){
-  const pages={map:mapPage,opportunities:opportunityPage,feasibility:feasibilityPage,cost:costPage,projects:projectsPage,projectDetail:projectDetailPage,inventory:inventoryPage,reserve:reservePage,jobs:jobsPage,messages:messagesPage,findjobs:workerJobsPage,saved:savedJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
+  const pages={map:mapPage,feasibility:feasibilityPage,cost:costPage,projects:projectsPage,projectDetail:projectDetailPage,inventory:inventoryPage,jobs:jobsPage,messages:messagesPage,findjobs:workerJobsPage,saved:savedJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
   const content=state.page==='addProject'?projectUploadPage():state.page==='addResource'?chatPage('resource'):state.page==='addJob'?chatPage('job'):state.page.startsWith('manual:')?chatPage(state.page.split(':')[1],true):(pages[state.page]||mapPage)();
-  const mapFocus = state.page==='map' || state.page==='opportunities' || state.page==='findjobs';
-  $('#app').innerHTML=`<a href="#main" class="skip">Skip to content</a><div class="stage-map ${mapFocus?'map-focus':''}">${mapHtml({hover:mapFocus,jobs:state.role==='worker'})}</div><div class="shell">${nav()}<div class="main">${topbar()}<main class="workspace page-${state.page}" id="main">${content}</main></div></div><div class="chatbar"><span class="spark">✦</span><input id="globalChat" placeholder="Ask Gridlock: ${assistantHint()}" aria-label="Ask Gridlock"><button class="primary" data-action="globalChat">➜</button></div>${state.resourceModal&&state.page==='inventory'?resourceModal():''}${state.toast?`<div id="toast" role="status" style="position:fixed;top:85px;right:25px;z-index:30;background:#113a53;color:white;padding:14px 44px 14px 18px;border-radius:13px;box-shadow:0 8px 30px #2345">${esc(state.toast)}<button class="close-x light" data-action="closeToast" aria-label="Close" title="Close">×</button></div>`:''}`;
+  const mapFocus=state.page==='map'||state.page==='findjobs';
+  $('#app').innerHTML=`<a href="#main" class="skip">Skip to content</a><div class="stage-map ${mapFocus?'map-focus':''} ${state.page==='map'&&!state.pairClosed?'pair-open':''}">${mapHtml({hover:mapFocus,jobs:state.role==='worker'})}</div><div class="shell">${nav()}<div class="main">${topbar()}<main class="workspace page-${state.page}" id="main">${content}</main></div></div><div class="chatbar"><span class="spark">✦</span><input id="globalChat" placeholder="Ask Gridlock: ${assistantHint()}" aria-label="Ask Gridlock"><button class="primary" data-action="globalChat">➜</button></div>${state.toast?`<div id="toast" role="status" style="position:fixed;top:85px;right:25px;z-index:30;background:#113a53;color:white;padding:14px 44px 14px 18px;border-radius:13px;box-shadow:0 8px 30px #2345">${esc(state.toast)}<button class="close-x light" data-action="closeToast" aria-label="Close" title="Close">×</button></div>`:''}`;
   window.syncGoogleMap?.();
   requestAnimationFrame(positionHovercard);
+  if(state.invFind)applyInvFilter();
   if(state.resourceModal){const b=$('#rmBubbles');if(b)b.scrollTop=b.scrollHeight;window.renderMiniMap?.($('#rmMap'))}
 }
 function draftFromText(kind,text){
@@ -308,10 +369,12 @@ function draftFromText(kind,text){
   }
 }
 function handleAction(act){
-  if(act==='addResource'||act==='manual:resource'||act==='chat:resource'){state.page='inventory';state.resourceModal=true;state.resourceManual=act==='manual:resource';render();setTimeout(()=>$('#chatText')?.focus());return}
+  if(act==='addResource'||act==='manual:resource'||act==='chat:resource'){state.page='inventory';state.resourceModal=true;state.invFind=false;state.resourceManual=act==='manual:resource';render();setTimeout(()=>$('#chatText')?.focus());return}
   if(act==='closeResource'){state.resourceModal=false;render();return}
-  if(act==='resourceManual'){state.resourceManual=true;render();return}
-  if(act==='resourceChatMode'){state.resourceManual=false;render();return}
+  if(act==='invAdd'){state.resourceModal=!state.resourceModal;state.invFind=false;render();if(state.resourceModal)setTimeout(()=>$('#chatText')?.focus());return}
+  if(act==='invFind'){state.invFind=!state.invFind;state.resourceModal=false;render();return}
+  if(act==='invClearDates'){state.invFrom=state.invTo='';render();return}
+  if(act==='closeFind'){state.invFind=false;render();return}
   if(act==='sendChat:resource'){
     const text=$('#chatText')?.value.trim();if(!text)return;
     state.resourceChat.push({by:'user',text,time:clockTime()});resourceFromText(text);state.resourceDraft.updated=clockTime();
@@ -319,8 +382,26 @@ function handleAction(act){
     state.resourceChat.push({by:'assistant',time:clockTime(),text:missing.length?`I updated the listing. To make it accurate and complete, can you share ${missing.join(', ')}?`:'The listing is complete based on your information. Please review every field before publishing. Anything else to add, like special notes or travel radius?'});
     render();setTimeout(()=>$('#chatText')?.focus());return;
   }
-  if(act.startsWith('selectProject:')){const id=act.split(':')[1];state.selectedProject=state.companyProjects.find(p=>p.project_id===id)||byId[id];state.page='projectDetail';render();return}
-  if(act.startsWith('reserve:')){state.activeResource=state.resources.find(r=>r.id===act.split(':')[1]);state.page='reserve';render();return}
+  if(act.startsWith('selectProject:')){
+    const id=act.split(':')[1];
+    state.selectedProject=state.companyProjects.find(p=>p.project_id===id)||byId[id];
+    state.page='projectDetail';
+    render();
+    return;
+  }
+  if(act.startsWith('invSelect:')){
+    state.invSelected=act.split(':')[1];
+    render();
+    return;
+  }
+  if(act.startsWith('reserve:')){
+    state.invSelected=act.split(':')[1];
+    state.invFind=true;
+    state.resourceModal=false;
+    state.page='inventory';
+    render();
+    return;
+  }
   if(act.startsWith('job:')){state.selectedJob=state.jobs.find(j=>j.id===act.split(':')[1]);state.page='jobDetail';render();return}
   if(act.startsWith('manual:')){state.page=act;render();return}
   if(act.startsWith('chat:')){state.page={project:'addProject',resource:'addResource',job:'addJob'}[act.split(':')[1]];render();return}
@@ -333,11 +414,17 @@ function handleAction(act){
     const kind=act.split(':')[1],d=kind==='project'?(state.projectUpload?.draft||{}):kind==='resource'?state.resourceDraft:state.jobDraft;
     if(!Object.values(d).some(Boolean)){toast('Describe the item or fill its fields first.');return}
     if(kind==='project'){const project={...state.projectUpload.draft,project_id:'UPLOAD_'+Date.now(),project_name:state.projectUpload.draft.project_name||state.projectUpload.name.replace(/\.pdf$/i,''),source:'contract-upload'};state.companyProjects.unshift(project);state.selectedProject=project;state.projectUpload=null;state.page='projectDetail';toast('Contract details added to your company projects.');}
-    else if(kind==='resource'){const miss=resourceMissing(d);if(miss.length){toast('Add '+miss.join(', ')+' before publishing.');return}state.resources.unshift({id:'NEW'+Date.now(),name:d.name||d.category,quantity:Number(d.quantity)||1,date:d.end?`${fmtDate(d.start)} – ${fmtDate(d.end)}`:fmtDate(d.start),place:d.location,rate:Number(d.rate)||0,type:CATEGORIES[d.category]||'Equipment',owner:'Your company (demo)'});state.resourceDraft={};state.resourceChat=[];state.resourceModal=false;state.page='inventory';toast('Demo resource listing added locally.')}
+    else if(kind==='resource'){const miss=resourceMissing(d);if(miss.length){toast('Add '+miss.join(', ')+' before publishing.');return}state.resources.unshift({id:'NEW'+Date.now(),name:d.name||d.category,quantity:Number(d.quantity)||1,date:d.end?`${fmtDate(d.start)} – ${fmtDate(d.end)}`:fmtDate(d.start),start:d.start,end:d.end||d.start,place:d.location,rate:Number(d.rate)||0,type:CATEGORIES[d.category]||'Equipment',owner:'Your company (demo)'});state.resourceDraft={};state.resourceChat=[];state.resourceModal=false;state.invFind=true;state.page='inventory';toast('Demo resource listing added locally.')}
     else{state.jobs.unshift({id:'NEW'+Date.now(),name:d.role||'Untitled opening',openings:Number(d.openings)||1,place:'Location to confirm',pay:'Rate to confirm',dates:d.dates||'Dates to confirm',quals:d.requirements?[d.requirements]:[],owner:'Your company (demo)'});state.page='jobs';toast('Demo job posting added locally.')}
     render();return;
   }
-  if(act==='confirmReserve'){const r=state.activeResource||state.resources[0],q=Math.max(1,Number($('#reserveQty')?.value)||1);if(q>r.quantity){toast('Requested quantity exceeds the sample listing.');return}state.reservations.unshift({name:r.name,date:$('#reserveDates')?.value||r.date,status:`Pending · ${q} requested`});state.page='inventory';toast('Demo reservation request saved locally.');return}
+  if(act==='placeOrder'){
+    const r=state.resources.find(x=>x.id===state.invSelected);if(!r)return;
+    const q=Math.max(1,Number($('#orderQty')?.value)||1);
+    if(q>r.quantity){toast(`Only ${r.quantity} available in this listing.`);return}
+    state.reservations.unshift({id:r.id,name:r.name,date:$('#orderDates')?.value||r.date,project:$('#orderProject')?.value||'',status:`Pending · ${q} requested`});
+    toast('Demo order request saved locally. The owner still needs to accept it.');return;
+  }
   if(act==='apply'){const j=state.selectedJob;state.applications.unshift({name:j.name,place:j.place,date:new Date().toLocaleDateString(),status:'Submitted (demo)'});state.page='applications';toast('Demo application saved locally. Nothing was sent to an employer.');return}
   if(act.startsWith('toggleSaveJob:')){const id=act.split(':')[1],index=state.savedJobs.indexOf(id);if(index===-1){state.savedJobs.push(id);toast('Job saved.')}else{state.savedJobs.splice(index,1);toast('Job removed from saved.')}render();return}
   if(act==='globalChat'){const text=$('#globalChat')?.value.trim();if(!text)return; if(/resource|truck|crane|crew/i.test(text)){state.page='inventory';toast('Showing demo resources.')}else if(/cost|sav/i.test(text)){state.page='cost';toast('Opening the editable cost scenario.')}else if(state.role==='worker'&&/job|work|certification/i.test(text)){state.page='findjobs';toast('Showing sample job listings.')}else if(/project|draft|add/i.test(text)){state.page='addProject';state.chatMode='project';state.chat=[{by:'user',text}];draftFromText('project',text);render();toast('Review the project draft before publishing.')}else toast(state.role==='worker'?'Try asking about jobs, trades, or certifications.':'Try asking about projects, cost, or inventory.');return}
@@ -366,6 +453,7 @@ document.addEventListener('click',e=>{
   const suggest=e.target.closest('[data-suggest]');if(suggest){$('#chatText').value=suggest.dataset.suggest;$('#chatText').focus();return}
   const action=e.target.closest('[data-action]');if(action)handleAction(action.dataset.action);
 });
+document.addEventListener('input',e=>{if(e.target.id==='invSearch'){state.invQuery=e.target.value;applyInvFilter()}});
 document.addEventListener('change',e=>{
   if(e.target.id==='projectPdf'){
     const file=e.target.files?.[0];if(!file)return;
@@ -373,6 +461,15 @@ document.addEventListener('change',e=>{
     parseProjectPdf(file).then(draft=>{state.projectUpload={name:file.name,status:'Parsed successfully',parsed:true,draft};render()}).catch(error=>{state.projectUpload={name:file.name,status:'Could not parse PDF',error:error.message,draft:{}};render()});
     return;
   }
+  if(e.target.id==='oppRadius'){
+    state.oppRadius=Number(e.target.value);
+    // Close cards for a pair or project that the new radius filters out.
+    if(state.pairFocus&&!oppInRange(state.selectedOverlap)){state.pairFocus=false;state.hoverClosed=true;state.pairClosed=true}
+    else if(!state.pairFocus&&!projectVisible(state.selectedProject))state.hoverClosed=true;
+    render();return;
+  }
+  if(e.target.id==='invCat'){state.invCat=e.target.value;applyInvFilter();return}
+  if(e.target.id==='invFrom'||e.target.id==='invTo'){state[e.target.id]=e.target.value;if(state.invFrom&&state.invTo&&state.invTo<state.invFrom)state.invTo=state.invFrom;render();return}
   const rd=e.target.dataset.rdraft;if(rd){const d=state.resourceDraft;d[rd]=rd==='radius'?Number(e.target.value):e.target.value;d.updated=clockTime();if(['category','location','radius','operator'].includes(rd))render();else{const t=document.querySelector('.rm-listing .tiny');if(t)t.textContent='Last updated '+d.updated}return}
   const c=e.target.dataset.cost;if(c){state.cost[c]=Math.max(0,Number(e.target.value)||0);render();return}
   const p=e.target.dataset.proposed;if(p){state.proposed[p]=e.target.value;return}
@@ -380,5 +477,5 @@ document.addEventListener('change',e=>{
   const d=e.target.dataset.draft;if(d){const kind=e.target.dataset.kind,target=kind==='project'?state.draft:kind==='resource'?state.resourceDraft:state.jobDraft;target[d]=e.target.value;const copies=document.querySelectorAll(`[data-draft="${d}"][data-kind="${kind}"]`);copies.forEach(x=>{if(x!==e.target)x.value=e.target.value})}
   const projectDraft=e.target.dataset.projectDraft;if(projectDraft&&state.projectUpload){state.projectUpload.draft[projectDraft]=e.target.value}
 });
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='globalChat'){e.preventDefault();handleAction('globalChat')}if(e.key==='Escape'&&state.resourceModal){handleAction('closeResource');return}if(e.key==='Enter'&&e.target.id==='chatText'){e.preventDefault();handleAction('sendChat:'+(state.resourceModal||state.page==='addResource'?'resource':state.page==='addJob'?'job':'project'))}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='globalChat'){e.preventDefault();handleAction('globalChat')}if(e.key==='Escape'&&state.resourceModal){handleAction('closeResource');return}if(e.key==='Escape'&&state.invFind&&state.page==='inventory'){handleAction('closeFind');return}if(e.key==='Enter'&&e.target.id==='chatText'){e.preventDefault();handleAction('sendChat:'+(state.resourceModal||state.page==='addResource'?'resource':state.page==='addJob'?'job':'project'))}});
 render();

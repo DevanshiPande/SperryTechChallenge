@@ -23,14 +23,11 @@
 .workspace .grid.three>.map{visibility:hidden;pointer-events:none}
 .workspace .grid.two .map,.workspace .joblayout>.map,.workspace .message-layout .map{display:none}
 .page-map .grid.three>.card:first-child,.page-map .grid.three>.card:last-child,.page-opportunities .grid.two>.card,.page-feasibility .grid.three>.card{max-height:calc(100vh - 226px);overflow:auto}
-.page-opportunities .grid.two{grid-template-columns:minmax(0,1fr) 360px}
-.page-opportunities .grid.two>.stack>.card{max-width:450px}
-.page-opportunities .grid.two>.stack>.map{display:none}
 .page-findjobs .joblayout{grid-template-columns:minmax(460px,575px) 1fr}
 .page-findjobs .joblayout>.card{max-height:calc(100vh - 225px);overflow:auto}
-.page-cost .grid.two,.page-projects .grid.two,.page-projectDetail .grid.two{max-width:1200px}
-.page-cost .grid.two .card .map,.page-projects .grid.two>.map,.page-projectDetail .grid.two .map{display:none}
-.page-projects .grid.two{grid-template-columns:minmax(450px,720px) 1fr}.page-projects .grid.two>.card{max-height:calc(100vh - 225px);overflow:auto}
+.page-cost .grid.two,.page-projectDetail .grid.two{max-width:1200px}
+.page-cost .grid.two .card .map,.page-projectDetail .grid.two .map{display:none}
+
 .page-projectDetail .grid.two{grid-template-columns:minmax(0,1fr) 430px}
 .page-projectDetail .grid.two>.stack>.card{max-width:620px}
 .page-feasibility .grid.three{grid-template-columns:355px minmax(220px,1fr) 355px}
@@ -70,7 +67,7 @@
 .reopen-chip span{background:#e3f4f5;color:#0f7f8c;border-radius:10px;padding:1px 8px;font-size:12px}
 .reopen-chip:hover{background:#fff}
 /* Explore map: panels scroll internally, so keep the page itself still and the gap under the top bar constant. */
-@media(min-width:741px){html:has(.page-map),html:has(.page-map) body{overflow:hidden;height:100%}}
+@media(min-width:741px){html:has(.page-map),html:has(.page-map) body,html:has(.page-inventory),html:has(.page-inventory) body{overflow:hidden;height:100%}}
 
 /* Top bar: compact, capsule-shaped, frosted glass */
 .topbar{height:52px;min-height:0;gap:10px;padding:0 7px 0 22px;border-radius:999px;border:.5px solid #ffffffcc;background:#ffffffb8;backdrop-filter:saturate(180%) blur(30px);-webkit-backdrop-filter:saturate(180%) blur(30px);box-shadow:0 1px 1px #0000000a,0 8px 28px #1a3b5a1f}
@@ -167,3 +164,92 @@
 .save-heart{width:30px;height:30px;padding:0;border:1px solid #dce5e9;border-radius:50%;background:#fff;color:#758896;font-size:20px;line-height:26px}.save-heart:hover,.save-heart.saved{border-color:#e7a4a0;background:#fff4f2;color:#d95750}.saved-jobs{width:min(575px,100%);max-height:calc(100vh - 225px);overflow:auto}.saved-jobs .job-card{margin-top:10px}
 
 .project-upload-layout{display:grid;grid-template-columns:minmax(280px,420px) minmax(420px,700px);gap:16px;max-width:1160px}.upload-card,.project-draft{align-self:start}.upload-icon{display:grid;place-items:center;width:56px;height:64px;margin-bottom:18px;border:2px solid #d95750;border-radius:9px;color:#d95750;font-size:13px;font-weight:800;letter-spacing:.5px;background:#fff5f2}.upload-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:190px;margin:22px 0;padding:24px;border:1.5px dashed #9cc8cf;border-radius:16px;background:#f5fbfb;text-align:center;color:#0d3554;cursor:pointer}.upload-drop:hover{border-color:#0f98a8;background:#eef9fa}.upload-drop input{position:absolute;width:1px;height:1px;opacity:0}.upload-drop span{font-size:12px;color:#718293}.project-draft .fieldgroup{display:block;margin-bottom:13px}.project-draft .fieldgroup>span{display:block;margin-bottom:6px;font-size:13px;font-weight:700;color:#23394b}.project-draft .row{margin-top:18px}@media(max-width:900px){.project-upload-layout{grid-template-columns:1fr}.project-upload-layout .project-draft{max-width:none}}
+
+
+/* Inventory: Add / Find tabs and bottom sheets */
+.inv-tabs{display:inline-flex;padding:3px;border-radius:999px;background:#7676801f;gap:2px}
+.inv-tab{border:0;background:transparent;border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:650;color:#3a4d5c;cursor:pointer;white-space:nowrap}
+.inv-tab.active{background:#0d3554;color:#fff;box-shadow:0 1px 3px #0000002e}
+.inv-tab:not(.active):hover{background:#ffffffaa}
+@keyframes sheet-up{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.rm-modal,.inv-sheet{position:fixed;z-index:26;top:auto;bottom:96px;left:216px;right:16px;transform:none;width:auto;height:min(600px,calc(100vh - 200px));animation:sheet-up .22s ease-out}
+.rm-modal.manual{width:auto;grid-template-columns:1fr}
+.inv-sheet{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:26px;background:#f3f6f8f5;backdrop-filter:blur(24px);box-shadow:0 20px 70px #0b2a4250;border:1px solid #fff}
+.inv-sheet>.close-x{top:16px;right:16px}
+.inv-find-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-right:40px}
+.inv-find-head h2{margin:0 8px 0 0;font-size:18px}
+.inv-find-head select.field{width:auto}
+@media(max-width:740px){.rm-modal,.inv-sheet{left:8px;right:8px;bottom:80px;height:calc(100vh - 170px)}}
+.inv-sheet{height:auto;max-height:min(600px,calc(100vh - 200px))}
+
+/* Find inventory: vertical list on the left, selected listing + order form on the right */
+.inv-sheet{height:min(600px,calc(100vh - 200px));max-height:none}
+.inv-split{flex:1;min-height:0;display:grid;grid-template-columns:minmax(300px,1fr) minmax(0,1fr);gap:12px}
+.inv-list,.inv-detail{min-height:0;display:flex;flex-direction:column;gap:10px}
+.inv-list .inv-find-head{padding-right:0}
+.inv-filters{display:flex;gap:8px}
+.inv-filters input{flex:1;border-radius:999px;padding:9px 14px}
+.inv-filters select{width:auto;border-radius:999px;padding:9px 12px}
+.inv-rows{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:2px}
+.inv-row{display:flex;flex-direction:column;gap:3px;text-align:left;border:1px solid transparent;background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;box-shadow:0 1px 3px #0f2d4412}
+.inv-row[hidden]{display:none}
+.inv-row:hover{border-color:#cfe3e8}
+.inv-row.active{border-color:#0d3554;box-shadow:0 0 0 2px #0d355422}
+.inv-row-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.inv-row strong{font-size:14px;color:#0d3554}
+.inv-row small{font-size:12px;color:#6b7f90}
+.inv-row .pill{padding:4px 9px;font-size:11px}
+.inv-empty[hidden]{display:none}
+.inv-detail{overflow:auto;background:#fff;border-radius:18px;padding:18px 18px 14px;margin-right:34px;box-shadow:0 1px 3px #0f2d4412}
+.inv-detail-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.inv-detail-head h2{margin:8px 0 2px;font-size:20px;color:#0d3554}
+.inv-detail-head p{margin:0}
+.inv-price{text-align:right;font-size:20px;font-weight:800;color:#0d3554;white-space:nowrap}
+.inv-price small{display:block;font-size:11px;font-weight:500;color:#6b7f90}
+.inv-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.inv-facts div{background:#f4f8f9;border-radius:12px;padding:10px}
+.inv-facts span{display:block;font-size:11px;color:#6b7f90}
+.inv-facts strong{font-size:13px;color:#0d3554}
+.inv-order{border-top:1px solid #e8eef1;padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.inv-order h3,.inv-mine h3{margin:0;font-size:15px}
+.inv-order-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:10px}
+.inv-order-grid label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:700;color:#23394b}
+.inv-order-grid .wide{grid-column:1/-1}
+.inv-order-grid .field{padding:9px 12px;font-weight:500}
+.inv-order .primary{height:46px;border-radius:14px}
+.inv-order .tiny{margin:0}
+.inv-mine{border-top:1px solid #e8eef1;padding-top:10px}
+.rm-actions{grid-template-columns:1fr}
+@media(max-width:900px){.inv-split{grid-template-columns:1fr;overflow:auto}.inv-rows{max-height:240px}.inv-detail{margin-right:0}}
+
+.inv-dates{display:flex;align-items:flex-end;gap:8px}
+.inv-dates label{flex:1;display:flex;flex-direction:column;gap:3px;font-size:11.5px;font-weight:700;color:#23394b}
+.inv-dates .field{border-radius:999px;padding:7px 12px;font-size:13px}
+.inv-dates .ghostlink{white-space:nowrap;font-size:12px;padding:8px 4px;color:#0f7f8c;cursor:pointer}
+.inv-dates .ghostlink[hidden]{display:none}
+.inv-partial{align-self:flex-start;margin-top:3px;font-size:11px;font-weight:700;color:#9a6504;background:#fff1d5;border-radius:999px;padding:2px 8px}
+.inv-partial[hidden]{display:none}
+.inv-detail.none>*{display:none}
+.inv-detail.none:before{content:'No listing matches these filters.';margin:auto;color:#6b7f90;font-size:14px}
+
+/* Inventory forms live in the page (not floating): two cards side by side under the header */
+.workspace .rm-modal,.workspace .inv-sheet{position:relative;inset:auto;transform:none;animation:none;width:auto;max-width:1400px;height:calc(100vh - 278px);min-height:260px;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;pointer-events:auto;z-index:auto}
+.workspace .rm-modal{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);gap:16px}
+.workspace .inv-sheet{display:flex}
+.workspace .inv-split{gap:16px}
+.workspace .rm-chat,.workspace .rm-listing,.workspace .inv-list,.workspace .inv-detail{background:#fffffff2;border:1px solid #fff;border-radius:20px;box-shadow:0 13px 42px #173e5a2b;backdrop-filter:blur(19px)}
+.workspace .inv-list{padding:18px}
+.workspace .inv-detail{margin-right:0}
+.workspace .inv-row{background:#f6f9fa;box-shadow:none;border-color:#e6edf0}
+.workspace .inv-row.active{background:#fff;border-color:#0d3554}
+.workspace .rm-modal>.close-x,.workspace .inv-sheet>.close-x{display:none}
+@media(max-width:900px){.workspace .rm-modal{grid-template-columns:1fr;height:auto}.workspace .inv-sheet{height:auto}}
+
+.opp-filter{display:flex;align-items:center;gap:8px;margin:2px 0 -4px}
+.opp-filter label{font-size:12.5px;font-weight:700;color:#23394b}
+.opp-filter .field{width:auto;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;color:#0d3554}
+
+/* Map legend sits bottom-right; shifts left of the coordination panel when that panel is open */
+.stage-map .map-legend{left:auto;right:16px;bottom:100px}
+@media(min-width:1101px){.stage-map.pair-open .map-legend{right:387px}}
+@media(max-width:740px){.stage-map .map-legend{left:auto;right:10px;bottom:95px}}
