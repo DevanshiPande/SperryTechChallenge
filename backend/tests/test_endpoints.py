@@ -44,3 +44,24 @@ def test_work_type_labels():
 def test_fallback_validation():
     assert validate_fallback("Cameron Jct – Cameron – St Matthews 46 kV Rebuild", ["Cameron Jct", "St Matthews"])
     assert not validate_fallback("Cameron Jct – Cameron – St Matthews 46 kV Rebuild", ["Orangeburg"])
+
+
+def test_geocoder_rejects_a_different_town_than_asked():
+    from services.geocode import _place_matches
+    tallahassee = {"address": {"city": "Tallahassee", "state": "Florida"}, "display_name": "Tallahassee, Leon County, Florida"}
+    assert not _place_matches("Tampa, FL", tallahassee)
+    tampa_drive = {"addresstype": "road", "address": {"road": "Tampa Drive", "city": "Tallahassee"}, "display_name": "Tampa Drive, Tallahassee"}
+    assert not _place_matches("Tampa, FL", tampa_drive)  # a street that shares the name is not the town
+    assert _place_matches("12 Tampa Drive, Tallahassee", tampa_drive)
+    assert _place_matches("Hardeeville, SC", {"address": {"town": "Hardeeville"}, "display_name": "Hardeeville, Jasper County"})
+
+
+def test_saving_the_same_project_twice_returns_the_first(client):
+    from conftest import as_company
+    body = {"name": "Water pipeline 5th st", "endpoints": [{"name": "site", "lat": 32.08, "lon": -81.09}],
+            "start_date": "2027-01-01", "end_date": "2027-06-01"}
+    first = client.post("/projects", json=body, headers=as_company("CMP_A")).json()
+    again = client.post("/projects", json=body, headers=as_company("CMP_A")).json()
+    assert again["project"]["id"] == first["project"]["id"] and again.get("already_saved")
+    other = client.post("/projects", json={**body, "end_date": "2027-07-01"}, headers=as_company("CMP_A")).json()
+    assert other["project"]["id"] != first["project"]["id"]  # different dates = a different project

@@ -360,9 +360,31 @@ def _closure_conflicts(project):
     return closures.conflicts(project, others)
 
 
+def _same_project(db, company_id, data):
+    """An existing project of this company with the same name, dates and location (a repeated save), or None."""
+    name = (data.get("name") or "").strip().lower()
+    if not name:
+        return None
+    for d in db.projects.find({"company_id": company_id, "source.type": "user"}):
+        w = d.get("construction_window") or {}
+        same_dates = (not data.get("start_date") or data.get("start_date") == w.get("start")) and \
+                     (not data.get("end_date") or data.get("end_date") == w.get("end"))
+        same_place = (data.get("location_text") or None) == (d.get("location_text") or None) and \
+                     (not data.get("endpoints") or [(e.get("lat"), e.get("lon")) for e in data["endpoints"]] ==
+                      [(e.get("lat"), e.get("lon")) for e in d.get("endpoints") or []])
+        if (d.get("name") or "").strip().lower() == name and same_dates and same_place:
+            return d
+    return None
+
+
 def create_user_project(ident, data):
     db = require_db()
     company = ident.require_company()
+    existing = _same_project(db, company["id"], data or {})
+    if existing:
+        # Saving the same project twice returns the first copy instead of creating a duplicate.
+        return {"project": get_project(existing["id"]), "overlaps": [o for o in user_overlaps() if existing["id"] in
+                (o["project_a"], o["project_b"])], "closure_conflicts": _closure_conflicts(existing), "already_saved": True}
     p = build_user_project(new_id("USR"), company, data)
     mongo.insert(db, "projects", p)
     events.emit("projects", "insert", p["id"], f"{company['name']} added project {p['name']}", company["id"])

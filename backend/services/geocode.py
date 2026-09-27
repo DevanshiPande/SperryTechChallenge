@@ -47,6 +47,29 @@ def _clean_query(text):
     return q.strip(" .")
 
 
+STREET_WORDS = r"(st|street|rd|road|ave|avenue|dr|drive|hwy|highway|blvd|boulevard|ln|lane|way|pkwy|parkway|ct|court|pl|place|cir|circle|trl|trail|route|i-\d+|us-\d+|sc-\d+|ga-\d+)"
+PLACE_FIELDS = ("city", "town", "village", "hamlet", "suburb", "municipality", "county", "neighbourhood", "quarter")
+
+
+def _place_matches(query, item):
+    """The search is limited to the service area, so for a place outside it Nominatim returns the closest thing
+    inside it ('Tampa, FL' -> Tampa Drive in Tallahassee). Accept a result only if the place named first in the
+    query is in it: for a town, in the result's town/city/county names (not a street that shares the name)."""
+    first = re.split(r",", query)[0].strip().lower()
+    is_street = bool(re.match(r"^\d+\s", first) or re.search(STREET_WORDS, first))
+    first = re.sub(r"^\d+\s+", "", first)
+    words = [w for w in re.findall(r"[a-z0-9]+", first) if len(w) > 2 and w not in {"the", "and", "near", "county", "city"}]
+    if not words:
+        return True
+    a = item.get("address") or {}
+    if is_street or not a:
+        hay = " ".join(str(v) for v in a.values()) + " " + (item.get("display_name") or "")
+    else:
+        hay = " ".join(str(a.get(k) or "") for k in PLACE_FIELDS) + " " + (item.get("name") if item.get("addresstype") in PLACE_FIELDS else "") 
+    hay = hay.lower()
+    return all(w in hay for w in words)
+
+
 def _label(item):
     a = item.get("address") or {}
     town = a.get("city") or a.get("town") or a.get("village") or a.get("hamlet") or a.get("suburb") or a.get("county")
@@ -81,11 +104,14 @@ def geocode(text):
     q = _clean_query(text)
     key = hashlib.sha256(q.lower().encode()).hexdigest()
     hit = _cache_get(key)
+    # Answers cached before the place check could be a wrong town (e.g. Tampa -> Tallahassee): re-check them.
+    if hit and hit != "MISS" and not _place_matches(q, {"display_name": hit.get("label") or ""}):
+        hit = "MISS"
     if hit != "MISS":
         return {**hit, "query": text} if hit else None
     email = os.environ.get("NOMINATIM_EMAIL", "")
     headers = {"User-Agent": f"Gridlock-ShellHacks/1.0 ({email})"}
-    params = {"format": "json", "limit": 1, "countrycodes": "us", "viewbox": VIEWBOX, "bounded": 1,
+    params = {"format": "json", "limit": 5, "countrycodes": "us", "viewbox": VIEWBOX, "bounded": 1,
               "addressdetails": 1, "q": q}
     with _lock:
         wait = 1.0 - (time.time() - _last[0])
@@ -99,6 +125,7 @@ def geocode(text):
             return None  # not cached: a transient failure should not stick
         finally:
             _last[0] = time.time()
+    items = [it for it in items if _place_matches(q, it)]
     if not items:
         _cache_set(key, None)
         return None
