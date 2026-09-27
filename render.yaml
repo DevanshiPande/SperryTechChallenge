@@ -1,0 +1,60 @@
+# Render Blueprint for ContractMap: New -> Blueprint -> pick this repo. Secrets marked "sync: false" are entered
+# in the Render dashboard (never committed).
+services:
+  # Backend API (FastAPI). ~435 MB in memory (road network, traffic model, ML models): Standard plan (2 GB).
+  - type: web
+    name: contractmap-api
+    runtime: python
+    plan: standard
+    region: virginia
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    domains:
+      - api.contractmap.us
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MONGO_URI
+        sync: false
+      - key: MONGO_DB
+        value: gridlock
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_TIMEOUT_S
+        value: "20"
+      - key: NOMINATIM_EMAIL
+        sync: false
+      # Only the ContractMap site may call the API from a browser.
+      - key: CORS_ORIGINS
+        value: https://contractmap.us,https://www.contractmap.us
+      # Pre-compute (or load from the database) traffic congestion for every project at startup.
+      - key: GRIDLOCK_WARM_CONGESTION
+        value: "1"
+
+  # Landing page (index.html) + app (app.html): a static site. config.js is written at build time from the
+  # settings below, so the Maps key is never committed.
+  - type: web
+    name: contractmap-site
+    runtime: static
+    rootDir: frontend
+    buildCommand: >-
+      printf "window.GRIDLOCK_CONFIG = { apiUrl: '%s', googleMapsApiKey: '%s', googleMapsMapId: 'DEMO_MAP_ID' };\n"
+      "$API_URL" "$MAPS_KEY" > config.js
+    staticPublishPath: .
+    domains:
+      - contractmap.us
+      - www.contractmap.us
+    headers:
+      # HTML and scripts are re-checked on every visit so a new deploy shows up immediately.
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    envVars:
+      - key: API_URL
+        value: https://api.contractmap.us
+      - key: MAPS_KEY
+        sync: false
