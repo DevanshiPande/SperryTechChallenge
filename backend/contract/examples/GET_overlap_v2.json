@@ -20,24 +20,25 @@
   "time_gap_days": 152,
   "window_overlap_months": 24,
   "schedule_shift_possible": false,
-  "score": 64.4,
+  "timing_confidence": "predicted",
+  "score": 64.6,
   "score_breakdown": {
     "proximity": 24.4,
-    "savings": 20.0,
+    "savings": 20.2,
     "timing": 20.0
   },
   "rank": 1,
   "cost_estimate": {
-    "total_estimated_savings_usd": 595897,
+    "total_estimated_savings_usd": 127061,
     "range_usd": [
-      238214,
-      1193726
+      34660,
+      373655
     ],
     "components": {
       "mobilization": {
-        "low": 237874,
-        "point": 594686,
-        "high": 1189371,
+        "low": 34320,
+        "point": 125850,
+        "high": 369300,
         "applies": true,
         "requires_schedule_shift": false
       },
@@ -61,18 +62,19 @@
         "applies": false
       }
     },
-    "reference_budget_usd": 23787423,
-    "reference_budget_source": "filing",
+    "reference_budget_usd": 5034000,
+    "reference_budget_source": "predicted (ridge, Dominion budgets)",
     "shared_row_acres": null,
-    "mobilization_savings_usd": 594686,
+    "mobilization_savings_usd": 125850,
     "assumptions": [
+      "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
       "Share of one mobilization that can be shared: 25%–50% (assumption)",
       "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
     ],
     "sources": [
       {
-        "name": "Dominion Energy SC filing (budget): Jasper–Okatie",
-        "value_used": "$23,787,423"
+        "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+        "value_used": "$5,034,000"
       },
       {
         "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -93,7 +95,7 @@
     "illustrative": true,
     "defaults_source": "cost_sources.json",
     "unit_rates": {
-      "mobilization_per_event": 594700,
+      "mobilization_per_event": 125800,
       "bucket_truck_per_day": 1500,
       "laydown_per_site": 5000,
       "crew_size": 4,
@@ -104,7 +106,7 @@
         "mobilization_events": 1,
         "truck_days": 10,
         "laydown_sites": 1,
-        "start_date": "2023-01-01"
+        "start_date": "2023-08-31"
       },
       "b": {
         "mobilization_events": 1,
@@ -118,31 +120,31 @@
       "mobilization_events_b": 1,
       "shared_truck_days": 12,
       "laydown_sites": 1,
-      "start_date_a": "2023-01-01",
+      "start_date_a": "2023-08-31",
       "start_date_b": "2024-01-01"
     },
     "totals": {
-      "separate": 1229400,
-      "coordinated": 1212400,
+      "separate": 291600,
+      "coordinated": 274600,
       "savings": 17000,
-      "savings_pct": 1.4,
+      "savings_pct": 5.8,
       "separate_by_project": {
-        "a": 614700,
-        "b": 614700
+        "a": 145800,
+        "b": 145800
       },
       "coordinated_by_project": {
-        "a": 606200,
-        "b": 606200
+        "a": 137300,
+        "b": 137300
       }
     },
     "range": {
       "separate": [
-        1044990,
-        1413810
+        247860,
+        335340
       ],
       "coordinated": [
-        1030540,
-        1394260
+        233410,
+        315790
       ],
       "savings": [
         12750,

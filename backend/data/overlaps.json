@@ -21,24 +21,25 @@
   "time_gap_days": 152,
   "window_overlap_months": 24,
   "schedule_shift_possible": false,
-  "score": 64.4,
+  "timing_confidence": "predicted",
+  "score": 64.6,
   "score_breakdown": {
    "proximity": 24.4,
-   "savings": 20.0,
+   "savings": 20.2,
    "timing": 20.0
   },
   "rank": 1,
   "cost_estimate": {
-   "total_estimated_savings_usd": 595897,
+   "total_estimated_savings_usd": 127061,
    "range_usd": [
-    238214,
-    1193726
+    34660,
+    373655
    ],
    "components": {
     "mobilization": {
-     "low": 237874,
-     "point": 594686,
-     "high": 1189371,
+     "low": 34320,
+     "point": 125850,
+     "high": 369300,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -62,18 +63,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 23787423,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 5034000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 594686,
+   "mobilization_savings_usd": 125850,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Jasper–Okatie",
-     "value_used": "$23,787,423"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+     "value_used": "$5,034,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -94,7 +96,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 594700,
+    "mobilization_per_event": 125800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -105,7 +107,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -119,31 +121,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 1,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2024-01-01"
    },
    "totals": {
-    "separate": 1229400,
-    "coordinated": 1212400,
+    "separate": 291600,
+    "coordinated": 274600,
     "savings": 17000,
-    "savings_pct": 1.4,
+    "savings_pct": 5.8,
     "separate_by_project": {
-     "a": 614700,
-     "b": 614700
+     "a": 145800,
+     "b": 145800
     },
     "coordinated_by_project": {
-     "a": 606200,
-     "b": 606200
+     "a": 137300,
+     "b": 137300
     }
    },
    "range": {
     "separate": [
-     1044990,
-     1413810
+     247860,
+     335340
     ],
     "coordinated": [
-     1030540,
-     1394260
+     233410,
+     315790
     ],
     "savings": [
      12750,
@@ -181,6 +183,7 @@
   "time_gap_days": 517,
   "window_overlap_months": 7,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 56.2,
   "score_breakdown": {
    "proximity": 24.4,
@@ -189,16 +192,16 @@
   },
   "rank": 2,
   "cost_estimate": {
-   "total_estimated_savings_usd": 369653,
+   "total_estimated_savings_usd": 186003,
    "range_usd": [
-    147701,
-    741257
+    50701,
+    546607
    ],
    "components": {
     "mobilization": {
-     "low": 147400,
-     "point": 368500,
-     "high": 737000,
+     "low": 50400,
+     "point": 184850,
+     "high": 542350,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -222,18 +225,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 14740000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 7394000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 368500,
+   "mobilization_savings_usd": 184850,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $5,040,000–$10,847,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Goshen–McIntosh",
-     "value_used": "$14,740,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+     "value_used": "$7,394,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -254,7 +258,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 368500,
+    "mobilization_per_event": 184800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -265,7 +269,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -279,31 +283,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 1,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 777000,
-    "coordinated": 760000,
+    "separate": 409600,
+    "coordinated": 392600,
     "savings": 17000,
-    "savings_pct": 2.2,
+    "savings_pct": 4.2,
     "separate_by_project": {
-     "a": 388500,
-     "b": 388500
+     "a": 204800,
+     "b": 204800
     },
     "coordinated_by_project": {
-     "a": 380000,
-     "b": 380000
+     "a": 196300,
+     "b": 196300
     }
    },
    "range": {
     "separate": [
-     660450,
-     893550
+     348160,
+     471040
     ],
     "coordinated": [
-     646000,
-     874000
+     333710,
+     451490
     ],
     "savings": [
      12750,
@@ -341,24 +345,25 @@
   "time_gap_days": 517,
   "window_overlap_months": 12,
   "schedule_shift_possible": false,
-  "score": 51.7,
+  "timing_confidence": "predicted",
+  "score": 51.8,
   "score_breakdown": {
    "proximity": 11.6,
-   "savings": 20.1,
+   "savings": 20.2,
    "timing": 20.0
   },
   "rank": 3,
   "cost_estimate": {
-   "total_estimated_savings_usd": 279041,
+   "total_estimated_savings_usd": 126968,
    "range_usd": [
-    111447,
-    560047
+    34598,
+    373500
    ],
    "components": {
     "mobilization": {
-     "low": 111169,
-     "point": 277923,
-     "high": 555847,
+     "low": 34320,
+     "point": 125850,
+     "high": 369300,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -382,18 +387,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11116933,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 5034000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 277923,
+   "mobilization_savings_usd": 125850,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Okatie",
-     "value_used": "$11,116,933"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+     "value_used": "$5,034,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -414,7 +420,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 277900,
+    "mobilization_per_event": 125800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -425,7 +431,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -439,31 +445,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2024-01-01"
    },
    "totals": {
-    "separate": 595800,
-    "coordinated": 583800,
+    "separate": 291600,
+    "coordinated": 279600,
     "savings": 12000,
-    "savings_pct": 2.0,
+    "savings_pct": 4.1,
     "separate_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 145800,
+     "b": 145800
     },
     "coordinated_by_project": {
-     "a": 291900,
-     "b": 291900
+     "a": 139800,
+     "b": 139800
     }
    },
    "range": {
     "separate": [
-     506430,
-     685170
+     247860,
+     335340
     ],
     "coordinated": [
-     496230,
-     671370
+     237660,
+     321540
     ],
     "savings": [
      9000,
@@ -499,8 +505,9 @@
   "tier_explanation": "Under 40 km: can share crews and equipment",
   "shared_endpoint": false,
   "time_gap_days": 883,
-  "window_overlap_months": 12,
+  "window_overlap_months": 31,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 51.7,
   "score_breakdown": {
    "proximity": 11.4,
@@ -585,7 +592,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2027-01-01"
+     "start_date": "2025-02-28"
     },
     "b": {
      "mobilization_events": 1,
@@ -599,7 +606,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2027-01-01",
+    "start_date_a": "2025-02-28",
     "start_date_b": "2025-06-01"
    },
    "totals": {
@@ -661,24 +668,25 @@
   "time_gap_days": 365,
   "window_overlap_months": 17,
   "schedule_shift_possible": false,
-  "score": 51.6,
+  "timing_confidence": "predicted",
+  "score": 51.7,
   "score_breakdown": {
    "proximity": 11.6,
-   "savings": 20.0,
+   "savings": 20.1,
    "timing": 20.0
   },
   "rank": 5,
   "cost_estimate": {
-   "total_estimated_savings_usd": 1017419,
+   "total_estimated_savings_usd": 126769,
    "range_usd": [
-    406746,
-    2036868
+    34466,
+    373168
    ],
    "components": {
     "mobilization": {
-     "low": 406600,
-     "point": 1016500,
-     "high": 2033000,
+     "low": 34320,
+     "point": 125850,
+     "high": 369300,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -702,18 +710,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 40660000,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 5034000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 1016500,
+   "mobilization_savings_usd": 125850,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Okatie–Bluffton",
-     "value_used": "$40,660,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+     "value_used": "$5,034,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -734,7 +743,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 1016500,
+    "mobilization_per_event": 125800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -745,7 +754,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -759,31 +768,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2024-01-01"
    },
    "totals": {
-    "separate": 2073000,
-    "coordinated": 2061000,
+    "separate": 291600,
+    "coordinated": 279600,
     "savings": 12000,
-    "savings_pct": 0.6,
+    "savings_pct": 4.1,
     "separate_by_project": {
-     "a": 1036500,
-     "b": 1036500
+     "a": 145800,
+     "b": 145800
     },
     "coordinated_by_project": {
-     "a": 1030500,
-     "b": 1030500
+     "a": 139800,
+     "b": 139800
     }
    },
    "range": {
     "separate": [
-     1762050,
-     2383950
+     247860,
+     335340
     ],
     "coordinated": [
-     1751850,
-     2370150
+     237660,
+     321540
     ],
     "savings": [
      9000,
@@ -821,24 +830,25 @@
   "time_gap_days": 517,
   "window_overlap_months": 19,
   "schedule_shift_possible": false,
-  "score": 51.4,
+  "timing_confidence": "predicted",
+  "score": 51.5,
   "score_breakdown": {
    "proximity": 11.4,
-   "savings": 20.0,
+   "savings": 20.1,
    "timing": 20.0
   },
   "rank": 6,
   "cost_estimate": {
-   "total_estimated_savings_usd": 512504,
+   "total_estimated_savings_usd": 216429,
    "range_usd": [
-    204802,
-    1027010
+    58942,
+    636060
    ],
    "components": {
     "mobilization": {
-     "low": 204600,
-     "point": 511500,
-     "high": 1023000,
+     "low": 58740,
+     "point": 215425,
+     "high": 632050,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -862,18 +872,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 20460000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 8617000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 511500,
+   "mobilization_savings_usd": 215425,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $5,874,000–$12,641,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Goshen–Kraft",
-     "value_used": "$20,460,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–Kraft",
+     "value_used": "$8,617,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -894,7 +905,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 511500,
+    "mobilization_per_event": 215400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -905,7 +916,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -919,31 +930,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2024-06-01"
    },
    "totals": {
-    "separate": 1063000,
-    "coordinated": 1051000,
+    "separate": 470800,
+    "coordinated": 458800,
     "savings": 12000,
-    "savings_pct": 1.1,
+    "savings_pct": 2.5,
     "separate_by_project": {
-     "a": 531500,
-     "b": 531500
+     "a": 235400,
+     "b": 235400
     },
     "coordinated_by_project": {
-     "a": 525500,
-     "b": 525500
+     "a": 229400,
+     "b": 229400
     }
    },
    "range": {
     "separate": [
-     903550,
-     1222450
+     400180,
+     541420
     ],
     "coordinated": [
-     893350,
-     1208650
+     389980,
+     527620
     ],
     "savings": [
      9000,
@@ -981,6 +992,7 @@
   "time_gap_days": 1389,
   "window_overlap_months": 14,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 51.4,
   "score_breakdown": {
    "proximity": 11.4,
@@ -1065,7 +1077,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-12-12"
     },
     "b": {
      "mobilization_events": 1,
@@ -1079,7 +1091,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-12-12",
     "start_date_b": "2025-06-01"
    },
    "totals": {
@@ -1141,24 +1153,25 @@
   "time_gap_days": 730,
   "window_overlap_months": 12,
   "schedule_shift_possible": false,
-  "score": 50.6,
+  "timing_confidence": "predicted",
+  "score": 50.7,
   "score_breakdown": {
    "proximity": 10.6,
-   "savings": 20.0,
+   "savings": 20.1,
    "timing": 20.0
   },
   "rank": 8,
   "cost_estimate": {
-   "total_estimated_savings_usd": 512399,
+   "total_estimated_savings_usd": 216324,
    "range_usd": [
-    204732,
-    1026834
+    58872,
+    635884
    ],
    "components": {
     "mobilization": {
-     "low": 204600,
-     "point": 511500,
-     "high": 1023000,
+     "low": 58740,
+     "point": 215425,
+     "high": 632050,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -1182,18 +1195,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 20460000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 8617000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 511500,
+   "mobilization_savings_usd": 215425,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $5,874,000–$12,641,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Goshen–Kraft",
-     "value_used": "$20,460,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–Kraft",
+     "value_used": "$8,617,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -1214,7 +1228,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 511500,
+    "mobilization_per_event": 215400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -1225,7 +1239,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -1239,31 +1253,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2024-06-01"
    },
    "totals": {
-    "separate": 1063000,
-    "coordinated": 1051000,
+    "separate": 470800,
+    "coordinated": 458800,
     "savings": 12000,
-    "savings_pct": 1.1,
+    "savings_pct": 2.5,
     "separate_by_project": {
-     "a": 531500,
-     "b": 531500
+     "a": 235400,
+     "b": 235400
     },
     "coordinated_by_project": {
-     "a": 525500,
-     "b": 525500
+     "a": 229400,
+     "b": 229400
     }
    },
    "range": {
     "separate": [
-     903550,
-     1222450
+     400180,
+     541420
     ],
     "coordinated": [
-     893350,
-     1208650
+     389980,
+     527620
     ],
     "savings": [
      9000,
@@ -1299,8 +1313,9 @@
   "tier_explanation": "Under 40 km: can share crews and equipment",
   "shared_endpoint": false,
   "time_gap_days": 0,
-  "window_overlap_months": 29,
+  "window_overlap_months": 27,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 49.6,
   "score_breakdown": {
    "proximity": 9.5,
@@ -1309,16 +1324,16 @@
   },
   "rank": 9,
   "cost_estimate": {
-   "total_estimated_savings_usd": 275793,
+   "total_estimated_savings_usd": 159118,
    "range_usd": [
-    110062,
-    553658
+    43232,
+    468158
    ],
    "components": {
     "mobilization": {
-     "low": 110000,
-     "point": 275000,
-     "high": 550000,
+     "low": 43170,
+     "point": 158325,
+     "high": 464500,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -1342,18 +1357,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11000000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6333000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 275000,
+   "mobilization_savings_usd": 158325,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $4,317,000–$9,290,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Deptford–Magnolia",
-     "value_used": "$11,000,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+     "value_used": "$6,333,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -1374,7 +1390,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 275000,
+    "mobilization_per_event": 158300,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -1385,7 +1401,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -1399,31 +1415,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2023-01-01"
    },
    "totals": {
-    "separate": 590000,
-    "coordinated": 578000,
+    "separate": 356600,
+    "coordinated": 344600,
     "savings": 12000,
-    "savings_pct": 2.0,
+    "savings_pct": 3.4,
     "separate_by_project": {
-     "a": 295000,
-     "b": 295000
+     "a": 178300,
+     "b": 178300
     },
     "coordinated_by_project": {
-     "a": 289000,
-     "b": 289000
+     "a": 172300,
+     "b": 172300
     }
    },
    "range": {
     "separate": [
-     501500,
-     678500
+     303110,
+     410090
     ],
     "coordinated": [
-     491300,
-     664700
+     292910,
+     396290
     ],
     "savings": [
      9000,
@@ -1461,6 +1477,7 @@
   "time_gap_days": 152,
   "window_overlap_months": 24,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 48.9,
   "score_breakdown": {
    "proximity": 8.8,
@@ -1469,16 +1486,16 @@
   },
   "rank": 10,
   "cost_estimate": {
-   "total_estimated_savings_usd": 275726,
+   "total_estimated_savings_usd": 159051,
    "range_usd": [
-    110017,
-    553547
+    43187,
+    468047
    ],
    "components": {
     "mobilization": {
-     "low": 110000,
-     "point": 275000,
-     "high": 550000,
+     "low": 43170,
+     "point": 158325,
+     "high": 464500,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -1502,18 +1519,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11000000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6333000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 275000,
+   "mobilization_savings_usd": 158325,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $4,317,000–$9,290,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Deptford–Magnolia",
-     "value_used": "$11,000,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+     "value_used": "$6,333,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -1534,7 +1552,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 275000,
+    "mobilization_per_event": 158300,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -1545,7 +1563,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -1559,31 +1577,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2023-01-01"
    },
    "totals": {
-    "separate": 590000,
-    "coordinated": 578000,
+    "separate": 356600,
+    "coordinated": 344600,
     "savings": 12000,
-    "savings_pct": 2.0,
+    "savings_pct": 3.4,
     "separate_by_project": {
-     "a": 295000,
-     "b": 295000
+     "a": 178300,
+     "b": 178300
     },
     "coordinated_by_project": {
-     "a": 289000,
-     "b": 289000
+     "a": 172300,
+     "b": 172300
     }
    },
    "range": {
     "separate": [
-     501500,
-     678500
+     303110,
+     410090
     ],
     "coordinated": [
-     491300,
-     664700
+     292910,
+     396290
     ],
     "savings": [
      9000,
@@ -1619,8 +1637,9 @@
   "tier_explanation": "Under 40 km: can share crews and equipment",
   "shared_endpoint": false,
   "time_gap_days": 213,
-  "window_overlap_months": 29,
+  "window_overlap_months": 21,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 48.9,
   "score_breakdown": {
    "proximity": 8.8,
@@ -1629,16 +1648,16 @@
   },
   "rank": 11,
   "cost_estimate": {
-   "total_estimated_savings_usd": 275698,
+   "total_estimated_savings_usd": 159023,
    "range_usd": [
-    109998,
-    553500
+    43168,
+    468000
    ],
    "components": {
     "mobilization": {
-     "low": 110000,
-     "point": 275000,
-     "high": 550000,
+     "low": 43170,
+     "point": 158325,
+     "high": 464500,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -1662,18 +1681,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11000000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6333000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 275000,
+   "mobilization_savings_usd": 158325,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $4,317,000–$9,290,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Deptford–Magnolia",
-     "value_used": "$11,000,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+     "value_used": "$6,333,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -1694,7 +1714,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 275000,
+    "mobilization_per_event": 158300,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -1705,7 +1725,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -1719,31 +1739,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2023-01-01"
    },
    "totals": {
-    "separate": 590000,
-    "coordinated": 578000,
+    "separate": 356600,
+    "coordinated": 344600,
     "savings": 12000,
-    "savings_pct": 2.0,
+    "savings_pct": 3.4,
     "separate_by_project": {
-     "a": 295000,
-     "b": 295000
+     "a": 178300,
+     "b": 178300
     },
     "coordinated_by_project": {
-     "a": 289000,
-     "b": 289000
+     "a": 172300,
+     "b": 172300
     }
    },
    "range": {
     "separate": [
-     501500,
-     678500
+     303110,
+     410090
     ],
     "coordinated": [
-     491300,
-     664700
+     292910,
+     396290
     ],
     "savings": [
      9000,
@@ -1781,6 +1801,7 @@
   "time_gap_days": 882,
   "window_overlap_months": 7,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 42.4,
   "score_breakdown": {
    "proximity": 10.6,
@@ -1789,16 +1810,16 @@
   },
   "rank": 12,
   "cost_estimate": {
-   "total_estimated_savings_usd": 278900,
+   "total_estimated_savings_usd": 216402,
    "range_usd": [
-    111353,
-    559811
+    58924,
+    636014
    ],
    "components": {
     "mobilization": {
-     "low": 111169,
-     "point": 277923,
-     "high": 555847,
+     "low": 58740,
+     "point": 215425,
+     "high": 632050,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -1822,18 +1843,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11116933,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 8617000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 277923,
+   "mobilization_savings_usd": 215425,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $5,874,000–$12,641,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Okatie",
-     "value_used": "$11,116,933"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–Kraft",
+     "value_used": "$8,617,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -1854,7 +1876,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 277900,
+    "mobilization_per_event": 215400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -1865,7 +1887,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -1879,31 +1901,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2024-06-01"
    },
    "totals": {
-    "separate": 595800,
-    "coordinated": 583800,
+    "separate": 470800,
+    "coordinated": 458800,
     "savings": 12000,
-    "savings_pct": 2.0,
+    "savings_pct": 2.5,
     "separate_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 235400,
+     "b": 235400
     },
     "coordinated_by_project": {
-     "a": 291900,
-     "b": 291900
+     "a": 229400,
+     "b": 229400
     }
    },
    "range": {
     "separate": [
-     506430,
-     685170
+     400180,
+     541420
     ],
     "coordinated": [
-     496230,
-     671370
+     389980,
+     527620
     ],
     "savings": [
      9000,
@@ -1941,6 +1963,7 @@
   "time_gap_days": 1613,
   "window_overlap_months": 7,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 41.0,
   "score_breakdown": {
    "proximity": 9.2,
@@ -2025,7 +2048,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2024-01-01"
+     "start_date": "2023-07-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -2039,7 +2062,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2024-01-01",
+    "start_date_a": "2023-07-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
@@ -2101,24 +2124,25 @@
   "time_gap_days": 883,
   "window_overlap_months": 7,
   "schedule_shift_possible": false,
-  "score": 40.9,
+  "timing_confidence": "predicted",
+  "score": 41.0,
   "score_breakdown": {
    "proximity": 9.2,
-   "savings": 20.0,
+   "savings": 20.1,
    "timing": 11.7
   },
   "rank": 14,
   "cost_estimate": {
-   "total_estimated_savings_usd": 367637,
+   "total_estimated_savings_usd": 185262,
    "range_usd": [
-    146798,
-    737348
+    50358,
+    544898
    ],
    "components": {
     "mobilization": {
-     "low": 146740,
-     "point": 366850,
-     "high": 733700,
+     "low": 50300,
+     "point": 184475,
+     "high": 541250,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -2142,18 +2166,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 14674000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 7379000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 366850,
+   "mobilization_savings_usd": 184475,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $5,030,000–$10,825,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Dean Forest",
-     "value_used": "$14,674,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Dean Forest",
+     "value_used": "$7,379,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -2174,7 +2199,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 366800,
+    "mobilization_per_event": 184500,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -2185,7 +2210,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -2199,31 +2224,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 773600,
-    "coordinated": 761600,
+    "separate": 409000,
+    "coordinated": 397000,
     "savings": 12000,
-    "savings_pct": 1.6,
+    "savings_pct": 2.9,
     "separate_by_project": {
-     "a": 386800,
-     "b": 386800
+     "a": 204500,
+     "b": 204500
     },
     "coordinated_by_project": {
-     "a": 380800,
-     "b": 380800
+     "a": 198500,
+     "b": 198500
     }
    },
    "range": {
     "separate": [
-     657560,
-     889640
+     347650,
+     470350
     ],
     "coordinated": [
-     647360,
-     875840
+     337450,
+     456550
     ],
     "savings": [
      9000,
@@ -2261,24 +2286,25 @@
   "time_gap_days": 152,
   "window_overlap_months": 7,
   "schedule_shift_possible": false,
-  "score": 40.5,
+  "timing_confidence": "predicted",
+  "score": 40.6,
   "score_breakdown": {
    "proximity": 8.8,
-   "savings": 20.0,
+   "savings": 20.1,
    "timing": 11.7
   },
   "rank": 15,
   "cost_estimate": {
-   "total_estimated_savings_usd": 440719,
+   "total_estimated_savings_usd": 196669,
    "range_usd": [
-    176012,
-    883534
+    53442,
+    578434
    ],
    "components": {
     "mobilization": {
-     "low": 176000,
-     "point": 440000,
-     "high": 880000,
+     "low": 53430,
+     "point": 195950,
+     "high": 574900,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -2302,18 +2328,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 17600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 7838000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 440000,
+   "mobilization_savings_usd": 195950,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $5,343,000–$11,498,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Boulevard–Deptford",
-     "value_used": "$17,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Deptford",
+     "value_used": "$7,838,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -2334,7 +2361,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 440000,
+    "mobilization_per_event": 196000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -2345,7 +2372,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -2359,31 +2386,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 920000,
-    "coordinated": 908000,
+    "separate": 432000,
+    "coordinated": 420000,
     "savings": 12000,
-    "savings_pct": 1.3,
+    "savings_pct": 2.8,
     "separate_by_project": {
-     "a": 460000,
-     "b": 460000
+     "a": 216000,
+     "b": 216000
     },
     "coordinated_by_project": {
-     "a": 454000,
-     "b": 454000
+     "a": 210000,
+     "b": 210000
     }
    },
    "range": {
     "separate": [
-     782000,
-     1058000
+     367200,
+     496800
     ],
     "coordinated": [
-     771800,
-     1044200
+     357000,
+     483000
     ],
     "savings": [
      9000,
@@ -2421,6 +2448,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 40.0,
   "score_breakdown": {
    "proximity": 40.0,
@@ -2492,7 +2520,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -2506,7 +2534,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 1,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2029-06-01"
    },
    "totals": {
@@ -2568,6 +2596,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 40.0,
   "score_breakdown": {
    "proximity": 40.0,
@@ -2639,7 +2668,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -2653,7 +2682,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 1,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2030-06-01"
    },
    "totals": {
@@ -2715,6 +2744,7 @@
   "time_gap_days": 883,
   "window_overlap_months": 7,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 39.7,
   "score_breakdown": {
    "proximity": 7.9,
@@ -2723,16 +2753,16 @@
   },
   "rank": 18,
   "cost_estimate": {
-   "total_estimated_savings_usd": 165647,
+   "total_estimated_savings_usd": 131622,
    "range_usd": [
-    65964,
-    333414
+    35674,
+    387714
    ],
    "components": {
     "mobilization": {
-     "low": 66000,
-     "point": 165000,
-     "high": 330000,
+     "low": 35710,
+     "point": 130975,
+     "high": 384300,
      "applies": true,
      "requires_schedule_shift": false
     },
@@ -2756,18 +2786,19 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 5239000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
-   "mobilization_savings_usd": 165000,
+   "mobilization_savings_usd": 130975,
    "assumptions": [
+    "The reference budget is an ML prediction (likely $3,571,000–$7,686,000); the savings range uses that budget range",
     "Share of one mobilization that can be shared: 25%–50% (assumption)",
     "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
    ],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
-     "value_used": "$6,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+     "value_used": "$5,239,000"
     },
     {
      "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -2788,7 +2819,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 165000,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -2799,7 +2830,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -2813,31 +2844,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 370000,
-    "coordinated": 358000,
+    "separate": 302000,
+    "coordinated": 290000,
     "savings": 12000,
-    "savings_pct": 3.2,
+    "savings_pct": 4.0,
     "separate_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 179000,
-     "b": 179000
+     "a": 145000,
+     "b": 145000
     }
    },
    "range": {
     "separate": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "coordinated": [
-     304300,
-     411700
+     246500,
+     333500
     ],
     "savings": [
      9000,
@@ -2875,6 +2906,7 @@
   "time_gap_days": 2709,
   "window_overlap_months": 5,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 36.2,
   "score_breakdown": {
    "proximity": 7.8,
@@ -2959,7 +2991,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2024-01-01"
+     "start_date": "2023-07-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -2973,7 +3005,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 12,
     "laydown_sites": 2,
-    "start_date_a": "2024-01-01",
+    "start_date_a": "2023-07-31",
     "start_date_b": "2025-08-01"
    },
    "totals": {
@@ -3035,6 +3067,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 12.1,
   "score_breakdown": {
    "proximity": 12.1,
@@ -3076,15 +3109,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11745543,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 6736000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Stevens Creek–Hooks",
-     "value_used": "$11,745,543"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thurmond",
+     "value_used": "$6,736,000"
     }
    ]
   },
@@ -3095,7 +3128,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 293600,
+    "mobilization_per_event": 168400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -3106,7 +3139,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -3120,31 +3153,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2029-06-01"
    },
    "totals": {
-    "separate": 627200,
-    "coordinated": 627200,
+    "separate": 376800,
+    "coordinated": 376800,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 313600,
-     "b": 313600
+     "a": 188400,
+     "b": 188400
     },
     "coordinated_by_project": {
-     "a": 313600,
-     "b": 313600
+     "a": 188400,
+     "b": 188400
     }
    },
    "range": {
     "separate": [
-     533120,
-     721280
+     320280,
+     433320
     ],
     "coordinated": [
-     533120,
-     721280
+     320280,
+     433320
     ],
     "savings": [
      0,
@@ -3182,6 +3215,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 12.1,
   "score_breakdown": {
    "proximity": 12.1,
@@ -3223,15 +3257,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11745543,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 8439000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Stevens Creek–Hooks",
-     "value_used": "$11,745,543"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thurmond",
+     "value_used": "$8,439,000"
     }
    ]
   },
@@ -3242,7 +3276,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 293600,
+    "mobilization_per_event": 211000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -3253,7 +3287,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -3267,31 +3301,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2030-06-01"
    },
    "totals": {
-    "separate": 627200,
-    "coordinated": 627200,
+    "separate": 462000,
+    "coordinated": 462000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 313600,
-     "b": 313600
+     "a": 231000,
+     "b": 231000
     },
     "coordinated_by_project": {
-     "a": 313600,
-     "b": 313600
+     "a": 231000,
+     "b": 231000
     }
    },
    "range": {
     "separate": [
-     533120,
-     721280
+     392700,
+     531300
     ],
     "coordinated": [
-     533120,
-     721280
+     392700,
+     531300
     ],
     "savings": [
      0,
@@ -3329,6 +3363,7 @@
   "time_gap_days": 2709,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 12.1,
   "score_breakdown": {
    "proximity": 12.1,
@@ -3370,15 +3405,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 7800000,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 6736000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Stevens Creek–Hooks",
-     "value_used": "$7,800,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thurmond",
+     "value_used": "$6,736,000"
     }
    ]
   },
@@ -3389,7 +3424,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 195000,
+    "mobilization_per_event": 168400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -3400,7 +3435,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2024-01-01"
+     "start_date": "2023-07-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -3414,31 +3449,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2024-01-01",
+    "start_date_a": "2023-07-31",
     "start_date_b": "2029-06-01"
    },
    "totals": {
-    "separate": 430000,
-    "coordinated": 430000,
+    "separate": 376800,
+    "coordinated": 376800,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 215000,
-     "b": 215000
+     "a": 188400,
+     "b": 188400
     },
     "coordinated_by_project": {
-     "a": 215000,
-     "b": 215000
+     "a": 188400,
+     "b": 188400
     }
    },
    "range": {
     "separate": [
-     365500,
-     494500
+     320280,
+     433320
     ],
     "coordinated": [
-     365500,
-     494500
+     320280,
+     433320
     ],
     "savings": [
      0,
@@ -3476,6 +3511,7 @@
   "time_gap_days": 2709,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 12.1,
   "score_breakdown": {
    "proximity": 12.1,
@@ -3547,7 +3583,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2024-01-01"
+     "start_date": "2023-07-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -3561,7 +3597,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2024-01-01",
+    "start_date_a": "2023-07-31",
     "start_date_b": "2030-06-01"
    },
    "totals": {
@@ -3623,6 +3659,7 @@
   "time_gap_days": 3652,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 12.1,
   "score_breakdown": {
    "proximity": 12.1,
@@ -3664,15 +3701,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11616000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6642000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Evans–Thomson",
-     "value_used": "$11,616,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
+     "value_used": "$6,642,000"
     }
    ]
   },
@@ -3683,7 +3720,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 290400,
+    "mobilization_per_event": 166000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -3694,7 +3731,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -3708,31 +3745,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2031-01-01"
    },
    "totals": {
-    "separate": 620800,
-    "coordinated": 620800,
+    "separate": 372000,
+    "coordinated": 372000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 310400,
-     "b": 310400
+     "a": 186000,
+     "b": 186000
     },
     "coordinated_by_project": {
-     "a": 310400,
-     "b": 310400
+     "a": 186000,
+     "b": 186000
     }
    },
    "range": {
     "separate": [
-     527680,
-     713920
+     316200,
+     427800
     ],
     "coordinated": [
-     527680,
-     713920
+     316200,
+     427800
     ],
     "savings": [
      0,
@@ -3770,6 +3807,7 @@
   "time_gap_days": 3287,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 12.1,
   "score_breakdown": {
    "proximity": 12.1,
@@ -3811,15 +3849,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 7800000,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 6642000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Stevens Creek–Hooks",
-     "value_used": "$7,800,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
+     "value_used": "$6,642,000"
     }
    ]
   },
@@ -3830,7 +3868,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 195000,
+    "mobilization_per_event": 166000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -3841,7 +3879,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2024-01-01"
+     "start_date": "2023-07-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -3855,31 +3893,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2024-01-01",
+    "start_date_a": "2023-07-31",
     "start_date_b": "2031-01-01"
    },
    "totals": {
-    "separate": 430000,
-    "coordinated": 430000,
+    "separate": 372000,
+    "coordinated": 372000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 215000,
-     "b": 215000
+     "a": 186000,
+     "b": 186000
     },
     "coordinated_by_project": {
-     "a": 215000,
-     "b": 215000
+     "a": 186000,
+     "b": 186000
     }
    },
    "range": {
     "separate": [
-     365500,
-     494500
+     316200,
+     427800
     ],
     "coordinated": [
-     365500,
-     494500
+     316200,
+     427800
     ],
     "savings": [
      0,
@@ -3917,6 +3955,7 @@
   "time_gap_days": 3652,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 11.7,
   "score_breakdown": {
    "proximity": 11.7,
@@ -3988,7 +4027,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -4002,7 +4041,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2031-01-01"
    },
    "totals": {
@@ -4064,6 +4103,7 @@
   "time_gap_days": 882,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 11.6,
   "score_breakdown": {
    "proximity": 11.6,
@@ -4105,15 +4145,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11116933,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 7394000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Okatie",
-     "value_used": "$11,116,933"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+     "value_used": "$7,394,000"
     }
    ]
   },
@@ -4124,7 +4164,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 277900,
+    "mobilization_per_event": 184800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -4135,7 +4175,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -4149,31 +4189,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 595800,
-    "coordinated": 595800,
+    "separate": 409600,
+    "coordinated": 409600,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 204800,
+     "b": 204800
     },
     "coordinated_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 204800,
+     "b": 204800
     }
    },
    "range": {
     "separate": [
-     506430,
-     685170
+     348160,
+     471040
     ],
     "coordinated": [
-     506430,
-     685170
+     348160,
+     471040
     ],
     "savings": [
      0,
@@ -4211,6 +4251,7 @@
   "time_gap_days": 730,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 11.6,
   "score_breakdown": {
    "proximity": 11.6,
@@ -4252,15 +4293,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 14740000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 7394000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Goshen–McIntosh",
-     "value_used": "$14,740,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+     "value_used": "$7,394,000"
     }
    ]
   },
@@ -4271,7 +4312,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 368500,
+    "mobilization_per_event": 184800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -4282,7 +4323,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -4296,31 +4337,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 777000,
-    "coordinated": 777000,
+    "separate": 409600,
+    "coordinated": 409600,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 388500,
-     "b": 388500
+     "a": 204800,
+     "b": 204800
     },
     "coordinated_by_project": {
-     "a": 388500,
-     "b": 388500
+     "a": 204800,
+     "b": 204800
     }
    },
    "range": {
     "separate": [
-     660450,
-     893550
+     348160,
+     471040
     ],
     "coordinated": [
-     660450,
-     893550
+     348160,
+     471040
     ],
     "savings": [
      0,
@@ -4358,6 +4399,7 @@
   "time_gap_days": 365,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.5,
   "score_breakdown": {
    "proximity": 9.5,
@@ -4399,15 +4441,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 17600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 7838000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Boulevard–Deptford",
-     "value_used": "$17,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Deptford",
+     "value_used": "$7,838,000"
     }
    ]
   },
@@ -4418,7 +4460,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 440000,
+    "mobilization_per_event": 196000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -4429,7 +4471,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -4443,31 +4485,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 920000,
-    "coordinated": 920000,
+    "separate": 432000,
+    "coordinated": 432000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 460000,
-     "b": 460000
+     "a": 216000,
+     "b": 216000
     },
     "coordinated_by_project": {
-     "a": 460000,
-     "b": 460000
+     "a": 216000,
+     "b": 216000
     }
    },
    "range": {
     "separate": [
-     782000,
-     1058000
+     367200,
+     496800
     ],
     "coordinated": [
-     782000,
-     1058000
+     367200,
+     496800
     ],
     "savings": [
      0,
@@ -4505,6 +4547,7 @@
   "time_gap_days": 1096,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.4,
   "score_breakdown": {
    "proximity": 9.4,
@@ -4546,15 +4589,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 14674000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 7379000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Dean Forest",
-     "value_used": "$14,674,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Dean Forest",
+     "value_used": "$7,379,000"
     }
    ]
   },
@@ -4565,7 +4608,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 366800,
+    "mobilization_per_event": 184500,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -4576,7 +4619,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -4590,31 +4633,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 773600,
-    "coordinated": 773600,
+    "separate": 409000,
+    "coordinated": 409000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 386800,
-     "b": 386800
+     "a": 204500,
+     "b": 204500
     },
     "coordinated_by_project": {
-     "a": 386800,
-     "b": 386800
+     "a": 204500,
+     "b": 204500
     }
    },
    "range": {
     "separate": [
-     657560,
-     889640
+     347650,
+     470350
     ],
     "coordinated": [
-     657560,
-     889640
+     347650,
+     470350
     ],
     "savings": [
      0,
@@ -4652,6 +4695,7 @@
   "time_gap_days": 2557,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.4,
   "score_breakdown": {
    "proximity": 9.4,
@@ -4693,15 +4737,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 5239000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
-     "value_used": "$6,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Meldrim",
+     "value_used": "$5,239,000"
     }
    ]
   },
@@ -4712,7 +4756,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 165000,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -4723,7 +4767,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -4737,31 +4781,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2029-06-01"
    },
    "totals": {
-    "separate": 370000,
-    "coordinated": 370000,
+    "separate": 302000,
+    "coordinated": 302000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     }
    },
    "range": {
     "separate": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "coordinated": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "savings": [
      0,
@@ -4799,6 +4843,7 @@
   "time_gap_days": 1979,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.3,
   "score_breakdown": {
    "proximity": 9.3,
@@ -4870,7 +4915,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2027-01-01"
+     "start_date": "2025-02-28"
     },
     "b": {
      "mobilization_events": 1,
@@ -4884,7 +4929,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2027-01-01",
+    "start_date_a": "2025-02-28",
     "start_date_b": "2029-06-01"
    },
    "totals": {
@@ -4946,6 +4991,7 @@
   "time_gap_days": 1979,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.3,
   "score_breakdown": {
    "proximity": 9.3,
@@ -5017,7 +5063,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2027-01-01"
+     "start_date": "2025-02-28"
     },
     "b": {
      "mobilization_events": 1,
@@ -5031,7 +5077,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2027-01-01",
+    "start_date_a": "2025-02-28",
     "start_date_b": "2030-06-01"
    },
    "totals": {
@@ -5093,6 +5139,7 @@
   "time_gap_days": 2557,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.3,
   "score_breakdown": {
    "proximity": 9.3,
@@ -5164,7 +5211,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2027-01-01"
+     "start_date": "2025-02-28"
     },
     "b": {
      "mobilization_events": 1,
@@ -5178,7 +5225,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2027-01-01",
+    "start_date_a": "2025-02-28",
     "start_date_b": "2031-01-01"
    },
    "totals": {
@@ -5240,6 +5287,7 @@
   "time_gap_days": 2485,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.3,
   "score_breakdown": {
    "proximity": 9.3,
@@ -5281,15 +5329,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11990000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6736000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Evans–Thurmond",
-     "value_used": "$11,990,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thurmond",
+     "value_used": "$6,736,000"
     }
    ]
   },
@@ -5300,7 +5348,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 299800,
+    "mobilization_per_event": 168400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -5311,7 +5359,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-12-12"
     },
     "b": {
      "mobilization_events": 1,
@@ -5325,31 +5373,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-12-12",
     "start_date_b": "2029-06-01"
    },
    "totals": {
-    "separate": 639600,
-    "coordinated": 639600,
+    "separate": 376800,
+    "coordinated": 376800,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 319800,
-     "b": 319800
+     "a": 188400,
+     "b": 188400
     },
     "coordinated_by_project": {
-     "a": 319800,
-     "b": 319800
+     "a": 188400,
+     "b": 188400
     }
    },
    "range": {
     "separate": [
-     543660,
-     735540
+     320280,
+     433320
     ],
     "coordinated": [
-     543660,
-     735540
+     320280,
+     433320
     ],
     "savings": [
      0,
@@ -5387,6 +5435,7 @@
   "time_gap_days": 2485,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.3,
   "score_breakdown": {
    "proximity": 9.3,
@@ -5428,15 +5477,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 17520000,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 8439000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Urquhart–Toolebeck",
-     "value_used": "$17,520,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thurmond",
+     "value_used": "$8,439,000"
     }
    ]
   },
@@ -5447,7 +5496,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 438000,
+    "mobilization_per_event": 211000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -5458,7 +5507,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-12-12"
     },
     "b": {
      "mobilization_events": 1,
@@ -5472,31 +5521,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-12-12",
     "start_date_b": "2030-06-01"
    },
    "totals": {
-    "separate": 916000,
-    "coordinated": 916000,
+    "separate": 462000,
+    "coordinated": 462000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 458000,
-     "b": 458000
+     "a": 231000,
+     "b": 231000
     },
     "coordinated_by_project": {
-     "a": 458000,
-     "b": 458000
+     "a": 231000,
+     "b": 231000
     }
    },
    "range": {
     "separate": [
-     778600,
-     1053400
+     392700,
+     531300
     ],
     "coordinated": [
-     778600,
-     1053400
+     392700,
+     531300
     ],
     "savings": [
      0,
@@ -5534,6 +5583,7 @@
   "time_gap_days": 1978,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.2,
   "score_breakdown": {
    "proximity": 9.2,
@@ -5605,7 +5655,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -5619,7 +5669,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2025-06-01"
    },
    "totals": {
@@ -5681,6 +5731,7 @@
   "time_gap_days": 2344,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.2,
   "score_breakdown": {
    "proximity": 9.2,
@@ -5722,15 +5773,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 5239000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
-     "value_used": "$6,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Meldrim",
+     "value_used": "$5,239,000"
     }
    ]
   },
@@ -5741,7 +5792,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 165000,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -5752,7 +5803,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -5766,31 +5817,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2029-06-01"
    },
    "totals": {
-    "separate": 370000,
-    "coordinated": 370000,
+    "separate": 302000,
+    "coordinated": 302000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     }
    },
    "range": {
     "separate": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "coordinated": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "savings": [
      0,
@@ -5828,6 +5879,7 @@
   "time_gap_days": 1248,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.2,
   "score_breakdown": {
    "proximity": 9.2,
@@ -5869,15 +5921,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11116933,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 7379000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Okatie",
-     "value_used": "$11,116,933"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Dean Forest",
+     "value_used": "$7,379,000"
     }
    ]
   },
@@ -5888,7 +5940,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 277900,
+    "mobilization_per_event": 184500,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -5899,7 +5951,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -5913,31 +5965,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 595800,
-    "coordinated": 595800,
+    "separate": 409000,
+    "coordinated": 409000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 204500,
+     "b": 204500
     },
     "coordinated_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 204500,
+     "b": 204500
     }
    },
    "range": {
     "separate": [
-     506430,
-     685170
+     347650,
+     470350
     ],
     "coordinated": [
-     506430,
-     685170
+     347650,
+     470350
     ],
     "savings": [
      0,
@@ -5975,6 +6027,7 @@
   "time_gap_days": 2709,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 9.2,
   "score_breakdown": {
    "proximity": 9.2,
@@ -6016,15 +6069,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 5239000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
-     "value_used": "$6,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Meldrim",
+     "value_used": "$5,239,000"
     }
    ]
   },
@@ -6035,7 +6088,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 165000,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -6046,7 +6099,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -6060,31 +6113,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2029-06-01"
    },
    "totals": {
-    "separate": 370000,
-    "coordinated": 370000,
+    "separate": 302000,
+    "coordinated": 302000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     }
    },
    "range": {
     "separate": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "coordinated": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "savings": [
      0,
@@ -6122,6 +6175,7 @@
   "time_gap_days": 517,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.8,
   "score_breakdown": {
    "proximity": 8.8,
@@ -6163,15 +6217,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 11116933,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 7838000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Okatie",
-     "value_used": "$11,116,933"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Deptford",
+     "value_used": "$7,838,000"
     }
    ]
   },
@@ -6182,7 +6236,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 277900,
+    "mobilization_per_event": 196000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -6193,7 +6247,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -6207,31 +6261,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 595800,
-    "coordinated": 595800,
+    "separate": 432000,
+    "coordinated": 432000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 216000,
+     "b": 216000
     },
     "coordinated_by_project": {
-     "a": 297900,
-     "b": 297900
+     "a": 216000,
+     "b": 216000
     }
    },
    "range": {
     "separate": [
-     506430,
-     685170
+     367200,
+     496800
     ],
     "coordinated": [
-     506430,
-     685170
+     367200,
+     496800
     ],
     "savings": [
      0,
@@ -6269,6 +6323,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.7,
   "score_breakdown": {
    "proximity": 8.7,
@@ -6340,7 +6395,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -6354,7 +6409,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2025-08-01"
    },
    "totals": {
@@ -6416,6 +6471,7 @@
   "time_gap_days": 1248,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.6,
   "score_breakdown": {
    "proximity": 8.6,
@@ -6457,15 +6513,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 20800000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 15577000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Dean Forest–Little Ogeechee",
-     "value_used": "$20,800,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Dean Forest–Little Ogeechee",
+     "value_used": "$15,577,000"
     }
    ]
   },
@@ -6476,7 +6532,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 520000,
+    "mobilization_per_event": 389400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -6487,7 +6543,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -6501,31 +6557,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2026-01-01"
    },
    "totals": {
-    "separate": 1080000,
-    "coordinated": 1080000,
+    "separate": 818800,
+    "coordinated": 818800,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 540000,
-     "b": 540000
+     "a": 409400,
+     "b": 409400
     },
     "coordinated_by_project": {
-     "a": 540000,
-     "b": 540000
+     "a": 409400,
+     "b": 409400
     }
    },
    "range": {
     "separate": [
-     918000,
-     1242000
+     695980,
+     941620
     ],
     "coordinated": [
-     918000,
-     1242000
+     695980,
+     941620
     ],
     "savings": [
      0,
@@ -6563,6 +6619,7 @@
   "time_gap_days": 1096,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.5,
   "score_breakdown": {
    "proximity": 8.5,
@@ -6604,15 +6661,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 5239000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
-     "value_used": "$6,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+     "value_used": "$5,239,000"
     }
    ]
   },
@@ -6623,7 +6680,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 165000,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -6634,7 +6691,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -6648,31 +6705,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 370000,
-    "coordinated": 370000,
+    "separate": 302000,
+    "coordinated": 302000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     }
    },
    "range": {
     "separate": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "coordinated": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "savings": [
      0,
@@ -6710,6 +6767,7 @@
   "time_gap_days": 1461,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.5,
   "score_breakdown": {
    "proximity": 8.5,
@@ -6751,15 +6809,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 10032000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6230000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Boulevard–Magnolia",
-     "value_used": "$10,032,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+     "value_used": "$6,230,000"
     }
    ]
   },
@@ -6770,7 +6828,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 250800,
+    "mobilization_per_event": 155800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -6781,7 +6839,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -6795,31 +6853,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2027-01-01"
    },
    "totals": {
-    "separate": 541600,
-    "coordinated": 541600,
+    "separate": 351600,
+    "coordinated": 351600,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 270800,
-     "b": 270800
+     "a": 175800,
+     "b": 175800
     },
     "coordinated_by_project": {
-     "a": 270800,
-     "b": 270800
+     "a": 175800,
+     "b": 175800
     }
    },
    "range": {
     "separate": [
-     460360,
-     622840
+     298860,
+     404340
     ],
     "coordinated": [
-     460360,
-     622840
+     298860,
+     404340
     ],
     "savings": [
      0,
@@ -6857,6 +6915,7 @@
   "time_gap_days": 1613,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.5,
   "score_breakdown": {
    "proximity": 8.5,
@@ -6928,7 +6987,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -6942,7 +7001,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2026-01-01"
    },
    "totals": {
@@ -7004,6 +7063,7 @@
   "time_gap_days": 1461,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.5,
   "score_breakdown": {
    "proximity": 8.5,
@@ -7045,15 +7105,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 20800000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 15577000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Dean Forest–Little Ogeechee",
-     "value_used": "$20,800,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Dean Forest–Little Ogeechee",
+     "value_used": "$15,577,000"
     }
    ]
   },
@@ -7064,7 +7124,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 520000,
+    "mobilization_per_event": 389400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -7075,7 +7135,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-03-01"
     },
     "b": {
      "mobilization_events": 1,
@@ -7089,31 +7149,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-03-01",
     "start_date_b": "2026-01-01"
    },
    "totals": {
-    "separate": 1080000,
-    "coordinated": 1080000,
+    "separate": 818800,
+    "coordinated": 818800,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 540000,
-     "b": 540000
+     "a": 409400,
+     "b": 409400
     },
     "coordinated_by_project": {
-     "a": 540000,
-     "b": 540000
+     "a": 409400,
+     "b": 409400
     }
    },
    "range": {
     "separate": [
-     918000,
-     1242000
+     695980,
+     941620
     ],
     "coordinated": [
-     918000,
-     1242000
+     695980,
+     941620
     ],
     "savings": [
      0,
@@ -7151,6 +7211,7 @@
   "time_gap_days": 2709,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.3,
   "score_breakdown": {
    "proximity": 8.3,
@@ -7222,7 +7283,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -7236,7 +7297,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2030-06-01"
    },
    "totals": {
@@ -7298,6 +7359,7 @@
   "time_gap_days": 1613,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.0,
   "score_breakdown": {
    "proximity": 8.0,
@@ -7339,15 +7401,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 10032000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6230000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Boulevard–Magnolia",
-     "value_used": "$10,032,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+     "value_used": "$6,230,000"
     }
    ]
   },
@@ -7358,7 +7420,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 250800,
+    "mobilization_per_event": 155800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -7369,7 +7431,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -7383,31 +7445,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2027-01-01"
    },
    "totals": {
-    "separate": 541600,
-    "coordinated": 541600,
+    "separate": 351600,
+    "coordinated": 351600,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 270800,
-     "b": 270800
+     "a": 175800,
+     "b": 175800
     },
     "coordinated_by_project": {
-     "a": 270800,
-     "b": 270800
+     "a": 175800,
+     "b": 175800
     }
    },
    "range": {
     "separate": [
-     460360,
-     622840
+     298860,
+     404340
     ],
     "coordinated": [
-     460360,
-     622840
+     298860,
+     404340
     ],
     "savings": [
      0,
@@ -7445,6 +7507,7 @@
   "time_gap_days": 1248,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 8.0,
   "score_breakdown": {
    "proximity": 8.0,
@@ -7486,15 +7549,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 10032000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 6230000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Boulevard–Magnolia",
-     "value_used": "$10,032,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+     "value_used": "$6,230,000"
     }
    ]
   },
@@ -7505,7 +7568,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 250800,
+    "mobilization_per_event": 155800,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -7516,7 +7579,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2023-08-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -7530,31 +7593,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2023-08-31",
     "start_date_b": "2027-01-01"
    },
    "totals": {
-    "separate": 541600,
-    "coordinated": 541600,
+    "separate": 351600,
+    "coordinated": 351600,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 270800,
-     "b": 270800
+     "a": 175800,
+     "b": 175800
     },
     "coordinated_by_project": {
-     "a": 270800,
-     "b": 270800
+     "a": 175800,
+     "b": 175800
     }
    },
    "range": {
     "separate": [
-     460360,
-     622840
+     298860,
+     404340
     ],
     "coordinated": [
-     460360,
-     622840
+     298860,
+     404340
     ],
     "savings": [
      0,
@@ -7592,6 +7655,7 @@
   "time_gap_days": 1248,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 7.9,
   "score_breakdown": {
    "proximity": 7.9,
@@ -7633,15 +7697,15 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6600000,
-   "reference_budget_source": "estimated_miso",
+   "reference_budget_usd": 5239000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
-     "value_used": "$6,600,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+     "value_used": "$5,239,000"
     }
    ]
   },
@@ -7652,7 +7716,7 @@
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 165000,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -7663,7 +7727,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -7677,31 +7741,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 370000,
-    "coordinated": 370000,
+    "separate": 302000,
+    "coordinated": 302000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 185000,
-     "b": 185000
+     "a": 151000,
+     "b": 151000
     }
    },
    "range": {
     "separate": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "coordinated": [
-     314500,
-     425500
+     256700,
+     347300
     ],
     "savings": [
      0,
@@ -7739,6 +7803,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 7.8,
   "score_breakdown": {
    "proximity": 7.8,
@@ -7810,7 +7875,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-06-30"
     },
     "b": {
      "mobilization_events": 1,
@@ -7824,7 +7889,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-06-30",
     "start_date_b": "2025-08-01"
    },
    "totals": {
@@ -7886,6 +7951,7 @@
   "time_gap_days": 3074,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
   "score": 7.5,
   "score_breakdown": {
    "proximity": 7.5,
@@ -7957,7 +8023,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2023-01-01"
+     "start_date": "2022-12-31"
     },
     "b": {
      "mobilization_events": 1,
@@ -7971,7 +8037,7 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2023-01-01",
+    "start_date_a": "2022-12-31",
     "start_date_b": "2030-06-01"
    },
    "totals": {

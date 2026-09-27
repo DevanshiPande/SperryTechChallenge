@@ -13,6 +13,7 @@ from pathlib import Path
 from engine import budget, geo, quality, windows
 from engine.overlaps import cross_utility_overlaps
 from pipeline import endpoints as ep
+from services import ml
 from pipeline import locate, parse_desc, parse_gpc
 from pipeline.counties import SOURCE as COUNTY_SOURCE
 from pipeline.counties import CountyLookup
@@ -76,10 +77,22 @@ def assemble(item, loc, counties, today):
     eps = loc["endpoints"]
     flags = list(raw.get("flags") or []) + loc["flags"]
 
+    extra_flags = []  # (code, message)
     if util == "DESC":
         isd = raw["in_service_date"]
         cost = desc_cost(raw["cost"])
-        window, wflags = windows.desc_window(cost, isd, ptype)
+        window, wflags = windows.desc_window(cost, isd, ptype)  # spend-years rule: fallback and sanity check
+        # The filing has no start dates: predict the start (ML_README U6). The end is the filed in-service date.
+        pw = ml.predicted_window({"id": item["id"], "name": item["name"], "description": raw.get("description"),
+                                  "voltage_kv": loc["voltage_kv"], "in_service_date": isd}, ml.FILING_YEAR) if isd else None
+        if pw:
+            spend_start = window["start"] if window and window.get("source") == "desc_spend_years" else None
+            window, wflags = {"start": pw["start"], "end": isd, "source": "predicted", "prediction": pw["prediction"]}, []
+            if spend_start:
+                gap = abs((windows.to_date(pw["start"]) - windows.to_date(spend_start)).days) / 30.44
+                if gap > 24:
+                    extra_flags.append(("WINDOW_DISAGREEMENT", f"Predicted start {pw['start']} and the spending-years start "
+                                                               f"{spend_start} differ by {gap:.0f} months."))
         status = raw["status"]
         extra = {"project_ref": raw["project_ref"], "need": raw["need"]}
     else:
@@ -122,7 +135,9 @@ def assemble(item, loc, counties, today):
         if code in quality.MESSAGES or code in quality.CODES:
             quality.add_flag(p, code)
     quality.location_flags(p, today)
-    budget.attach(p)
+    for code, msg in extra_flags:
+        quality.add_flag(p, code, msg)
+    budget.attach(p, predictor=ml.predicted_budget)
     return p
 
 

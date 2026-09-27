@@ -18,6 +18,8 @@ MESSAGES = {
     "LINE_TOO_LONG": "The two located endpoints are more than 150 km apart; one match may be wrong.",
     "COST_PARSE_FAILED": "The cost row in the filing could not be read.",
     "MANUAL_OVERRIDE": "Location set by manual review.",
+    "WINDOW_DISAGREEMENT": "The predicted start and the start implied by the filing's spending years differ by more than 24 months.",
+    "PREDICTED_START_CLAMPED_TO_TODAY": "The predicted start fell in the past, so it was set to today.",
 }
 CODES = ["ENDPOINT_NOT_FOUND", "COORD_CONFLICT", "POSSIBLY_COMPLETE", "LOW_CONFIDENCE_MATCH", "DATE_PARSE_FAILED",
          "DATE_MISMATCH", "MULTI_SEGMENT", "ENDPOINT_SPLIT_FAILED", "WINDOW_INVALID", "AMBIGUOUS_NAME", "LINE_TOO_LONG"]

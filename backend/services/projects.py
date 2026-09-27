@@ -4,7 +4,7 @@ from datetime import date
 
 from db import mongo
 from engine import budget, closures, geo, overlaps as eng
-from services import events
+from services import events, ml
 from services.common import new_id, parse_iso, text_match
 from services.errors import bad_request, forbidden, not_found
 from services.geocode import geocode
@@ -199,7 +199,7 @@ def brief_cache_set(oid, mode, brief, source):
 
 
 # ---------- user projects ----------
-USER_FIELDS = ("contract_text_hash", "budget_usd", "name", "description", "location_text", "endpoints", "start_date", "end_date", "voltage_kv", "work_type",
+USER_FIELDS = ("line_miles", "contract_text_hash", "budget_usd", "name", "description", "location_text", "endpoints", "start_date", "end_date", "voltage_kv", "work_type",
                "roads_affected", "lane_closures", "work_hours", "planning_authority")
 
 
@@ -241,9 +241,9 @@ def build_user_project(pid, company, data, today=None):
         raise bad_request("name is required")
     start = parse_iso(data.get("start_date"), "start_date")
     end = parse_iso(data.get("end_date"), "end_date")
-    if not start or not end:
-        raise bad_request("start_date and end_date are required")
-    if end <= start:
+    if not end:
+        raise bad_request("end_date is required (start_date can be predicted, the end date cannot)")
+    if start and end <= start:
         raise bad_request("end_date must be after start_date")
     eps, geocoded = resolve_location(data.get("location_text"), data.get("endpoints"))
     kv = data.get("voltage_kv")
@@ -255,6 +255,18 @@ def build_user_project(pid, company, data, today=None):
     else:
         kv = None
     ptype = "line" if len(eps) == 2 else "substation"
+    window, start_flags = {"start": start, "end": end, "source": data.get("window_source") or "user"}, []
+    if not start:
+        # Missing start date: predict it from the duration model (ML_README U6), never before today.
+        pw = ml.predicted_window({"id": pid, "name": name, "description": data.get("description"), "voltage_kv": kv,
+                                  "line_miles": data.get("line_miles"), "in_service_date": end},
+                                 reference_year=ml.this_year(), not_before=(today or date.today()).isoformat())
+        if not pw:
+            raise bad_request("start_date is required (the start-date model is not available)")
+        if pw["start"] >= end:
+            raise bad_request("end_date is too soon for a predicted start (it would start after it ends); give a start_date")
+        window = {"start": pw["start"], "end": end, "source": "predicted", "prediction": pw["prediction"]}
+        start_flags = pw["flags"]
     p = {
         "id": pid,
         "utility": "USER",
@@ -265,7 +277,7 @@ def build_user_project(pid, company, data, today=None):
         "project_type": ptype,
         "status": "Planned",
         "in_service_date": end,
-        "construction_window": {"start": start, "end": end, "source": "user"},
+        "construction_window": window,
         "endpoints": eps,
         "center": geo.center_of(eps),
         "geometry": geo.geojson(eps),
@@ -288,10 +300,20 @@ def build_user_project(pid, company, data, today=None):
         "location_text": data.get("location_text") or None,
         "geocoded": geocoded,
         "contract_text_hash": data.get("contract_text_hash") or None,
+        "line_miles": data.get("line_miles") or None,
     }
+    for code in start_flags:
+        p["quality_flags"].append({"code": code, "message": "The predicted start fell in the past, so it was set to today."})
     if data.get("budget_usd"):
-        p.update(budget_usd=int(data["budget_usd"]), budget_source="contract")
-    budget.attach(p)
+        try:
+            b = int(float(data["budget_usd"]))
+        except (TypeError, ValueError):
+            raise bad_request("budget_usd must be a number")
+        if b <= 0:
+            raise bad_request("budget_usd must be positive")
+        p.update(budget_usd=b, budget_source="contract" if data.get("contract_text_hash") else "user")
+    # Missing budget: predict it only for transmission work (a voltage is known); never for e.g. road work.
+    budget.attach(p, predictor=ml.predicted_budget, predict_missing=kv is not None)
     if end < (today or date.today()).isoformat():
         p["quality_flags"].append({"code": "POSSIBLY_COMPLETE",
                                    "message": "In-service date is in the past; project may already be complete."})
@@ -359,12 +381,13 @@ def update_user_project(ident, pid, fields):
     if unknown:
         raise bad_request(f"unknown fields: {', '.join(sorted(unknown))}")
     merged = {"name": doc["name"], "description": doc.get("description"),
-              "start_date": doc["construction_window"]["start"], "end_date": doc["construction_window"]["end"],
+              "start_date": None if doc["construction_window"].get("source") == "predicted" else doc["construction_window"]["start"],
+              "end_date": doc["construction_window"]["end"], "line_miles": doc.get("line_miles"),
               "voltage_kv": doc.get("voltage_kv"), "work_type": doc.get("work_type"),
               "roads_affected": doc.get("roads_affected"), "lane_closures": doc.get("lane_closures"),
               "work_hours": doc.get("work_hours"), "planning_authority": doc.get("planning_authority"),
               "contract_text_hash": doc.get("contract_text_hash"),
-              "budget_usd": doc.get("budget_usd") if doc.get("budget_source") == "contract" else None}
+              "budget_usd": doc.get("budget_usd") if doc.get("budget_source") in ("contract", "user") else None}
     if "location_text" in fields or "endpoints" in fields:
         merged.update({k: fields.get(k) for k in ("location_text", "endpoints")})
     else:

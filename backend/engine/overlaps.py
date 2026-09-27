@@ -134,6 +134,7 @@ def build_overlap(a, b, kind, traffic=None, today=None):
         "time_gap_days": time_gap_days(a, b),
         "window_overlap_months": months,
         "schedule_shift_possible": shiftable,
+        "timing_confidence": "predicted" if "predicted" in ((wa or {}).get("source"), (wb or {}).get("source")) else "filed",
         "score": score,
         "score_breakdown": breakdown,
         "rank": None,

@@ -28,8 +28,8 @@ from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import JSONResponse  # noqa: E402
 from starlette.exceptions import HTTPException as StarletteHTTPException  # noqa: E402
 
-from api.routers import (agent, contracts, events, export, gemini_routes, jobs, messages, overlaps,  # noqa: E402
-                         projects, quality, reservations, resources, system, traffic, whatif)
+from api.routers import (agent, contracts, events, export, gemini_routes, jobs, messages, ml,  # noqa: E402
+                         overlaps, projects, quality, reservations, resources, system, traffic, whatif)
 from services.errors import ApiError  # noqa: E402
 
 log = logging.getLogger("gridlock")
@@ -43,6 +43,8 @@ def startup(state=None, db=None, connect=True):
     state = state or STATE
     if not state.projects:
         state.load_files()
+    from services import ml as ml_models
+    ml_models.available()  # load ml/predict.py and the trained models once
     if state.traffic is None:
         from services import traffic
         from services.state import data_dir
@@ -139,7 +141,7 @@ def create_app(skip_startup=False):
         return JSONResponse({"error": {"code": "INTERNAL", "message": "Internal server error"}}, status_code=500)
 
     for r in (system, projects, overlaps, quality, whatif, export, events, resources, reservations, jobs, messages,
-              gemini_routes, agent, traffic, contracts):
+              gemini_routes, agent, traffic, contracts, ml):
         app.include_router(r.router)
     return app
 

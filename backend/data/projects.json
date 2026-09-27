@@ -10,9 +10,18 @@
   "status": "In Progress",
   "in_service_date": "2023-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2021-10-31",
    "end": "2023-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 25.7,
+    "low": 17.2,
+    "high": 34.2,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -101,9 +110,18 @@
   "status": "Planned",
   "in_service_date": "2027-12-31",
   "construction_window": {
-   "start": "2025-01-01",
+   "start": "2025-04-30",
    "end": "2027-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 32.4,
+    "low": 23.9,
+    "high": 40.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -169,9 +187,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-12-31",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 24.4,
+    "low": 15.9,
+    "high": 32.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -260,9 +287,18 @@
   "status": "In Progress",
   "in_service_date": "2025-12-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-09-01",
    "end": "2025-12-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.1,
+    "low": 18.6,
+    "high": 35.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -350,9 +386,18 @@
   "status": "In Progress",
   "in_service_date": "2024-06-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-03-01",
    "end": "2024-06-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.1,
+    "low": 18.6,
+    "high": 35.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -426,9 +471,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-09-30",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.1,
+    "low": 18.6,
+    "high": 35.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -513,9 +567,18 @@
   "status": "In Progress",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-10-31",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 25.7,
+    "low": 17.2,
+    "high": 34.2,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -600,9 +663,18 @@
   "status": "In Progress",
   "in_service_date": "2026-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2024-08-31",
    "end": "2026-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.7,
+    "low": 19.2,
+    "high": 36.2,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -687,9 +759,18 @@
   "status": "In Progress",
   "in_service_date": "2028-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2025-12-31",
    "end": "2028-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 35.6,
+    "low": 27.1,
+    "high": 44.1,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -756,6 +837,10 @@
    {
     "code": "LOW_CONFIDENCE_MATCH",
     "message": "At least one endpoint location is a low-confidence match; review before relying on it."
+   },
+   {
+    "code": "WINDOW_DISAGREEMENT",
+    "message": "Predicted start 2025-12-31 and the spending-years start 2023-01-01 differ by 36 months."
    }
   ],
   "overlap_ids": [],
@@ -782,9 +867,18 @@
   "status": "In Progress",
   "in_service_date": "2025-06-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-03-01",
    "end": "2025-06-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.1,
+    "low": 18.6,
+    "high": 35.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -883,9 +977,18 @@
   "status": "Planned",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2023-10-31",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 26.3,
+    "low": 17.8,
+    "high": 34.8,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -959,9 +1062,18 @@
   "status": "Planned",
   "in_service_date": "2028-12-31",
   "construction_window": {
-   "start": "2026-01-01",
+   "start": "2025-10-31",
    "end": "2028-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 37.6,
+    "low": 29.1,
+    "high": 46.1,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1042,9 +1154,18 @@
   "status": "In Progress",
   "in_service_date": "2024-09-30",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-06-30",
    "end": "2024-09-30",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.1,
+    "low": 18.6,
+    "high": 35.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1118,9 +1239,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-06-30",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 30.2,
+    "low": 21.7,
+    "high": 38.7,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1215,9 +1345,18 @@
   "status": "Planned",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2023-07-31",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 28.8,
+    "low": 20.3,
+    "high": 37.3,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1312,9 +1451,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-25",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-12-25",
    "end": "2024-12-25",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 24.1,
+    "low": 15.6,
+    "high": 32.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1395,9 +1543,18 @@
   "status": "In Progress",
   "in_service_date": "2028-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2026-01-31",
    "end": "2028-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 34.9,
+    "low": 26.4,
+    "high": 43.4,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1435,6 +1592,10 @@
    {
     "code": "ENDPOINT_NOT_FOUND",
     "message": "No endpoint could be located; the project has no map position."
+   },
+   {
+    "code": "WINDOW_DISAGREEMENT",
+    "message": "Predicted start 2026-01-31 and the spending-years start 2023-01-01 differ by 37 months."
    }
   ],
   "overlap_ids": [],
@@ -1459,9 +1620,18 @@
   "status": "Planned",
   "in_service_date": "2027-03-31",
   "construction_window": {
-   "start": "2025-01-01",
+   "start": "2024-07-31",
    "end": "2027-03-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 32.4,
+    "low": 23.9,
+    "high": 40.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1529,9 +1699,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-12-31",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 24.1,
+    "low": 15.6,
+    "high": 32.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1597,9 +1776,18 @@
   "status": "In Progress",
   "in_service_date": "2026-06-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2024-02-01",
    "end": "2026-06-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.8,
+    "low": 19.3,
+    "high": 36.3,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1684,9 +1872,18 @@
   "status": "Planned",
   "in_service_date": "2026-06-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2024-04-01",
    "end": "2026-06-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 26.4,
+    "low": 17.9,
+    "high": 34.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1775,9 +1972,18 @@
   "status": "In Progress",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-12-31",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 24.4,
+    "low": 15.9,
+    "high": 32.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1843,9 +2049,18 @@
   "status": "In Progress",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-08-31",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.8,
+    "low": 19.3,
+    "high": 36.3,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -1944,9 +2159,18 @@
   "status": "Planned",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-11-30",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 25.2,
+    "low": 16.7,
+    "high": 33.7,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2019,9 +2243,18 @@
   "status": "In Progress",
   "in_service_date": "2024-06-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-02-01",
    "end": "2024-06-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.8,
+    "low": 19.3,
+    "high": 36.3,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2110,9 +2343,18 @@
   "status": "Planned",
   "in_service_date": "2029-12-31",
   "construction_window": {
-   "start": "2026-01-01",
+   "start": "2026-01-31",
    "end": "2029-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 46.9,
+    "low": 38.4,
+    "high": 55.4,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2193,9 +2435,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-10-31",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 25.7,
+    "low": 17.2,
+    "high": 34.2,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2261,9 +2512,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-09-30",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 26.6,
+    "low": 18.1,
+    "high": 35.1,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2329,9 +2589,18 @@
   "status": "Planned",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2023-10-31",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 26.3,
+    "low": 17.8,
+    "high": 34.8,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2419,9 +2688,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-08-31",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 28.3,
+    "low": 19.8,
+    "high": 36.8,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2495,9 +2773,18 @@
   "status": "In Progress",
   "in_service_date": "2024-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2022-06-30",
    "end": "2024-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 30.1,
+    "low": 21.6,
+    "high": 38.6,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2587,9 +2874,18 @@
   "status": "In Progress",
   "in_service_date": "2025-12-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-04-30",
    "end": "2025-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 31.5,
+    "low": 23.0,
+    "high": 40.0,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2674,9 +2970,18 @@
   "status": "In Progress",
   "in_service_date": "2026-03-31",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2024-01-31",
    "end": "2026-03-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 26.4,
+    "low": 17.9,
+    "high": 34.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2742,9 +3047,18 @@
   "status": "In Progress",
   "in_service_date": "2026-10-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2024-06-01",
    "end": "2026-10-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 27.7,
+    "low": 19.2,
+    "high": 36.2,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2810,9 +3124,18 @@
   "status": "In Progress",
   "in_service_date": "2026-08-12",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2023-12-12",
    "end": "2026-08-12",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 31.6,
+    "low": 23.1,
+    "high": 40.1,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2903,9 +3226,18 @@
   "status": "Planned",
   "in_service_date": "2027-05-01",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2024-10-01",
    "end": "2027-05-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 30.6,
+    "low": 22.1,
+    "high": 39.1,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -2986,9 +3318,18 @@
   "status": "Planned",
   "in_service_date": "2027-12-31",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2025-03-31",
    "end": "2027-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 33.3,
+    "low": 24.8,
+    "high": 41.8,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -3056,9 +3397,18 @@
   "status": "Planned",
   "in_service_date": "2027-12-31",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2025-03-31",
    "end": "2027-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 32.9,
+    "low": 24.4,
+    "high": 41.4,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -3126,9 +3476,18 @@
   "status": "In Progress",
   "in_service_date": "2027-05-01",
   "construction_window": {
-   "start": "2023-01-01",
+   "start": "2024-12-01",
    "end": "2027-05-01",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 29.2,
+    "low": 20.7,
+    "high": 37.7,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [],
   "center": null,
@@ -3181,9 +3540,18 @@
   "status": "Planned",
   "in_service_date": "2026-05-31",
   "construction_window": {
-   "start": "2024-01-01",
+   "start": "2024-01-31",
    "end": "2026-05-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 28.4,
+    "low": 19.9,
+    "high": 36.9,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -3268,9 +3636,18 @@
   "status": "Planned",
   "in_service_date": "2026-12-31",
   "construction_window": {
-   "start": "2025-01-01",
+   "start": "2024-07-31",
    "end": "2026-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 29.2,
+    "low": 20.7,
+    "high": 37.7,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -3351,9 +3728,18 @@
   "status": "Planned",
   "in_service_date": "2027-12-31",
   "construction_window": {
-   "start": "2027-01-01",
+   "start": "2025-03-31",
    "end": "2027-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 33.2,
+    "low": 24.7,
+    "high": 41.7,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -3434,9 +3820,18 @@
   "status": "Planned",
   "in_service_date": "2027-12-31",
   "construction_window": {
-   "start": "2027-01-01",
+   "start": "2025-02-28",
    "end": "2027-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 33.5,
+    "low": 25.0,
+    "high": 42.0,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [
    {
@@ -3522,9 +3917,18 @@
   "status": "Planned",
   "in_service_date": "2028-12-31",
   "construction_window": {
-   "start": "2028-01-01",
+   "start": "2025-11-30",
    "end": "2028-12-31",
-   "source": "desc_spend_years"
+   "source": "predicted",
+   "prediction": {
+    "months": 37.3,
+    "low": 28.8,
+    "high": 45.8,
+    "typical_error_months": 8.5,
+    "method": "random_forest",
+    "trained_on": "205 Georgia Power projects (filed start and need dates)",
+    "label": "predicted"
+   }
   },
   "endpoints": [],
   "center": null,
@@ -3553,6 +3957,10 @@
    {
     "code": "ENDPOINT_SPLIT_FAILED",
     "message": "Endpoint names could not be read from the project title."
+   },
+   {
+    "code": "WINDOW_DISAGREEMENT",
+    "message": "Predicted start 2025-11-30 and the spending-years start 2028-01-01 differ by 25 months."
    }
   ],
   "overlap_ids": [],
@@ -3702,9 +4110,21 @@
   "teams": "18492",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 91546000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 35.21 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 31637000,
+  "budget_range_usd": [
+   21566000,
+   46412000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 21566000,
+   "high": 46412000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19676",
@@ -3778,9 +4198,21 @@
   "teams": "19676",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 15860000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 6.1 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 13750000,
+  "budget_range_usd": [
+   9373000,
+   20171000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 9373000,
+   "high": 20171000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_18800",
@@ -3847,9 +4279,21 @@
   "teams": "18800",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 2640000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 1.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3825000,
+  "budget_range_usd": [
+   2608000,
+   5612000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 2608000,
+   "high": 5612000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19187",
@@ -3927,9 +4371,21 @@
   "teams": "19187",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": 30800000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 14.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 10501000,
+  "budget_range_usd": [
+   7158000,
+   15405000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 7158000,
+   "high": 15405000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_11821",
@@ -4006,9 +4462,21 @@
   "teams": "11821",
   "zone": 218,
   "sponsor": "GPC",
-  "budget_usd": 16500000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 7.5 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7789000,
+  "budget_range_usd": [
+   5309000,
+   11426000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5309000,
+   "high": 11426000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20464",
@@ -4224,9 +4692,21 @@
   "teams": "20067",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 11000000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6333000,
+  "budget_range_usd": [
+   4317000,
+   9290000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 4317000,
+   "high": 9290000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20466",
@@ -4525,9 +5005,21 @@
   "teams": "18889",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 2640000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 1.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3736000,
+  "budget_range_usd": [
+   2546000,
+   5480000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 2546000,
+   "high": 5480000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20326",
@@ -4654,9 +5146,21 @@
   "teams": "20152",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": 19708000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 7.58 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 20282000,
+  "budget_range_usd": [
+   13826000,
+   29754000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 13826000,
+   "high": 29754000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20175",
@@ -4719,9 +5223,21 @@
   "teams": "20175",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 20784000,
+  "budget_range_usd": [
+   14167000,
+   30490000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 14167000,
+   "high": 30490000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_17075",
@@ -4920,9 +5436,21 @@
   "teams": "19597",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": 21008000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 8.08 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 15649000,
+  "budget_range_usd": [
+   10668000,
+   22958000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 10668000,
+   "high": 22958000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_18960",
@@ -4996,9 +5524,21 @@
   "teams": "18960",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 15620000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 7.1 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7594000,
+  "budget_range_usd": [
+   5176000,
+   11140000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5176000,
+   "high": 11140000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20243",
@@ -5065,9 +5605,21 @@
   "teams": "20243",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Substation or equipment-only work: no per-mile estimate"
+  "budget_usd": 15736000,
+  "budget_range_usd": [
+   10727000,
+   23085000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 10727000,
+   "high": 23085000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20216",
@@ -5251,9 +5803,21 @@
   "teams": "16007",
   "zone": 215,
   "sponsor": "GPC",
-  "budget_usd": 5984000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.72 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 4925000,
+  "budget_range_usd": [
+   3357000,
+   7224000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 3357000,
+   "high": 7224000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20516",
@@ -5392,9 +5956,21 @@
   "teams": "19618",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 6182000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.81 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7027000,
+  "budget_range_usd": [
+   4790000,
+   10309000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 4790000,
+   "high": 10309000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21139",
@@ -5472,9 +6048,21 @@
   "teams": "21139",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 1584000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 0.72 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3361000,
+  "budget_range_usd": [
+   2291000,
+   4930000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 2291000,
+   "high": 4930000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20474",
@@ -5681,9 +6269,21 @@
   "teams": "19636",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": 24640000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 11.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9419000,
+  "budget_range_usd": [
+   6421000,
+   13818000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6421000,
+   "high": 13818000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20512",
@@ -6005,9 +6605,21 @@
   "teams": "20066",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 17600000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 8.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7838000,
+  "budget_range_usd": [
+   5343000,
+   11498000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 5343000,
+   "high": 11498000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19966",
@@ -6146,9 +6758,21 @@
   "teams": "20277",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Substation or equipment-only work: no per-mile estimate"
+  "budget_usd": 5034000,
+  "budget_range_usd": [
+   3432000,
+   7386000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reactive equipment.",
+  "budget_prediction": {
+   "low": 3432000,
+   "high": 7386000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20489",
@@ -6272,9 +6896,21 @@
   "teams": "17900",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": 60840000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 23.4 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 26323000,
+  "budget_range_usd": [
+   17943000,
+   38616000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 17943000,
+   "high": 38616000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20691",
@@ -6337,9 +6973,21 @@
   "teams": "20691",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Substation or equipment-only work: no per-mile estimate"
+  "budget_usd": 15200000,
+  "budget_range_usd": [
+   10361000,
+   22299000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 10361000,
+   "high": 22299000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20223",
@@ -6632,9 +7280,21 @@
   "teams": "19287",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 5720000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.6 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 4957000,
+  "budget_range_usd": [
+   3379000,
+   7271000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3379000,
+   "high": 7271000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19363",
@@ -6704,9 +7364,21 @@
   "teams": "19363",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 8021000,
+  "budget_range_usd": [
+   5467000,
+   11766000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5467000,
+   "high": 11766000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20509",
@@ -6835,9 +7507,21 @@
   "teams": "19601",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": 12760000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.8 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6991000,
+  "budget_range_usd": [
+   4766000,
+   10256000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: upgrade.",
+  "budget_prediction": {
+   "low": 4766000,
+   "high": 10256000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_15879",
@@ -6915,9 +7599,21 @@
   "teams": "15879",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": 24640000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 11.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9419000,
+  "budget_range_usd": [
+   6421000,
+   13818000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6421000,
+   "high": 13818000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20771",
@@ -7029,9 +7725,21 @@
   "teams": "18736",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 5629000,
+  "budget_range_usd": [
+   3837000,
+   8258000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3837000,
+   "high": 8258000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20781",
@@ -7101,9 +7809,21 @@
   "teams": "20781",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 6500000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.5 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9478000,
+  "budget_range_usd": [
+   6461000,
+   13904000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6461000,
+   "high": 13904000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20736",
@@ -7230,9 +7950,21 @@
   "teams": "20234",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 15200000,
+  "budget_range_usd": [
+   10361000,
+   22299000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 10361000,
+   "high": 22299000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_18668",
@@ -7304,9 +8036,21 @@
   "teams": "18668",
   "zone": 218,
   "sponsor": "GPC",
-  "budget_usd": 44000000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 20.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 12534000,
+  "budget_range_usd": [
+   8544000,
+   18388000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 8544000,
+   "high": 18388000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_10143",
@@ -7378,9 +8122,21 @@
   "teams": "10143",
   "zone": 202,
   "sponsor": "GPC",
-  "budget_usd": 2640000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 1.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3825000,
+  "budget_range_usd": [
+   2608000,
+   5612000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 2608000,
+   "high": 5612000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_10481",
@@ -7452,9 +8208,21 @@
   "teams": "10481",
   "zone": 202,
   "sponsor": "GPC",
-  "budget_usd": 40040000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 15.4 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 21358000,
+  "budget_range_usd": [
+   14559000,
+   31332000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 14559000,
+   "high": 31332000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19248",
@@ -7526,9 +8294,21 @@
   "teams": "19248",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 53460000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 24.3 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 13500000,
+  "budget_range_usd": [
+   9203000,
+   19805000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 9203000,
+   "high": 19805000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20785",
@@ -7609,9 +8389,21 @@
   "teams": "20785",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 20460000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 9.3 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 8617000,
+  "budget_range_usd": [
+   5874000,
+   12641000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5874000,
+   "high": 12641000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20065",
@@ -7695,9 +8487,21 @@
   "teams": "20065",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 14740000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 6.7 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7394000,
+  "budget_range_usd": [
+   5040000,
+   10847000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5040000,
+   "high": 10847000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20717",
@@ -7828,9 +8632,21 @@
   "teams": "18573",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 8021000,
+  "budget_range_usd": [
+   5467000,
+   11766000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5467000,
+   "high": 11766000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_17977",
@@ -7902,9 +8718,21 @@
   "teams": "17977",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 18634000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 8.47 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 8244000,
+  "budget_range_usd": [
+   5620000,
+   12094000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5620000,
+   "high": 12094000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20150",
@@ -8020,9 +8848,21 @@
   "teams": "20024",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": 45540000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 20.7 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 12752000,
+  "budget_range_usd": [
+   8693000,
+   18708000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 8693000,
+   "high": 18708000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19997",
@@ -8094,9 +8934,21 @@
   "teams": "19997",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 20548000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 9.34 mi (straight-line x route factor) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 8021000,
+  "budget_range_usd": [
+   5467000,
+   11766000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5467000,
+   "high": 11766000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20797",
@@ -8282,9 +9134,21 @@
   "teams": "21048",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 57508000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 26.14 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 14345000,
+  "budget_range_usd": [
+   9778000,
+   21044000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 9778000,
+   "high": 21044000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20777",
@@ -8343,9 +9207,21 @@
   "teams": "20777",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 11934000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 4.59 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 11840000,
+  "budget_range_usd": [
+   8071000,
+   17369000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 8071000,
+   "high": 17369000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20482",
@@ -8423,9 +9299,21 @@
   "teams": "20482",
   "zone": 213,
   "sponsor": "GPC",
-  "budget_usd": 6600000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5239000,
+  "budget_range_usd": [
+   3571000,
+   7686000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3571000,
+   "high": 7686000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20656",
@@ -8553,9 +9441,21 @@
   "teams": "20783",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 14674000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 6.67 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7379000,
+  "budget_range_usd": [
+   5030000,
+   10825000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5030000,
+   "high": 10825000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20407",
@@ -8629,9 +9529,21 @@
   "teams": "20407",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 6600000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5239000,
+  "budget_range_usd": [
+   3571000,
+   7686000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3571000,
+   "high": 7686000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21069",
@@ -8811,9 +9723,21 @@
   "teams": "20274",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 15566000,
+  "budget_range_usd": [
+   10610000,
+   22835000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 10610000,
+   "high": 22835000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_13166",
@@ -8876,9 +9800,21 @@
   "teams": "13166",
   "zone": 213,
   "sponsor": "GPC",
-  "budget_usd": 1980000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 0.9 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3541000,
+  "budget_range_usd": [
+   2414000,
+   5195000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 2414000,
+   "high": 5195000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21062",
@@ -8941,9 +9877,21 @@
   "teams": "21062",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": 175000000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 35.0 mi (description) x $5,000,000/mi (MISO 500 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 204550000,
+  "budget_range_usd": [
+   139434000,
+   300075000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 139434000,
+   "high": 300075000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_10222",
@@ -9013,9 +9961,21 @@
   "teams": "10222",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 29700000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 13.5 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 10315000,
+  "budget_range_usd": [
+   7032000,
+   15133000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 7032000,
+   "high": 15133000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21047",
@@ -9074,9 +10034,21 @@
   "teams": "21047",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 8021000,
+  "budget_range_usd": [
+   5467000,
+   11766000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5467000,
+   "high": 11766000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_16887",
@@ -9148,9 +10120,21 @@
   "teams": "16887",
   "zone": 213,
   "sponsor": "GPC",
-  "budget_usd": 71032000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 27.32 mi (straight-line x route factor) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 15566000,
+  "budget_range_usd": [
+   10610000,
+   22835000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 10610000,
+   "high": 22835000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21036",
@@ -9209,9 +10193,21 @@
   "teams": "21036",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 5200000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.0 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 11669000,
+  "budget_range_usd": [
+   7955000,
+   17119000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 7955000,
+   "high": 17119000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21142",
@@ -9281,9 +10277,21 @@
   "teams": "21142",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 17056000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 6.56 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 13878000,
+  "budget_range_usd": [
+   9460000,
+   20359000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 9460000,
+   "high": 20359000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21138",
@@ -9350,9 +10358,21 @@
   "teams": "21138",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Substation or equipment-only work: no per-mile estimate"
+  "budget_usd": 15200000,
+  "budget_range_usd": [
+   10361000,
+   22299000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 10361000,
+   "high": 22299000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21141",
@@ -9419,9 +10439,21 @@
   "teams": "21141",
   "zone": 206,
   "sponsor": "GPC",
-  "budget_usd": 34760000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 15.8 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 11146000,
+  "budget_range_usd": [
+   7598000,
+   16351000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 7598000,
+   "high": 16351000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20285",
@@ -9480,9 +10512,21 @@
   "teams": "20285",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 2134000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 0.97 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3525000,
+  "budget_range_usd": [
+   2403000,
+   5171000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 2403000,
+   "high": 5171000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19621",
@@ -9559,9 +10603,21 @@
   "teams": "19621",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 2200000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 1.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5274000,
+  "budget_range_usd": [
+   3595000,
+   7736000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3595000,
+   "high": 7736000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20346",
@@ -9632,9 +10688,21 @@
   "teams": "20346",
   "zone": 218,
   "sponsor": "GPC",
-  "budget_usd": 12540000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.7 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6872000,
+  "budget_range_usd": [
+   4685000,
+   10082000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 4685000,
+   "high": 10082000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20757",
@@ -9708,9 +10776,21 @@
   "teams": "20757",
   "zone": 202,
   "sponsor": "GPC",
-  "budget_usd": 8580000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.9 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5829000,
+  "budget_range_usd": [
+   3974000,
+   8552000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3974000,
+   "high": 8552000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21006",
@@ -9785,9 +10865,21 @@
   "teams": "21006",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 10032000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 4.56 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6230000,
+  "budget_range_usd": [
+   4247000,
+   9140000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 4247000,
+   "high": 9140000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21023",
@@ -9862,9 +10954,21 @@
   "teams": "21023",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 20800000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 8.0 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 15577000,
+  "budget_range_usd": [
+   10618000,
+   22851000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 10618000,
+   "high": 22851000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20989",
@@ -9976,9 +11080,21 @@
   "teams": "13628",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 21560000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 9.8 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 13288000,
+  "budget_range_usd": [
+   9058000,
+   19494000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 9058000,
+   "high": 19494000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20248",
@@ -10052,9 +11168,21 @@
   "teams": "20248",
   "zone": 202,
   "sponsor": "GPC",
-  "budget_usd": 39754000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 15.29 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 21283000,
+  "budget_range_usd": [
+   14508000,
+   31222000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 14508000,
+   "high": 31222000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21129",
@@ -10132,9 +11260,21 @@
   "teams": "21129",
   "zone": 211,
   "sponsor": "GPC",
-  "budget_usd": 73112000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 28.12 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 28889000,
+  "budget_range_usd": [
+   19693000,
+   42380000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 19693000,
+   "high": 42380000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20764",
@@ -10193,9 +11333,21 @@
   "teams": "20764",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 7040000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5375000,
+  "budget_range_usd": [
+   3664000,
+   7886000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3664000,
+   "high": 7886000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20761",
@@ -10254,9 +11406,21 @@
   "teams": "20761",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 2640000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 1.2 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 3825000,
+  "budget_range_usd": [
+   2608000,
+   5612000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 2608000,
+   "high": 5612000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21130",
@@ -10372,9 +11536,21 @@
   "teams": "10478",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 21340000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 9.7 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 8791000,
+  "budget_range_usd": [
+   5993000,
+   12897000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5993000,
+   "high": 12897000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21097",
@@ -10444,9 +11620,21 @@
   "teams": "21097",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 7540000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.9 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 10033000,
+  "budget_range_usd": [
+   6839000,
+   14718000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6839000,
+   "high": 14718000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20480",
@@ -10516,9 +11704,21 @@
   "teams": "20480",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": 3900000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 1.5 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 7754000,
+  "budget_range_usd": [
+   5285000,
+   11375000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 5285000,
+   "high": 11375000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19627",
@@ -10581,9 +11781,21 @@
   "teams": "19627",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 25960000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 11.8 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9660000,
+  "budget_range_usd": [
+   6585000,
+   14172000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6585000,
+   "high": 14172000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21063",
@@ -10650,9 +11862,21 @@
   "teams": "21063",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 600000000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 120.0 mi (description) x $5,000,000/mi (MISO 500 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 290335000,
+  "budget_range_usd": [
+   197911000,
+   425922000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 197911000,
+   "high": 425922000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_12120",
@@ -10723,9 +11947,21 @@
   "teams": "12120",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 11660000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.3 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6653000,
+  "budget_range_usd": [
+   4535000,
+   9760000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 4535000,
+   "high": 9760000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20298",
@@ -10784,9 +12020,21 @@
   "teams": "20298",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 8021000,
+  "budget_range_usd": [
+   5467000,
+   11766000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5467000,
+   "high": 11766000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21128",
@@ -10898,9 +12146,21 @@
   "teams": "19996",
   "zone": 215,
   "sponsor": "GPC",
-  "budget_usd": 884000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 0.34 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5720000,
+  "budget_range_usd": [
+   3899000,
+   8391000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3899000,
+   "high": 8391000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20428",
@@ -10972,9 +12232,21 @@
   "teams": "20428",
   "zone": 214,
   "sponsor": "GPC",
-  "budget_usd": 16720000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 7.6 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 12839000,
+  "budget_range_usd": [
+   8752000,
+   18834000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 8752000,
+   "high": 18834000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21116",
@@ -11117,9 +12389,21 @@
   "teams": "20789",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 24200000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 11.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9338000,
+  "budget_range_usd": [
+   6365000,
+   13699000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6365000,
+   "high": 13699000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20284",
@@ -11201,9 +12485,21 @@
   "teams": "20284",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 83688000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 38.04 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 17368000,
+  "budget_range_usd": [
+   11839000,
+   25480000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 11839000,
+   "high": 25480000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20857",
@@ -11262,9 +12558,21 @@
   "teams": "20857",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 10400000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 4.0 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 15267000,
+  "budget_range_usd": [
+   10407000,
+   22396000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 10407000,
+   "high": 22396000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21093",
@@ -11395,9 +12703,21 @@
   "teams": "19995",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 22660000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 10.3 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9047000,
+  "budget_range_usd": [
+   6167000,
+   13272000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6167000,
+   "high": 13272000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21098",
@@ -11456,9 +12776,21 @@
   "teams": "21098",
   "zone": 201,
   "sponsor": "GPC",
-  "budget_usd": 7280000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.8 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 9897000,
+  "budget_range_usd": [
+   6746000,
+   14518000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 6746000,
+   "high": 14518000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20160",
@@ -11687,9 +13019,21 @@
   "teams": "20690",
   "zone": 208,
   "sponsor": "GPC",
-  "budget_usd": 14274000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.49 mi (description) x $2,600,000/mi (MISO 230 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 13115000,
+  "budget_range_usd": [
+   8940000,
+   19240000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 8940000,
+   "high": 19240000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_19632",
@@ -11761,9 +13105,21 @@
   "teams": "19632",
   "zone": 202,
   "sponsor": "GPC",
-  "budget_usd": 7260000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.3 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5315000,
+  "budget_range_usd": [
+   3623000,
+   7796000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 3623000,
+   "high": 7796000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_10811",
@@ -11881,9 +13237,21 @@
   "teams": "20756",
   "zone": 215,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 98577000,
+  "budget_range_usd": [
+   67196000,
+   144612000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 67196000,
+   "high": 144612000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20784",
@@ -11959,9 +13327,21 @@
   "teams": "20784",
   "zone": 219,
   "sponsor": "SAV",
-  "budget_usd": 6600000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.0 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5239000,
+  "budget_range_usd": [
+   3571000,
+   7686000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3571000,
+   "high": 7686000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20767",
@@ -12084,9 +13464,21 @@
   "teams": "20758",
   "zone": 202,
   "sponsor": "GPC",
-  "budget_usd": null,
-  "budget_source": null,
-  "budget_note": "Voltage or line length unknown"
+  "budget_usd": 15200000,
+  "budget_range_usd": [
+   10361000,
+   22299000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: breaker switch.",
+  "budget_prediction": {
+   "low": 10361000,
+   "high": 22299000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20793",
@@ -12164,9 +13556,21 @@
   "teams": "20793",
   "zone": 215,
   "sponsor": "GPC",
-  "budget_usd": 11990000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.45 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6736000,
+  "budget_range_usd": [
+   4592000,
+   9882000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 4592000,
+   "high": 9882000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20794",
@@ -12244,9 +13648,21 @@
   "teams": "20794",
   "zone": 215,
   "sponsor": "GPC",
-  "budget_usd": 19580000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 8.9 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 8439000,
+  "budget_range_usd": [
+   5753000,
+   12380000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 5753000,
+   "high": 12380000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_21053",
@@ -12323,9 +13739,21 @@
   "teams": "21053",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 6380000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 2.9 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5170000,
+  "budget_range_usd": [
+   3524000,
+   7584000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 3524000,
+   "high": 7584000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_09661",
@@ -12395,9 +13823,21 @@
   "teams": "09661",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 320000000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 64.0 mi (description) x $5,000,000/mi (MISO 500 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 279119000,
+  "budget_range_usd": [
+   190265000,
+   409467000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: new line.",
+  "budget_prediction": {
+   "low": 190265000,
+   "high": 409467000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20796",
@@ -12651,9 +14091,21 @@
   "teams": "10487",
   "zone": 216,
   "sponsor": "GPC",
-  "budget_usd": 8140000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 3.7 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 5569000,
+  "budget_range_usd": [
+   3796000,
+   8170000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: reconductor.",
+  "budget_prediction": {
+   "low": 3796000,
+   "high": 8170000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_18700",
@@ -12725,9 +14177,21 @@
   "teams": "18700",
   "zone": 212,
   "sponsor": "GPC",
-  "budget_usd": 53130000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 24.15 mi (straight-line x route factor) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6929000,
+  "budget_range_usd": [
+   4723000,
+   10164000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: other.",
+  "budget_prediction": {
+   "low": 4723000,
+   "high": 10164000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  },
  {
   "id": "GPC_20787",
@@ -12863,8 +14327,20 @@
   "teams": "17993",
   "zone": 215,
   "sponsor": "GPC",
-  "budget_usd": 11616000,
-  "budget_source": "estimated_miso",
-  "budget_note": "Estimate: 5.28 mi (description) x $2,200,000/mi (MISO 115 kV new single circuit). Georgia Power budgets are redacted."
+  "budget_usd": 6642000,
+  "budget_range_usd": [
+   4528000,
+   9744000
+  ],
+  "budget_source": "predicted (ridge, Dominion budgets)",
+  "budget_note": "Predicted from 44 Dominion Energy SC projects (filed budgets); typical error 46.7%. Work type: rebuild.",
+  "budget_prediction": {
+   "low": 4528000,
+   "high": 9744000,
+   "method": "ridge_log",
+   "label": "predicted",
+   "typical_error_pct": 46.7,
+   "trained_on": "44 Dominion Energy SC projects (filed budgets)"
+  }
  }
 ]

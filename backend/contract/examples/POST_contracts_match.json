@@ -1,7 +1,7 @@
 {
-  "contract_id": "CTR_KVJ70G",
+  "contract_id": "CTR_TJYZLK",
   "project": {
-    "id": "CTR_KVJ70G",
+    "id": "CTR_TJYZLK",
     "utility": "USER",
     "utility_name": "Lowcountry Line Builders LLC (fictional)",
     "state": null,
@@ -136,7 +136,7 @@
         "shared_roads": []
       },
       {
-        "project_id": "USR_J7QJFE",
+        "project_id": "USR_H010FE",
         "short_name": "Corridor upgrade",
         "window": {
           "start": "2027-06-01",
@@ -152,7 +152,7 @@
   },
   "matches": [
     {
-      "project_id": "USR_J7QJFE",
+      "project_id": "USR_H010FE",
       "short_name": "Corridor upgrade",
       "name": "Corridor upgrade",
       "utility": "USER",
@@ -259,16 +259,16 @@
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 124127,
+        "total_estimated_savings_usd": 93427,
         "range_usd": [
-          49451,
-          250255
+          25401,
+          275180
         ],
         "components": {
           "mobilization": {
-            "low": 49250,
-            "point": 123125,
-            "high": 246250,
+            "low": 25200,
+            "point": 92425,
+            "high": 271175,
             "applies": true,
             "requires_schedule_shift": true
           },
@@ -292,19 +292,20 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7394000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 123125,
+        "mobilization_savings_usd": 92425,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,040,000–$10,847,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Mobilization savings halved: the construction windows only overlap after a schedule shift",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+            "value_used": "$7,394,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -502,16 +503,16 @@
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 247072,
+        "total_estimated_savings_usd": 185297,
         "range_usd": [
-          98581,
-          496206
+          50381,
+          544956
         ],
         "components": {
           "mobilization": {
-            "low": 98500,
-            "point": 246250,
-            "high": 492500,
+            "low": 50300,
+            "point": 184475,
+            "high": 541250,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -535,18 +536,19 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7379000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 246250,
+        "mobilization_savings_usd": 184475,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,030,000–$10,825,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Dean Forest",
+            "value_used": "$7,379,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -678,16 +680,16 @@
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 246985,
+        "total_estimated_savings_usd": 156485,
         "range_usd": [
-          98523,
-          496061
+          42493,
+          460561
         ],
         "components": {
           "mobilization": {
-            "low": 98500,
-            "point": 246250,
-            "high": 492500,
+            "low": 42470,
+            "point": 155750,
+            "high": 457000,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -711,18 +713,19 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 6230000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 246250,
+        "mobilization_savings_usd": 155750,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $4,247,000–$9,140,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+            "value_used": "$6,230,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -766,16 +769,16 @@
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 165734,
+        "total_estimated_savings_usd": 131709,
         "range_usd": [
-          66022,
-          333559
+          35732,
+          387859
         ],
         "components": {
           "mobilization": {
-            "low": 66000,
-            "point": 165000,
-            "high": 330000,
+            "low": 35710,
+            "point": 130975,
+            "high": 384300,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -799,18 +802,19 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 6600000,
-        "reference_budget_source": "estimated_miso",
+        "reference_budget_usd": 5239000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 165000,
+        "mobilization_savings_usd": 130975,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $3,571,000–$7,686,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
-            "value_used": "$6,600,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+            "value_used": "$5,239,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -929,16 +933,16 @@
       },
       "potential": "lower",
       "cost_estimate": {
-        "total_estimated_savings_usd": 124089,
+        "total_estimated_savings_usd": 108676,
         "range_usd": [
-          49425,
-          250193
+          29545,
+          319968
         ],
         "components": {
           "mobilization": {
-            "low": 49250,
-            "point": 123125,
-            "high": 246250,
+            "low": 29370,
+            "point": 107712,
+            "high": 316025,
             "applies": true,
             "requires_schedule_shift": true
           },
@@ -962,19 +966,20 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 8617000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 123125,
+        "mobilization_savings_usd": 107712,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,874,000–$12,641,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Mobilization savings halved: the construction windows only overlap after a schedule shift",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–Kraft",
+            "value_used": "$8,617,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -1051,15 +1056,15 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 5034000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+            "value_used": "$5,034,000"
           }
         ]
       },
@@ -1126,15 +1131,15 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7838000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Deptford",
+            "value_used": "$7,838,000"
           }
         ]
       },
@@ -1201,15 +1206,15 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 6333000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+            "value_used": "$6,333,000"
           }
         ]
       },
@@ -1276,15 +1281,15 @@
             "applies": false
           }
         },
-        "reference_budget_usd": 6600000,
-        "reference_budget_source": "estimated_miso",
+        "reference_budget_usd": 5239000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
-            "value_used": "$6,600,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Meldrim",
+            "value_used": "$5,239,000"
           }
         ]
       },
@@ -1524,12 +1529,12 @@
       "shared_roads": []
     }
   ],
-  "best_match": "USR_J7QJFE",
+  "best_match": "USR_H010FE",
   "traffic": {
     "crossings": [
       {
-        "id": "XING_CTR_KVJ70G_1",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_1",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Deerfield Road",
         "road_ref": "US-321",
         "road_refs": [
@@ -1564,8 +1569,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_2",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_2",
+        "project_id": "CTR_TJYZLK",
         "road_name": "North Whyte Hardee Boulevard",
         "road_ref": "US-17",
         "road_refs": [
@@ -1601,8 +1606,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_3",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_3",
+        "project_id": "CTR_TJYZLK",
         "road_name": null,
         "road_ref": "I-95",
         "road_refs": [
@@ -1637,8 +1642,8 @@
         "worst_delay_veh_hours": 25582.5
       },
       {
-        "id": "XING_CTR_KVJ70G_4",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_4",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Tradition Avenue",
         "road_ref": null,
         "road_refs": [],
@@ -1671,8 +1676,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_5",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_5",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Independence Boulevard",
         "road_ref": "US-278",
         "road_refs": [
@@ -1707,8 +1712,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_6",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_6",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Okatie Highway",
         "road_ref": "SC-170",
         "road_refs": [
@@ -1743,8 +1748,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_7",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_7",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Hampton Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -1777,8 +1782,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_8",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_8",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bluffton Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -1811,8 +1816,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_9",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_9",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Buckwalter Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -1845,8 +1850,8 @@
         "worst_delay_veh_hours": 24879.2
       },
       {
-        "id": "XING_CTR_KVJ70G_10",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_10",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bluffton Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -1879,8 +1884,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_11",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_11",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Buck Island Road",
         "road_ref": null,
         "road_refs": [],
@@ -1913,8 +1918,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_12",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_12",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Simmonsville Road",
         "road_ref": null,
         "road_refs": [],
@@ -1947,8 +1952,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_13",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_13",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bluffton Road",
         "road_ref": "SC-46",
         "road_refs": [
@@ -1983,8 +1988,8 @@
         "worst_delay_veh_hours": 4125.9
       },
       {
-        "id": "XING_CTR_KVJ70G_14",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_14",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bruin Road",
         "road_ref": null,
         "road_refs": [],
@@ -2017,8 +2022,8 @@
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_15",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_15",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Burnt Church Road",
         "road_ref": null,
         "road_refs": [],
@@ -2061,7 +2066,7 @@
       496874
     ],
     "best_savings_usd": 247473,
-    "best_savings_project_id": "USR_J7QJFE",
+    "best_savings_project_id": "USR_H010FE",
     "savings_range_basis": "best single partner (savings from several partners are not added: they mostly share the same mobilization of this contract, which happens once)",
     "high_potential": 0
   }

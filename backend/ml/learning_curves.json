@@ -1,0 +1,71 @@
+{
+  "duration_mae_months": [
+    {
+      "train_size": 20,
+      "model_error": 12.29,
+      "baseline_error": 13.17
+    },
+    {
+      "train_size": 40,
+      "model_error": 12.33,
+      "baseline_error": 13.23
+    },
+    {
+      "train_size": 60,
+      "model_error": 11.74,
+      "baseline_error": 13.13
+    },
+    {
+      "train_size": 80,
+      "model_error": 11.54,
+      "baseline_error": 12.98
+    },
+    {
+      "train_size": 100,
+      "model_error": 12.1,
+      "baseline_error": 13.33
+    },
+    {
+      "train_size": 130,
+      "model_error": 11.61,
+      "baseline_error": 12.98
+    },
+    {
+      "train_size": 160,
+      "model_error": 11.48,
+      "baseline_error": 12.5
+    }
+  ],
+  "cost_median_abs_pct_error": [
+    {
+      "train_size": 10,
+      "model_error": 69.05,
+      "baseline_error": 86.08
+    },
+    {
+      "train_size": 15,
+      "model_error": 59.76,
+      "baseline_error": 68.92
+    },
+    {
+      "train_size": 20,
+      "model_error": 57.35,
+      "baseline_error": 67.19
+    },
+    {
+      "train_size": 25,
+      "model_error": 49.03,
+      "baseline_error": 65.34
+    },
+    {
+      "train_size": 30,
+      "model_error": 58.85,
+      "baseline_error": 70.18
+    },
+    {
+      "train_size": 34,
+      "model_error": 52.24,
+      "baseline_error": 67.31
+    }
+  ]
+}

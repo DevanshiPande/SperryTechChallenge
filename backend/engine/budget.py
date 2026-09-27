@@ -19,15 +19,26 @@ def line_miles(project):
     return None, None
 
 
-def estimate(project):
-    """-> {budget_usd, budget_source, budget_note}. Never invents a budget for substation/equipment-only work."""
-    if project.get("budget_source") == "contract" and project.get("budget_usd"):
-        return {"budget_usd": project["budget_usd"], "budget_source": "contract", "budget_note": "Stated in the uploaded contract"}
+def estimate(project, predictor=None, predict_missing=False):
+    """-> {budget_usd, budget_source, budget_note, ...}. Order (ML_README U6): contract / user budget > filing >
+    ML prediction (redacted GPC lines; other projects only when predict_missing) > MISO per-mile fallback.
+    predictor: callable(project) -> prediction dict or None (services.ml.predicted_budget). Never replaces a real budget."""
+    if project.get("budget_source") in ("contract", "user") and project.get("budget_usd"):
+        note = "Stated in the uploaded contract" if project["budget_source"] == "contract" else "Entered by the company"
+        return {"budget_usd": project["budget_usd"], "budget_source": project["budget_source"], "budget_note": note}
     cost = project.get("cost")
     if project.get("utility") == "DESC" and cost and cost.get("total"):
         return {"budget_usd": cost["total"], "budget_source": "filing", "budget_note": "Dominion Energy SC filing, total estimated cost"}
     if project.get("utility") != "GPC":
+        if predict_missing and predictor:
+            pred = predictor(project)
+            if pred:
+                return pred
         return {"budget_usd": None, "budget_source": None, "budget_note": "No budget available"}
+    if project.get("project_type") == "line" and predictor:
+        pred = predictor(project)  # the cost model beat MISO per-mile in validation (27% vs 74% median error)
+        if pred:
+            return pred
     work = (project.get("work_type_label") or "").lower() + " " + (project.get("name") or "").lower()
     if project.get("project_type") != "line" or any(w in work for w in EQUIPMENT_WORK):
         return {"budget_usd": None, "budget_source": None, "budget_note": "Substation or equipment-only work: no per-mile estimate"}
@@ -40,7 +51,9 @@ def estimate(project):
                            "Georgia Power budgets are redacted."}
 
 
-def attach(project):
-    """Adds budget_usd / budget_source / budget_note to a project dict (in place) and returns it."""
-    project.update(estimate(project))
+def attach(project, predictor=None, predict_missing=False):
+    """Adds budget_usd / budget_source / budget_note (+ budget_range_usd, budget_prediction when predicted) in place."""
+    for k in ("budget_range_usd", "budget_prediction"):
+        project.pop(k, None)
+    project.update(estimate(project, predictor, predict_missing))
     return project

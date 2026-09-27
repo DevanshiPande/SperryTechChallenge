@@ -15,7 +15,7 @@ from ai import fakes, gemini
 from db import mongo
 from engine import budget, geo, overlaps as eng, whatif as wi
 from engine.closures import normalize_roads
-from services import events, projects as psvc
+from services import events, ml, projects as psvc
 from services.common import new_id
 from services.errors import ApiError, bad_request, gemini_unavailable, not_found
 from services.geocode import geocode
@@ -238,14 +238,26 @@ def contract_project(cid, company, fields, today=None):
         end = dateparser.parse(str(end)).date().isoformat() if end else None
     except (ValueError, OverflowError):
         raise bad_request("start_date and end_date must be dates")
-    if not start or not end or end <= start:
-        raise bad_request("A start date and a later end date are needed to find coordination partners.")
+    if not end:
+        raise bad_request("An end date (completion or in-service date) is needed to find coordination partners.")
+    if start and end <= start:
+        raise bad_request("The end date must be after the start date.")
     name = _val(fields, "project_name") or "Uploaded contract"
     kv = _val(fields, "voltage_kv")
+    window, start_flags = {"start": start, "end": end, "source": "contract"}, []
+    if not start:
+        # The contract gives no start date: predict it (ML_README U6), never before today.
+        pw = ml.predicted_window({"id": cid, "name": name, "description": _val(fields, "work_type"), "voltage_kv": kv,
+                                  "line_miles": _val(fields, "line_miles"), "in_service_date": end},
+                                 reference_year=ml.this_year(), not_before=(today or date.today()).isoformat())
+        if not pw or pw["start"] >= end:
+            raise bad_request("The contract has no start date and one could not be predicted; add a start date.")
+        window = {"start": pw["start"], "end": end, "source": "predicted", "prediction": pw["prediction"]}
+        start_flags = pw["flags"]
     p = {"id": cid, "utility": "USER", "utility_name": _val(fields, "owner_company") or (company or {}).get("name") or "Contract",
          "state": None, "name": name, "short_name": name if len(name) <= 40 else name[:39] + "…",
          "voltage_kv": int(kv) if kv else None, "project_type": "line" if len(eps) == 2 else "substation", "status": "Planned",
-         "in_service_date": end, "construction_window": {"start": start, "end": end, "source": "contract"},
+         "in_service_date": end, "construction_window": window,
          "endpoints": eps, "center": geo.center_of(eps), "geometry": geo.geojson(eps),
          "location_confidence": min((e["confidence"] for e in eps), key=["high", "medium", "low"].index) if eps else "not_found",
          "description": _val(fields, "work_type"), "cost": None, "source": {"document": "Uploaded contract", "page": None, "type": "contract"},
@@ -253,9 +265,12 @@ def contract_project(cid, company, fields, today=None):
          "company_id": (company or {}).get("id") or "__contract__", "roads_affected": normalize_roads(_val(fields, "roads_affected")),
          "lane_closures": _val(fields, "lane_closures"), "work_hours": _val(fields, "work_hours"), "geocoded": geocoded,
          "line_miles": _val(fields, "line_miles")}
+    for code in start_flags:
+        p["quality_flags"].append({"code": code, "message": "The predicted start fell in the past, so it was set to today."})
     if _val(fields, "budget_usd"):
         p.update(budget_usd=int(float(_val(fields, "budget_usd"))), budget_source="contract")
-    budget.attach(p)
+    # No budget in the contract: predict it for transmission work (voltage stated or a two-substation line).
+    budget.attach(p, predictor=ml.predicted_budget, predict_missing=bool(kv) or len(eps) == 2)
     return p
 
 
@@ -349,10 +364,14 @@ def save(ident, cid):
                 if existing in (o["project_a"], o["project_b"])], "closure_conflicts": [], "already_saved": True}
     fields = doc.get("reviewed_fields") or doc["extracted"]
     p = contract_project(cid, company, fields)
-    body = {"name": p["name"], "description": p.get("description"), "start_date": p["construction_window"]["start"],
+    predicted_start = p["construction_window"].get("source") == "predicted"
+    body = {"name": p["name"], "description": p.get("description"),
+            "start_date": None if predicted_start else p["construction_window"]["start"],
             "end_date": p["construction_window"]["end"], "endpoints": [{"name": e["name"], "lat": e["lat"], "lon": e["lon"]} for e in p["endpoints"]],
             "voltage_kv": p.get("voltage_kv"), "work_type": p.get("work_type_label"), "roads_affected": p.get("roads_affected"),
-            "lane_closures": p.get("lane_closures"), "work_hours": p.get("work_hours"), "budget_usd": p.get("budget_usd"),
+            "lane_closures": p.get("lane_closures"), "work_hours": p.get("work_hours"),
+            "budget_usd": p.get("budget_usd") if p.get("budget_source") == "contract" else None,
+            "line_miles": p.get("line_miles"),
             "contract_text_hash": doc.get("text_hash")}
     out = psvc.create_user_project(ident, body)
     doc.update(status="saved", project_id=out["project"]["id"])
