@@ -63,7 +63,7 @@
       ? state.jobs.filter(hasCoords).map(j => ({
           id: j.id, title: j.name, lat: j.lat, lng: j.lon,
           cls: j.id === state.selectedJob?.id ? 'desc selected' : 'gpc',
-          onClick: () => { state.hoverClosed = false; state.selectedJob = j; render(); }
+          onClick: () => openJob(j.id)
         }))
       : projects.filter(hasCoords).filter(projectVisible).map(p => ({
           id: p.project_id, title: p.project_name, lat: p.lat_center, lng: p.lon_center,
@@ -84,7 +84,6 @@
     drawCongestion(worker);
     if (!worker && state.pairFocus && state.selectedOverlap && state.selectedOverlap.overlap_id !== focusedPair) focusPair();
     if (!state.pairFocus) focusedPair = null;
-    if (worker && state.page === 'findjobs' && state.selectedJob && state.selectedJob.id !== focusedWorkerJob) focusWorkerJob();
     if (!worker || state.page !== 'findjobs') focusedWorkerJob = null;
     // Marker elements attach asynchronously; position the card once the selected one is laid out.
     let tries = 0;

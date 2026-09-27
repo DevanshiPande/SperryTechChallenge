@@ -19,6 +19,8 @@ def traffic_index():
 def fresh_cache():
     from services import congestion
     congestion._results.clear()
+    if STATE.db is not None:
+        STATE.db.congestion_cache.delete_many({})
     yield
     congestion._results.clear()
 
@@ -92,3 +94,31 @@ def test_site_names():
     from services.congestion import site_name
     assert site_name("Okatie") == "Okatie Substation" and site_name("Jasper Substation") == "Jasper Substation"
     assert site_name("proposed Hardeeville Tap Station") == "proposed Hardeeville Tap Station"
+
+
+def test_results_are_stored_in_the_database_and_reused(client):
+    from services import congestion
+    first = client.get("/projects/DESC_3/congestion").json()
+    assert STATE.db.congestion_cache.count_documents({"project_id": "DESC_3"}) == 1
+    congestion._results.clear()  # e.g. a restart: memory is empty, the database still has it
+    calls = []
+    real = congestion._compute
+    congestion._compute = lambda *a, **k: calls.append(1) or real(*a, **k)
+    try:
+        assert client.get("/projects/DESC_3/congestion").json() == first and calls == []
+    finally:
+        congestion._compute = real
+
+
+def test_a_new_project_gets_its_congestion_computed_in_the_background(client):
+    import time
+    from conftest import as_company
+    r = client.post("/projects", json={"name": "Background test", "endpoints": [{"name": "a", "lat": 32.3, "lon": -81.1},
+                                       {"name": "b", "lat": 32.34, "lon": -81.03}], "start_date": "2027-01-01",
+                                       "end_date": "2027-09-01"}, headers=as_company("CMP_A"))
+    pid = r.json()["project"]["id"]
+    for _ in range(50):
+        if STATE.db.congestion_cache.count_documents({"project_id": pid}):
+            break
+        time.sleep(0.1)
+    assert STATE.db.congestion_cache.count_documents({"project_id": pid}) == 1

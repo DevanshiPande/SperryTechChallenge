@@ -389,6 +389,8 @@ def create_user_project(ident, data):
     mongo.insert(db, "projects", p)
     events.emit("projects", "insert", p["id"], f"{company['name']} added project {p['name']}", company["id"])
     ovs = _recompute_overlaps(db, p, company["id"])
+    from services import congestion
+    congestion.compute_in_background(p["id"])  # new project (or uploaded contract): its traffic congestion, ready when opened
     return {"project": get_project(p["id"]), "overlaps": ovs, "closure_conflicts": _closure_conflicts(p)}
 
 

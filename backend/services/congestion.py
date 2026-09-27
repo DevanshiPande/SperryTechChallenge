@@ -313,8 +313,8 @@ def _summary(facts):
 
 # ---------------- results cache
 # One result per project, keyed on everything it depends on: the project (window, geometry, roads), the user projects
-# that add nearby construction, and the date. Gemini summaries are also stored in Mongo (gemini_cache), so after the
-# first warm-up a restart recomputes everything quickly.
+# that add nearby construction, and the month (best months move with today's date). Kept in memory and in Mongo
+# (collection congestion_cache), so a restart or a fresh deploy serves stored results instantly.
 _results = {}
 _lock = threading.Lock()
 
@@ -322,7 +322,28 @@ _lock = threading.Lock()
 def _fingerprint(p, others, today):
     users = sorted((o["id"], str(o.get("updated_at"))) for o in others if o.get("company_id"))
     return json.dumps([p["id"], p.get("construction_window"), p.get("endpoints"), p.get("roads_affected"),
-                       str(p.get("updated_at")), users, today.isoformat()], sort_keys=True, default=str)
+                       str(p.get("updated_at")), users, today.strftime("%Y-%m")], sort_keys=True, default=str)
+
+
+def _stored(pid, key):
+    if STATE.db is None:
+        return None
+    try:
+        doc = STATE.db.congestion_cache.find_one({"project_id": pid})
+    except Exception as e:  # the cache must never break the endpoint
+        log.warning("congestion cache read failed: %s", e)
+        return None
+    return doc["result"] if doc and doc.get("key") == key else None
+
+
+def _store(pid, key, result):
+    if STATE.db is None:
+        return
+    try:
+        STATE.db.congestion_cache.update_one({"project_id": pid}, {"$set": {"project_id": pid, "key": key, "result": result,
+                                                                          "stored_at": date.today().isoformat()}}, upsert=True)
+    except Exception as e:
+        log.warning("congestion cache write failed: %s", e)
 
 
 def project_congestion(pid, today=None):
@@ -336,10 +357,24 @@ def project_congestion(pid, today=None):
         hit = _results.get(p["id"])
     if hit and hit[0] == key:
         return hit[1]
-    result = _compute(p, others, today)
+    result = _stored(p["id"], key)
+    if result is None:
+        result = _compute(p, others, today)
+        _store(p["id"], key, result)
     with _lock:
         _results[p["id"]] = (key, result)
     return result
+
+
+def compute_in_background(pid):
+    """Start computing (and storing) a project's congestion right after it is saved, so it is ready when opened."""
+    def run():
+        try:
+            project_congestion(pid)
+        except Exception as e:
+            log.warning("background congestion for %s failed: %s", pid, e)
+    if STATE.traffic is not None:
+        threading.Thread(target=run, daemon=True).start()
 
 
 def warm_all(stop=None, pause_s=0.2):

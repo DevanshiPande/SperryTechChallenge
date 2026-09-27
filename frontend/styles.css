@@ -465,3 +465,22 @@
 @media(max-width:900px){.traffic-page>.traffic-side{grid-column:auto}}
 /* Suggested time to work: always a solid card (the empty state used to be see-through over the map) */
 .timing-card,.timing-card.muted-card{opacity:1;background:#fff!important;backdrop-filter:none}
+
+/* Worker job page: role details + application form, confirmation after submitting */
+.job-page{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);gap:16px;max-width:1000px;align-items:start;pointer-events:none}
+.job-page>.card{pointer-events:auto}
+.apply-card .fieldgroup{display:grid;gap:6px}
+.apply-card .fieldgroup>span{font-size:12px;font-weight:700;color:#4d6478}
+.apply-card .row{margin-top:14px}
+.apply-done{text-align:center;display:grid;justify-items:center;gap:8px;padding:28px 22px}
+.apply-done .row{justify-content:center}
+.apply-check{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:28px;font-weight:800;color:#fff;background:linear-gradient(135deg,#1f6bff,#22c768);box-shadow:0 10px 26px #22c76855}
+@media(max-width:900px){.job-page{grid-template-columns:1fr}}
+.job-info h3{margin-top:14px}
+
+/* Staffing: both boxes keep the same fixed height; long content scrolls inside the box, header stays pinned */
+.workspace.page-jobs{padding-bottom:0;min-height:0}
+.page-jobs .grid.two{align-items:stretch;height:calc(100vh - 184px);min-height:360px}
+.page-jobs .grid.two>.card{height:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.page-jobs .grid.two>.card>.statusline:first-child{position:sticky;top:-18px;z-index:2;margin:-18px -18px 8px;padding:18px 18px 10px;background:#fff;border-radius:20px 20px 0 0}
+@media(max-width:740px){.page-jobs .grid.two{height:auto}.page-jobs .grid.two>.card{height:auto;max-height:70vh}}

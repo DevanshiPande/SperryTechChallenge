@@ -307,11 +307,16 @@ function parseDateRange(text) {
   return [one(m[0], false), one(m[m.length - 1], true)];
 }
 async function applyJob() {
-  const j = state.selectedJob; if (!j) return;
+  const j = state.selectedJob; if (!j || state.applying) return;
+  const name = $('#applicantName')?.value.trim();
+  if (!name) { state.applyError = 'Please enter your name.'; render(); return; }
+  state.applying = true; state.applyError = ''; render();
   try {
-    await API.post(`/jobs/${j.id}/applications`, { name: $('#applicantName')?.value, qualifications: $('#applicantSkills')?.value, availability: $('#applicantAvailability')?.value });
-    await loadRoleData(); state.page = 'applications'; render(); toast('Application sent to ' + j.owner + '.');
-  } catch (e) { toast(e.message); }
+    await API.post(`/jobs/${j.id}/applications`, { name, qualifications: $('#applicantSkills')?.value, availability: $('#applicantAvailability')?.value });
+    await loadRoleData();
+    state.jobApplied = j.id; // the job page now shows "Application submitted successfully"
+  } catch (e) { state.applyError = e.message; }
+  state.applying = false; render();
 }
 async function toggleSave(id) {
   const saved = state.savedJobs.includes(id);

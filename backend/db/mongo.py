@@ -13,7 +13,7 @@ INDEXES = [
     ("resources", "company_id", False), ("reservations", "resource_id", False), ("jobs", "status", False),
     ("events", "seq", True), ("gemini_cache", "key", True), ("geocode_cache", "key", True),
     ("pending_actions", "thread_id", False), ("messages", "conversation_id", False), ("feedback", "overlap_id", False),
-    ("saved_jobs", "worker_id", False), ("saved_jobs", "job_id", False),
+    ("saved_jobs", "worker_id", False), ("saved_jobs", "job_id", False), ("congestion_cache", "project_id", True),
 ]
 
 
