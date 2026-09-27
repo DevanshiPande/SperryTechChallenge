@@ -125,7 +125,7 @@ function mapPage() {
     : `<div class="card closable"><button class="close-x" data-action="closeOpps" aria-label="Close" title="Close">×</button><h2>Coordination opportunities</h2><div class="opp-filter"><label for="oppRadius">Projects within</label><select id="oppRadius" class="field">${OPP_RADII.map(r=>`<option value="${r}" ${r===state.oppRadius?'selected':''}>${r?r+' mi of each other':'any distance'}</option>`).join('')}</select></div><p class="muted">${shown.length} of ${overlaps.length} Dominion ↔ Georgia Power pairs${state.oppRadius?` within ${state.oppRadius} mi, edge to edge`:''} · highest priority first</p>${shown.map((o,i)=>opportunityButton(o,i+1)).join('')||`<div class="note">No pairs within ${state.oppRadius} mi. Try a larger radius.</div>`}</div>`;
   return `<div class="grid three">${list}${mapHtml()}${pairPanel()}</div>`;
 }
-function feasibilityPage(){return `<div class="traffic-page"><div class="heading"><div><h1>Traffic &amp; timing</h1></div></div><div class="traffic-side">${timingCard(trafficTiming())}</div></div>`;}
+function feasibilityPage(){return `<div class="traffic-page"><div class="traffic-side">${timingCard(trafficTiming())}</div></div>`;}
 // Suggested time to work: the site selected on this page's map, else a contract being uploaded, else the last saved contract.
 function trafficTiming(){
   const p=byId[state.trafficProject],c=p&&(state.congestion||{})[p.project_id];
