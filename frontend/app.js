@@ -3,7 +3,7 @@ const projects = [];
 const overlaps = [];
 const byId = {};
 const state = {
-  role: 'contractor', page: 'addProject', selectedOverlap: null, selectedProject: null, selectedJob: null, loaded: false, loadError: '',
+  role: 'contractor', page: 'landing', selectedOverlap: null, selectedProject: null, selectedJob: null, loaded: false, loadError: '',
   hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, oppRadius: 25, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, invFind: true, invSelected: null, invQuery: '', invCat: 'All', invFrom: '', invTo: '', resourceManual: false, resourceChat: [], jobDraft: {}, projectUpload: null,
   companyProjects: [], resources: [], jobs: [], myJobs: [], savedJobs: [], reservations: [], applications: [], userOverlaps: [], companies: [], convs: [], thread: [], feas: null, agent: null,
   cost: { mobilization: 3000, truckRate: 1300, separateDays: 20, coordinatedDays: 12, yard: 5000 },
@@ -482,7 +482,12 @@ function placeHovercard(card){
 addEventListener('resize',()=>positionHovercard());
 function toast(msg){state.toast=msg;render();setTimeout(()=>{state.toast='';const el=$('#toast');if(el)el.remove();},4200)}
 function assistantHint(){return state.role==='worker'?'Find jobs matching my qualifications':({map:'What could these projects share?',cost:'Try a different cost scenario',feasibility:'Test another work window',inventory:'Find nearby bucket trucks',jobs:'Draft a job posting'}[state.page]||'Describe what you need');}
+// Landing page: only the map, the logo in the middle and a start button (the button waits until the data has loaded).
+function landingPage(){
+  return `<div class="stage-map landing-stage">${mapHtml({hover:false})}</div><main class="landing" id="main"><div class="landing-logo"><img src="assets/contractmap-mark.png" alt=""><h1 class="landing-name">Contract<i>Map</i></h1></div>${state.loadError?`<div class="landing-error">${esc(state.loadError)}</div>`:''}<button class="landing-start" data-action="${state.loaded?'start':state.loadError?'retryLoad':''}" ${state.loaded||state.loadError?'':'disabled'}>${state.loaded?"Let's get started →":state.loadError?'Try again':'Loading…'}</button></main>`;
+}
 function render(){
+  if(state.page==='landing'){$('#app').innerHTML=landingPage();return}
   if(!state.loaded){$('#app').innerHTML=`<div style="position:fixed;inset:0;display:grid;place-items:center;background:#f4f8f9;z-index:50"><div class="card stack" style="max-width:420px;text-align:center"><h2>ContractMap</h2>${state.loadError?`<div class="warning">${esc(state.loadError)}</div>${btn('Try again','retryLoad','primary')}`:'<p class="muted">Loading projects and coordination opportunities…</p>'}</div></div>`;return}
   const pages={map:mapPage,feasibility:feasibilityPage,cost:costPage,projectDetail:projectDetailPage,inventory:inventoryPage,jobs:jobsPage,findjobs:workerJobsPage,saved:savedJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
   const content=state.page==='addProject'?projectUploadPage():state.page==='addResource'?chatPage('resource'):state.page==='addJob'?chatPage('job'):state.page.startsWith('manual:')?chatPage(state.page.split(':')[1],true):(pages[state.page]||mapPage)();
@@ -514,6 +519,7 @@ function draftFromText(kind,text){
   }
 }
 function handleAction(act){
+  if(act==='start'){state.page='addProject';render();return}
   if(window.apiAction&&apiAction(act))return;
   if(act==='addResource'||act==='manual:resource'||act==='chat:resource'){state.page='inventory';state.resourceModal=true;state.invFind=false;state.resourceManual=act==='manual:resource';render();setTimeout(()=>$('#chatText')?.focus());return}
   if(act==='closeResource'){state.resourceModal=false;render();return}
