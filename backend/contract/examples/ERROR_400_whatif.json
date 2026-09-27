@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "BAD_REQUEST",
+    "message": "name and utility (DESC or GPC) are required"
+  }
+}

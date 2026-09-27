@@ -1,0 +1,37 @@
+[
+  {
+    "project_id": "DESC_1",
+    "code": "ENDPOINT_NOT_FOUND",
+    "message": "One endpoint could not be located; center uses the located endpoint only."
+  },
+  {
+    "project_id": "DESC_2",
+    "code": "ENDPOINT_NOT_FOUND",
+    "message": "One endpoint could not be located; center uses the located endpoint only."
+  },
+  {
+    "project_id": "DESC_4",
+    "code": "ENDPOINT_NOT_FOUND",
+    "message": "One endpoint could not be located; center uses the located endpoint only."
+  },
+  {
+    "project_id": "DESC_4",
+    "code": "POSSIBLY_COMPLETE",
+    "message": "In-service date is in the past; project may already be complete."
+  },
+  {
+    "project_id": "GPC_2",
+    "code": "ENDPOINT_NOT_FOUND",
+    "message": "One endpoint could not be located; center uses the located endpoint only."
+  },
+  {
+    "project_id": "GPC_2",
+    "code": "COORD_CONFLICT",
+    "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+  },
+  {
+    "project_id": "GPC_3",
+    "code": "COORD_CONFLICT",
+    "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+  }
+]

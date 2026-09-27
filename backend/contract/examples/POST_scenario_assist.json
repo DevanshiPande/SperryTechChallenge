@@ -1,0 +1,22 @@
+{
+  "overlap_id": "OVL_3",
+  "reply": "(mock Gemini) Applying these changes gives separate work at $46,000 and coordinated work at $26,000, about $20,000 (43%) lower. ",
+  "suggested_changes": [
+    {
+      "path": "coordinated.shared_truck_days",
+      "value": 10,
+      "label": "Use 2 shared bucket trucks for 5 days (10 truck-days)"
+    },
+    {
+      "path": "coordinated.laydown_sites",
+      "value": 1,
+      "label": "Share a single laydown yard"
+    }
+  ],
+  "preview_totals": {
+    "separate": 46000,
+    "coordinated": 26000,
+    "savings": 20000,
+    "savings_pct": 43.5
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CMP_A",
+    "name": "Demo Contractor A",
+    "yard": {
+      "label": "Savannah, GA",
+      "lat": 32.0809,
+      "lon": -81.0912
+    },
+    "phone": "(555) 010-0101"
+  },
+  {
+    "id": "CMP_B",
+    "name": "Demo Contractor B",
+    "yard": {
+      "label": "Hardeeville, SC",
+      "lat": 32.2871,
+      "lon": -81.079
+    },
+    "phone": "(555) 010-0102"
+  },
+  {
+    "id": "CMP_C",
+    "name": "Coastal Crane (demo)",
+    "yard": {
+      "label": "Pooler, GA",
+      "lat": 32.1155,
+      "lon": -81.247
+    },
+    "phone": "(555) 010-0103"
+  }
+]

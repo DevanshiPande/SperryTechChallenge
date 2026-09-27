@@ -1,0 +1,16 @@
+{
+  "_note": "Typical equipment and crew for utility transmission work, used when a project has no equipment list of its own (public filings). All values are planning assumptions, scaled by line length; a contract's own equipment list always wins.",
+  "line": {
+    "bucket_truck":     {"base": 2, "per_miles": 5,  "cap": 6,  "note": "aerial work on poles and wire"},
+    "digger_derrick":   {"base": 1, "per_miles": 10, "cap": 4,  "note": "drilling holes and setting poles", "skip_for": ["reconductor"]},
+    "crane":            {"base": 1, "per_miles": 0,  "cap": 1,  "min_kv": 115, "tons_by_kv": {"115": 40, "230": 60, "500": 90}, "note": "setting structures"},
+    "puller_tensioner": {"base": 1, "per_miles": 0,  "cap": 1,  "note": "stringing conductor"},
+    "line_crew":        {"base": 8, "per_miles": 5,  "per_step": 2, "cap": 20, "unit": "people", "note": "lineworkers"}
+  },
+  "substation": {
+    "crane":            {"base": 1, "per_miles": 0, "cap": 1, "tons_by_kv": {"0": 40, "230": 60}, "note": "setting transformers and structures"},
+    "bucket_truck":     {"base": 1, "per_miles": 0, "cap": 1, "note": "bus and switch work"},
+    "excavator":        {"base": 1, "per_miles": 0, "cap": 1, "note": "foundations and grounding grid"},
+    "electricians":     {"base": 6, "per_miles": 0, "cap": 6, "unit": "people", "note": "substation electricians"}
+  }
+}

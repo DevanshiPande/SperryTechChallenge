@@ -1,0 +1,28 @@
+{
+  "id": "RES_VN17K4",
+  "company_id": "CMP_C",
+  "company_name": "Coastal Crane (demo)",
+  "name": "60-ton crane",
+  "type": "equipment",
+  "quantity": 3,
+  "location": {
+    "label": "Pooler, GA",
+    "lat": 32.1155,
+    "lon": -81.247
+  },
+  "available_from": "2027-06-01",
+  "available_to": "2027-06-30",
+  "date_label": "Jun 1–30, 2027",
+  "daily_rate": 1250,
+  "rate_label": "$1,250/day per unit",
+  "notes": "Operator included",
+  "nearby_project_ids": [
+    "GPC_3",
+    "USR_H010FE",
+    "GPC_2",
+    "DESC_3",
+    "DESC_5"
+  ],
+  "created_at": "2026-09-27T00:11:01.870472+00:00",
+  "updated_at": "2026-09-27T00:11:01.896931+00:00"
+}

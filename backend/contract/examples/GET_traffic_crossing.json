@@ -1,0 +1,221 @@
+{
+  "id": "XING_DESC_23_3",
+  "project_id": "DESC_23",
+  "road_name": null,
+  "road_ref": "I-95",
+  "road_refs": [
+    "I-95"
+  ],
+  "road_class": "motorway",
+  "lanes": 2,
+  "lanes_assumed": false,
+  "oneway": true,
+  "aadt": 55500,
+  "aadt_source": "SCDOT 2025 statewide traffic counts (I-95, station 4.1 km away)",
+  "osm_id": 156558742,
+  "point": {
+    "lat": 32.338528,
+    "lon": -81.048702
+  },
+  "point_approximate": true,
+  "est_closure_hours": 8,
+  "work_window": {
+    "start": "2023-08-31",
+    "end": "2025-12-31",
+    "source": "predicted",
+    "prediction": {
+      "months": 27.8,
+      "low": 19.3,
+      "high": 36.3,
+      "typical_error_months": 8.5,
+      "method": "random_forest",
+      "trained_on": "205 Georgia Power projects (filed start and need dates)",
+      "label": "predicted"
+    }
+  },
+  "owner": "DESC",
+  "closure_type": "lane_closure",
+  "closure_hours": 8,
+  "recommended_window": "19:00–03:00",
+  "delay_veh_hours": 0.0,
+  "vehicles_affected": 5128,
+  "delay_cost_usd": 0,
+  "worst_window": "14:00–22:00",
+  "worst_delay_veh_hours": 11600.2,
+  "plan": {
+    "closure_type": "lane_closure",
+    "closure_hours": 8,
+    "recommended_window": "19:00–03:00",
+    "recommended_start_hour": 19,
+    "delay_veh_hours": 0.0,
+    "vehicles_affected": 5128,
+    "delay_cost_usd": 0,
+    "worst_window": "14:00–22:00",
+    "worst_delay_veh_hours": 11600.2,
+    "worst_delay_cost_usd": 338146,
+    "hourly": [
+      {
+        "hour": 0,
+        "demand": 305,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 1,
+        "demand": 244,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 2,
+        "demand": 214,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 3,
+        "demand": 214,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 4,
+        "demand": 305,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 5,
+        "demand": 672,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 6,
+        "demand": 1526,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 7,
+        "demand": 2289,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 8,
+        "demand": 2137,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 9,
+        "demand": 1587,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 10,
+        "demand": 1435,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 11,
+        "demand": 1526,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 12,
+        "demand": 1618,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 13,
+        "demand": 1648,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 14,
+        "demand": 1770,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 15,
+        "demand": 2015,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 16,
+        "demand": 2320,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 17,
+        "demand": 2381,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 18,
+        "demand": 1954,
+        "capacity": 3800,
+        "queue": 0
+      },
+      {
+        "hour": 19,
+        "demand": 1404,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 20,
+        "demand": 1099,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 21,
+        "demand": 885,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 22,
+        "demand": 641,
+        "capacity": 1600,
+        "queue": 0
+      },
+      {
+        "hour": 23,
+        "demand": 336,
+        "capacity": 1600,
+        "queue": 0
+      }
+    ],
+    "sources": [
+      {
+        "name": "MoDOT EPG 616.13 Work Zone Capacity, Queue and Travel Delay (base work zone capacity 1600 pc/h/ln)",
+        "value_used": "1600 veh/h/lane in a work zone",
+        "url": "https://epg.modot.org/index.php/616.13_Work_Zone_Capacity,_Queue_and_Travel_Delay"
+      },
+      {
+        "name": "USDOT Benefit-Cost Analysis Guidance, 2026 update (federal values as restated in Caltrans Cal-B/C federal comparison, 2026)",
+        "value_used": "$29.15/vehicle-hour (2024$)",
+        "url": "https://www.transportation.gov/sites/dot.gov/files/2025-12/Benefit%20Cost%20Analysis%20Guidance%202026%20Update%20(Final).pdf"
+      }
+    ],
+    "assumptions": [
+      "8-hour closure (assumption)",
+      "Typical weekday hourly profile (assumption)",
+      "Peak-direction split 55% (assumption)"
+    ]
+  },
+  "conflicts": []
+}

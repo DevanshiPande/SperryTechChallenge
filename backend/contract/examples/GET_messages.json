@@ -1,0 +1,39 @@
+[
+  {
+    "id": "MSG_MYVJQG",
+    "conversation_id": "CNV_JAZOWS",
+    "sender_company_id": "CMP_A",
+    "sender_name": "Demo Contractor A",
+    "text": "Could we share your crane in June 2027?",
+    "attachment": {
+      "type": "cost_scenario",
+      "overlap_id": "OVL_DESC_3__GPC_2",
+      "totals": {
+        "separate": 46000,
+        "coordinated": 29000,
+        "savings": 17000,
+        "savings_pct": 37.0,
+        "separate_by_project": {
+          "a": 23000,
+          "b": 23000
+        },
+        "coordinated_by_project": {
+          "a": 14500,
+          "b": 14500
+        }
+      }
+    },
+    "created_at": "2026-09-27T00:11:02.036047+00:00",
+    "updated_at": "2026-09-27T00:11:02.036047+00:00"
+  },
+  {
+    "id": "MSG_0AUZW3",
+    "conversation_id": "CNV_JAZOWS",
+    "sender_company_id": "CMP_C",
+    "sender_name": "Coastal Crane (demo)",
+    "text": "Yes, both units are free June 5-10.",
+    "attachment": null,
+    "created_at": "2026-09-27T00:11:02.045701+00:00",
+    "updated_at": "2026-09-27T00:11:02.045701+00:00"
+  }
+]

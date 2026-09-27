@@ -1,0 +1,193 @@
+[
+  {
+    "id": "GPC_1",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "EVANS PRIMARY - THURMOND DAM (USA) #5 115KV REBUILD",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2033-06-01",
+    "construction_window": {
+      "start": "2031-06-01",
+      "end": "2033-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "EVANS PRIMARY",
+        "lat": 33.543994,
+        "lon": -82.168648,
+        "confidence": "high",
+        "source": "Sperry starter file"
+      },
+      {
+        "name": "THURMOND DAM #5",
+        "lat": 33.660127,
+        "lon": -82.195931,
+        "confidence": "high",
+        "source": "Sperry starter file"
+      }
+    ],
+    "center": {
+      "lat": 33.602061,
+      "lon": -82.182289
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -82.168648,
+          33.543994
+        ],
+        [
+          -82.195931,
+          33.660127
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [],
+    "overlap_ids": [
+      "OVL_2",
+      "OVL_1"
+    ]
+  },
+  {
+    "id": "GPC_2",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+    "voltage_kv": 230,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2026-06-01",
+    "construction_window": {
+      "start": "2024-01-01",
+      "end": "2026-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "MCINTOSH",
+        "lat": 32.352116,
+        "lon": -81.175112,
+        "confidence": "medium",
+        "source": "Sperry starter file"
+      },
+      {
+        "name": "PURRYSBURG",
+        "lat": null,
+        "lon": null,
+        "confidence": "not_found",
+        "source": null
+      }
+    ],
+    "center": {
+      "lat": 32.352116,
+      "lon": -81.175112
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -81.175112,
+        32.352116
+      ]
+    },
+    "location_confidence": "medium",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "ENDPOINT_NOT_FOUND",
+        "message": "One endpoint could not be located; center uses the located endpoint only."
+      },
+      {
+        "code": "COORD_CONFLICT",
+        "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+      }
+    ],
+    "overlap_ids": [
+      "OVL_3",
+      "OVL_5"
+    ]
+  },
+  {
+    "id": "GPC_3",
+    "utility": "GPC",
+    "utility_name": "Georgia Power",
+    "state": "GA",
+    "name": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+    "voltage_kv": 115,
+    "project_type": "line",
+    "status": "Planned",
+    "in_service_date": "2027-06-01",
+    "construction_window": {
+      "start": "2025-06-01",
+      "end": "2027-06-01",
+      "source": "estimated"
+    },
+    "endpoints": [
+      {
+        "name": "GOSHEN",
+        "lat": 32.248701,
+        "lon": -81.209472,
+        "confidence": "high",
+        "source": "Sperry starter file"
+      },
+      {
+        "name": "MCINTOSH",
+        "lat": 32.352116,
+        "lon": -81.182105,
+        "confidence": "medium",
+        "source": "Sperry starter file"
+      }
+    ],
+    "center": {
+      "lat": 32.300409,
+      "lon": -81.195789
+    },
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [
+          -81.209472,
+          32.248701
+        ],
+        [
+          -81.182105,
+          32.352116
+        ]
+      ]
+    },
+    "location_confidence": "high",
+    "description": "(mock) Full description parsed from the utility PDF goes here.",
+    "cost": null,
+    "source": {
+      "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+      "page": null
+    },
+    "quality_flags": [
+      {
+        "code": "COORD_CONFLICT",
+        "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+      }
+    ],
+    "overlap_ids": [
+      "OVL_4",
+      "OVL_6"
+    ]
+  }
+]

@@ -1,0 +1,671 @@
+{
+  "project": {
+    "id": "USR_H010FE",
+    "utility": "USER",
+    "utility_name": "Demo Contractor B",
+    "state": "SC",
+    "name": "Corridor upgrade",
+    "voltage_kv": null,
+    "project_type": "substation",
+    "status": "Planned",
+    "in_service_date": "2027-12-15",
+    "construction_window": {
+      "start": "2027-06-01",
+      "end": "2027-12-15",
+      "source": "user"
+    },
+    "endpoints": [
+      {
+        "name": "Hardeeville, SC",
+        "lat": 32.2871,
+        "lon": -81.079,
+        "confidence": "medium",
+        "source": "gazetteer (test)",
+        "county": null
+      }
+    ],
+    "center": {
+      "lat": 32.2871,
+      "lon": -81.079
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -81.079,
+        32.2871
+      ]
+    },
+    "location_confidence": "medium",
+    "description": null,
+    "cost": null,
+    "source": {
+      "document": null,
+      "page": null,
+      "type": "user"
+    },
+    "quality_flags": [],
+    "overlap_ids": [
+      "OVL_USR_H010FE__DESC_3",
+      "OVL_USR_H010FE__DESC_5",
+      "OVL_USR_H010FE__GPC_2",
+      "OVL_USR_H010FE__GPC_3"
+    ],
+    "short_name": "Corridor upgrade",
+    "work_type_label": "Roadway improvement",
+    "counties": [],
+    "county_source": null,
+    "company_id": "CMP_B",
+    "work_type": "Roadway improvement",
+    "roads_affected": [
+      "US-17"
+    ],
+    "lane_closures": "Northbound lane, nightly",
+    "work_hours": "21:00-05:00",
+    "planning_authority": null,
+    "location_text": "Near Hardeeville, SC",
+    "geocoded": {
+      "lat": 32.2871,
+      "lon": -81.079,
+      "label": "Hardeeville, SC",
+      "query": "Near Hardeeville, SC",
+      "source": "gazetteer (test)"
+    },
+    "contract_text_hash": null,
+    "line_miles": null,
+    "budget_usd": null,
+    "budget_source": null,
+    "budget_note": "No budget available",
+    "created_at": "2026-09-27T00:11:01.751145+00:00",
+    "updated_at": "2026-09-27T00:11:01.751145+00:00"
+  },
+  "overlaps": [
+    {
+      "id": "OVL_USR_H010FE__DESC_3",
+      "project_a": "USR_H010FE",
+      "project_b": "DESC_3",
+      "center_distance_mi": 4.1,
+      "closest_distance_km": 6.27,
+      "closest_points": {
+        "a": {
+          "lat": 32.2871,
+          "lon": -81.079
+        },
+        "b": {
+          "lat": 32.34091,
+          "lon": -81.058439
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 714,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "timing_confidence": "filed",
+      "score": 24.0,
+      "score_breakdown": {
+        "proximity": 24.0,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 1,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "no budget available"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": null,
+        "reference_budget_source": null,
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [
+          "No budget available for either project: mobilization savings not estimated"
+        ],
+        "sources": []
+      },
+      "brief": null,
+      "label": "Corridor upgrade ↔ Jasper–Okatie",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-12-31"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-12-31"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 41000,
+          "savings": 5000,
+          "savings_pct": 10.9,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 20500,
+            "b": 20500
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52900
+          ],
+          "coordinated": [
+            34850,
+            47150
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_H010FE__DESC_5",
+      "project_a": "USR_H010FE",
+      "project_b": "DESC_5",
+      "center_distance_mi": 7.95,
+      "closest_distance_km": 6.78,
+      "closest_points": {
+        "a": {
+          "lat": 32.2871,
+          "lon": -81.079
+        },
+        "b": {
+          "lat": 32.333758,
+          "lon": -81.032495
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 927,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "timing_confidence": "filed",
+      "score": 23.8,
+      "score_breakdown": {
+        "proximity": 23.8,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 2,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "no budget available"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": null,
+        "reference_budget_source": null,
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [
+          "No budget available for either project: mobilization savings not estimated"
+        ],
+        "sources": []
+      },
+      "brief": null,
+      "label": "Corridor upgrade ↔ Okatie–Bluffton",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2023-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 41000,
+          "savings": 5000,
+          "savings_pct": 10.9,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 20500,
+            "b": 20500
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52900
+          ],
+          "coordinated": [
+            34850,
+            47150
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_H010FE__GPC_2",
+      "project_a": "USR_H010FE",
+      "project_b": "GPC_2",
+      "center_distance_mi": 7.19,
+      "closest_distance_km": 11.57,
+      "closest_points": {
+        "a": {
+          "lat": 32.2871,
+          "lon": -81.079
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.175112
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 562,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": false,
+      "timing_confidence": "filed",
+      "score": 12.0,
+      "score_breakdown": {
+        "proximity": 12.0,
+        "savings": 0.0,
+        "timing": 0.0
+      },
+      "rank": 4,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 0,
+        "range_usd": [
+          0,
+          0
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "no budget available"
+          },
+          "logistics": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "construction windows cannot overlap"
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": null,
+        "reference_budget_source": null,
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [
+          "No budget available for either project: mobilization savings not estimated"
+        ],
+        "sources": []
+      },
+      "brief": null,
+      "label": "Corridor upgrade ↔ McIntosh–Purrysburg",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2024-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 46000,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 23000,
+            "b": 23000
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52900
+          ],
+          "coordinated": [
+            39100,
+            52900
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    },
+    {
+      "id": "OVL_USR_H010FE__GPC_3",
+      "project_a": "USR_H010FE",
+      "project_b": "GPC_3",
+      "center_distance_mi": 6.88,
+      "closest_distance_km": 11.05,
+      "closest_points": {
+        "a": {
+          "lat": 32.2871,
+          "lon": -81.079
+        },
+        "b": {
+          "lat": 32.309018,
+          "lon": -81.193518
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 197,
+      "window_overlap_months": 0,
+      "schedule_shift_possible": true,
+      "timing_confidence": "filed",
+      "score": 18.1,
+      "score_breakdown": {
+        "proximity": 12.1,
+        "savings": 0.0,
+        "timing": 6.0
+      },
+      "rank": 3,
+      "cost_estimate": {
+        "total_estimated_savings_usd": 1170,
+        "range_usd": [
+          313,
+          4286
+        ],
+        "components": {
+          "mobilization": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false,
+            "reason": "no budget available"
+          },
+          "logistics": {
+            "low": 313,
+            "point": 1170,
+            "high": 4286,
+            "applies": true,
+            "site_to_site_road_miles": 8.3
+          },
+          "shared_land": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          },
+          "traffic_delay": {
+            "low": 0,
+            "point": 0,
+            "high": 0,
+            "applies": false
+          }
+        },
+        "reference_budget_usd": null,
+        "reference_budget_source": null,
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "assumptions": [
+          "No budget available for either project: mobilization savings not estimated",
+          "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+        ],
+        "sources": [
+          {
+            "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+            "value_used": "$2.336/mile",
+            "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+          }
+        ]
+      },
+      "brief": null,
+      "label": "Corridor upgrade ↔ Goshen–McIntosh",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "defaults_source": "cost_sources.json",
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000,
+          "crew_size": 4,
+          "crew_cost_per_day": 1160
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2027-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2027-06-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 46000,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 23000,
+            "b": 23000
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52900
+          ],
+          "coordinated": [
+            39100,
+            52900
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "kind": "user_project"
+    }
+  ],
+  "closure_conflicts": []
+}

@@ -1,0 +1,1524 @@
+{
+  "_note": "MOCK DATA in the final API shape. Coordinates and in-service dates come from Sperry's starter spreadsheet; construction windows, costs and descriptions are placeholders.",
+  "meta": {
+    "utilities": [
+      {
+        "code": "DESC",
+        "name": "Dominion Energy South Carolina",
+        "color": "#1F6FB2"
+      },
+      {
+        "code": "GPC",
+        "name": "Georgia Power",
+        "color": "#D9822B"
+      }
+    ],
+    "threshold_mi": 25,
+    "generated_at": "2026-09-26",
+    "tiers": [
+      {
+        "code": "crossing",
+        "label": "Touching / crossing",
+        "max_km": 0.05
+      },
+      {
+        "code": "shared_land",
+        "label": "Under 1.6 km",
+        "max_km": 1.6
+      },
+      {
+        "code": "shared_site",
+        "label": "Under 8 km",
+        "max_km": 8
+      },
+      {
+        "code": "shared_crews",
+        "label": "Under 40 km",
+        "max_km": 40
+      }
+    ],
+    "potential_levels": [
+      {
+        "code": "high",
+        "label": "High potential",
+        "min_score": 60
+      },
+      {
+        "code": "moderate",
+        "label": "Moderate potential",
+        "min_score": 35
+      },
+      {
+        "code": "lower",
+        "label": "Lower potential",
+        "min_score": 0
+      }
+    ],
+    "in_service_years": [
+      2023,
+      2033
+    ]
+  },
+  "projects": [
+    {
+      "id": "DESC_1",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "state": "SC",
+      "name": "Stevens Creek - Hooks 115 kV / LR Plumb Branch 46 kV Rebuilds",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2024-12-31",
+      "construction_window": {
+        "start": "2023-01-01",
+        "end": "2024-12-31",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "Stevens Creek Sub",
+          "lat": 33.562599,
+          "lon": -82.051362,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Edgefield County, SC"
+        },
+        {
+          "name": "Hooks Sub",
+          "lat": null,
+          "lon": null,
+          "confidence": "not_found",
+          "source": null,
+          "county": null
+        }
+      ],
+      "center": {
+        "lat": 33.562599,
+        "lon": -82.051362
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.051362,
+          33.562599
+        ]
+      },
+      "location_confidence": "medium",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": {
+        "currency": "USD",
+        "by_year": {
+          "previous": 1200000,
+          "2024": 800000,
+          "2025": 2500000,
+          "2026": 0,
+          "2027": 0,
+          "2028": 0
+        },
+        "total": 4500000,
+        "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+      },
+      "source": {
+        "document": "DESC 2024-2028 project descriptions",
+        "page": null
+      },
+      "quality_flags": [
+        {
+          "code": "ENDPOINT_NOT_FOUND",
+          "message": "One endpoint could not be located; center uses the located endpoint only."
+        }
+      ],
+      "overlap_ids": [
+        "OVL_1"
+      ],
+      "short_name": "Stevens Creek–Hooks",
+      "work_type_label": "Line rebuild",
+      "counties": [
+        "Edgefield County, SC"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "DESC_2",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "state": "SC",
+      "name": "Hooks - Thurmond 115 kV Tie: Rebuild",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2024-12-31",
+      "construction_window": {
+        "start": "2023-06-01",
+        "end": "2024-12-31",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "Hooks Sub",
+          "lat": null,
+          "lon": null,
+          "confidence": "not_found",
+          "source": null,
+          "county": null
+        },
+        {
+          "name": "Thurmond Sub",
+          "lat": 33.660127,
+          "lon": -82.195931,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Columbia County, GA"
+        }
+      ],
+      "center": {
+        "lat": 33.660127,
+        "lon": -82.195931
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.195931,
+          33.660127
+        ]
+      },
+      "location_confidence": "medium",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": {
+        "currency": "USD",
+        "by_year": {
+          "previous": 1200000,
+          "2024": 800000,
+          "2025": 2500000,
+          "2026": 0,
+          "2027": 0,
+          "2028": 0
+        },
+        "total": 4500000,
+        "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+      },
+      "source": {
+        "document": "DESC 2024-2028 project descriptions",
+        "page": null
+      },
+      "quality_flags": [
+        {
+          "code": "ENDPOINT_NOT_FOUND",
+          "message": "One endpoint could not be located; center uses the located endpoint only."
+        }
+      ],
+      "overlap_ids": [
+        "OVL_2"
+      ],
+      "short_name": "Hooks–Thurmond",
+      "work_type_label": "Line rebuild",
+      "counties": [
+        "Columbia County, GA"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "DESC_3",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "state": "SC",
+      "name": "Jasper - Okatie 230 kV #2: Construct",
+      "voltage_kv": 230,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2025-12-31",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2025-12-31",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "Jasper Sub",
+          "lat": 32.35912,
+          "lon": -81.1246,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Jasper County, SC"
+        },
+        {
+          "name": "Okatie Sub",
+          "lat": 32.333758,
+          "lon": -81.032495,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Jasper County, SC"
+        }
+      ],
+      "center": {
+        "lat": 32.346439,
+        "lon": -81.078547
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -81.1246,
+            32.35912
+          ],
+          [
+            -81.032495,
+            32.333758
+          ]
+        ]
+      },
+      "location_confidence": "high",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": {
+        "currency": "USD",
+        "by_year": {
+          "previous": 1200000,
+          "2024": 800000,
+          "2025": 2500000,
+          "2026": 0,
+          "2027": 0,
+          "2028": 0
+        },
+        "total": 4500000,
+        "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+      },
+      "source": {
+        "document": "DESC 2024-2028 project descriptions",
+        "page": null
+      },
+      "quality_flags": [],
+      "overlap_ids": [
+        "OVL_3",
+        "OVL_4"
+      ],
+      "short_name": "Jasper–Okatie",
+      "work_type_label": "New transmission line",
+      "counties": [
+        "Jasper County, SC"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "DESC_4",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "state": "SC",
+      "name": "Queensboro - Ft Johnson 115 kV & Queensboro-Bayfront 115 kV (Queensboro-James Island Sect)",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2023-12-31",
+      "construction_window": {
+        "start": "2022-01-01",
+        "end": "2024-12-31",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "Queensboro Sub",
+          "lat": 32.722793,
+          "lon": -79.967332,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Charleston County, SC"
+        },
+        {
+          "name": "Ft Johnson Sub",
+          "lat": null,
+          "lon": null,
+          "confidence": "not_found",
+          "source": null,
+          "county": null
+        }
+      ],
+      "center": {
+        "lat": 32.722793,
+        "lon": -79.967332
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.967332,
+          32.722793
+        ]
+      },
+      "location_confidence": "medium",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": {
+        "currency": "USD",
+        "by_year": {
+          "previous": 1200000,
+          "2024": 800000,
+          "2025": 2500000,
+          "2026": 0,
+          "2027": 0,
+          "2028": 0
+        },
+        "total": 4500000,
+        "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+      },
+      "source": {
+        "document": "DESC 2024-2028 project descriptions",
+        "page": null
+      },
+      "quality_flags": [
+        {
+          "code": "ENDPOINT_NOT_FOUND",
+          "message": "One endpoint could not be located; center uses the located endpoint only."
+        },
+        {
+          "code": "POSSIBLY_COMPLETE",
+          "message": "In-service date is in the past; project may already be complete."
+        }
+      ],
+      "overlap_ids": [],
+      "short_name": "Queensboro–Ft Johnson",
+      "work_type_label": "Transmission project",
+      "counties": [
+        "Charleston County, SC"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "DESC_5",
+      "utility": "DESC",
+      "utility_name": "Dominion Energy South Carolina",
+      "state": "SC",
+      "name": "Okatie-Bluffton 115 kV: Rebuild",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2025-06-01",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2025-06-01",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "Okatie Sub",
+          "lat": 32.333758,
+          "lon": -81.032495,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Jasper County, SC"
+        },
+        {
+          "name": "Bluffton Sub",
+          "lat": 32.235027,
+          "lon": -80.853384,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Beaufort County, SC"
+        }
+      ],
+      "center": {
+        "lat": 32.284393,
+        "lon": -80.942939
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -81.032495,
+            32.333758
+          ],
+          [
+            -80.853384,
+            32.235027
+          ]
+        ]
+      },
+      "location_confidence": "high",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": {
+        "currency": "USD",
+        "by_year": {
+          "previous": 1200000,
+          "2024": 800000,
+          "2025": 2500000,
+          "2026": 0,
+          "2027": 0,
+          "2028": 0
+        },
+        "total": 4500000,
+        "note": "(mock values) Dominion only; Georgia Power costs are redacted"
+      },
+      "source": {
+        "document": "DESC 2024-2028 project descriptions",
+        "page": null
+      },
+      "quality_flags": [],
+      "overlap_ids": [
+        "OVL_5",
+        "OVL_6"
+      ],
+      "short_name": "Okatie–Bluffton",
+      "work_type_label": "Line rebuild",
+      "counties": [
+        "Jasper County, SC",
+        "Beaufort County, SC"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "GPC_1",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "state": "GA",
+      "name": "EVANS PRIMARY - THURMOND DAM (USA) #5 115KV REBUILD",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2033-06-01",
+      "construction_window": {
+        "start": "2031-06-01",
+        "end": "2033-06-01",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "EVANS PRIMARY",
+          "lat": 33.543994,
+          "lon": -82.168648,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Columbia County, GA"
+        },
+        {
+          "name": "THURMOND DAM #5",
+          "lat": 33.660127,
+          "lon": -82.195931,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Columbia County, GA"
+        }
+      ],
+      "center": {
+        "lat": 33.602061,
+        "lon": -82.182289
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -82.168648,
+            33.543994
+          ],
+          [
+            -82.195931,
+            33.660127
+          ]
+        ]
+      },
+      "location_confidence": "high",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": null,
+      "source": {
+        "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+        "page": null
+      },
+      "quality_flags": [],
+      "overlap_ids": [
+        "OVL_2",
+        "OVL_1"
+      ],
+      "short_name": "Evans–Thurmond",
+      "work_type_label": "Line rebuild",
+      "counties": [
+        "Columbia County, GA"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "GPC_2",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "state": "GA",
+      "name": "SAV: MCINTOSH - PURRYSBURG 230KV REACTORS",
+      "voltage_kv": 230,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2026-06-01",
+      "construction_window": {
+        "start": "2024-01-01",
+        "end": "2026-06-01",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "MCINTOSH",
+          "lat": 32.352116,
+          "lon": -81.175112,
+          "confidence": "medium",
+          "source": "Sperry starter file",
+          "county": "Effingham County, GA"
+        },
+        {
+          "name": "PURRYSBURG",
+          "lat": null,
+          "lon": null,
+          "confidence": "not_found",
+          "source": null,
+          "county": null
+        }
+      ],
+      "center": {
+        "lat": 32.352116,
+        "lon": -81.175112
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.175112,
+          32.352116
+        ]
+      },
+      "location_confidence": "medium",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": null,
+      "source": {
+        "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+        "page": null
+      },
+      "quality_flags": [
+        {
+          "code": "ENDPOINT_NOT_FOUND",
+          "message": "One endpoint could not be located; center uses the located endpoint only."
+        },
+        {
+          "code": "COORD_CONFLICT",
+          "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+        }
+      ],
+      "overlap_ids": [
+        "OVL_3",
+        "OVL_5"
+      ],
+      "short_name": "McIntosh–Purrysburg",
+      "work_type_label": "Equipment upgrade (reactors)",
+      "counties": [
+        "Effingham County, GA"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "GPC_3",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "state": "GA",
+      "name": "SAV: GOSHEN (SAV) - MCINTOSH 115KV LINE REBUILD",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2027-06-01",
+      "construction_window": {
+        "start": "2025-06-01",
+        "end": "2027-06-01",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "GOSHEN",
+          "lat": 32.248701,
+          "lon": -81.209472,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Effingham County, GA"
+        },
+        {
+          "name": "MCINTOSH",
+          "lat": 32.352116,
+          "lon": -81.182105,
+          "confidence": "medium",
+          "source": "Sperry starter file",
+          "county": "Effingham County, GA"
+        }
+      ],
+      "center": {
+        "lat": 32.300409,
+        "lon": -81.195789
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -81.209472,
+            32.248701
+          ],
+          [
+            -81.182105,
+            32.352116
+          ]
+        ]
+      },
+      "location_confidence": "high",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": null,
+      "source": {
+        "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+        "page": null
+      },
+      "quality_flags": [
+        {
+          "code": "COORD_CONFLICT",
+          "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+        }
+      ],
+      "overlap_ids": [
+        "OVL_4",
+        "OVL_6"
+      ],
+      "short_name": "Goshen–McIntosh",
+      "work_type_label": "Line rebuild",
+      "counties": [
+        "Effingham County, GA"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "GPC_4",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "state": "GA",
+      "name": "MITCHELL - NORTH TIFTON 230KV RECONDUCTOR",
+      "voltage_kv": 230,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2025-05-01",
+      "construction_window": {
+        "start": "2023-05-01",
+        "end": "2025-05-01",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "Mitchell Substation",
+          "lat": 31.447121,
+          "lon": -84.133843,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Dougherty County, GA"
+        },
+        {
+          "name": "North Tifton Substation",
+          "lat": 31.478089,
+          "lon": -83.54913,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Tift County, GA"
+        }
+      ],
+      "center": {
+        "lat": 31.462605,
+        "lon": -83.841487
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -84.133843,
+            31.447121
+          ],
+          [
+            -83.54913,
+            31.478089
+          ]
+        ]
+      },
+      "location_confidence": "high",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": null,
+      "source": {
+        "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+        "page": null
+      },
+      "quality_flags": [],
+      "overlap_ids": [],
+      "short_name": "Mitchell–North Tifton",
+      "work_type_label": "Line reconductor",
+      "counties": [
+        "Dougherty County, GA",
+        "Tift County, GA"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    },
+    {
+      "id": "GPC_5",
+      "utility": "GPC",
+      "utility_name": "Georgia Power",
+      "state": "GA",
+      "name": "JESUP - LUDOWICI PRIMARY 115KV REBUILD",
+      "voltage_kv": 115,
+      "project_type": "line",
+      "status": "Planned",
+      "in_service_date": "2025-06-01",
+      "construction_window": {
+        "start": "2023-06-01",
+        "end": "2025-06-01",
+        "source": "estimated"
+      },
+      "endpoints": [
+        {
+          "name": "JESUP",
+          "lat": 31.603106,
+          "lon": -81.924947,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Wayne County, GA"
+        },
+        {
+          "name": "LUDOWICI PRIMARY",
+          "lat": 31.721597,
+          "lon": -81.743703,
+          "confidence": "high",
+          "source": "Sperry starter file",
+          "county": "Long County, GA"
+        }
+      ],
+      "center": {
+        "lat": 31.662351,
+        "lon": -81.834325
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -81.924947,
+            31.603106
+          ],
+          [
+            -81.743703,
+            31.721597
+          ]
+        ]
+      },
+      "location_confidence": "high",
+      "description": "(mock) Full description parsed from the utility PDF goes here.",
+      "cost": null,
+      "source": {
+        "document": "Georgia Power 2025 IRP Vol. 3, 10-Year Plan",
+        "page": null
+      },
+      "quality_flags": [],
+      "overlap_ids": [],
+      "short_name": "Jesup–Ludowici",
+      "work_type_label": "Line rebuild",
+      "counties": [
+        "Wayne County, GA",
+        "Long County, GA"
+      ],
+      "county_source": "mock (real backend: Census county boundaries)"
+    }
+  ],
+  "overlaps": [
+    {
+      "id": "OVL_3",
+      "project_a": "DESC_3",
+      "project_b": "GPC_2",
+      "center_distance_mi": 5.65,
+      "closest_distance_km": 4.82,
+      "closest_points": {
+        "a": {
+          "lat": 32.35912,
+          "lon": -81.1246
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.175112
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 152,
+      "window_overlap_months": 24,
+      "score": 77.6,
+      "rank": 1,
+      "cost_estimate": {
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "total_estimated_savings_usd": 17000,
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "brief": null,
+      "label": "Jasper–Okatie ↔ McIntosh–Purrysburg",
+      "potential": "high",
+      "cost_scenario": {
+        "illustrative": true,
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 1,
+          "start_date_a": "2024-01-01",
+          "start_date_b": "2024-01-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 29000,
+          "savings": 17000,
+          "savings_pct": 37.0,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 14500,
+            "b": 14500
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52899
+          ],
+          "coordinated": [
+            24650,
+            33350
+          ],
+          "savings": [
+            12750,
+            21250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      }
+    },
+    {
+      "id": "OVL_2",
+      "project_a": "DESC_2",
+      "project_b": "GPC_1",
+      "center_distance_mi": 4.09,
+      "closest_distance_km": 0.0,
+      "closest_points": {
+        "a": {
+          "lat": 33.660127,
+          "lon": -82.195931
+        },
+        "b": {
+          "lat": 33.660127,
+          "lon": -82.195931
+        }
+      },
+      "tier": "crossing",
+      "tier_explanation": "Touching/crossing: must coordinate outages and crossing structures",
+      "shared_endpoint": true,
+      "time_gap_days": 3074,
+      "window_overlap_months": 0,
+      "score": 60.0,
+      "rank": 2,
+      "cost_estimate": {
+        "shared_row_acres": 12.4,
+        "mobilization_savings_usd": null,
+        "total_estimated_savings_usd": 5000,
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "brief": null,
+      "label": "Hooks–Thurmond ↔ Evans–Thurmond",
+      "potential": "high",
+      "cost_scenario": {
+        "illustrative": true,
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-06-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2031-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 1,
+          "start_date_a": "2023-06-01",
+          "start_date_b": "2031-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 41000,
+          "savings": 5000,
+          "savings_pct": 10.9,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 20500,
+            "b": 20500
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52899
+          ],
+          "coordinated": [
+            34850,
+            47149
+          ],
+          "savings": [
+            3750,
+            6250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      }
+    },
+    {
+      "id": "OVL_5",
+      "project_a": "DESC_5",
+      "project_b": "GPC_2",
+      "center_distance_mi": 14.34,
+      "closest_distance_km": 13.57,
+      "closest_points": {
+        "a": {
+          "lat": 32.333758,
+          "lon": -81.032495
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.175112
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 365,
+      "window_overlap_months": 17,
+      "score": 49.1,
+      "rank": 3,
+      "cost_estimate": {
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "total_estimated_savings_usd": 12000,
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "brief": null,
+      "label": "Okatie–Bluffton ↔ McIntosh–Purrysburg",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 2,
+          "start_date_a": "2024-01-01",
+          "start_date_b": "2024-01-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 34000,
+          "savings": 12000,
+          "savings_pct": 26.1,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 17000,
+            "b": 17000
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52899
+          ],
+          "coordinated": [
+            28900,
+            39100
+          ],
+          "savings": [
+            9000,
+            15000
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      }
+    },
+    {
+      "id": "OVL_4",
+      "project_a": "DESC_3",
+      "project_b": "GPC_3",
+      "center_distance_mi": 7.55,
+      "closest_distance_km": 5.47,
+      "closest_points": {
+        "a": {
+          "lat": 32.35912,
+          "lon": -81.1246
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.182105
+        }
+      },
+      "tier": "shared_site",
+      "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+      "shared_endpoint": false,
+      "time_gap_days": 517,
+      "window_overlap_months": 7,
+      "score": 48.9,
+      "rank": 4,
+      "cost_estimate": {
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "total_estimated_savings_usd": 17000,
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      },
+      "brief": null,
+      "label": "Jasper–Okatie ↔ Goshen–McIntosh",
+      "potential": "moderate",
+      "cost_scenario": {
+        "illustrative": true,
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 12,
+          "laydown_sites": 1,
+          "start_date_a": "2024-01-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 29000,
+          "savings": 17000,
+          "savings_pct": 37.0,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 14500,
+            "b": 14500
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52899
+          ],
+          "coordinated": [
+            24650,
+            33350
+          ],
+          "savings": [
+            12750,
+            21250
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (yes for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+        ]
+      }
+    },
+    {
+      "id": "OVL_1",
+      "project_a": "DESC_1",
+      "project_b": "GPC_1",
+      "center_distance_mi": 8.01,
+      "closest_distance_km": 11.08,
+      "closest_points": {
+        "a": {
+          "lat": 33.562599,
+          "lon": -82.051362
+        },
+        "b": {
+          "lat": 33.543994,
+          "lon": -82.168648
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 3074,
+      "window_overlap_months": 0,
+      "score": 21.5,
+      "rank": 5,
+      "cost_estimate": {
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "total_estimated_savings_usd": 0,
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "brief": null,
+      "label": "Stevens Creek–Hooks ↔ Evans–Thurmond",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2023-01-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2031-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2023-01-01",
+          "start_date_b": "2031-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 46000,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 23000,
+            "b": 23000
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52899
+          ],
+          "coordinated": [
+            39100,
+            52899
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      }
+    },
+    {
+      "id": "OVL_6",
+      "project_a": "DESC_5",
+      "project_b": "GPC_3",
+      "center_distance_mi": 14.81,
+      "closest_distance_km": 14.22,
+      "closest_points": {
+        "a": {
+          "lat": 32.333758,
+          "lon": -81.032495
+        },
+        "b": {
+          "lat": 32.352116,
+          "lon": -81.182105
+        }
+      },
+      "tier": "shared_crews",
+      "tier_explanation": "Under 40 km: can share crews and equipment",
+      "shared_endpoint": false,
+      "time_gap_days": 730,
+      "window_overlap_months": 0,
+      "score": 20.6,
+      "rank": 6,
+      "cost_estimate": {
+        "shared_row_acres": null,
+        "mobilization_savings_usd": null,
+        "total_estimated_savings_usd": 0,
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      },
+      "brief": null,
+      "label": "Okatie–Bluffton ↔ Goshen–McIntosh",
+      "potential": "lower",
+      "cost_scenario": {
+        "illustrative": true,
+        "unit_rates": {
+          "mobilization_per_event": 3000,
+          "bucket_truck_per_day": 1500,
+          "laydown_per_site": 5000
+        },
+        "separate": {
+          "a": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2024-01-01"
+          },
+          "b": {
+            "mobilization_events": 1,
+            "truck_days": 10,
+            "laydown_sites": 1,
+            "start_date": "2025-06-01"
+          }
+        },
+        "coordinated": {
+          "mobilization_events_a": 1,
+          "mobilization_events_b": 1,
+          "shared_truck_days": 20,
+          "laydown_sites": 2,
+          "start_date_a": "2024-01-01",
+          "start_date_b": "2025-06-01"
+        },
+        "totals": {
+          "separate": 46000,
+          "coordinated": 46000,
+          "savings": 0,
+          "savings_pct": 0.0,
+          "separate_by_project": {
+            "a": 23000,
+            "b": 23000
+          },
+          "coordinated_by_project": {
+            "a": 23000,
+            "b": 23000
+          }
+        },
+        "range": {
+          "separate": [
+            39100,
+            52899
+          ],
+          "coordinated": [
+            39100,
+            52899
+          ],
+          "savings": [
+            0,
+            0
+          ]
+        },
+        "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+        "assumptions": [
+          "Unit rates are placeholders; replace with real bids.",
+          "Trucks are shared only when construction windows overlap (no for this pair).",
+          "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+        ]
+      }
+    }
+  ],
+  "quality": [
+    {
+      "project_id": "DESC_1",
+      "code": "ENDPOINT_NOT_FOUND",
+      "message": "One endpoint could not be located; center uses the located endpoint only."
+    },
+    {
+      "project_id": "DESC_2",
+      "code": "ENDPOINT_NOT_FOUND",
+      "message": "One endpoint could not be located; center uses the located endpoint only."
+    },
+    {
+      "project_id": "DESC_4",
+      "code": "ENDPOINT_NOT_FOUND",
+      "message": "One endpoint could not be located; center uses the located endpoint only."
+    },
+    {
+      "project_id": "DESC_4",
+      "code": "POSSIBLY_COMPLETE",
+      "message": "In-service date is in the past; project may already be complete."
+    },
+    {
+      "project_id": "GPC_2",
+      "code": "ENDPOINT_NOT_FOUND",
+      "message": "One endpoint could not be located; center uses the located endpoint only."
+    },
+    {
+      "project_id": "GPC_2",
+      "code": "COORD_CONFLICT",
+      "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+    },
+    {
+      "project_id": "GPC_3",
+      "code": "COORD_CONFLICT",
+      "message": "McIntosh substation appears with two different longitudes (-81.175112 vs -81.182105) across projects."
+    }
+  ],
+  "whatif_example_response": {
+    "proposed": {
+      "name": "Proposed: Hardeeville 230 kV Tap",
+      "utility": "DESC",
+      "voltage_kv": 230,
+      "endpoints": [
+        {
+          "name": "Hardeeville",
+          "lat": 32.2866,
+          "lon": -81.0801
+        }
+      ],
+      "construction_window": {
+        "start": "2027-09-01",
+        "end": "2029-03-01"
+      },
+      "center": {
+        "lat": 32.2866,
+        "lon": -81.0801
+      }
+    },
+    "overlaps": [
+      {
+        "project_id": "GPC_3",
+        "center_distance_mi": 6.82,
+        "closest_distance_km": 10.96,
+        "tier": "shared_crews",
+        "window_overlap_months": 0
+      },
+      {
+        "project_id": "GPC_2",
+        "center_distance_mi": 7.16,
+        "closest_distance_km": 11.51,
+        "tier": "shared_crews",
+        "window_overlap_months": 0
+      }
+    ],
+    "suggestion": {
+      "shift_months": -11,
+      "suggested_window": {
+        "start": "2026-10-01",
+        "end": "2028-04-01"
+      },
+      "window_overlap_months_before": 0,
+      "window_overlap_months_after": 8,
+      "explanation": "Moving the window 11 months earlier increases shared construction time with nearby Georgia Power projects from 0 to 8 months, so crews and equipment can be shared."
+    }
+  },
+  "brief_example_response": {
+    "overlap_id": "OVL_3",
+    "brief": "(mock Gemini) Dominion Energy South Carolina's \"Jasper - Okatie 230 kV #2: Construct\" and Georgia Power's \"SAV: MCINTOSH - PURRYSBURG 230KV REACTORS\" are 5.65 miles apart center to center, and their closest points are 4.82 km apart (under 8 km: can share laydown yards and deliveries). They are under construction at the same time for about 24 months, which is the window to share crews and equipment. Estimated savings from coordinating: about $150,000.",
+    "source": "gemini",
+    "cached": false
+  },
+  "ask_example_response": {
+    "answer": "(mock Gemini) Based on the planned projects: OVL_2: Hooks - Thurmond 115 kV Tie: Rebuild (Dominion) and EVANS PRIMARY - THURMOND DAM (USA) #5 115KV REBUILD (Georgia Power), 4.09 mi apart, 0 months of overlapping construction.",
+    "cited_project_ids": [
+      "DESC_2",
+      "GPC_1"
+    ],
+    "cited_overlap_ids": [
+      "OVL_2"
+    ]
+  }
+}

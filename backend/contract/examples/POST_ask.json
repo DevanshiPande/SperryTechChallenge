@@ -1,0 +1,15 @@
+{
+  "intent": {
+    "action": "navigate",
+    "page": "cost",
+    "overlap_id": "OVL_3"
+  },
+  "answer": "(mock Gemini) Based on the planned projects: OVL_3: Jasper - Okatie 230 kV #2: Construct (Dominion) and SAV: MCINTOSH - PURRYSBURG 230KV REACTORS (Georgia Power), 5.65 mi apart, 24 months of overlapping construction.",
+  "cited_project_ids": [
+    "DESC_3",
+    "GPC_2"
+  ],
+  "cited_overlap_ids": [
+    "OVL_3"
+  ]
+}

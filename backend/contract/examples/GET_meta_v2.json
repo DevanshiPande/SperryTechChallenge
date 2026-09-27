@@ -1,0 +1,67 @@
+{
+  "utilities": [
+    {
+      "code": "DESC",
+      "name": "Dominion Energy South Carolina",
+      "color": "#1F6FB2"
+    },
+    {
+      "code": "GPC",
+      "name": "Georgia Power",
+      "color": "#D9822B"
+    }
+  ],
+  "threshold_mi": 25,
+  "generated_at": "2026-09-26",
+  "tiers": [
+    {
+      "code": "crossing",
+      "label": "Touching / crossing",
+      "max_km": 0.05
+    },
+    {
+      "code": "shared_land",
+      "label": "Under 1.6 km",
+      "max_km": 1.6
+    },
+    {
+      "code": "shared_site",
+      "label": "Under 8 km",
+      "max_km": 8
+    },
+    {
+      "code": "shared_crews",
+      "label": "Under 40 km",
+      "max_km": 40
+    }
+  ],
+  "potential_levels": [
+    {
+      "code": "high",
+      "label": "High potential",
+      "min_score": 60
+    },
+    {
+      "code": "moderate",
+      "label": "Moderate potential",
+      "min_score": 35
+    },
+    {
+      "code": "lower",
+      "label": "Lower potential",
+      "min_score": 0
+    }
+  ],
+  "in_service_years": [
+    2023,
+    2034
+  ],
+  "method_notes": [
+    "Overlaps follow Sperry's rule: center points under 25 miles.",
+    "Score = proximity 40 + savings 40 + timing 20. Savings already shrink with distance and when timing does not line up, so distance and timing partly count twice: proximity measures how practical coordination is, savings how much it is worth.",
+    "Savings use Dominion's filed budgets, MISO per-mile estimates for Georgia Power's redacted budgets, the MoDOT mobilization benchmark, ATRI trucking costs, BLS wages, and USDA land values. The shareable fraction is an assumption, shown as a range.",
+    "Traffic uses OpenStreetMap roads, SCDOT (2025) and GDOT (2017) traffic counts where available, MoDOT work-zone capacity, and USDOT value of time. Hourly profiles and closure durations are assumptions.",
+    "Lines are straight-line approximations between substations, so crossings are approximate."
+  ],
+  "traffic_data": true
+}

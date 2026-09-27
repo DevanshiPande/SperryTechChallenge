@@ -1,0 +1,162 @@
+{
+  "id": "OVL_DESC_23__GPC_20277",
+  "project_a": "DESC_23",
+  "project_b": "GPC_20277",
+  "center_distance_mi": 5.66,
+  "closest_distance_km": 4.89,
+  "closest_points": {
+    "a": {
+      "lat": 32.360699,
+      "lon": -81.124152
+    },
+    "b": {
+      "lat": 32.352116,
+      "lon": -81.175112
+    }
+  },
+  "tier": "shared_site",
+  "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+  "shared_endpoint": false,
+  "time_gap_days": 152,
+  "window_overlap_months": 24,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 64.6,
+  "score_breakdown": {
+    "proximity": 24.4,
+    "savings": 20.2,
+    "timing": 20.0
+  },
+  "rank": 1,
+  "cost_estimate": {
+    "total_estimated_savings_usd": 127061,
+    "range_usd": [
+      34660,
+      373655
+    ],
+    "components": {
+      "mobilization": {
+        "low": 34320,
+        "point": 125850,
+        "high": 369300,
+        "applies": true,
+        "requires_schedule_shift": false
+      },
+      "logistics": {
+        "low": 340,
+        "point": 1211,
+        "high": 4355,
+        "applies": true,
+        "site_to_site_road_miles": 6.8
+      },
+      "shared_land": {
+        "low": 0,
+        "point": 0,
+        "high": 0,
+        "applies": false
+      },
+      "traffic_delay": {
+        "low": 0,
+        "point": 0,
+        "high": 0,
+        "applies": false
+      }
+    },
+    "reference_budget_usd": 5034000,
+    "reference_budget_source": "predicted (ridge, Dominion budgets)",
+    "shared_row_acres": null,
+    "mobilization_savings_usd": 125850,
+    "assumptions": [
+      "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
+      "Share of one mobilization that can be shared: 25%–50% (assumption)",
+      "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+    ],
+    "sources": [
+      {
+        "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+        "value_used": "$5,034,000"
+      },
+      {
+        "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+        "value_used": "4%–10% of the budget",
+        "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+      },
+      {
+        "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+        "value_used": "$2.336/mile",
+        "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+      }
+    ]
+  },
+  "brief": null,
+  "label": "Jasper–Okatie ↔ McIntosh–Purrysburg",
+  "potential": "high",
+  "cost_scenario": {
+    "illustrative": true,
+    "defaults_source": "cost_sources.json",
+    "unit_rates": {
+      "mobilization_per_event": 125800,
+      "bucket_truck_per_day": 1500,
+      "laydown_per_site": 5000,
+      "crew_size": 4,
+      "crew_cost_per_day": 1160
+    },
+    "separate": {
+      "a": {
+        "mobilization_events": 1,
+        "truck_days": 10,
+        "laydown_sites": 1,
+        "start_date": "2023-08-31"
+      },
+      "b": {
+        "mobilization_events": 1,
+        "truck_days": 10,
+        "laydown_sites": 1,
+        "start_date": "2024-01-01"
+      }
+    },
+    "coordinated": {
+      "mobilization_events_a": 1,
+      "mobilization_events_b": 1,
+      "shared_truck_days": 12,
+      "laydown_sites": 1,
+      "start_date_a": "2023-08-31",
+      "start_date_b": "2024-01-01"
+    },
+    "totals": {
+      "separate": 291600,
+      "coordinated": 274600,
+      "savings": 17000,
+      "savings_pct": 5.8,
+      "separate_by_project": {
+        "a": 145800,
+        "b": 145800
+      },
+      "coordinated_by_project": {
+        "a": 137300,
+        "b": 137300
+      }
+    },
+    "range": {
+      "separate": [
+        247860,
+        335340
+      ],
+      "coordinated": [
+        233410,
+        315790
+      ],
+      "savings": [
+        12750,
+        21250
+      ]
+    },
+    "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+    "assumptions": [
+      "Unit rates are placeholders; replace with real bids.",
+      "Trucks are shared only when construction windows overlap (yes for this pair).",
+      "One laydown yard is shared only when projects are under 8 km apart (yes for this pair)."
+    ]
+  },
+  "kind": "cross_utility"
+}

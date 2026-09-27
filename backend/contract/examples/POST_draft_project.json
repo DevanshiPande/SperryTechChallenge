@@ -1,0 +1,51 @@
+{
+  "kind": "project",
+  "fields": {
+    "name": {
+      "value": "Corridor upgrade",
+      "confidence": "high"
+    },
+    "description": {
+      "value": "We're planning a corridor upgrade near Hardeeville from June to December 2027 with a nightly lane closure on US-17 northbound, 9 PM to 5 AM",
+      "confidence": "medium"
+    },
+    "location": {
+      "value": "Near Hardeeville, SC",
+      "confidence": "high"
+    },
+    "start_date": {
+      "value": "2027-06-01",
+      "confidence": "high"
+    },
+    "end_date": {
+      "value": "2027-12-31",
+      "confidence": "high"
+    },
+    "work_type": {
+      "value": "Roadway improvement",
+      "confidence": "medium"
+    },
+    "lane_closures": {
+      "value": "Lane closure (northbound)",
+      "confidence": "high"
+    },
+    "work_hours": {
+      "value": "9 PM – 5 AM",
+      "confidence": "high"
+    },
+    "roads_affected": {
+      "value": "US-17",
+      "confidence": "high"
+    }
+  },
+  "missing": [],
+  "ready": true,
+  "follow_up_questions": [],
+  "location_point": {
+    "lat": 32.2871,
+    "lon": -81.079,
+    "label": "Hardeeville, SC"
+  },
+  "source": "gemini",
+  "note": "(mock Gemini) Draft only. Nothing is saved until the user reviews it."
+}

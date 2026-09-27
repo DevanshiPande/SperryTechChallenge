@@ -1,0 +1,109 @@
+{
+  "contract_id": "CTR_TJYZLK",
+  "filename": "sample_contract_hardeeville.pdf",
+  "status": "needs_review",
+  "fields": {
+    "project_name": {
+      "value": "Hardeeville Area Reliability Project - Jasper to Bluffton 115 kV Line Rebuild",
+      "confidence": "high",
+      "evidence": "Project name: Hardeeville Area Reliability Project - Jasper to Bluffton 115 kV Line Rebuild"
+    },
+    "owner_company": {
+      "value": "Lowcountry Line Builders LLC (fictional)",
+      "confidence": "high",
+      "evidence": "Owner: Lowcountry Line Builders LLC (fictional)"
+    },
+    "utility": {
+      "value": "Dominion Energy South Carolina",
+      "confidence": "high",
+      "evidence": "Utility: Dominion Energy South Carolina"
+    },
+    "work_type": {
+      "value": "Transmission line rebuild",
+      "confidence": "high",
+      "evidence": "Work type: Transmission line rebuild"
+    },
+    "voltage_kv": {
+      "value": 115,
+      "confidence": "high",
+      "evidence": "Voltage: 115 kV"
+    },
+    "endpoints": {
+      "value": [
+        "Jasper Substation",
+        "Bluffton Substation"
+      ],
+      "confidence": "high",
+      "evidence": "Endpoints: Jasper Substation to Bluffton Substation"
+    },
+    "location_text": {
+      "value": "Hardeeville, Jasper County, SC",
+      "confidence": "high",
+      "evidence": "Location: Hardeeville, Jasper County, SC"
+    },
+    "line_miles": {
+      "value": 17.5,
+      "confidence": "high",
+      "evidence": "Line length: 17.5 miles"
+    },
+    "start_date": {
+      "value": "2027-06-01",
+      "confidence": "high",
+      "evidence": "Start date: June 1, 2027"
+    },
+    "end_date": {
+      "value": "2027-12-15",
+      "confidence": "high",
+      "evidence": "Completion date: December 15, 2027"
+    },
+    "budget_usd": {
+      "value": 9850000,
+      "confidence": "high",
+      "evidence": "Contract price: $9,850,000"
+    },
+    "crew_size": {
+      "value": 14,
+      "confidence": "high",
+      "evidence": "Crew size: 14 workers"
+    },
+    "equipment": {
+      "value": [
+        {
+          "type": "bucket trucks",
+          "quantity": 3
+        },
+        {
+          "type": "60-ton crane",
+          "quantity": 1
+        },
+        {
+          "type": "digger derricks",
+          "quantity": 2
+        }
+      ],
+      "confidence": "high",
+      "evidence": "Equipment: 3 bucket trucks, 1 60-ton crane, 2 digger derricks"
+    },
+    "roads_affected": {
+      "value": "US-17, I-95",
+      "confidence": "high",
+      "evidence": "Roads affected: US-17, I-95"
+    },
+    "lane_closures": {
+      "value": "Nighttime northbound lane closure on US-17 near Hardeeville",
+      "confidence": "high",
+      "evidence": "Lane closures: Nighttime northbound lane closure on US-17 near Hardeeville"
+    },
+    "work_hours": {
+      "value": "21:00-05:00",
+      "confidence": "high",
+      "evidence": "Work hours: 21:00-05:00"
+    }
+  },
+  "missing": [],
+  "dropped_fields": [],
+  "ready": true,
+  "follow_up_questions": [],
+  "source": "gemini",
+  "note": "Review every field against its evidence snippet. Fields whose snippet was not found in the document were dropped."
+}

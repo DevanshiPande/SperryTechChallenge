@@ -1,0 +1,142 @@
+[
+  {
+    "id": "OVL_2",
+    "project_a": "DESC_2",
+    "project_b": "GPC_1",
+    "center_distance_mi": 4.09,
+    "closest_distance_km": 0,
+    "closest_points": {
+      "a": {
+        "lat": 33.660127,
+        "lon": -82.195931
+      },
+      "b": {
+        "lat": 33.660127,
+        "lon": -82.195931
+      }
+    },
+    "tier": "crossing",
+    "tier_explanation": "Touching/crossing: must coordinate outages and crossing structures",
+    "shared_endpoint": true,
+    "time_gap_days": 3074,
+    "window_overlap_months": 0,
+    "score": 60,
+    "rank": 2,
+    "cost_estimate": {
+      "shared_row_acres": 12.4,
+      "mobilization_savings_usd": 150000,
+      "total_estimated_savings_usd": 460000,
+      "assumptions": [
+        "(mock) One avoided crew mobilization: $150,000",
+        "(mock) Shared right-of-way valued at $25,000 per acre",
+        "(mock) Corridor width: 100 ft for 115 kV, 150 ft for 230 kV"
+      ]
+    },
+    "brief": null
+  },
+  {
+    "id": "OVL_3",
+    "project_a": "DESC_3",
+    "project_b": "GPC_2",
+    "center_distance_mi": 5.65,
+    "closest_distance_km": 4.82,
+    "closest_points": {
+      "a": {
+        "lat": 32.35912,
+        "lon": -81.1246
+      },
+      "b": {
+        "lat": 32.352116,
+        "lon": -81.175112
+      }
+    },
+    "tier": "shared_site",
+    "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+    "shared_endpoint": false,
+    "time_gap_days": 152,
+    "window_overlap_months": 24,
+    "score": 77.6,
+    "rank": 1,
+    "cost_estimate": {
+      "shared_row_acres": null,
+      "mobilization_savings_usd": 150000,
+      "total_estimated_savings_usd": 150000,
+      "assumptions": [
+        "(mock) One avoided crew mobilization: $150,000",
+        "(mock) Shared right-of-way valued at $25,000 per acre",
+        "(mock) Corridor width: 100 ft for 115 kV, 150 ft for 230 kV"
+      ]
+    },
+    "brief": null
+  },
+  {
+    "id": "OVL_4",
+    "project_a": "DESC_3",
+    "project_b": "GPC_3",
+    "center_distance_mi": 7.55,
+    "closest_distance_km": 5.47,
+    "closest_points": {
+      "a": {
+        "lat": 32.35912,
+        "lon": -81.1246
+      },
+      "b": {
+        "lat": 32.352116,
+        "lon": -81.182105
+      }
+    },
+    "tier": "shared_site",
+    "tier_explanation": "Under 8 km: can share laydown yards and deliveries",
+    "shared_endpoint": false,
+    "time_gap_days": 517,
+    "window_overlap_months": 7,
+    "score": 48.9,
+    "rank": 4,
+    "cost_estimate": {
+      "shared_row_acres": null,
+      "mobilization_savings_usd": 150000,
+      "total_estimated_savings_usd": 150000,
+      "assumptions": [
+        "(mock) One avoided crew mobilization: $150,000",
+        "(mock) Shared right-of-way valued at $25,000 per acre",
+        "(mock) Corridor width: 100 ft for 115 kV, 150 ft for 230 kV"
+      ]
+    },
+    "brief": null
+  },
+  {
+    "id": "OVL_1",
+    "project_a": "DESC_1",
+    "project_b": "GPC_1",
+    "center_distance_mi": 8.01,
+    "closest_distance_km": 11.08,
+    "closest_points": {
+      "a": {
+        "lat": 33.562599,
+        "lon": -82.051362
+      },
+      "b": {
+        "lat": 33.543994,
+        "lon": -82.168648
+      }
+    },
+    "tier": "shared_crews",
+    "tier_explanation": "Under 40 km: can share crews and equipment",
+    "shared_endpoint": false,
+    "time_gap_days": 3074,
+    "window_overlap_months": 0,
+    "score": 21.5,
+    "rank": 5,
+    "cost_estimate": {
+      "shared_row_acres": null,
+      "mobilization_savings_usd": 150000,
+      "total_estimated_savings_usd": 150000,
+      "assumptions": [
+        "(mock) One avoided crew mobilization: $150,000",
+        "(mock) Shared right-of-way valued at $25,000 per acre",
+        "(mock) Corridor width: 100 ft for 115 kV, 150 ft for 230 kV"
+      ]
+    },
+    "brief": null
+  }
+]
