@@ -147,7 +147,32 @@ def create_app(skip_startup=False):
     for r in (system, projects, overlaps, quality, whatif, export, events, resources, reservations, jobs, messages,
               gemini_routes, agent, traffic, contracts, ml):
         app.include_router(r.router)
+    serve_frontend(app)
     return app
+
+
+FRONTEND_DIR = Path(__file__).resolve().parents[2] / "frontend"
+
+
+def serve_frontend(app):
+    """Serve the website (frontend/) from this same service, so the site and the API share one address: no CORS and
+    no API URL to configure. Mounted after the API routers, so API paths always win. Set SERVE_FRONTEND=0 to skip."""
+    if os.environ.get("SERVE_FRONTEND", "1") == "0" or not FRONTEND_DIR.is_dir():
+        return
+    import json
+
+    from fastapi.responses import Response
+    from fastapi.staticfiles import StaticFiles
+
+    @app.get("/config.js", include_in_schema=False)
+    def frontend_config():
+        # Built from env vars so the Maps key is never committed; the API is this same origin.
+        cfg = {"googleMapsApiKey": os.environ.get("GOOGLE_MAPS_API_KEY", ""),
+               "googleMapsMapId": os.environ.get("GOOGLE_MAPS_MAP_ID", "DEMO_MAP_ID")}
+        js = f"window.GRIDLOCK_CONFIG = Object.assign({json.dumps(cfg)}, {{ apiUrl: window.location.origin }});\n"
+        return Response(js, media_type="application/javascript", headers={"Cache-Control": "no-cache"})
+
+    app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
 
 
 app = create_app()

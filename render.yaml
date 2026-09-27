@@ -1,0 +1,27 @@
+# Render Blueprint for ContractMap: ONE web service that runs the API and also serves the website.
+# Render dashboard -> New -> Blueprint -> pick this repo (branch main). You'll be asked for the values marked
+# "sync: false"; they are secrets and are never stored in this repo.
+services:
+  - type: web
+    name: contractmap
+    runtime: python
+    plan: free                # 512 MB; the app uses ~100-150 MB. Free services sleep after 15 min idle.
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      # Python version comes from .python-version (3.12) at the repo root.
+      - key: MONGO_URI            # secret: MongoDB Atlas connection string
+        sync: false
+      - key: MONGO_DB
+        value: gridlock
+      - key: GEMINI_API_KEY       # secret
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: GEMINI_TIMEOUT_S
+        value: "20"
+      - key: NOMINATIM_EMAIL      # contact email for the address lookup service
+        sync: false
+      - key: GOOGLE_MAPS_API_KEY  # secret: Google Maps JavaScript API key (served to the site via /config.js)
+        sync: false
