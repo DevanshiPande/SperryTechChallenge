@@ -449,3 +449,14 @@
 /* Inventory: Add / Find switch at the top left */
 .inv-head-row{display:flex;justify-content:flex-start;align-items:center;gap:12px;margin-bottom:16px}
 .inv-head-row .inv-tabs{pointer-events:auto;padding:4px;background:#fffffff2;border:1px solid #fff;box-shadow:0 8px 28px #244b621c;backdrop-filter:blur(18px)}
+
+/* Traffic & timing: small legend in the bottom-left corner of the map */
+.stage-map .map-legend.traffic-legend{left:216px;right:auto;bottom:96px;display:grid;gap:3px;padding:9px 11px;font-size:11px;line-height:1.35;pointer-events:none;max-width:190px}
+.traffic-legend b{font-size:11px;margin-bottom:2px}
+.traffic-legend span{display:flex;align-items:center;gap:6px}
+.traffic-legend i{flex:none;margin:0}
+.traffic-legend .lg-line,.traffic-legend .lg-dash{width:18px}
+.traffic-legend .dot{width:9px;height:9px;margin:0}
+.traffic-legend hr{margin:4px 0}
+.traffic-legend small{color:#708397;font-size:10px;margin-top:2px}
+@media(max-width:740px){.stage-map .map-legend.traffic-legend{left:10px;bottom:90px}}
