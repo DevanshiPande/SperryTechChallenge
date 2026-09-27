@@ -16,8 +16,8 @@ const pill = (label, cls = '') => `<span class="pill ${cls}">${esc(label)}</span
 const demo = '';
 function nav() {
   const items = state.role === 'contractor' ? [
-    ['addProject','⇪','Upload contract'],['map','◫','Explore map'],['feasibility','△','Traffic & timing'],['cost','▥','Cost comparison'],['inventory','♧','Inventory'],['jobs','♙','Staffing']
-  ] : [['findjobs','⌕','Find jobs'],['saved','♡','Saved'],['applications','▤','Applications'],['workerprofile','♙','Profile']];
+    ['addProject','⇪','Upload Contract'],['map','◫','Explore Map'],['feasibility','△','Traffic & Timing'],['cost','▥','Cost Comparison'],['inventory','♧','Inventory'],['jobs','♙','Staffing']
+  ] : [['findjobs','⌕','Find Jobs'],['saved','♡','Saved'],['applications','▤','Applications'],['workerprofile','♙','Profile']];
   return `<aside class="sidebar"><div class="brand"><img class="brand-mark" src="assets/contractmap-mark.png" alt=""><span class="brand-name">Contract<i>Map</i></span></div>${items.map(([id,icon,name]) => `<button class="nav ${state.page === id ? 'active' : ''}" data-page="${id}"><span class="icon">${icon}</span>${name}</button>`).join('')}</aside>`;
 }
 function topbar() {
