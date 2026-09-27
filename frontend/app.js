@@ -452,6 +452,8 @@ function workerJobDetail(){
   const j=state.selectedJob;if(!j)return workerJobsPage();
   const me=state.me||{},already=state.applications.some(a=>a.name===j.name),done=state.jobApplied===j.id;
   const info=`<div class="card job-info stack"><div class="row wrap">${pill(j.openings+(j.openings===1?' opening':' openings'),'amber')}${pill(j.pay,'gray')}</div><h2>${esc(j.name)}</h2><p class="muted">${esc(j.owner)} · ${esc(j.place)}</p><dl class="panel-facts"><div><dt>Dates</dt><dd>${esc(j.dates)}</dd></div><div><dt>Location</dt><dd>${esc(j.place)}</dd></div><div><dt>Pay</dt><dd>${esc(j.pay)}</dd></div></dl><h3>Requirements</h3><div class="row wrap">${j.quals.map(q=>pill(q)).join('')||'<span class="muted">None listed</span>'}</div><p class="tiny">Confirm the exact worksite and schedule with the employer.</p></div>`;
+  // Contractors only review the posting; the application form is for workers.
+  if(state.role!=='worker')return `<div class="job-page contractor-view">${info.replace(/<\/div>$/,`<div class="row wrap">${btn('Back to staffing','jobs')}</div></div>`)}</div>`;
   const form=done
     ?`<div class="card apply-card apply-done"><div class="apply-check">✓</div><h2>Application submitted successfully</h2><p class="muted">${esc(j.owner)} has received your application for <b>${esc(j.name)}</b>. You can follow its status under Applications.</p><div class="row wrap">${btn('View my applications','applications','primary accent')}${btn('Back to jobs','findjobs')}</div></div>`
     :`<form class="card apply-card" onsubmit="return false"><h2>Apply to this role</h2><p class="muted">Your details are sent to ${esc(j.owner)}.</p>
