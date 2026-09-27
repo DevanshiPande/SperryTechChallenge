@@ -12,7 +12,9 @@ POTENTIAL_LEVELS = [
     {"code": "lower", "label": "Lower potential", "min_score": 0},
 ]
 METHOD_NOTES = [
-    "Overlaps follow Sperry's rule: center points under 25 miles.",
+    "Pairs match when their closest points (edge to edge) are under 25 miles: the distance crews and equipment "
+    "actually travel. Sperry's rule (center points under 25 miles) is kept as center_distance_mi and "
+    "within_sperry_rule; every pair under Sperry's rule also matches here.",
     "Score = proximity 40 + savings 40 + timing 20. Savings already shrink with distance and when timing does not line "
     "up, so distance and timing partly count twice: proximity measures how practical coordination is, savings how much "
     "it is worth.",
@@ -105,13 +107,16 @@ def time_gap_days(a, b):
 def build_overlap(a, b, kind, traffic=None, today=None):
     """Overlap object for projects a and b (a is DESC for cross_utility, the user project for user_project).
     traffic: optional callable (a, b) -> traffic savings dict (merged closures on shared roads).
-    Returns None when either project has no center or the centers are 25 mi or more apart."""
+    Returns None when either project has no center or their closest points are 25 mi or more apart
+    (center distance is used when a geometry is missing)."""
     if not a.get("center") or not b.get("center"):
         return None
     mi = geo.center_distance_mi(a["center"], b["center"])
-    if mi >= THRESHOLD_MI:
-        return None
     km, points = geo.closest(a["endpoints"], b["endpoints"])
+    edge_mi = geo.km_to_mi(km)
+    # Edge distance decides; Sperry's center-rule pairs always stay in (rounding can put an edge a hair past a center).
+    if min(edge_mi if edge_mi is not None else mi, mi) >= THRESHOLD_MI:
+        return None
     tier, expl = geo.tier_for(km)
     wa, wb = a.get("construction_window"), b.get("construction_window")
     months = windows.overlap_months(wa, wb)
@@ -126,7 +131,9 @@ def build_overlap(a, b, kind, traffic=None, today=None):
         "project_a": a["id"],
         "project_b": b["id"],
         "center_distance_mi": mi,
+        "closest_distance_mi": edge_mi if edge_mi is not None else mi,
         "closest_distance_km": km,
+        "within_sperry_rule": mi < THRESHOLD_MI,
         "closest_points": points,
         "tier": tier,
         "tier_explanation": expl,
@@ -148,7 +155,7 @@ def build_overlap(a, b, kind, traffic=None, today=None):
 
 
 def cross_utility_overlaps(projects, traffic=None, today=None):
-    """Sperry's rule: every DESC x GPC public pair with centers under 25 mi."""
+    """Every DESC x GPC public pair whose closest points are under 25 mi (includes all of Sperry's center-rule pairs)."""
     desc = [p for p in projects if p.get("utility") == "DESC" and not is_user(p)]
     gpc = [p for p in projects if p.get("utility") == "GPC" and not is_user(p)]
     out = [o for a in desc for b in gpc if (o := build_overlap(a, b, "cross_utility", traffic, today))]
@@ -168,9 +175,14 @@ def user_project_overlaps(user_project, projects, traffic=None, today=None):
     return out
 
 
+def edge_mi(o):
+    """Edge distance of an overlap; records saved before edge matching only have the center distance."""
+    return o.get("closest_distance_mi", o["center_distance_mi"])
+
+
 def rank(overlaps):
-    """Assign rank 1..N by score desc, then center distance asc, then id. Returns a new sorted list."""
-    ordered = sorted(overlaps, key=lambda o: (-o["score"], o["center_distance_mi"], o["id"]))
+    """Assign rank 1..N by score desc, then edge distance asc, then id. Returns a new sorted list."""
+    ordered = sorted(overlaps, key=lambda o: (-o["score"], edge_mi(o), o["id"]))
     for i, o in enumerate(ordered, 1):
         o["rank"] = i
     return ordered

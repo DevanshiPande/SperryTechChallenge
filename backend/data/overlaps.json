@@ -4,7 +4,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20277",
   "center_distance_mi": 5.66,
+  "closest_distance_mi": 3.04,
   "closest_distance_km": 4.89,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.360699,
@@ -166,7 +168,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20065",
   "center_distance_mi": 7.4,
+  "closest_distance_mi": 3.04,
   "closest_distance_km": 4.89,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.360699,
@@ -328,7 +332,9 @@
   "project_a": "DESC_3",
   "project_b": "GPC_20277",
   "center_distance_mi": 8.42,
+  "closest_distance_mi": 8.43,
   "closest_distance_km": 13.57,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -486,172 +492,13 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_43__GPC_21116",
-  "project_a": "DESC_43",
-  "project_b": "GPC_21116",
-  "center_distance_mi": 9.2,
-  "closest_distance_km": 14.79,
-  "closest_points": {
-   "a": {
-    "lat": 33.43287,
-    "lon": -81.911081
-   },
-   "b": {
-    "lat": 33.31976,
-    "lon": -81.995312
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 883,
-  "window_overlap_months": 31,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 51.7,
-  "score_breakdown": {
-   "proximity": 11.4,
-   "savings": 20.3,
-   "timing": 20.0
-  },
-  "rank": 4,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 76092,
-   "range_usd": [
-    30261,
-    154156
-   ],
-   "components": {
-    "mobilization": {
-     "low": 30000,
-     "point": 75000,
-     "high": 150000,
-     "applies": true,
-     "requires_schedule_shift": false
-    },
-    "logistics": {
-     "low": 261,
-     "point": 1092,
-     "high": 4156,
-     "applies": true,
-     "site_to_site_road_miles": 11.0
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 3000000,
-   "reference_budget_source": "filing",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": 75000,
-   "assumptions": [
-    "Share of one mobilization that can be shared: 25%–50% (assumption)",
-    "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
-   ],
-   "sources": [
-    {
-     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
-     "value_used": "$3,000,000"
-    },
-    {
-     "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
-     "value_used": "4%–10% of the budget",
-     "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
-    },
-    {
-     "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
-     "value_used": "$2.336/mile",
-     "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Urquhart–Aiken PSA ↔ Goshen",
-  "potential": "moderate",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 75000,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2025-02-28"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2025-06-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 12,
-    "laydown_sites": 2,
-    "start_date_a": "2025-02-28",
-    "start_date_b": "2025-06-01"
-   },
-   "totals": {
-    "separate": 190000,
-    "coordinated": 178000,
-    "savings": 12000,
-    "savings_pct": 6.3,
-    "separate_by_project": {
-     "a": 95000,
-     "b": 95000
-    },
-    "coordinated_by_project": {
-     "a": 89000,
-     "b": 89000
-    }
-   },
-   "range": {
-    "separate": [
-     161500,
-     218500
-    ],
-    "coordinated": [
-     151300,
-     204700
-    ],
-    "savings": [
-     9000,
-     15000
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (yes for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
   "id": "OVL_DESC_10__GPC_20277",
   "project_a": "DESC_10",
   "project_b": "GPC_20277",
   "center_distance_mi": 14.34,
+  "closest_distance_mi": 8.43,
   "closest_distance_km": 13.57,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -675,7 +522,7 @@
    "savings": 20.1,
    "timing": 20.0
   },
-  "rank": 5,
+  "rank": 4,
   "cost_estimate": {
    "total_estimated_savings_usd": 126769,
    "range_usd": [
@@ -809,11 +656,176 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_43__GPC_21116",
+  "project_a": "DESC_43",
+  "project_b": "GPC_21116",
+  "center_distance_mi": 9.2,
+  "closest_distance_mi": 9.19,
+  "closest_distance_km": 14.79,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 33.43287,
+    "lon": -81.911081
+   },
+   "b": {
+    "lat": 33.31976,
+    "lon": -81.995312
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 883,
+  "window_overlap_months": 31,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 51.7,
+  "score_breakdown": {
+   "proximity": 11.4,
+   "savings": 20.3,
+   "timing": 20.0
+  },
+  "rank": 5,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 76092,
+   "range_usd": [
+    30261,
+    154156
+   ],
+   "components": {
+    "mobilization": {
+     "low": 30000,
+     "point": 75000,
+     "high": 150000,
+     "applies": true,
+     "requires_schedule_shift": false
+    },
+    "logistics": {
+     "low": 261,
+     "point": 1092,
+     "high": 4156,
+     "applies": true,
+     "site_to_site_road_miles": 11.0
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 3000000,
+   "reference_budget_source": "filing",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": 75000,
+   "assumptions": [
+    "Share of one mobilization that can be shared: 25%–50% (assumption)",
+    "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+   ],
+   "sources": [
+    {
+     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
+     "value_used": "$3,000,000"
+    },
+    {
+     "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+     "value_used": "4%–10% of the budget",
+     "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+    },
+    {
+     "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+     "value_used": "$2.336/mile",
+     "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Urquhart–Aiken PSA ↔ Goshen",
+  "potential": "moderate",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 75000,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2025-02-28"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2025-06-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 12,
+    "laydown_sites": 2,
+    "start_date_a": "2025-02-28",
+    "start_date_b": "2025-06-01"
+   },
+   "totals": {
+    "separate": 190000,
+    "coordinated": 178000,
+    "savings": 12000,
+    "savings_pct": 6.3,
+    "separate_by_project": {
+     "a": 95000,
+     "b": 95000
+    },
+    "coordinated_by_project": {
+     "a": 89000,
+     "b": 89000
+    }
+   },
+   "range": {
+    "separate": [
+     161500,
+     218500
+    ],
+    "coordinated": [
+     151300,
+     204700
+    ],
+    "savings": [
+     9000,
+     15000
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (yes for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_23__GPC_20785",
   "project_a": "DESC_23",
   "project_b": "GPC_20785",
   "center_distance_mi": 11.81,
+  "closest_distance_mi": 9.19,
   "closest_distance_km": 14.79,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.360699,
@@ -975,7 +987,9 @@
   "project_a": "DESC_35",
   "project_b": "GPC_21116",
   "center_distance_mi": 16.38,
+  "closest_distance_mi": 9.19,
   "closest_distance_km": 14.79,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.43287,
@@ -1136,7 +1150,9 @@
   "project_a": "DESC_10",
   "project_b": "GPC_20785",
   "center_distance_mi": 14.95,
+  "closest_distance_mi": 11.9,
   "closest_distance_km": 19.15,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -1298,7 +1314,9 @@
   "project_a": "DESC_10",
   "project_b": "GPC_20067",
   "center_distance_mi": 18.08,
+  "closest_distance_mi": 15.94,
   "closest_distance_km": 25.65,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.260974,
@@ -1456,173 +1474,13 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_3__GPC_20067",
-  "project_a": "DESC_3",
-  "project_b": "GPC_20067",
-  "center_distance_mi": 20.07,
-  "closest_distance_km": 29.63,
-  "closest_points": {
-   "a": {
-    "lat": 32.333758,
-    "lon": -81.032495
-   },
-   "b": {
-    "lat": 32.066828,
-    "lon": -81.048384
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 152,
-  "window_overlap_months": 24,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 48.9,
-  "score_breakdown": {
-   "proximity": 8.8,
-   "savings": 20.1,
-   "timing": 20.0
-  },
-  "rank": 10,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 159051,
-   "range_usd": [
-    43187,
-    468047
-   ],
-   "components": {
-    "mobilization": {
-     "low": 43170,
-     "point": 158325,
-     "high": 464500,
-     "applies": true,
-     "requires_schedule_shift": false
-    },
-    "logistics": {
-     "low": 17,
-     "point": 726,
-     "high": 3547,
-     "applies": true,
-     "site_to_site_road_miles": 24.1
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 6333000,
-   "reference_budget_source": "predicted (ridge, Dominion budgets)",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": 158325,
-   "assumptions": [
-    "The reference budget is an ML prediction (likely $4,317,000–$9,290,000); the savings range uses that budget range",
-    "Share of one mobilization that can be shared: 25%–50% (assumption)",
-    "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
-   ],
-   "sources": [
-    {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
-     "value_used": "$6,333,000"
-    },
-    {
-     "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
-     "value_used": "4%–10% of the budget",
-     "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
-    },
-    {
-     "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
-     "value_used": "$2.336/mile",
-     "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Okatie ↔ Deptford–Magnolia",
-  "potential": "moderate",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 158300,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2022-12-31"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2023-01-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 12,
-    "laydown_sites": 2,
-    "start_date_a": "2022-12-31",
-    "start_date_b": "2023-01-01"
-   },
-   "totals": {
-    "separate": 356600,
-    "coordinated": 344600,
-    "savings": 12000,
-    "savings_pct": 3.4,
-    "separate_by_project": {
-     "a": 178300,
-     "b": 178300
-    },
-    "coordinated_by_project": {
-     "a": 172300,
-     "b": 172300
-    }
-   },
-   "range": {
-    "separate": [
-     303110,
-     410090
-    ],
-    "coordinated": [
-     292910,
-     396290
-    ],
-    "savings": [
-     9000,
-     15000
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (yes for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
   "id": "OVL_DESC_23__GPC_20067",
   "project_a": "DESC_23",
   "project_b": "GPC_20067",
   "center_distance_mi": 20.91,
+  "closest_distance_mi": 18.41,
   "closest_distance_km": 29.63,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -1646,7 +1504,7 @@
    "savings": 20.1,
    "timing": 20.0
   },
-  "rank": 11,
+  "rank": 10,
   "cost_estimate": {
    "total_estimated_savings_usd": 159023,
    "range_usd": [
@@ -1780,11 +1638,177 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_3__GPC_20067",
+  "project_a": "DESC_3",
+  "project_b": "GPC_20067",
+  "center_distance_mi": 20.07,
+  "closest_distance_mi": 18.41,
+  "closest_distance_km": 29.63,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 32.333758,
+    "lon": -81.032495
+   },
+   "b": {
+    "lat": 32.066828,
+    "lon": -81.048384
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 152,
+  "window_overlap_months": 24,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 48.9,
+  "score_breakdown": {
+   "proximity": 8.8,
+   "savings": 20.1,
+   "timing": 20.0
+  },
+  "rank": 11,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 159051,
+   "range_usd": [
+    43187,
+    468047
+   ],
+   "components": {
+    "mobilization": {
+     "low": 43170,
+     "point": 158325,
+     "high": 464500,
+     "applies": true,
+     "requires_schedule_shift": false
+    },
+    "logistics": {
+     "low": 17,
+     "point": 726,
+     "high": 3547,
+     "applies": true,
+     "site_to_site_road_miles": 24.1
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 6333000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": 158325,
+   "assumptions": [
+    "The reference budget is an ML prediction (likely $4,317,000–$9,290,000); the savings range uses that budget range",
+    "Share of one mobilization that can be shared: 25%–50% (assumption)",
+    "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
+   ],
+   "sources": [
+    {
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+     "value_used": "$6,333,000"
+    },
+    {
+     "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
+     "value_used": "4%–10% of the budget",
+     "url": "https://epg.modot.org/index.php/Category:618_Mobilization"
+    },
+    {
+     "name": "ATRI, An Analysis of the Operational Costs of Trucking, 2025 data (published July 2026)",
+     "value_used": "$2.336/mile",
+     "url": "https://truckingresearch.org/about-atri/atri-research/operational-costs-of-trucking/"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Okatie ↔ Deptford–Magnolia",
+  "potential": "moderate",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 158300,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2022-12-31"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2023-01-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 12,
+    "laydown_sites": 2,
+    "start_date_a": "2022-12-31",
+    "start_date_b": "2023-01-01"
+   },
+   "totals": {
+    "separate": 356600,
+    "coordinated": 344600,
+    "savings": 12000,
+    "savings_pct": 3.4,
+    "separate_by_project": {
+     "a": 178300,
+     "b": 178300
+    },
+    "coordinated_by_project": {
+     "a": 172300,
+     "b": 172300
+    }
+   },
+   "range": {
+    "separate": [
+     303110,
+     410090
+    ],
+    "coordinated": [
+     292910,
+     396290
+    ],
+    "savings": [
+     9000,
+     15000
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (yes for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_3__GPC_20785",
   "project_a": "DESC_3",
   "project_b": "GPC_20785",
   "center_distance_mi": 12.63,
+  "closest_distance_mi": 11.9,
   "closest_distance_km": 19.15,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -1946,7 +1970,9 @@
   "project_a": "DESC_15",
   "project_b": "GPC_21116",
   "center_distance_mi": 17.04,
+  "closest_distance_mi": 16.99,
   "closest_distance_km": 27.35,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -2107,7 +2133,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20783",
   "center_distance_mi": 18.26,
+  "closest_distance_mi": 17.01,
   "closest_distance_km": 27.37,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -2269,7 +2297,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20066",
   "center_distance_mi": 20.29,
+  "closest_distance_mi": 18.41,
   "closest_distance_km": 29.63,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -2431,7 +2461,9 @@
   "project_a": "DESC_31",
   "project_b": "GPC_20793",
   "center_distance_mi": 4.09,
+  "closest_distance_mi": 0.0,
   "closest_distance_km": 0.0,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.660127,
@@ -2579,7 +2611,9 @@
   "project_a": "DESC_31",
   "project_b": "GPC_20794",
   "center_distance_mi": 4.09,
+  "closest_distance_mi": 0.0,
   "closest_distance_km": 0.0,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.660127,
@@ -2727,7 +2761,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20407",
   "center_distance_mi": 22.43,
+  "closest_distance_mi": 21.65,
   "closest_distance_km": 34.85,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -2889,7 +2925,9 @@
   "project_a": "DESC_15",
   "project_b": "GPC_14222",
   "center_distance_mi": 22.08,
+  "closest_distance_mi": 22.11,
   "closest_distance_km": 35.59,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -3046,11 +3084,163 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_14__GPC_17993",
+  "project_a": "DESC_14",
+  "project_b": "GPC_17993",
+  "center_distance_mi": 14.38,
+  "closest_distance_mi": 6.77,
+  "closest_distance_km": 10.89,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 33.561618,
+    "lon": -82.053294
+   },
+   "b": {
+    "lat": 33.543994,
+    "lon": -82.168648
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 3652,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 12.1,
+  "score_breakdown": {
+   "proximity": 12.1,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 20,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 6642000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
+     "value_used": "$6,642,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Stevens Creek–Hooks ↔ Evans–Thomson",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 166000,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2022-06-30"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2031-01-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2022-06-30",
+    "start_date_b": "2031-01-01"
+   },
+   "totals": {
+    "separate": 372000,
+    "coordinated": 372000,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 186000,
+     "b": 186000
+    },
+    "coordinated_by_project": {
+     "a": 186000,
+     "b": 186000
+    }
+   },
+   "range": {
+    "separate": [
+     316200,
+     427800
+    ],
+    "coordinated": [
+     316200,
+     427800
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_14__GPC_20793",
   "project_a": "DESC_14",
   "project_b": "GPC_20793",
   "center_distance_mi": 7.93,
+  "closest_distance_mi": 6.77,
   "closest_distance_km": 10.89,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -3074,7 +3264,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 20,
+  "rank": 21,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -3198,7 +3388,9 @@
   "project_a": "DESC_14",
   "project_b": "GPC_20794",
   "center_distance_mi": 7.93,
+  "closest_distance_mi": 6.77,
   "closest_distance_km": 10.89,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -3222,7 +3414,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 21,
+  "rank": 22,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -3342,11 +3534,163 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_15__GPC_17993",
+  "project_a": "DESC_15",
+  "project_b": "GPC_17993",
+  "center_distance_mi": 14.38,
+  "closest_distance_mi": 6.77,
+  "closest_distance_km": 10.89,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 33.561618,
+    "lon": -82.053294
+   },
+   "b": {
+    "lat": 33.543994,
+    "lon": -82.168648
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 3287,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 12.1,
+  "score_breakdown": {
+   "proximity": 12.1,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 23,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 6642000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
+     "value_used": "$6,642,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Stevens Creek–Hooks ↔ Evans–Thomson",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 166000,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2023-07-31"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2031-01-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2023-07-31",
+    "start_date_b": "2031-01-01"
+   },
+   "totals": {
+    "separate": 372000,
+    "coordinated": 372000,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 186000,
+     "b": 186000
+    },
+    "coordinated_by_project": {
+     "a": 186000,
+     "b": 186000
+    }
+   },
+   "range": {
+    "separate": [
+     316200,
+     427800
+    ],
+    "coordinated": [
+     316200,
+     427800
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_15__GPC_20793",
   "project_a": "DESC_15",
   "project_b": "GPC_20793",
   "center_distance_mi": 7.93,
+  "closest_distance_mi": 6.77,
   "closest_distance_km": 10.89,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -3370,7 +3714,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 22,
+  "rank": 24,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -3494,7 +3838,9 @@
   "project_a": "DESC_15",
   "project_b": "GPC_20794",
   "center_distance_mi": 7.93,
+  "closest_distance_mi": 6.77,
   "closest_distance_km": 10.89,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -3518,7 +3864,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 23,
+  "rank": 25,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -3638,307 +3984,13 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_14__GPC_17993",
-  "project_a": "DESC_14",
-  "project_b": "GPC_17993",
-  "center_distance_mi": 14.38,
-  "closest_distance_km": 10.89,
-  "closest_points": {
-   "a": {
-    "lat": 33.561618,
-    "lon": -82.053294
-   },
-   "b": {
-    "lat": 33.543994,
-    "lon": -82.168648
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 3652,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 12.1,
-  "score_breakdown": {
-   "proximity": 12.1,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 24,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 6642000,
-   "reference_budget_source": "predicted (ridge, Dominion budgets)",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
-     "value_used": "$6,642,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Stevens Creek–Hooks ↔ Evans–Thomson",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 166000,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2022-06-30"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2031-01-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2022-06-30",
-    "start_date_b": "2031-01-01"
-   },
-   "totals": {
-    "separate": 372000,
-    "coordinated": 372000,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 186000,
-     "b": 186000
-    },
-    "coordinated_by_project": {
-     "a": 186000,
-     "b": 186000
-    }
-   },
-   "range": {
-    "separate": [
-     316200,
-     427800
-    ],
-    "coordinated": [
-     316200,
-     427800
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
-  "id": "OVL_DESC_15__GPC_17993",
-  "project_a": "DESC_15",
-  "project_b": "GPC_17993",
-  "center_distance_mi": 14.38,
-  "closest_distance_km": 10.89,
-  "closest_points": {
-   "a": {
-    "lat": 33.561618,
-    "lon": -82.053294
-   },
-   "b": {
-    "lat": 33.543994,
-    "lon": -82.168648
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 3287,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 12.1,
-  "score_breakdown": {
-   "proximity": 12.1,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 25,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 6642000,
-   "reference_budget_source": "predicted (ridge, Dominion budgets)",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
-     "value_used": "$6,642,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Stevens Creek–Hooks ↔ Evans–Thomson",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 166000,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2023-07-31"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2031-01-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2023-07-31",
-    "start_date_b": "2031-01-01"
-   },
-   "totals": {
-    "separate": 372000,
-    "coordinated": 372000,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 186000,
-     "b": 186000
-    },
-    "coordinated_by_project": {
-     "a": 186000,
-     "b": 186000
-    }
-   },
-   "range": {
-    "separate": [
-     316200,
-     427800
-    ],
-    "coordinated": [
-     316200,
-     427800
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
   "id": "OVL_DESC_31__GPC_17993",
   "project_a": "DESC_31",
   "project_b": "GPC_17993",
   "center_distance_mi": 12.42,
+  "closest_distance_mi": 8.15,
   "closest_distance_km": 13.12,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.660127,
@@ -4082,159 +4134,13 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_3__GPC_20065",
-  "project_a": "DESC_3",
-  "project_b": "GPC_20065",
-  "center_distance_mi": 9.61,
-  "closest_distance_km": 13.57,
-  "closest_points": {
-   "a": {
-    "lat": 32.333758,
-    "lon": -81.032495
-   },
-   "b": {
-    "lat": 32.352116,
-    "lon": -81.175112
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 882,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 11.6,
-  "score_breakdown": {
-   "proximity": 11.6,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 27,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 7394000,
-   "reference_budget_source": "predicted (ridge, Dominion budgets)",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
-     "value_used": "$7,394,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Okatie ↔ Goshen–McIntosh",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 184800,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2022-12-31"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2025-06-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2022-12-31",
-    "start_date_b": "2025-06-01"
-   },
-   "totals": {
-    "separate": 409600,
-    "coordinated": 409600,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 204800,
-     "b": 204800
-    },
-    "coordinated_by_project": {
-     "a": 204800,
-     "b": 204800
-    }
-   },
-   "range": {
-    "separate": [
-     348160,
-     471040
-    ],
-    "coordinated": [
-     348160,
-     471040
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
   "id": "OVL_DESC_10__GPC_20065",
   "project_a": "DESC_10",
   "project_b": "GPC_20065",
   "center_distance_mi": 14.61,
+  "closest_distance_mi": 8.43,
   "closest_distance_km": 13.57,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -4258,7 +4164,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 28,
+  "rank": 27,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -4378,11 +4284,163 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_3__GPC_20065",
+  "project_a": "DESC_3",
+  "project_b": "GPC_20065",
+  "center_distance_mi": 9.61,
+  "closest_distance_mi": 8.43,
+  "closest_distance_km": 13.57,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 32.333758,
+    "lon": -81.032495
+   },
+   "b": {
+    "lat": 32.352116,
+    "lon": -81.175112
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 882,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 11.6,
+  "score_breakdown": {
+   "proximity": 11.6,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 28,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 7394000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+     "value_used": "$7,394,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Okatie ↔ Goshen–McIntosh",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 184800,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2022-12-31"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2025-06-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2022-12-31",
+    "start_date_b": "2025-06-01"
+   },
+   "totals": {
+    "separate": 409600,
+    "coordinated": 409600,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 204800,
+     "b": 204800
+    },
+    "coordinated_by_project": {
+     "a": 204800,
+     "b": 204800
+    }
+   },
+   "range": {
+    "separate": [
+     348160,
+     471040
+    ],
+    "coordinated": [
+     348160,
+     471040
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_10__GPC_20066",
   "project_a": "DESC_10",
   "project_b": "GPC_20066",
   "center_distance_mi": 18.27,
+  "closest_distance_mi": 15.94,
   "closest_distance_km": 25.65,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.260974,
@@ -4530,7 +4588,9 @@
   "project_a": "DESC_10",
   "project_b": "GPC_20783",
   "center_distance_mi": 18.16,
+  "closest_distance_mi": 16.33,
   "closest_distance_km": 26.28,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.296334,
@@ -4678,7 +4738,9 @@
   "project_a": "DESC_10",
   "project_b": "GPC_20784",
   "center_distance_mi": 20.63,
+  "closest_distance_mi": 16.33,
   "closest_distance_km": 26.28,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.296334,
@@ -4822,11 +4884,13 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_43__GPC_20793",
-  "project_a": "DESC_43",
-  "project_b": "GPC_20793",
-  "center_distance_mi": 19.51,
+  "id": "OVL_DESC_35__GPC_17993",
+  "project_a": "DESC_35",
+  "project_b": "GPC_17993",
+  "center_distance_mi": 28.9,
+  "closest_distance_mi": 16.73,
   "closest_distance_km": 26.92,
+  "within_sperry_rule": false,
   "closest_points": {
    "a": {
     "lat": 33.43287,
@@ -4840,7 +4904,7 @@
   "tier": "shared_crews",
   "tier_explanation": "Under 40 km: can share crews and equipment",
   "shared_endpoint": false,
-  "time_gap_days": 1979,
+  "time_gap_days": 3063,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
   "timing_confidence": "predicted",
@@ -4885,26 +4949,26 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 3000000,
-   "reference_budget_source": "filing",
+   "reference_budget_usd": 6642000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
-     "value_used": "$3,000,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Evans–Thomson",
+     "value_used": "$6,642,000"
     }
    ]
   },
   "brief": null,
-  "label": "Urquhart–Aiken PSA ↔ Evans–Thurmond",
+  "label": "Urquhart–Toolebeck ↔ Evans–Thomson",
   "potential": "lower",
   "cost_scenario": {
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 75000,
+    "mobilization_per_event": 166000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -4915,303 +4979,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2025-02-28"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2029-06-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2025-02-28",
-    "start_date_b": "2029-06-01"
-   },
-   "totals": {
-    "separate": 190000,
-    "coordinated": 190000,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 95000,
-     "b": 95000
-    },
-    "coordinated_by_project": {
-     "a": 95000,
-     "b": 95000
-    }
-   },
-   "range": {
-    "separate": [
-     161500,
-     218500
-    ],
-    "coordinated": [
-     161500,
-     218500
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
-  "id": "OVL_DESC_43__GPC_20794",
-  "project_a": "DESC_43",
-  "project_b": "GPC_20794",
-  "center_distance_mi": 19.51,
-  "closest_distance_km": 26.92,
-  "closest_points": {
-   "a": {
-    "lat": 33.43287,
-    "lon": -81.911081
-   },
-   "b": {
-    "lat": 33.543994,
-    "lon": -82.168648
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 1979,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 9.3,
-  "score_breakdown": {
-   "proximity": 9.3,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 33,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 3000000,
-   "reference_budget_source": "filing",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
-     "value_used": "$3,000,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Urquhart–Aiken PSA ↔ Evans–Thurmond",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 75000,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2025-02-28"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2030-06-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2025-02-28",
-    "start_date_b": "2030-06-01"
-   },
-   "totals": {
-    "separate": 190000,
-    "coordinated": 190000,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 95000,
-     "b": 95000
-    },
-    "coordinated_by_project": {
-     "a": 95000,
-     "b": 95000
-    }
-   },
-   "range": {
-    "separate": [
-     161500,
-     218500
-    ],
-    "coordinated": [
-     161500,
-     218500
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
-  "id": "OVL_DESC_43__GPC_17993",
-  "project_a": "DESC_43",
-  "project_b": "GPC_17993",
-  "center_distance_mi": 22.39,
-  "closest_distance_km": 26.92,
-  "closest_points": {
-   "a": {
-    "lat": 33.43287,
-    "lon": -81.911081
-   },
-   "b": {
-    "lat": 33.543994,
-    "lon": -82.168648
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 2557,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 9.3,
-  "score_breakdown": {
-   "proximity": 9.3,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 34,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 3000000,
-   "reference_budget_source": "filing",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
-     "value_used": "$3,000,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Urquhart–Aiken PSA ↔ Evans–Thomson",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 75000,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2025-02-28"
+     "start_date": "2023-12-12"
     },
     "b": {
      "mobilization_events": 1,
@@ -5225,31 +4993,31 @@
     "mobilization_events_b": 1,
     "shared_truck_days": 20,
     "laydown_sites": 2,
-    "start_date_a": "2025-02-28",
+    "start_date_a": "2023-12-12",
     "start_date_b": "2031-01-01"
    },
    "totals": {
-    "separate": 190000,
-    "coordinated": 190000,
+    "separate": 372000,
+    "coordinated": 372000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 95000,
-     "b": 95000
+     "a": 186000,
+     "b": 186000
     },
     "coordinated_by_project": {
-     "a": 95000,
-     "b": 95000
+     "a": 186000,
+     "b": 186000
     }
    },
    "range": {
     "separate": [
-     161500,
-     218500
+     316200,
+     427800
     ],
     "coordinated": [
-     161500,
-     218500
+     316200,
+     427800
     ],
     "savings": [
      0,
@@ -5270,7 +5038,9 @@
   "project_a": "DESC_35",
   "project_b": "GPC_20793",
   "center_distance_mi": 24.01,
+  "closest_distance_mi": 16.73,
   "closest_distance_km": 26.92,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.43287,
@@ -5294,7 +5064,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 35,
+  "rank": 33,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -5418,7 +5188,9 @@
   "project_a": "DESC_35",
   "project_b": "GPC_20794",
   "center_distance_mi": 24.01,
+  "closest_distance_mi": 16.73,
   "closest_distance_km": 26.92,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.43287,
@@ -5442,7 +5214,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 36,
+  "rank": 34,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -5562,11 +5334,463 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_43__GPC_17993",
+  "project_a": "DESC_43",
+  "project_b": "GPC_17993",
+  "center_distance_mi": 22.39,
+  "closest_distance_mi": 16.73,
+  "closest_distance_km": 26.92,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 33.43287,
+    "lon": -81.911081
+   },
+   "b": {
+    "lat": 33.543994,
+    "lon": -82.168648
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 2557,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 9.3,
+  "score_breakdown": {
+   "proximity": 9.3,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 35,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 3000000,
+   "reference_budget_source": "filing",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
+     "value_used": "$3,000,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Urquhart–Aiken PSA ↔ Evans–Thomson",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 75000,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2025-02-28"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2031-01-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2025-02-28",
+    "start_date_b": "2031-01-01"
+   },
+   "totals": {
+    "separate": 190000,
+    "coordinated": 190000,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 95000,
+     "b": 95000
+    },
+    "coordinated_by_project": {
+     "a": 95000,
+     "b": 95000
+    }
+   },
+   "range": {
+    "separate": [
+     161500,
+     218500
+    ],
+    "coordinated": [
+     161500,
+     218500
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
+  "id": "OVL_DESC_43__GPC_20793",
+  "project_a": "DESC_43",
+  "project_b": "GPC_20793",
+  "center_distance_mi": 19.51,
+  "closest_distance_mi": 16.73,
+  "closest_distance_km": 26.92,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 33.43287,
+    "lon": -81.911081
+   },
+   "b": {
+    "lat": 33.543994,
+    "lon": -82.168648
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 1979,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 9.3,
+  "score_breakdown": {
+   "proximity": 9.3,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 36,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 3000000,
+   "reference_budget_source": "filing",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
+     "value_used": "$3,000,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Urquhart–Aiken PSA ↔ Evans–Thurmond",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 75000,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2025-02-28"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2029-06-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2025-02-28",
+    "start_date_b": "2029-06-01"
+   },
+   "totals": {
+    "separate": 190000,
+    "coordinated": 190000,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 95000,
+     "b": 95000
+    },
+    "coordinated_by_project": {
+     "a": 95000,
+     "b": 95000
+    }
+   },
+   "range": {
+    "separate": [
+     161500,
+     218500
+    ],
+    "coordinated": [
+     161500,
+     218500
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
+  "id": "OVL_DESC_43__GPC_20794",
+  "project_a": "DESC_43",
+  "project_b": "GPC_20794",
+  "center_distance_mi": 19.51,
+  "closest_distance_mi": 16.73,
+  "closest_distance_km": 26.92,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 33.43287,
+    "lon": -81.911081
+   },
+   "b": {
+    "lat": 33.543994,
+    "lon": -82.168648
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 1979,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 9.3,
+  "score_breakdown": {
+   "proximity": 9.3,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 37,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 3000000,
+   "reference_budget_source": "filing",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "Dominion Energy SC filing (budget): Urquhart–Aiken PSA",
+     "value_used": "$3,000,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Urquhart–Aiken PSA ↔ Evans–Thurmond",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 75000,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2025-02-28"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2030-06-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2025-02-28",
+    "start_date_b": "2030-06-01"
+   },
+   "totals": {
+    "separate": 190000,
+    "coordinated": 190000,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 95000,
+     "b": 95000
+    },
+    "coordinated_by_project": {
+     "a": 95000,
+     "b": 95000
+    }
+   },
+   "range": {
+    "separate": [
+     161500,
+     218500
+    ],
+    "coordinated": [
+     161500,
+     218500
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_14__GPC_21116",
   "project_a": "DESC_14",
   "project_b": "GPC_21116",
   "center_distance_mi": 17.04,
+  "closest_distance_mi": 16.99,
   "closest_distance_km": 27.35,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -5590,7 +5814,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 37,
+  "rank": 38,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -5714,7 +5938,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20784",
   "center_distance_mi": 18.02,
+  "closest_distance_mi": 17.01,
   "closest_distance_km": 27.37,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -5738,7 +5964,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 38,
+  "rank": 39,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -5862,7 +6088,9 @@
   "project_a": "DESC_3",
   "project_b": "GPC_20783",
   "center_distance_mi": 18.22,
+  "closest_distance_mi": 17.01,
   "closest_distance_km": 27.37,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -5886,7 +6114,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 39,
+  "rank": 40,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -6010,7 +6238,9 @@
   "project_a": "DESC_3",
   "project_b": "GPC_20784",
   "center_distance_mi": 18.86,
+  "closest_distance_mi": 17.01,
   "closest_distance_km": 27.37,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -6034,7 +6264,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 40,
+  "rank": 41,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -6158,7 +6388,9 @@
   "project_a": "DESC_3",
   "project_b": "GPC_20066",
   "center_distance_mi": 19.69,
+  "closest_distance_mi": 18.41,
   "closest_distance_km": 29.63,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -6182,7 +6414,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 41,
+  "rank": 42,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -6306,7 +6538,9 @@
   "project_a": "DESC_31",
   "project_b": "GPC_14222",
   "center_distance_mi": 19.0,
+  "closest_distance_mi": 18.98,
   "closest_distance_km": 30.55,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.660127,
@@ -6330,7 +6564,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 42,
+  "rank": 43,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -6454,7 +6688,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_21023",
   "center_distance_mi": 22.48,
+  "closest_distance_mi": 19.28,
   "closest_distance_km": 31.03,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.348069,
@@ -6478,7 +6714,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 43,
+  "rank": 44,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -6598,167 +6834,21 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_10__GPC_20407",
+  "id": "OVL_DESC_10__GPC_21023",
   "project_a": "DESC_10",
-  "project_b": "GPC_20407",
-  "center_distance_mi": 19.93,
-  "closest_distance_km": 31.7,
+  "project_b": "GPC_21023",
+  "center_distance_mi": 23.19,
+  "closest_distance_mi": 19.44,
+  "closest_distance_km": 31.29,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
-    "lat": 32.26263,
-    "lon": -80.903374
+    "lat": 32.320513,
+    "lon": -81.008418
    },
    "b": {
-    "lat": 32.022687,
-    "lon": -81.086181
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 1096,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 8.5,
-  "score_breakdown": {
-   "proximity": 8.5,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 44,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 5239000,
-   "reference_budget_source": "predicted (ridge, Dominion budgets)",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
-     "value_used": "$5,239,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Okatie–Bluffton ↔ Magnolia–Truman Parkway",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 131000,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2023-03-01"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2025-06-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2023-03-01",
-    "start_date_b": "2025-06-01"
-   },
-   "totals": {
-    "separate": 302000,
-    "coordinated": 302000,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 151000,
-     "b": 151000
-    },
-    "coordinated_by_project": {
-     "a": 151000,
-     "b": 151000
-    }
-   },
-   "range": {
-    "separate": [
-     256700,
-     347300
-    ],
-    "coordinated": [
-     256700,
-     347300
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
-  "id": "OVL_DESC_10__GPC_21006",
-  "project_a": "DESC_10",
-  "project_b": "GPC_21006",
-  "center_distance_mi": 20.15,
-  "closest_distance_km": 31.7,
-  "closest_points": {
-   "a": {
-    "lat": 32.26263,
-    "lon": -80.903374
-   },
-   "b": {
-    "lat": 32.022687,
-    "lon": -81.086181
+    "lat": 32.08351,
+    "lon": -81.188722
    }
   },
   "tier": "shared_crews",
@@ -6809,26 +6899,26 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 6230000,
+   "reference_budget_usd": 15577000,
    "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
-     "value_used": "$6,230,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Dean Forest–Little Ogeechee",
+     "value_used": "$15,577,000"
     }
    ]
   },
   "brief": null,
-  "label": "Okatie–Bluffton ↔ Boulevard–Magnolia",
+  "label": "Okatie–Bluffton ↔ Dean Forest–Little Ogeechee",
   "potential": "lower",
   "cost_scenario": {
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 155800,
+    "mobilization_per_event": 389400,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -6845,7 +6935,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2027-01-01"
+     "start_date": "2026-01-01"
     }
    },
    "coordinated": {
@@ -6854,30 +6944,30 @@
     "shared_truck_days": 20,
     "laydown_sites": 2,
     "start_date_a": "2023-03-01",
-    "start_date_b": "2027-01-01"
+    "start_date_b": "2026-01-01"
    },
    "totals": {
-    "separate": 351600,
-    "coordinated": 351600,
+    "separate": 818800,
+    "coordinated": 818800,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 175800,
-     "b": 175800
+     "a": 409400,
+     "b": 409400
     },
     "coordinated_by_project": {
-     "a": 175800,
-     "b": 175800
+     "a": 409400,
+     "b": 409400
     }
    },
    "range": {
     "separate": [
-     298860,
-     404340
+     695980,
+     941620
     ],
     "coordinated": [
-     298860,
-     404340
+     695980,
+     941620
     ],
     "savings": [
      0,
@@ -6898,7 +6988,9 @@
   "project_a": "DESC_3",
   "project_b": "GPC_21023",
   "center_distance_mi": 22.78,
+  "closest_distance_mi": 19.51,
   "closest_distance_km": 31.4,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -7042,25 +7134,27 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_10__GPC_21023",
+  "id": "OVL_DESC_10__GPC_20407",
   "project_a": "DESC_10",
-  "project_b": "GPC_21023",
-  "center_distance_mi": 23.19,
-  "closest_distance_km": 31.29,
+  "project_b": "GPC_20407",
+  "center_distance_mi": 19.93,
+  "closest_distance_mi": 19.7,
+  "closest_distance_km": 31.7,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
-    "lat": 32.320513,
-    "lon": -81.008418
+    "lat": 32.26263,
+    "lon": -80.903374
    },
    "b": {
-    "lat": 32.08351,
-    "lon": -81.188722
+    "lat": 32.022687,
+    "lon": -81.086181
    }
   },
   "tier": "shared_crews",
   "tier_explanation": "Under 40 km: can share crews and equipment",
   "shared_endpoint": false,
-  "time_gap_days": 1461,
+  "time_gap_days": 1096,
   "window_overlap_months": 0,
   "schedule_shift_possible": false,
   "timing_confidence": "predicted",
@@ -7105,26 +7199,26 @@
      "applies": false
     }
    },
-   "reference_budget_usd": 15577000,
+   "reference_budget_usd": 5239000,
    "reference_budget_source": "predicted (ridge, Dominion budgets)",
    "shared_row_acres": null,
    "mobilization_savings_usd": null,
    "assumptions": [],
    "sources": [
     {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Dean Forest–Little Ogeechee",
-     "value_used": "$15,577,000"
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+     "value_used": "$5,239,000"
     }
    ]
   },
   "brief": null,
-  "label": "Okatie–Bluffton ↔ Dean Forest–Little Ogeechee",
+  "label": "Okatie–Bluffton ↔ Magnolia–Truman Parkway",
   "potential": "lower",
   "cost_scenario": {
    "illustrative": true,
    "defaults_source": "cost_sources.json",
    "unit_rates": {
-    "mobilization_per_event": 389400,
+    "mobilization_per_event": 131000,
     "bucket_truck_per_day": 1500,
     "laydown_per_site": 5000,
     "crew_size": 4,
@@ -7141,7 +7235,7 @@
      "mobilization_events": 1,
      "truck_days": 10,
      "laydown_sites": 1,
-     "start_date": "2026-01-01"
+     "start_date": "2025-06-01"
     }
    },
    "coordinated": {
@@ -7150,30 +7244,180 @@
     "shared_truck_days": 20,
     "laydown_sites": 2,
     "start_date_a": "2023-03-01",
-    "start_date_b": "2026-01-01"
+    "start_date_b": "2025-06-01"
    },
    "totals": {
-    "separate": 818800,
-    "coordinated": 818800,
+    "separate": 302000,
+    "coordinated": 302000,
     "savings": 0,
     "savings_pct": 0.0,
     "separate_by_project": {
-     "a": 409400,
-     "b": 409400
+     "a": 151000,
+     "b": 151000
     },
     "coordinated_by_project": {
-     "a": 409400,
-     "b": 409400
+     "a": 151000,
+     "b": 151000
     }
    },
    "range": {
     "separate": [
-     695980,
-     941620
+     256700,
+     347300
     ],
     "coordinated": [
-     695980,
-     941620
+     256700,
+     347300
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
+  "id": "OVL_DESC_10__GPC_21006",
+  "project_a": "DESC_10",
+  "project_b": "GPC_21006",
+  "center_distance_mi": 20.15,
+  "closest_distance_mi": 19.7,
+  "closest_distance_km": 31.7,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 32.26263,
+    "lon": -80.903374
+   },
+   "b": {
+    "lat": 32.022687,
+    "lon": -81.086181
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 1461,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 8.5,
+  "score_breakdown": {
+   "proximity": 8.5,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 48,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 6230000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+     "value_used": "$6,230,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Okatie–Bluffton ↔ Boulevard–Magnolia",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 155800,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2023-03-01"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2027-01-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2023-03-01",
+    "start_date_b": "2027-01-01"
+   },
+   "totals": {
+    "separate": 351600,
+    "coordinated": 351600,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 175800,
+     "b": 175800
+    },
+    "coordinated_by_project": {
+     "a": 175800,
+     "b": 175800
+    }
+   },
+   "range": {
+    "separate": [
+     298860,
+     404340
+    ],
+    "coordinated": [
+     298860,
+     404340
     ],
     "savings": [
      0,
@@ -7194,7 +7438,9 @@
   "project_a": "DESC_23",
   "project_b": "GPC_20796",
   "center_distance_mi": 21.52,
+  "closest_distance_mi": 20.11,
   "closest_distance_km": 32.37,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.360699,
@@ -7218,7 +7464,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 48,
+  "rank": 49,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -7338,159 +7584,13 @@
   "kind": "cross_utility"
  },
  {
-  "id": "OVL_DESC_3__GPC_21006",
-  "project_a": "DESC_3",
-  "project_b": "GPC_21006",
-  "center_distance_mi": 21.41,
-  "closest_distance_km": 34.1,
-  "closest_points": {
-   "a": {
-    "lat": 32.333758,
-    "lon": -81.032495
-   },
-   "b": {
-    "lat": 32.041231,
-    "lon": -81.144464
-   }
-  },
-  "tier": "shared_crews",
-  "tier_explanation": "Under 40 km: can share crews and equipment",
-  "shared_endpoint": false,
-  "time_gap_days": 1613,
-  "window_overlap_months": 0,
-  "schedule_shift_possible": false,
-  "timing_confidence": "predicted",
-  "score": 8.0,
-  "score_breakdown": {
-   "proximity": 8.0,
-   "savings": 0.0,
-   "timing": 0.0
-  },
-  "rank": 49,
-  "cost_estimate": {
-   "total_estimated_savings_usd": 0,
-   "range_usd": [
-    0,
-    0
-   ],
-   "components": {
-    "mobilization": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap within 12 months"
-    },
-    "logistics": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false,
-     "reason": "construction windows cannot overlap"
-    },
-    "shared_land": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    },
-    "traffic_delay": {
-     "low": 0,
-     "point": 0,
-     "high": 0,
-     "applies": false
-    }
-   },
-   "reference_budget_usd": 6230000,
-   "reference_budget_source": "predicted (ridge, Dominion budgets)",
-   "shared_row_acres": null,
-   "mobilization_savings_usd": null,
-   "assumptions": [],
-   "sources": [
-    {
-     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
-     "value_used": "$6,230,000"
-    }
-   ]
-  },
-  "brief": null,
-  "label": "Okatie ↔ Boulevard–Magnolia",
-  "potential": "lower",
-  "cost_scenario": {
-   "illustrative": true,
-   "defaults_source": "cost_sources.json",
-   "unit_rates": {
-    "mobilization_per_event": 155800,
-    "bucket_truck_per_day": 1500,
-    "laydown_per_site": 5000,
-    "crew_size": 4,
-    "crew_cost_per_day": 1160
-   },
-   "separate": {
-    "a": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2022-12-31"
-    },
-    "b": {
-     "mobilization_events": 1,
-     "truck_days": 10,
-     "laydown_sites": 1,
-     "start_date": "2027-01-01"
-    }
-   },
-   "coordinated": {
-    "mobilization_events_a": 1,
-    "mobilization_events_b": 1,
-    "shared_truck_days": 20,
-    "laydown_sites": 2,
-    "start_date_a": "2022-12-31",
-    "start_date_b": "2027-01-01"
-   },
-   "totals": {
-    "separate": 351600,
-    "coordinated": 351600,
-    "savings": 0,
-    "savings_pct": 0.0,
-    "separate_by_project": {
-     "a": 175800,
-     "b": 175800
-    },
-    "coordinated_by_project": {
-     "a": 175800,
-     "b": 175800
-    }
-   },
-   "range": {
-    "separate": [
-     298860,
-     404340
-    ],
-    "coordinated": [
-     298860,
-     404340
-    ],
-    "savings": [
-     0,
-     0
-    ]
-   },
-   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
-   "assumptions": [
-    "Unit rates are placeholders; replace with real bids.",
-    "Trucks are shared only when construction windows overlap (no for this pair).",
-    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
-   ]
-  },
-  "kind": "cross_utility"
- },
- {
   "id": "OVL_DESC_23__GPC_21006",
   "project_a": "DESC_23",
   "project_b": "GPC_21006",
   "center_distance_mi": 21.89,
+  "closest_distance_mi": 21.19,
   "closest_distance_km": 34.1,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -7634,11 +7734,163 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_3__GPC_21006",
+  "project_a": "DESC_3",
+  "project_b": "GPC_21006",
+  "center_distance_mi": 21.41,
+  "closest_distance_mi": 21.19,
+  "closest_distance_km": 34.1,
+  "within_sperry_rule": true,
+  "closest_points": {
+   "a": {
+    "lat": 32.333758,
+    "lon": -81.032495
+   },
+   "b": {
+    "lat": 32.041231,
+    "lon": -81.144464
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 1613,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 8.0,
+  "score_breakdown": {
+   "proximity": 8.0,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 51,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 6230000,
+   "reference_budget_source": "predicted (ridge, Dominion budgets)",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+     "value_used": "$6,230,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Okatie ↔ Boulevard–Magnolia",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 155800,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2022-12-31"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2027-01-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2022-12-31",
+    "start_date_b": "2027-01-01"
+   },
+   "totals": {
+    "separate": 351600,
+    "coordinated": 351600,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 175800,
+     "b": 175800
+    },
+    "coordinated_by_project": {
+     "a": 175800,
+     "b": 175800
+    }
+   },
+   "range": {
+    "separate": [
+     298860,
+     404340
+    ],
+    "coordinated": [
+     298860,
+     404340
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_3__GPC_20407",
   "project_a": "DESC_3",
   "project_b": "GPC_20407",
   "center_distance_mi": 21.72,
+  "closest_distance_mi": 21.65,
   "closest_distance_km": 34.85,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -7662,7 +7914,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 51,
+  "rank": 52,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -7786,7 +8038,9 @@
   "project_a": "DESC_14",
   "project_b": "GPC_14222",
   "center_distance_mi": 22.08,
+  "closest_distance_mi": 22.11,
   "closest_distance_km": 35.59,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 33.561618,
@@ -7810,7 +8064,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 52,
+  "rank": 53,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [
@@ -7930,11 +8184,163 @@
   "kind": "cross_utility"
  },
  {
+  "id": "OVL_DESC_10__GPC_20796",
+  "project_a": "DESC_10",
+  "project_b": "GPC_20796",
+  "center_distance_mi": 26.42,
+  "closest_distance_mi": 23.19,
+  "closest_distance_km": 37.32,
+  "within_sperry_rule": false,
+  "closest_points": {
+   "a": {
+    "lat": 32.333758,
+    "lon": -81.032495
+   },
+   "b": {
+    "lat": 32.155282,
+    "lon": -81.368377
+   }
+  },
+  "tier": "shared_crews",
+  "tier_explanation": "Under 40 km: can share crews and equipment",
+  "shared_endpoint": false,
+  "time_gap_days": 2922,
+  "window_overlap_months": 0,
+  "schedule_shift_possible": false,
+  "timing_confidence": "predicted",
+  "score": 7.5,
+  "score_breakdown": {
+   "proximity": 7.5,
+   "savings": 0.0,
+   "timing": 0.0
+  },
+  "rank": 54,
+  "cost_estimate": {
+   "total_estimated_savings_usd": 0,
+   "range_usd": [
+    0,
+    0
+   ],
+   "components": {
+    "mobilization": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap within 12 months"
+    },
+    "logistics": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false,
+     "reason": "construction windows cannot overlap"
+    },
+    "shared_land": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    },
+    "traffic_delay": {
+     "low": 0,
+     "point": 0,
+     "high": 0,
+     "applies": false
+    }
+   },
+   "reference_budget_usd": 40660000,
+   "reference_budget_source": "filing",
+   "shared_row_acres": null,
+   "mobilization_savings_usd": null,
+   "assumptions": [],
+   "sources": [
+    {
+     "name": "Dominion Energy SC filing (budget): Okatie–Bluffton",
+     "value_used": "$40,660,000"
+    }
+   ]
+  },
+  "brief": null,
+  "label": "Okatie–Bluffton ↔ Meldrim",
+  "potential": "lower",
+  "cost_scenario": {
+   "illustrative": true,
+   "defaults_source": "cost_sources.json",
+   "unit_rates": {
+    "mobilization_per_event": 1016500,
+    "bucket_truck_per_day": 1500,
+    "laydown_per_site": 5000,
+    "crew_size": 4,
+    "crew_cost_per_day": 1160
+   },
+   "separate": {
+    "a": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2023-03-01"
+    },
+    "b": {
+     "mobilization_events": 1,
+     "truck_days": 10,
+     "laydown_sites": 1,
+     "start_date": "2030-06-01"
+    }
+   },
+   "coordinated": {
+    "mobilization_events_a": 1,
+    "mobilization_events_b": 1,
+    "shared_truck_days": 20,
+    "laydown_sites": 2,
+    "start_date_a": "2023-03-01",
+    "start_date_b": "2030-06-01"
+   },
+   "totals": {
+    "separate": 2073000,
+    "coordinated": 2073000,
+    "savings": 0,
+    "savings_pct": 0.0,
+    "separate_by_project": {
+     "a": 1036500,
+     "b": 1036500
+    },
+    "coordinated_by_project": {
+     "a": 1036500,
+     "b": 1036500
+    }
+   },
+   "range": {
+    "separate": [
+     1762050,
+     2383950
+    ],
+    "coordinated": [
+     1762050,
+     2383950
+    ],
+    "savings": [
+     0,
+     0
+    ]
+   },
+   "formula": "Separate = sum per project of (mobilization_events x mobilization rate + truck_days x truck rate + laydown_sites x laydown rate). Coordinated = mobilization_events_a x rate + mobilization_events_b x rate + shared_truck_days x truck rate + laydown_sites x laydown rate. Shared costs split 50/50 per project.",
+   "assumptions": [
+    "Unit rates are placeholders; replace with real bids.",
+    "Trucks are shared only when construction windows overlap (no for this pair).",
+    "One laydown yard is shared only when projects are under 8 km apart (no for this pair)."
+   ]
+  },
+  "kind": "cross_utility"
+ },
+ {
   "id": "OVL_DESC_3__GPC_20796",
   "project_a": "DESC_3",
   "project_b": "GPC_20796",
   "center_distance_mi": 23.18,
+  "closest_distance_mi": 23.19,
   "closest_distance_km": 37.32,
+  "within_sperry_rule": true,
   "closest_points": {
    "a": {
     "lat": 32.333758,
@@ -7958,7 +8364,7 @@
    "savings": 0.0,
    "timing": 0.0
   },
-  "rank": 53,
+  "rank": 55,
   "cost_estimate": {
    "total_estimated_savings_usd": 0,
    "range_usd": [

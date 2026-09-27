@@ -103,24 +103,27 @@ def add_traffic(result, body):
 
 
 def export_xlsx():
-    """Sperry's template: sheet `overlaps` (cross-utility, by distance) and sheet `projects` (public)."""
+    """Sperry's template: sheet `overlaps` (cross-utility, by edge distance) and sheet `projects` (public).
+    Template columns come first (distance_mi is Sperry's center distance); edge distance and whether the pair
+    also meets Sperry's center rule are extra columns at the end."""
     projects = {p["id"]: p for p in STATE.projects}
     ovs = sorted([o for o in STATE.overlaps if o.get("kind", "cross_utility") == "cross_utility"],
-                 key=lambda o: (o["center_distance_mi"], o["id"]))
+                 key=lambda o: (o["closest_distance_mi"], o["id"]))
     wb = Workbook()
     ws = wb.active
     ws.title = "overlaps"
     ws.append(["overlap_id", "distance_mi", "time_gap (day)", "utility_a", "project_id_a", "project_name_a",
-               "utility_b", "project_id_b", "project_name_b"])
+               "utility_b", "project_id_b", "project_name_b", "edge_distance_mi", "within_sperry_center_rule"])
     for o in ovs:
         a, b = projects[o["project_a"]], projects[o["project_b"]]
         ws.append([o["id"], o["center_distance_mi"], o["time_gap_days"], a["utility_name"], a["id"], a["name"],
-                   b["utility_name"], b["id"], b["name"]])
+                   b["utility_name"], b["id"], b["name"], o["closest_distance_mi"],
+                   "yes" if o.get("within_sperry_rule", True) else "no (edge distance only)"])
     ws2 = wb.create_sheet("projects")
     ws2.append(["project_id", "utility", "state", "project_name", "name_a", "lat_a", "lon_a", "name_b", "lat_b", "lon_b",
                 "lat_center", "lon_center", "in_service_date", "overlap_count", "overlap_1", "overlap_2", "overlap_3"])
     partners = {}
-    for o in sorted(ovs, key=lambda o: (o["center_distance_mi"], o["id"])):
+    for o in sorted(ovs, key=lambda o: (o["closest_distance_mi"], o["id"])):
         partners.setdefault(o["project_a"], []).append(o["project_b"])
         partners.setdefault(o["project_b"], []).append(o["project_a"])
     for p in STATE.projects:

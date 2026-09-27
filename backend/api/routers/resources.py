@@ -15,6 +15,17 @@ def list_resources(type: Optional[str] = None, near: Optional[str] = None, radiu
     return svc.list_resources(type, near, radius_km, q, company_id, available_on)
 
 
+@router.get("/resources/suggested")
+def suggested_resources(limit: Optional[str] = None, project_id: Optional[str] = None, who=Depends(ident)):
+    """Listings from other companies that fit your projects (coordination partner, distance, dates), best first."""
+    from services import suggest
+    try:
+        n = max(1, min(20, int(limit or 5)))
+    except ValueError:
+        n = 5
+    return suggest.suggested_resources(who, n, project_id or None)
+
+
 @router.get("/resources/{rid}")
 def get_resource(rid: str):
     return svc.get_resource(rid)

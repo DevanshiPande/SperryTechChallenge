@@ -154,13 +154,13 @@ def list_overlaps(max_mi=None, tier=None, potential=None, min_window_overlap_mon
         return any(text_match(project_hay(projects[x]), q) for x in (o["project_a"], o["project_b"]) if x in projects)
 
     out = [o for o in all_overlaps()
-           if o["center_distance_mi"] <= max_mi and o["window_overlap_months"] >= min_win
+           if eng.edge_mi(o) <= max_mi and o["window_overlap_months"] >= min_win
            and (not tier or o["tier"] == tier) and (not potential or o["potential"] == potential)
            and (not kind or o.get("kind", "cross_utility") == kind)
            and (not project_id or project_id in (o["project_a"], o["project_b"]))
            and in_years(o) and (not q or matches(o))]
-    key = {"score": lambda o: (-o["score"], o["center_distance_mi"], o["id"]),
-           "distance": lambda o: (o["center_distance_mi"], -o["score"], o["id"]),
+    key = {"score": lambda o: (-o["score"], eng.edge_mi(o), o["id"]),
+           "distance": lambda o: (eng.edge_mi(o), -o["score"], o["id"]),
            "timeline": lambda o: (-o["window_overlap_months"], -o["score"], o["id"])}[sort]
     return sorted(out, key=key)
 

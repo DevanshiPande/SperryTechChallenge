@@ -37,3 +37,10 @@ def crossing_brief(crossing_id: str, body: dict = Depends(json_body)):
 @router.get("/traffic/summary")
 def summary():
     return svc.summary()
+
+
+@router.get("/projects/{pid}/congestion")
+def congestion(pid: str):
+    """Predicted congestion on the roads around a project (for the map), with a plain-English summary."""
+    from services import congestion as csvc
+    return csvc.project_congestion(pid)

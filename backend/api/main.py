@@ -100,6 +100,10 @@ async def lifespan(app):
         from services.state import STATE
         if STATE.db is None and os.environ.get("MONGO_URI"):
             threading.Thread(target=_reconnect_loop, args=(stop,), daemon=True).start()
+        if STATE.traffic is not None and os.environ.get("GRIDLOCK_WARM_CONGESTION", "1") != "0":
+            # Pre-compute predicted congestion (and its Gemini summary) for every project in the background.
+            from services import congestion
+            threading.Thread(target=congestion.warm_all, args=(stop,), daemon=True).start()
     yield
     stop.set()
 

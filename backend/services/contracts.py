@@ -306,13 +306,14 @@ def match(ident, cid, reviewed):
                   "merged_window": c["merged_window"]} for c in (tx.conflicts_between(p, other) if tx else [])]
         matches.append({"project_id": other["id"], "short_name": other.get("short_name"), "name": other["name"],
                         "utility": other.get("utility"), "utility_name": other.get("utility_name"),
-                        "center_distance_mi": o["center_distance_mi"], "closest_distance_km": o["closest_distance_km"],
+                        "center_distance_mi": o["center_distance_mi"], "closest_distance_mi": o["closest_distance_mi"],
+                        "closest_distance_km": o["closest_distance_km"],
                         "tier": o["tier"], "tier_explanation": o["tier_explanation"], "window_overlap_months": o["window_overlap_months"],
                         "schedule_shift_possible": o["schedule_shift_possible"], "score": o["score"],
                         "score_breakdown": o["score_breakdown"], "potential": o["potential"], "cost_estimate": o["cost_estimate"],
                         "suggestion": {"shift_months": sug["shift_months"], "suggested_window": sug["suggested_window"],
                                        "explanation": sug["explanation"]}, "shared_roads": roads})
-    matches.sort(key=lambda m: (-m["score"], m["center_distance_mi"]))
+    matches.sort(key=lambda m: (-m["score"], m["closest_distance_mi"]))
     # Savings from different partners do not add up: each estimate is mostly the SAME mobilization of this contract,
     # which can only be shared once. The summary is the best single partner's range.
     best_sav = max(matches, key=lambda m: m["cost_estimate"]["total_estimated_savings_usd"], default=None)

@@ -141,10 +141,13 @@ def test_export_matches_sperry_template(client_ro):
     for sheet in ("overlaps", "projects"):
         head = [c.value for c in next(wb[sheet].iter_rows(max_row=1))]
         want = [c.value for c in next(template[sheet].iter_rows(max_row=1))]
-        assert head == want, sheet
+        # Sperry's template columns come first, unchanged; extra columns (edge distance) may follow.
+        assert head[:len(want)] == want, sheet
+    assert next(wb["overlaps"].iter_rows(max_row=1, values_only=True))[9:] == ("edge_distance_mi", "within_sperry_center_rule")
     rows = list(wb["overlaps"].iter_rows(min_row=2, values_only=True))
-    assert [(r[4], r[7], r[1], r[2]) for r in rows] == [
+    # Rows are ordered by edge distance; the pairs and Sperry's center distances are unchanged.
+    assert sorted((r[4], r[7], r[1], r[2]) for r in rows) == sorted([
         ("DESC_2", "GPC_1", 4.09, 3074), ("DESC_3", "GPC_2", 5.65, 152), ("DESC_3", "GPC_3", 7.55, 517),
-        ("DESC_1", "GPC_1", 8.01, 3074), ("DESC_5", "GPC_2", 14.34, 365), ("DESC_5", "GPC_3", 14.81, 730)]
+        ("DESC_1", "GPC_1", 8.01, 3074), ("DESC_5", "GPC_2", 14.34, 365), ("DESC_5", "GPC_3", 14.81, 730)])
     projects = {r[0]: r for r in wb["projects"].iter_rows(min_row=2, values_only=True)}
     assert projects["DESC_3"][13] == 2 and set(projects["DESC_3"][14:16]) == {"GPC_2", "GPC_3"}

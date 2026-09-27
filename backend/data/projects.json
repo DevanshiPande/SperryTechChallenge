@@ -949,9 +949,10 @@
    "OVL_DESC_10__GPC_20066",
    "OVL_DESC_10__GPC_20783",
    "OVL_DESC_10__GPC_20784",
+   "OVL_DESC_10__GPC_21023",
    "OVL_DESC_10__GPC_20407",
    "OVL_DESC_10__GPC_21006",
-   "OVL_DESC_10__GPC_21023"
+   "OVL_DESC_10__GPC_20796"
   ],
   "short_name": "Okatie–Bluffton",
   "work_type_label": "Line rebuild",
@@ -1316,9 +1317,9 @@
    }
   ],
   "overlap_ids": [
+   "OVL_DESC_14__GPC_17993",
    "OVL_DESC_14__GPC_20793",
    "OVL_DESC_14__GPC_20794",
-   "OVL_DESC_14__GPC_17993",
    "OVL_DESC_14__GPC_21116",
    "OVL_DESC_14__GPC_14222"
   ],
@@ -1424,9 +1425,9 @@
   "overlap_ids": [
    "OVL_DESC_15__GPC_21116",
    "OVL_DESC_15__GPC_14222",
+   "OVL_DESC_15__GPC_17993",
    "OVL_DESC_15__GPC_20793",
-   "OVL_DESC_15__GPC_20794",
-   "OVL_DESC_15__GPC_17993"
+   "OVL_DESC_15__GPC_20794"
   ],
   "short_name": "Stevens Creek–Hooks",
   "work_type_label": "Transmission project",
@@ -3200,6 +3201,7 @@
   ],
   "overlap_ids": [
    "OVL_DESC_35__GPC_21116",
+   "OVL_DESC_35__GPC_17993",
    "OVL_DESC_35__GPC_20793",
    "OVL_DESC_35__GPC_20794"
   ],
@@ -3890,9 +3892,9 @@
   ],
   "overlap_ids": [
    "OVL_DESC_43__GPC_21116",
+   "OVL_DESC_43__GPC_17993",
    "OVL_DESC_43__GPC_20793",
-   "OVL_DESC_43__GPC_20794",
-   "OVL_DESC_43__GPC_17993"
+   "OVL_DESC_43__GPC_20794"
   ],
   "short_name": "Urquhart–Aiken PSA",
   "work_type_label": "Line rebuild",
@@ -4680,8 +4682,8 @@
   ],
   "overlap_ids": [
    "OVL_DESC_10__GPC_20067",
-   "OVL_DESC_3__GPC_20067",
-   "OVL_DESC_23__GPC_20067"
+   "OVL_DESC_23__GPC_20067",
+   "OVL_DESC_3__GPC_20067"
   ],
   "short_name": "Deptford–Magnolia",
   "work_type_label": "Line reconductor",
@@ -8475,8 +8477,8 @@
   ],
   "overlap_ids": [
    "OVL_DESC_23__GPC_20065",
-   "OVL_DESC_3__GPC_20065",
-   "OVL_DESC_10__GPC_20065"
+   "OVL_DESC_10__GPC_20065",
+   "OVL_DESC_3__GPC_20065"
   ],
   "short_name": "Goshen–McIntosh",
   "work_type_label": "Line rebuild",
@@ -10853,8 +10855,8 @@
   "quality_flags": [],
   "overlap_ids": [
    "OVL_DESC_10__GPC_21006",
-   "OVL_DESC_3__GPC_21006",
-   "OVL_DESC_23__GPC_21006"
+   "OVL_DESC_23__GPC_21006",
+   "OVL_DESC_3__GPC_21006"
   ],
   "short_name": "Boulevard–Magnolia",
   "work_type_label": "Line rebuild",
@@ -10942,8 +10944,8 @@
   "quality_flags": [],
   "overlap_ids": [
    "OVL_DESC_23__GPC_21023",
-   "OVL_DESC_3__GPC_21023",
-   "OVL_DESC_10__GPC_21023"
+   "OVL_DESC_10__GPC_21023",
+   "OVL_DESC_3__GPC_21023"
   ],
   "short_name": "Dean Forest–Little Ogeechee",
   "work_type_label": "Line rebuild",
@@ -13543,8 +13545,8 @@
    "OVL_DESC_31__GPC_20793",
    "OVL_DESC_14__GPC_20793",
    "OVL_DESC_15__GPC_20793",
-   "OVL_DESC_43__GPC_20793",
-   "OVL_DESC_35__GPC_20793"
+   "OVL_DESC_35__GPC_20793",
+   "OVL_DESC_43__GPC_20793"
   ],
   "short_name": "Evans–Thurmond",
   "work_type_label": "Line rebuild",
@@ -13635,8 +13637,8 @@
    "OVL_DESC_31__GPC_20794",
    "OVL_DESC_14__GPC_20794",
    "OVL_DESC_15__GPC_20794",
-   "OVL_DESC_43__GPC_20794",
-   "OVL_DESC_35__GPC_20794"
+   "OVL_DESC_35__GPC_20794",
+   "OVL_DESC_43__GPC_20794"
   ],
   "short_name": "Evans–Thurmond",
   "work_type_label": "Line rebuild",
@@ -13886,6 +13888,7 @@
   "quality_flags": [],
   "overlap_ids": [
    "OVL_DESC_23__GPC_20796",
+   "OVL_DESC_10__GPC_20796",
    "OVL_DESC_3__GPC_20796"
   ],
   "short_name": "Meldrim",
@@ -14315,6 +14318,7 @@
    "OVL_DESC_14__GPC_17993",
    "OVL_DESC_15__GPC_17993",
    "OVL_DESC_31__GPC_17993",
+   "OVL_DESC_35__GPC_17993",
    "OVL_DESC_43__GPC_17993"
   ],
   "short_name": "Evans–Thomson",

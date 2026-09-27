@@ -80,6 +80,10 @@ def geojson(endpoints):
     return {"type": "LineString", "coordinates": [[p["lon"], p["lat"]] for p in pts[:2]]}
 
 
+def km_to_mi(km):
+    return None if km is None else round(km / 1.609344, 2)
+
+
 def closest(endpoints_a, endpoints_b):
     """Closest distance (km, 2 decimals) and closest points ({a:{lat,lon}, b:{lat,lon}}) between two projects."""
     ga, gb = utm_geometry(endpoints_a), utm_geometry(endpoints_b)

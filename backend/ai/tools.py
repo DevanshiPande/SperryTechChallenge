@@ -24,6 +24,7 @@ def c_project(p, extra=None):
 def c_overlap(o, with_cost=True):
     out = {"id": o["id"], "label": o["label"], "kind": o.get("kind"), "project_a": o["project_a"],
            "project_b": o["project_b"], "center_distance_mi": o["center_distance_mi"],
+           "closest_distance_mi": o.get("closest_distance_mi", o["center_distance_mi"]),
            "closest_distance_km": o["closest_distance_km"], "tier": o["tier"],
            "window_overlap_months": o["window_overlap_months"], "time_gap_days": o["time_gap_days"],
            "score": o["score"], "rank": o["rank"], "potential": o["potential"]}

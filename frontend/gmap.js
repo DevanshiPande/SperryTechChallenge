@@ -5,7 +5,7 @@
   const key = (config.googleMapsApiKey || '').trim();
   if (!key) return;
 
-  let map, AdvancedMarker, markers = [], focusedPair = null, focusedWorkerJob = null, cardZoom = null, cardKey = '';
+  let map, AdvancedMarker, markers = [], roadLines = [], roadsKey = '', infoWin = null, zoomedTo = null, focusedPair = null, focusedWorkerJob = null, cardZoom = null, cardKey = '';
   // Zooming out two levels past where the preview cards opened shrinks them to name-only labels.
   const COMPACT_AFTER = 2;
   const updateCompact = () => document.body.classList.toggle('cards-compact', cardZoom != null && map.getZoom() <= cardZoom - COMPACT_AFTER);
@@ -39,6 +39,7 @@
     map.addListener('zoom_changed', () => { updateCompact(); positionHovercard(); });
     document.body.classList.add('has-gmap');
     window.gridlockMapLive = true;
+    window.dispatchEvent(new Event('gridlock-map-ready'));
     render();
   };
 
@@ -50,27 +51,29 @@
     const items = worker
       ? state.jobs.filter(hasCoords).map(j => ({
           id: j.id, title: j.name, lat: j.lat, lng: j.lon,
-          cls: j.id === state.selectedJob.id ? 'desc selected' : 'gpc',
+          cls: j.id === state.selectedJob?.id ? 'desc selected' : 'gpc',
           onClick: () => { state.hoverClosed = false; state.selectedJob = j; render(); }
         }))
       : projects.filter(hasCoords).filter(projectVisible).map(p => ({
           id: p.project_id, title: p.project_name, lat: p.lat_center, lng: p.lon_center,
-          cls: `${p.utility.includes('Dominion') ? 'desc' : 'gpc'} ${selectedPinIds().includes(p.project_id) ? 'selected' : ''}`,
-          onClick: () => { state.hoverClosed = false; state.pairFocus = false; state.hoverProject = state.selectedProject = p; render(); }
+          cls: `${pinClass(p)} ${selectedPinIds().includes(p.project_id) ? 'selected' : ''}`, z: p.mine ? 1000 : undefined,
+          onClick: () => { focusMyProject(p.project_id, { zoom: false }); render(); }
         }));
     markers = items.map(it => {
       const el = document.createElement('div');
       el.className = `gpin ${it.cls}`;
       el.dataset.pid = it.id;
-      const marker = new AdvancedMarker({ map, position: { lat: it.lat, lng: it.lng }, content: el, title: it.title, gmpClickable: true });
+      const marker = new AdvancedMarker({ map, position: { lat: it.lat, lng: it.lng }, content: el, title: it.title, gmpClickable: true, zIndex: it.z });
       marker.addEventListener('gmp-click', it.onClick);
       return marker;
     });
     const key = [...document.querySelectorAll('.stage-map .hovercard')].map(c => c.dataset.anchor).join();
     if (key !== cardKey) { cardKey = key; cardZoom = key ? map.getZoom() : null; updateCompact(); }
-    if (!worker && state.pairFocus && state.selectedOverlap.overlap_id !== focusedPair) focusPair();
+    if (!worker && state.page === 'map' && state.zoomTo && state.zoomTo.n !== zoomedTo) focusProject();
+    drawCongestion(worker);
+    if (!worker && state.pairFocus && state.selectedOverlap && state.selectedOverlap.overlap_id !== focusedPair) focusPair();
     if (!state.pairFocus) focusedPair = null;
-    if (worker && state.page === 'findjobs' && state.selectedJob.id !== focusedWorkerJob) focusWorkerJob();
+    if (worker && state.page === 'findjobs' && state.selectedJob && state.selectedJob.id !== focusedWorkerJob) focusWorkerJob();
     if (!worker || state.page !== 'findjobs') focusedWorkerJob = null;
     // Marker elements attach asynchronously; position the card once the selected one is laid out.
     let tries = 0;
@@ -80,6 +83,77 @@
       else if (tries++ < 60) requestAnimationFrame(waitForPin);
     })();
   };
+
+  // Screen area not covered by the sidebar, floating cards, top bar and chat bar.
+  function openArea() {
+    const edge = sel => document.querySelector(sel)?.getBoundingClientRect();
+    let left = edge('.sidebar')?.right || 0, right = innerWidth;
+    document.querySelectorAll('.workspace .card').forEach(el => {
+      const r = el.getBoundingClientRect(); if (!r.width) return;
+      if (r.left + r.width / 2 < innerWidth / 2) left = Math.max(left, r.right); else right = Math.min(right, r.left);
+    });
+    return { left, right, top: edge('.topbar')?.bottom || 0, bottom: edge('.chatbar')?.top || innerHeight };
+  }
+  // Zoom to your project (its whole line), centered in the open part of the map.
+  function focusProject() {
+    zoomedTo = state.zoomTo.n;
+    const p = byId[state.zoomTo.id]; if (!p) return;
+    const pts = (p.endpoints || []).filter(e => Number.isFinite(e.lat) && Number.isFinite(e.lon)).map(e => ({ lat: e.lat, lng: e.lon }));
+    if (!pts.length && hasXY(p)) pts.push({ lat: p.lat_center, lng: p.lon_center });
+    if (!pts.length) return;
+    const a = openArea(), bounds = new google.maps.LatLngBounds();
+    // A small box around the project so a single site or short line still gets a street-level view.
+    pts.forEach(q => { bounds.extend({ lat: q.lat + 0.02, lng: q.lng + 0.02 }); bounds.extend({ lat: q.lat - 0.02, lng: q.lng - 0.02 }); });
+    map.fitBounds(bounds, { left: a.left + 40, right: innerWidth - a.right + 40, top: a.top + 160, bottom: innerHeight - a.bottom + 40 });
+    google.maps.event.addListenerOnce(map, 'idle', () => { if (map.getZoom() > 13) map.setZoom(13); positionHovercard(); });
+  }
+
+  // Predicted congestion: colored road lines around your focused project, with a popup per road.
+  const LEVEL_COLOR = { heavy: '#d93025', moderate: '#f29900', light: '#f4c20d' };
+  function drawCongestion(worker) {
+    const id = !worker && state.page === 'map' && state.myFocus;
+    const c = id && (state.congestion || {})[id];
+    const key = c && c.roads ? id + ':' + c.roads.length + ':' + (c.summary || '').length : '';
+    if (key === roadsKey) return;
+    roadsKey = key;
+    roadLines.forEach(l => l.setMap(null));
+    roadLines = [];
+    if (infoWin) infoWin.close();
+    if (!key) return;
+    const popup = (r, at) => {
+      infoWin = infoWin || new google.maps.InfoWindow();
+      infoWin.setContent(`<div class="congestion-pop"><b>Predicted congestion · ${r.level}</b><p>${esc(r.popup)}</p></div>`);
+      infoWin.setPosition(at);
+      infoWin.open({ map });
+    };
+    const order = { light: 0, moderate: 1, heavy: 2 };
+    const pts = [];
+    [...c.roads].sort((a, b) => order[a.level] - order[b.level]).forEach(r => {
+      (r.lines || []).forEach(part => {
+        const path = part.map(([lat, lng]) => ({ lat, lng }));
+        pts.push(...path);
+        const line = new google.maps.Polyline({ map, path, strokeColor: LEVEL_COLOR[r.level], strokeOpacity: 0.9,
+          strokeWeight: r.role === 'crossed' ? 8 : 6, zIndex: 10 + order[r.level], clickable: true });
+        line.addListener('click', e => popup(r, e.latLng));
+        roadLines.push(line);
+      });
+    });
+    // Open the popup on the most congested road that is drawn.
+    const worst = c.roads.find(r => (r.lines || []).length && r.level !== 'light') || c.roads.find(r => (r.lines || []).length);
+    if (worst) {
+      const part = worst.lines[0];
+      const mid = part[Math.floor(part.length / 2)];
+      popup(worst, { lat: mid[0], lng: mid[1] });
+    }
+    // Make sure the colored roads are in view too.
+    if (pts.length) {
+      const p = byId[id], b = new google.maps.LatLngBounds();
+      pts.forEach(q => b.extend(q));
+      (p?.endpoints || []).forEach(e => Number.isFinite(e.lat) && b.extend({ lat: e.lat, lng: e.lon }));
+      const a = openArea();
+      map.fitBounds(b, { left: a.left + 40, right: innerWidth - a.right + 40, top: a.top + 60, bottom: innerHeight - a.bottom + 40 });
+    }
+  }
 
   // Zoom to the selected pair, leaving room for the two preview cards and the floating panels.
   function focusPair() {
@@ -108,7 +182,8 @@
   function focusWorkerJob() {
     const job = state.selectedJob;
     const pin = document.querySelector(`.gpin[data-pid="${job.id}"]`);
-    if (!pin) { requestAnimationFrame(focusWorkerJob); return; }
+    if (!pin) { if ((focusWorkerJob.tries = (focusWorkerJob.tries || 0) + 1) < 120) requestAnimationFrame(focusWorkerJob); return; }
+    focusWorkerJob.tries = 0;
     const list = document.querySelector('.page-findjobs .joblayout > .card')?.getBoundingClientRect();
     const openLeft = Math.max((list?.right || 216) + 24, 240);
     const targetX = Math.min(innerWidth - 72, openLeft + 120);

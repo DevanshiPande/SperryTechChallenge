@@ -17,9 +17,11 @@ def nearby(proposed_endpoints, window, projects, utility=None):
         if (utility and p.get("utility") == utility) or not p.get("center"):
             continue
         mi = geo.center_distance_mi(center, p["center"])
-        if mi >= THRESHOLD_MI:
-            continue
         km, _ = geo.closest(proposed_endpoints, p["endpoints"])
+        edge_mi = geo.km_to_mi(km)
+        edge_mi = edge_mi if edge_mi is not None else mi
+        if min(edge_mi, mi) >= THRESHOLD_MI:
+            continue
         tier, _ = geo.tier_for(km)
         found.append({
             "project_id": p["id"],
@@ -29,11 +31,12 @@ def nearby(proposed_endpoints, window, projects, utility=None):
             "utility_name": p.get("utility_name"),
             "construction_window": p.get("construction_window"),
             "center_distance_mi": mi,
+            "closest_distance_mi": edge_mi,
             "closest_distance_km": km,
             "tier": tier,
             "window_overlap_months": windows.overlap_months(window, p.get("construction_window")),
         })
-    found.sort(key=lambda f: (f["center_distance_mi"], f["project_id"]))
+    found.sort(key=lambda f: (f["closest_distance_mi"], f["project_id"]))
     return center, found
 
 

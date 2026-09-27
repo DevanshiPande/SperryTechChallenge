@@ -135,7 +135,7 @@ def agent_turn(messages, read_only=False):
                 parts.append(f"{res['summary']} Please confirm below.")
             elif res.get("overlaps"):
                 o = res["overlaps"][0]
-                parts.append(f"The top match is {o['label']}, {o['center_distance_mi']} mi apart with "
+                parts.append(f"The top match is {o['label']}, {o.get('closest_distance_mi', o['center_distance_mi'])} mi apart with "
                              f"{o['window_overlap_months']} months of overlapping construction.")
             elif "totals" in res:
                 parts.append(f"Coordinating {res['label']} saves about ${res['totals']['savings']:,} (illustrative).")

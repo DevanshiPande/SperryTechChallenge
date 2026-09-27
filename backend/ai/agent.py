@@ -86,7 +86,7 @@ def _template_reply(turn_results, pending):
             parts.append(f"I couldn't complete {name.replace('_', ' ')}: {res['error']['message']}")
         elif name == "list_overlaps" and res.get("overlaps"):
             o = res["overlaps"][0]
-            parts.append(f"Top result: {o['label']}, {o['center_distance_mi']} mi apart, "
+            parts.append(f"Top result: {o['label']}, {o.get('closest_distance_mi', o['center_distance_mi'])} mi apart, "
                          f"{o['window_overlap_months']} months of overlapping construction, illustrative savings "
                          f"${o['illustrative_savings_usd']:,}.")
         elif name == "get_cost_scenario":
@@ -95,7 +95,7 @@ def _template_reply(turn_results, pending):
                          f"savings ${t['savings']:,} (illustrative).")
         elif name == "get_overlap":
             o = res["overlap"]
-            parts.append(f"{o['label']}: {o['center_distance_mi']} mi apart, tier {o['tier']}.")
+            parts.append(f"{o['label']}: {o.get('closest_distance_mi', o['center_distance_mi'])} mi apart, tier {o['tier']}.")
         elif "count" in res:
             parts.append(f"Found {res['count']} result(s) for {name.replace('_', ' ')}.")
     for p in pending:
