@@ -4,16 +4,217 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ContractMap</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/contractmap-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f3f7fd; --navy:#0a1633; --ink:#16233f; --muted:#5b6a86; --line:#0a163314;
+      --blue:#1f6bff; --cyan:#12bcd6; --green:#22c768; --lime:#9ee33a;
+      --grad:linear-gradient(95deg,var(--blue),var(--cyan) 55%,var(--green));
+      --tilt:48deg; --spin:-14deg;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;overflow:hidden;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+
+    /* ---------- 3D map stage ---------- */
+    .stage{position:fixed;inset:0;perspective:2000px;perspective-origin:65% 30%;overflow:hidden}
+    .plane{position:absolute;left:50%;top:50%;width:1792px;height:1024px;transform-style:preserve-3d;
+      transform:translate(-50%,-50%) translate(var(--px,1vw),var(--py,3vh)) scale(var(--scale,1)) rotateX(var(--tilt)) rotateZ(var(--spin))}
+    .plane .basemap{position:absolute;inset:0;background:url('assets/map-usa-usgs.jpg') center/100% 100% no-repeat;filter:saturate(.8) contrast(.97);-webkit-mask-image:radial-gradient(68% 62% at 50% 52%,#000 50%,transparent 100%);mask-image:radial-gradient(68% 62% at 50% 52%,#000 50%,transparent 100%)}
+    .plane .wash{position:absolute;inset:0;background:linear-gradient(120deg,#1f6bff14,transparent 45%,#22c76812);pointer-events:none}
+    .beacon{position:absolute;transform-style:preserve-3d}
+    .beacon .base{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:radial-gradient(circle,var(--c) 0 26%,transparent 28%),radial-gradient(circle,color-mix(in srgb,var(--c) 35%,transparent),transparent 70%)}
+    .beacon .base:after{content:'';position:absolute;inset:-14px;border-radius:50%;border:2px solid var(--c);opacity:0;animation:ring 3s var(--d,0s) infinite}
+    .beacon .beam{position:absolute;left:-2.5px;bottom:0;width:5px;height:var(--h,70px);transform-origin:50% 100%;transform:rotateX(-90deg);
+      background:linear-gradient(to top,var(--c),color-mix(in srgb,var(--c) 35%,transparent) 75%,transparent);border-radius:5px;transition:height .8s cubic-bezier(.2,.8,.2,1)}
+    .beacon.active .beam{height:95px}
+    .beacon .head{position:absolute;left:50%;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px var(--c),0 6px 16px color-mix(in srgb,var(--c) 70%,transparent)}
+    .beacon.dom{--c:var(--blue)} .beacon.gpc{--c:var(--green)}
+    .zone{position:absolute;width:0;height:0;pointer-events:none}
+    .zone i{position:absolute;left:0;top:0;border-radius:50%;border:2.5px solid var(--cyan);background:radial-gradient(circle,#12bcd612,transparent 70%);transform:translate(-50%,-50%) scale(.2);opacity:0}
+    .zone.on i{animation:zone 2.4s cubic-bezier(.2,.7,.3,1) infinite}
+    .zone.on i:nth-child(2){animation-delay:.8s}.zone.on i:nth-child(3){animation-delay:1.6s}
+    @keyframes ring{0%{transform:scale(.4);opacity:.8}70%,100%{transform:scale(1.5);opacity:0}}
+    @keyframes zone{0%{transform:translate(-50%,-50%) scale(.2);opacity:.9}100%{transform:translate(-50%,-50%) scale(1);opacity:0}}
+
+    /* haze: far edge fades into the sky, and a soft wash behind the copy */
+    .fog{position:fixed;inset:0;pointer-events:none;background:
+      linear-gradient(180deg,var(--bg) 0%,#f3f7fd99 9%,transparent 22%),
+      linear-gradient(90deg,var(--bg) 0%,#f3f7fdeb 28%,#f3f7fd66 47%,transparent 62%),
+      radial-gradient(140% 120% at 65% 55%,transparent 62%,#f3f7fd 100%)}
+    .sky{position:fixed;inset:0;pointer-events:none;background:
+      radial-gradient(45% 40% at 82% 6%,#12bcd622,transparent 70%),radial-gradient(40% 35% at 25% 0%,#1f6bff1c,transparent 70%),radial-gradient(35% 30% at 95% 95%,#22c7681a,transparent 70%)}
+
+    /* labels that ride above the active beacons */
+    .tag{position:fixed;left:0;top:0;z-index:4;pointer-events:none;font:600 12px/1.25 Inter,sans-serif;color:var(--navy);white-space:nowrap;padding:7px 11px 7px 10px;border-radius:10px;
+      background:#fffffff2;border-left:3px solid var(--c);box-shadow:0 8px 24px #0a163324;opacity:0;transition:opacity .4s;transform:translate(-50%,calc(-100% - 16px))}
+    .tag.show{opacity:1}
+    .tag small{display:block;font-weight:500;font-size:10.5px;color:var(--muted)}
+
+    /* ---------- foreground ---------- */
+    .ui{position:relative;z-index:5;height:100dvh;display:grid;grid-template-rows:auto 1fr auto;padding:24px clamp(16px,4vw,60px) clamp(18px,4vh,40px);pointer-events:none}
+    .ui a,.ui .card{pointer-events:auto}
+    nav{display:flex;justify-content:flex-end}
+    .ghost{font:600 13.5px Inter,sans-serif;color:var(--navy);text-decoration:none;padding:10px 16px;border-radius:999px;border:1px solid #0a16331f;background:#ffffffb3;backdrop-filter:blur(10px)}
+    .ghost:hover{border-color:var(--cyan)}
+
+    .copy{align-self:center;max-width:520px}
+    .logo{display:block;height:clamp(96px,17vh,168px);width:auto;margin:0 0 clamp(18px,3.5vh,34px) -6px;filter:drop-shadow(0 14px 30px #1f6bff26)}
+    h1{font:700 clamp(30px,3.7vw,54px)/1.05 'Space Grotesk',sans-serif;letter-spacing:-1.8px;color:var(--navy);margin:0 0 18px}
+    h1 span{display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .pitch{font-size:clamp(15px,1.15vw,17px);line-height:1.65;color:var(--muted);margin:0 0 30px;max-width:470px}
+    .cta{display:inline-flex;align-items:center;gap:12px;font:700 17px 'Space Grotesk',sans-serif;color:#fff;text-decoration:none;padding:16px 16px 16px 28px;border-radius:999px;background:var(--grad);box-shadow:0 14px 36px #1f6bff40,0 4px 10px #12bcd633;transition:transform .25s,box-shadow .25s}
+    .cta i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:var(--blue);transition:transform .25s}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 18px 44px #22c76850,0 6px 14px #1f6bff33}
+    .cta:hover i{transform:translateX(4px) rotate(-45deg)}
+
+    .foot{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+    .credit{font-size:10.5px;color:#5b6a86b3;pointer-events:auto}
+    .credit a{color:inherit}
+    .card{width:350px;padding:16px 18px;border-radius:20px;background:#ffffffe0;border:1px solid #ffffff;backdrop-filter:blur(16px);box-shadow:0 24px 60px #0a163322}
+    .card .top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#0b8aa0}
+    .card .top em{font-style:normal;color:var(--muted);letter-spacing:.4px}
+    .live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px;animation:live 1.8s infinite}
+    @keyframes live{0%{box-shadow:0 0 0 0 #22c76899}100%{box-shadow:0 0 0 9px #22c76800}}
+    .pair{margin:12px 0 11px;display:grid;gap:8px}
+    .pair div{display:flex;gap:9px;align-items:center;font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.3}
+    .pair div:before{content:'';flex:none;width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 22%,transparent)}
+    .pair div small{margin-left:auto;font-weight:500;font-size:11px;color:var(--muted);white-space:nowrap}
+    .pair .dom{--c:var(--blue)}.pair .gpc{--c:var(--green)}
+    .meter{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding-top:11px;border-top:1px solid var(--line)}
+    .meter b{font:600 19px 'Space Grotesk',sans-serif;color:var(--navy)}
+    .dots{display:flex;gap:5px}.dots i{width:16px;height:3px;border-radius:3px;background:#0a16331a;transition:background .4s}.dots i.on{background:var(--grad)}
+    .fade{animation:fade .5s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    @media (max-width:860px){
+      .plane{--px:-22vw;--py:4vh}
+      .fog{background:linear-gradient(180deg,var(--bg) 0%,#f3f7fdf2 44%,#f3f7fd66 62%,transparent 78%),radial-gradient(140% 120% at 50% 60%,transparent 62%,#f3f7fd 100%)}
+      .ui{padding-top:14px}
+      nav{display:none}
+      .tag{display:none}
+      .copy{align-self:start;margin-top:2vh}
+      .logo{height:clamp(70px,11vh,110px);margin-bottom:14px}
+      h1{letter-spacing:-1.1px;margin-bottom:10px}
+      .pitch{font-size:14px;margin-bottom:18px}
+      .copy{grid-row:2}
+      .foot{grid-row:3;flex-direction:column-reverse;align-items:center;gap:8px}
+      .card{width:100%;max-width:420px}
+    }
+    @media (max-height:720px) and (min-width:861px){.pitch{margin-bottom:20px}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
 </head>
 <body>
-  <div id="gmap-layer"><div id="gmap" aria-label="Map of planned utility projects"></div></div>
-  <div id="app"></div>
-  <script src="config.js" onerror="window.GRIDLOCK_CONFIG={}"></script>
-  <script src="api.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="app.js"></script>
-  <script src="backend.js"></script>
-  <script src="gmap.js"></script>
+  <div class="stage" aria-hidden="true">
+    <div class="plane" id="plane"><div class="basemap"></div><div class="wash"></div></div>
+  </div>
+  <div class="sky"></div>
+  <div class="fog"></div>
+  <div id="tags"></div>
+
+  <div class="ui">
+    <nav><a class="ghost" href="app.html">Open the app</a></nav>
+
+    <section class="copy">
+      <img class="logo" src="assets/contractmap-logo.png" alt="ContractMap">
+      <h1>Every utility project.<span>One shared map.</span></h1>
+      <p class="pitch">ContractMap pinpoints utility projects so contractors can spot nearby work, coordinate road closures, share equipment and hire local crews, cutting costs and keeping our communities moving.</p>
+      <a class="cta" href="app.html">Let’s get started <i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    </section>
+
+    <div class="foot">
+      <div class="credit">Map: <a href="https://www.usgs.gov/programs/national-geospatial-program/national-map" target="_blank" rel="noopener">USGS The National Map</a></div>
+      <div class="card" aria-live="polite">
+        <div class="top"><span><span class="live"></span>Match found</span><em id="mIndex"></em></div>
+        <div class="pair" id="mPair"></div>
+        <div class="meter"><span><b id="mDist"></b> mi apart</span><span class="dots" id="mDots"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/challenge.js"></script>
+  <script>
+  (() => {
+    const data = window.GRIDLOCK_CHALLENGE;
+    const projects = data.projects.filter(p => Number.isFinite(p.lat_center) && Number.isFinite(p.lon_center));
+    const byId = Object.fromEntries(projects.map(p => [p.project_id, p]));
+    const matches = [...data.overlaps].sort((a, b) => a.distance_mi - b.distance_mi);
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isDom = p => p.utility.includes('Dominion');
+
+    // ---- projection: Web Mercator, matching the stitched USGS tiles (zoom 5, x 4-10, y 10-13) ----
+    const Z = 32, TX = 4, TY = 10;
+    const P = (lat, lon) => { const r = lat * Math.PI / 180;
+      return [((lon + 180) / 360 * Z - TX) * 256, ((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * Z - TY) * 256]; };
+
+    // ---- beacons + match rings ----
+    const plane = document.getElementById('plane'), beacons = {};
+    projects.forEach((p, i) => {
+      const [x, y] = P(p.lat_center, p.lon_center), el = document.createElement('div');
+      el.className = 'beacon ' + (isDom(p) ? 'dom' : 'gpc');
+      el.style.cssText = `left:${x}px;top:${y}px;--h:${30 + (i * 13) % 26}px;--d:${i * .3}s`;
+      el.innerHTML = '<div class="base"></div><div class="beam"><div class="head"></div></div>';
+      el.title = p.project_name;
+      plane.appendChild(el); beacons[p.project_id] = el;
+    });
+    const zone = document.createElement('div'); zone.className = 'zone'; zone.innerHTML = '<i></i><i></i><i></i>'; plane.appendChild(zone);
+
+    const nice = s => { s = s.split(':')[0].replace(/^SAV\s*/, '').trim(); return s === s.toUpperCase() ? s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()).replace(/(\d+)kv\b/gi, '$1 kV').replace(/\(Usa\)/, '(USA)').replace(/\s*\(Sav\)/, '') : s; };
+    const util = p => isDom(p) ? 'Dominion Energy SC' : 'Georgia Power';
+    const tagA = document.createElement('div'), tagB = document.createElement('div');
+    tagA.className = tagB.className = 'tag'; document.getElementById('tags').append(tagA, tagB);
+
+    const $ = id => document.getElementById(id);
+    $('mDots').innerHTML = matches.map(() => '<i></i>').join('');
+
+    let cur = -1, active = [];
+    function show(i) {
+      cur = i; const m = matches[i], a = byId[m.project_id_a], b = byId[m.project_id_b];
+      Object.values(beacons).forEach(el => el.classList.remove('active'));
+      active = [[a, tagA], [b, tagB]];
+      active.forEach(([p]) => beacons[p.project_id].classList.add('active'));
+      const [ax, ay] = P(a.lat_center, a.lon_center), [bx, by] = P(b.lat_center, b.lon_center), r = Math.max(34, Math.hypot(ax - bx, ay - by) + 22);
+      zone.style.cssText = `left:${(ax + bx) / 2}px;top:${(ay + by) / 2}px`;
+      zone.querySelectorAll('i').forEach(c => { c.style.width = c.style.height = r * 2 + 'px'; });
+      zone.classList.remove('on'); void zone.offsetWidth; zone.classList.add('on');
+      active.forEach(([p, t]) => { t.style.setProperty('--c', isDom(p) ? 'var(--blue)' : 'var(--green)'); t.innerHTML = `${nice(p.project_name)}<small>${util(p)}</small>`; });
+      $('mIndex').textContent = `${i + 1} / ${matches.length}`;
+      $('mPair').innerHTML = [a, b].map(p => `<div class="${isDom(p) ? 'dom' : 'gpc'} fade">${nice(p.project_name)}<small>${isDom(p) ? 'Dominion' : 'Georgia Power'}</small></div>`).join('');
+      $('mDist').textContent = m.distance_mi;
+      $('mDots').querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === i));
+    }
+
+    // ---- layout + motion ----
+    function fit() {
+      const small = innerWidth <= 860;
+      const s = small ? Math.min(innerWidth / 900, innerHeight / 1150) : Math.min(innerWidth / 1792, innerHeight / 900) * 1.05;
+      plane.style.setProperty('--scale', Math.max(.36, s).toFixed(3));
+    }
+    let tx = 0, ty = 0, mx = 0, my = 0;
+    addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+    function frame(t) {
+      tx += (mx - tx) * .05; ty += (my - ty) * .05;
+      const drift = reduce ? 0 : Math.sin(t / 7000) * 2.5;
+      plane.style.setProperty('--spin', (-9 + drift + tx * 6).toFixed(2) + 'deg');
+      plane.style.setProperty('--tilt', (48 - ty * 6).toFixed(2) + 'deg');
+      active.forEach(([p, tag]) => {
+        const r = beacons[p.project_id].querySelector('.head').getBoundingClientRect();
+        const half = tag.offsetWidth / 2 + 12; tag.style.left = Math.min(innerWidth - half, Math.max(half, r.left + r.width / 2)) + 'px'; tag.style.top = r.top + 'px'; tag.classList.add('show');
+      });
+      if (active.length === 2) { // stack the labels when the pair sits close together
+        const [ra, rb] = [tagA, tagB].map(el => el.getBoundingClientRect());
+        if (Math.abs(ra.top - rb.top) < ra.height + 6 && Math.abs(ra.left - rb.left) < (ra.width + rb.width) / 2 + 6) tagB.style.top = parseFloat(tagA.style.top) - ra.height - 10 + 'px';
+      }
+      requestAnimationFrame(frame);
+    }
+
+    fit(); addEventListener('resize', fit);
+    show(0);
+    if (!reduce) setInterval(() => show((cur + 1) % matches.length), 4200);
+    requestAnimationFrame(frame);
+  })();
+  </script>
 </body>
 </html>
