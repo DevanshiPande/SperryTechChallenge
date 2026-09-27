@@ -112,3 +112,24 @@ def test_ml_status_and_feedback(client):
     assert client.get("/ml/status").json()["feedback_count"] == 1
     assert client.post(f"/overlaps/{oid}/feedback", json={"useful": "yes"}, headers=A).status_code == 400
     assert client.post(f"/overlaps/{oid}/feedback", json={"useful": True}).status_code == 401
+
+
+def test_missing_end_date_is_predicted_from_the_start(client):
+    p = client.post("/projects", json={"name": "Stevens Creek - Beech Island 115 kV Line Rebuild", "location_text": "Savannah",
+                                       "start_date": "2027-04-05", "voltage_kv": 115, "line_miles": 7.8}, headers=A).json()["project"]
+    w = p["construction_window"]
+    assert w["start"] == "2027-04-05" and w["source"] == "predicted" and w["prediction"]["field"] == "end"
+    assert w["end"] > w["start"] and w["prediction"]["end_low"] <= w["end"] <= w["prediction"]["end_high"]
+    assert p["in_service_date"] == w["end"]
+
+
+def test_contract_with_start_but_no_end_gets_a_predicted_end():
+    from services.contracts import contract_project
+    fields = {"project_name": {"value": "Beech Island 115 kV line rebuild"}, "location_text": {"value": "North Augusta, SC"},
+              "voltage_kv": {"value": 115}, "start_date": {"value": "2027-04-05"}}
+    p = contract_project("CTR_E", {"id": "CMP_A", "name": "A"}, fields)
+    w = p["construction_window"]
+    assert w["start"] == "2027-04-05" and w["prediction"]["field"] == "end" and w["end"] > "2027-04-05"
+    assert p["budget_source"] == ml.BUDGET_SOURCE  # no budget either: predicted too
+    fields["end_date"] = {"value": "2027-12-31"}
+    assert contract_project("CTR_E", {"id": "CMP_A", "name": "A"}, fields)["construction_window"]["end"] == "2027-12-31"

@@ -75,3 +75,20 @@ def test_warm_all_fills_the_cache(client):
     congestion._results.clear()
     congestion.warm_all(pause_s=0)
     assert congestion.cached_count() >= 6
+
+
+def test_project_is_described_and_crossings_say_where(client):
+    c = client.get("/projects/DESC_3/congestion").json()
+    d = c["project"]
+    assert d["kind"] == "line" and d["text"].startswith("Power line from Jasper Substation to Okatie Substation")
+    assert len(d["line"]) == 2 and len(d["sites"]) == 2
+    assert c["crossings"] and all(x["where"] and x["point"] for x in c["crossings"])
+    i95 = next(r for r in c["roads"] if r["road"] == "I-95")
+    assert "mi from" in i95["where"] or "reaches" in i95["where"]
+    assert i95["where"] in i95["popup"]
+
+
+def test_site_names():
+    from services.congestion import site_name
+    assert site_name("Okatie") == "Okatie Substation" and site_name("Jasper Substation") == "Jasper Substation"
+    assert site_name("proposed Hardeeville Tap Station") == "proposed Hardeeville Tap Station"

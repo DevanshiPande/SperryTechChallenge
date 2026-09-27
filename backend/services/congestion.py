@@ -22,8 +22,9 @@ from services.traffic import CLASS_RANK, _refs
 log = logging.getLogger("gridlock.congestion")
 
 DAY_START = 7                 # the daytime closure we predict for: work starting 7 AM
-CROSSED_CLIP_M = 2500         # length of crossed road drawn each side of the crossing
-CROSSROAD_CLIP_M = 1200       # length of a crossroad drawn around its junction
+CROSSED_CLIP_M = 800          # length of crossed road drawn each side of the crossing
+CROSSROAD_RADIUS_M = 1000     # a crossroad counts only if it meets the crossed road this close to the crossing
+CROSSROAD_CLIP_M = 600        # length of a crossroad drawn around its junction
 ACCESS_RADIUS_M = 5000        # main roads this close to a site are its delivery routes
 ACCESS_CLIP_M = 2500          # length drawn around the road's closest point to the site
 MAX_CROSSROADS = 4
@@ -110,7 +111,53 @@ def _daytime_queue(road):
     return round(delay, 1), span, hours
 
 
-def _crossed_road(tx, x, used):
+def site_name(name):
+    """'Okatie' -> 'Okatie Substation'; names that already say what they are stay as they are."""
+    n = (name or "").strip()
+    if not n:
+        return "the site"
+    if n.isupper():
+        n = n.title()
+    n = re.sub(r"\bSubs?\b\.?", "Substation", n)
+    return n if re.search(r"sub|station|switch|plant|tap|site|yard", n, re.I) else f"{n} Substation"
+
+
+def where_on_project(project, point):
+    """Plain-English position of a point on the project: 'where the line reaches Bluffton Substation' or
+    '3.1 mi from Okatie Substation'."""
+    eps = geo.located(project.get("endpoints"))
+    if not eps:
+        return ""
+    d, e = min((geo.haversine_mi(point, e), e) for e in eps)
+    if len(eps) == 1:
+        return f"near {site_name(e.get('name'))}" if d < 1 else f"{d:.1f} mi from {site_name(e.get('name'))}"
+    if d < 0.6:
+        return f"where the line reaches {site_name(e.get('name'))}"
+    return f"{d:.1f} mi from {site_name(e.get('name'))}"
+
+
+def describe(project):
+    """Plain-English one-liner of what the project physically is, plus the geometry to draw it."""
+    from services import needs as N
+    all_eps = project.get("endpoints") or []
+    eps = geo.located(all_eps)
+    sites = [{"name": site_name(e.get("name")), "lat": e["lat"], "lon": e["lon"]} for e in eps]
+    missing = [site_name(e.get("name")) for e in all_eps if e.get("lat") is None]
+    if len(eps) >= 2:
+        miles = N.line_miles(project)
+        text = f"Power line from {sites[0]['name']} to {sites[1]['name']}" + (f", about {miles:.1f} mi" if miles else "")
+        kind = "line"
+    elif eps:
+        text = f"Work at {sites[0]['name']}"
+        kind = "site"
+    else:
+        return {"kind": "unknown", "text": "Location not known", "sites": [], "line": []}
+    if missing:
+        text += f" ({', '.join(missing)} could not be placed on the map)"
+    return {"kind": kind, "text": text + ".", "sites": sites, "line": [[s["lat"], s["lon"]] for s in sites] if kind == "line" else []}
+
+
+def _crossed_road(tx, x, used, project=None):
     """A crossed road: drawn geometry, predicted congestion for daytime work, and the recommended window."""
     pt = Point(*geo._to_utm().transform(x["point"]["lon"], x["point"]["lat"]))
     key = x.get("road_ref") or x.get("road_name") or x.get("osm_id")
@@ -126,7 +173,8 @@ def _crossed_road(tx, x, used):
         "level": level, "vehicles_per_day": x.get("aadt"), "traffic_count_source": x.get("aadt_source"),
         "daytime_closure": _window_label(DAY_START, hours), "daytime_delay_vehicle_hours": delay, "backed_up_hours": span,
         "recommended_window": rec, "recommended_delay_vehicle_hours": x.get("delay_veh_hours"),
-        "point": x["point"], "lines": _clip(tx, idxs, pt, CROSSED_CLIP_M),
+        "point": x["point"], "where": where_on_project(project or {}, x["point"]) if not x.get("user_typed_road") else
+        "listed in the contract", "lines": _clip(tx, idxs, pt, CROSSED_CLIP_M),
     }, pt, idxs
 
 
@@ -139,7 +187,7 @@ def _crossroads(tx, crossed, pt, idxs, used):
     near = tx.roads[idxs[0]]
     for i in idxs[1:]:
         near = near.union(tx.roads[i])
-    near = near.intersection(pt.buffer(CROSSED_CLIP_M))
+    near = near.intersection(pt.buffer(CROSSROAD_RADIUS_M))
     found = {}
     for j in tx.tree.query(near.buffer(15)):
         pj = tx.props[j]
@@ -201,11 +249,12 @@ def popup(r):
     vpd = f"{r['vehicles_per_day']:,} vehicles/day"
     if r["role"] == "crossed":
         when = f"backups {r['backed_up_hours']}" if r.get("backed_up_hours") else "little queueing"
-        return (f"{lvl} congestion expected on {r['road_label']} ({vpd}) if a lane is closed during the day: {when}. "
-                f"Best time to close it: {r['recommended_window']}.")
+        where = f", {r['where']}" if r.get("where") else ""
+        return (f"{lvl} congestion expected on {r['road_label']}{where} ({vpd}) if a lane is closed during the day: "
+                f"{when}. Best time to close it: {r['recommended_window']}.")
     if r["role"] == "crossroad":
-        return (f"{lvl} congestion expected on {r['road_label']} where it meets {r['meets']}: traffic backing up and "
-                f"detouring from the work zone{', ' + r['backed_up_hours'] if r.get('backed_up_hours') else ''}.")
+        return (f"{lvl} congestion expected on {r['road_label']} where it meets {r['meets']}, {r['distance_km']} km from "
+                f"the work zone: traffic backing up and detouring{', ' + r['backed_up_hours'] if r.get('backed_up_hours') else ''}.")
     return (f"{lvl} extra traffic expected on {r['road_label']} ({vpd}) from work trucks near {r.get('near_site') or 'the site'}, "
             f"mostly at rush hours ({r['backed_up_hours']}). Schedule deliveries {r['recommended_window']}.")
 
@@ -324,7 +373,7 @@ def _compute(p, others, today):
     used, roads = set(), []
     seen_roads = set()
     for x in xs:
-        crossed, pt, idxs = _crossed_road(tx, x, used)
+        crossed, pt, idxs = _crossed_road(tx, x, used, p)
         if crossed["road"] in seen_roads:
             continue
         seen_roads.add(crossed["road"])
@@ -342,7 +391,10 @@ def _compute(p, others, today):
     facts = _facts(p, roads, best, nearby)
     text, source = _summary(facts)
     return {
-        "project_id": p["id"], "summary": text, "summary_source": source, "best_time": best, "roads": roads,
+        "project_id": p["id"], "project": describe(p),
+        "crossings": [{"road_label": r["road_label"], "level": r["level"], "point": r["point"], "where": r.get("where")}
+                      for r in roads if r["role"] == "crossed" and r.get("point") and not r["id"].split("_")[-1].startswith("R")],
+        "summary": text, "summary_source": source, "best_time": best, "roads": roads,
         "other_construction": nearby,
         "levels": {"heavy": f"over {LEVELS[0][1]} vehicle-hours of delay for a daytime lane closure",
                    "moderate": f"{LEVELS[1][1]}–{LEVELS[0][1]} vehicle-hours", "light": f"under {LEVELS[1][1]} vehicle-hours"},

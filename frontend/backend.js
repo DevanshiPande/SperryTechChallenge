@@ -209,7 +209,7 @@ async function loadSuggestions(pid) {
   try {
     const s = await API.get('/resources/suggested', pid ? { project_id: pid } : undefined);
     if ((pid || null) !== (state.myFocus || null)) return; // selection changed while loading
-    state.suggested = s; state.suggestedFor = pid || null;
+    state.suggested = s; state.suggestedFor = s?.project_id || null;
   } catch (e) { /* keep the previous suggestions */ }
   render();
 }

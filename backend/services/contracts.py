@@ -238,9 +238,9 @@ def contract_project(cid, company, fields, today=None):
         end = dateparser.parse(str(end)).date().isoformat() if end else None
     except (ValueError, OverflowError):
         raise bad_request("start_date and end_date must be dates")
-    if not end:
-        raise bad_request("An end date (completion or in-service date) is needed to find coordination partners.")
-    if start and end <= start:
+    if not end and not start:
+        raise bad_request("A start date or an end date (completion or in-service date) is needed to find coordination partners.")
+    if start and end and end <= start:
         raise bad_request("The end date must be after the start date.")
     name = _val(fields, "project_name") or "Uploaded contract"
     kv = _val(fields, "voltage_kv")
@@ -254,6 +254,14 @@ def contract_project(cid, company, fields, today=None):
             raise bad_request("The contract has no start date and one could not be predicted; add a start date.")
         window = {"start": pw["start"], "end": end, "source": "predicted", "prediction": pw["prediction"]}
         start_flags = pw["flags"]
+    elif not end:
+        # The contract gives a start but no end date: predict the end from the duration model (never replaces a document date).
+        pe = ml.predicted_end({"id": cid, "name": name, "description": _val(fields, "work_type"), "voltage_kv": kv,
+                               "line_miles": _val(fields, "line_miles")}, start, reference_year=ml.this_year())
+        if not pe:
+            raise bad_request("The contract has no end date and one could not be predicted; add an end date.")
+        end = pe["end"]
+        window = {"start": start, "end": end, "source": "predicted", "prediction": pe["prediction"]}
     p = {"id": cid, "utility": "USER", "utility_name": _val(fields, "owner_company") or (company or {}).get("name") or "Contract",
          "state": None, "name": name, "short_name": name if len(name) <= 40 else name[:39] + "…",
          "voltage_kv": int(kv) if kv else None, "project_type": "line" if len(eps) == 2 else "substation", "status": "Planned",
@@ -365,10 +373,10 @@ def save(ident, cid):
                 if existing in (o["project_a"], o["project_b"])], "closure_conflicts": [], "already_saved": True}
     fields = doc.get("reviewed_fields") or doc["extracted"]
     p = contract_project(cid, company, fields)
-    predicted_start = p["construction_window"].get("source") == "predicted"
+    predicted = ml.predicted_field(p["construction_window"])
     body = {"name": p["name"], "description": p.get("description"),
-            "start_date": None if predicted_start else p["construction_window"]["start"],
-            "end_date": p["construction_window"]["end"], "endpoints": [{"name": e["name"], "lat": e["lat"], "lon": e["lon"]} for e in p["endpoints"]],
+            "start_date": None if predicted == "start" else p["construction_window"]["start"],
+            "end_date": None if predicted == "end" else p["construction_window"]["end"], "endpoints": [{"name": e["name"], "lat": e["lat"], "lon": e["lon"]} for e in p["endpoints"]],
             "voltage_kv": p.get("voltage_kv"), "work_type": p.get("work_type_label"), "roads_affected": p.get("roads_affected"),
             "lane_closures": p.get("lane_closures"), "work_hours": p.get("work_hours"),
             "budget_usd": p.get("budget_usd") if p.get("budget_source") == "contract" else None,

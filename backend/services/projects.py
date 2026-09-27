@@ -241,9 +241,9 @@ def build_user_project(pid, company, data, today=None):
         raise bad_request("name is required")
     start = parse_iso(data.get("start_date"), "start_date")
     end = parse_iso(data.get("end_date"), "end_date")
-    if not end:
-        raise bad_request("end_date is required (start_date can be predicted, the end date cannot)")
-    if start and end <= start:
+    if not end and not start:
+        raise bad_request("start_date or end_date is required (the missing one is predicted)")
+    if start and end and end <= start:
         raise bad_request("end_date must be after start_date")
     eps, geocoded = resolve_location(data.get("location_text"), data.get("endpoints"))
     kv = data.get("voltage_kv")
@@ -267,6 +267,14 @@ def build_user_project(pid, company, data, today=None):
             raise bad_request("end_date is too soon for a predicted start (it would start after it ends); give a start_date")
         window = {"start": pw["start"], "end": end, "source": "predicted", "prediction": pw["prediction"]}
         start_flags = pw["flags"]
+    elif not end:
+        # Missing end date: start + predicted construction duration.
+        pe = ml.predicted_end({"id": pid, "name": name, "description": data.get("description"), "voltage_kv": kv,
+                               "line_miles": data.get("line_miles")}, start, reference_year=ml.this_year())
+        if not pe:
+            raise bad_request("end_date is required (the duration model is not available)")
+        end = pe["end"]
+        window = {"start": start, "end": end, "source": "predicted", "prediction": pe["prediction"]}
     p = {
         "id": pid,
         "utility": "USER",
@@ -381,8 +389,8 @@ def update_user_project(ident, pid, fields):
     if unknown:
         raise bad_request(f"unknown fields: {', '.join(sorted(unknown))}")
     merged = {"name": doc["name"], "description": doc.get("description"),
-              "start_date": None if doc["construction_window"].get("source") == "predicted" else doc["construction_window"]["start"],
-              "end_date": doc["construction_window"]["end"], "line_miles": doc.get("line_miles"),
+              "start_date": None if ml.predicted_field(doc["construction_window"]) == "start" else doc["construction_window"]["start"],
+              "end_date": None if ml.predicted_field(doc["construction_window"]) == "end" else doc["construction_window"]["end"], "line_miles": doc.get("line_miles"),
               "voltage_kv": doc.get("voltage_kv"), "work_type": doc.get("work_type"),
               "roads_affected": doc.get("roads_affected"), "lane_closures": doc.get("lane_closures"),
               "work_hours": doc.get("work_hours"), "planning_authority": doc.get("planning_authority"),

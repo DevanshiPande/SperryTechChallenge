@@ -116,12 +116,26 @@
     const key = c && c.roads ? id + ':' + c.roads.length + ':' + (c.summary || '').length : '';
     if (key === roadsKey) return;
     roadsKey = key;
-    roadLines.forEach(l => l.setMap(null));
+    roadLines.forEach(l => (l.setMap ? l.setMap(null) : (l.map = null)));
     roadLines = [];
     if (infoWin) infoWin.close();
     if (!key) return;
+    const p = byId[id];
+    // The project itself: its line from substation to substation (dashed), and a label at each end.
+    const projColor = p?.mine ? '#7c3aed' : p?.utility?.includes('Dominion') ? '#0f98a8' : '#df9c17';
+    const proj = c.project || {};
+    if ((proj.line || []).length >= 2) {
+      roadLines.push(new google.maps.Polyline({ map, path: proj.line.map(([lat, lng]) => ({ lat, lng })), strokeOpacity: 0, zIndex: 30,
+        icons: [{ icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, strokeColor: projColor, strokeWeight: 4, scale: 3 }, offset: '0', repeat: '14px' }] }));
+    }
+    (proj.sites || []).forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'site-label';
+      el.innerHTML = `<span class="site-dot" style="background:${projColor}"></span>${esc(s.name)}`;
+      roadLines.push(new AdvancedMarker({ map, position: { lat: s.lat, lng: s.lon }, content: el, zIndex: 900 }));
+    });
     const popup = (r, at) => {
-      infoWin = infoWin || new google.maps.InfoWindow();
+      infoWin = infoWin || new google.maps.InfoWindow({ maxWidth: 260 });
       infoWin.setContent(`<div class="congestion-pop"><b>Predicted congestion · ${r.level}</b><p>${esc(r.popup)}</p></div>`);
       infoWin.setPosition(at);
       infoWin.open({ map });
@@ -132,11 +146,23 @@
       (r.lines || []).forEach(part => {
         const path = part.map(([lat, lng]) => ({ lat, lng }));
         pts.push(...path);
-        const line = new google.maps.Polyline({ map, path, strokeColor: LEVEL_COLOR[r.level], strokeOpacity: 0.9,
-          strokeWeight: r.role === 'crossed' ? 8 : 6, zIndex: 10 + order[r.level], clickable: true });
+        // Quiet (light) roads are drawn thin and faint so the congested ones stand out.
+        const quiet = r.level === 'light';
+        const line = new google.maps.Polyline({ map, path, strokeColor: LEVEL_COLOR[r.level], strokeOpacity: quiet ? 0.55 : 0.9,
+          strokeWeight: quiet ? 3 : r.role === 'crossed' ? 8 : 6, zIndex: 10 + order[r.level], clickable: true });
         line.addListener('click', e => popup(r, e.latLng));
         roadLines.push(line);
       });
+    });
+    // A dot where the project crosses each road, colored by congestion.
+    (c.crossings || []).forEach(x => {
+      const el = document.createElement('div');
+      el.className = `xing-dot ${x.level}`;
+      el.title = `${x.road_label} · ${x.where || ''}`;
+      const road = c.roads.find(r => r.role === 'crossed' && r.road_label === x.road_label);
+      const m = new AdvancedMarker({ map, position: { lat: x.point.lat, lng: x.point.lon }, content: el, zIndex: 800, gmpClickable: true });
+      if (road) m.addListener('gmp-click', () => popup(road, { lat: x.point.lat, lng: x.point.lon }));
+      roadLines.push(m);
     });
     // Open the popup on the most congested road that is drawn.
     const worst = c.roads.find(r => (r.lines || []).length && r.level !== 'light') || c.roads.find(r => (r.lines || []).length);
@@ -147,8 +173,9 @@
     }
     // Make sure the colored roads are in view too.
     if (pts.length) {
-      const p = byId[id], b = new google.maps.LatLngBounds();
+      const b = new google.maps.LatLngBounds();
       pts.forEach(q => b.extend(q));
+      (proj.line || []).forEach(([lat, lng]) => b.extend({ lat, lng }));
       (p?.endpoints || []).forEach(e => Number.isFinite(e.lat) && b.extend({ lat: e.lat, lng: e.lon }));
       const a = openArea();
       map.fitBounds(b, { left: a.left + 40, right: innerWidth - a.right + 40, top: a.top + 60, bottom: innerHeight - a.bottom + 40 });

@@ -86,9 +86,45 @@ def predicted_window(project, reference_year=FILING_YEAR, not_before=None):
         log.warning("duration prediction failed for %s: %s", project.get("id"), e)
         return None
     return {"start": r["start_date"], "flags": r["flags"],
-            "prediction": {"months": r["months"], "low": r["low"], "high": r["high"],
+            "prediction": {"field": "start", "months": r["months"], "low": r["low"], "high": r["high"],
                            "typical_error_months": r["typical_error_months"], "method": r["method"],
                            "trained_on": r["trained_on"], "label": "predicted"}}
+
+
+def predicted_end(project, start, reference_year=None):
+    """{"end", "end_range", "prediction"} for a project with a start date but no end date; None if not possible.
+    The duration model takes the finish year as an input, so this solves start + duration(finish) = finish by
+    iterating (it settles in 2-3 steps)."""
+    P = _predict()
+    if P is None or not start:
+        return None
+    import pandas as pd
+    try:
+        f, ref, s = features(project), reference_year or this_year(), pd.Timestamp(start)
+        months, r = 24.0, None
+        for _ in range(4):
+            need = (s + pd.DateOffset(months=int(round(months)))).date().isoformat()
+            r = P.predict_duration(f["project_type"], f["work_type_"], f["voltage_kv"], f["line_miles"], need, ref)
+            if abs(r["months"] - months) < 0.5:
+                break
+            months = r["months"]
+    except Exception as e:
+        log.warning("end-date prediction failed for %s: %s", project.get("id"), e)
+        return None
+    at = lambda m: (s + pd.DateOffset(months=int(round(m)))).date().isoformat()
+    return {"end": at(r["months"]), "end_range": [at(r["low"]), at(r["high"])],
+            "prediction": {"field": "end", "months": r["months"], "low": r["low"], "high": r["high"],
+                           "end_low": at(r["low"]), "end_high": at(r["high"]),
+                           "typical_error_months": r["typical_error_months"], "method": r["method"],
+                           "trained_on": r["trained_on"], "label": "predicted"}}
+
+
+def predicted_field(window):
+    """Which date of a construction window was predicted: "start", "end" or None."""
+    w = window or {}
+    if w.get("source") != "predicted":
+        return None
+    return (w.get("prediction") or {}).get("field", "start")
 
 
 def predicted_budget(project):
