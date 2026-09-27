@@ -3,9 +3,9 @@ const projects = source.projects;
 const overlaps = source.overlaps;
 const byId = Object.fromEntries(projects.map(p => [p.project_id, p]));
 const demoResources = [
-  { id: 'R1', name: 'Bucket trucks with operators', quantity: 2, date: 'Jun 3–10, 2027', start: '2027-06-03', end: '2027-06-10', place: 'Savannah yard', rate: 1250, type: 'Equipment', owner: 'Demo Contractor B' },
-  { id: 'R2', name: '60-ton crane', quantity: 1, date: 'Jun 12–18, 2027', start: '2027-06-12', end: '2027-06-18', place: 'Pooler, GA', rate: 2100, type: 'Equipment', owner: 'Coastal Crane (demo)' },
-  { id: 'R3', name: 'Certified lineworkers', quantity: 5, date: 'Jul 1–20, 2027', start: '2027-07-01', end: '2027-07-20', place: 'Savannah, GA', rate: 0, type: 'Crew', owner: 'Line Crews Co. (demo)' }
+  { id: 'R1', category: 'Bucket trucks', name: 'Bucket trucks with operators', quantity: 2, date: 'Jun 3–10, 2027', start: '2027-06-03', end: '2027-06-10', place: 'Savannah yard', rate: 1250, type: 'Equipment', owner: 'Demo Contractor B' },
+  { id: 'R2', category: 'Cranes', name: '60-ton crane', quantity: 1, date: 'Jun 12–18, 2027', start: '2027-06-12', end: '2027-06-18', place: 'Pooler, GA', rate: 2100, type: 'Equipment', owner: 'Coastal Crane (demo)' },
+  { id: 'R3', category: 'Line crew', name: 'Certified lineworkers', quantity: 5, date: 'Jul 1–20, 2027', start: '2027-07-01', end: '2027-07-20', place: 'Savannah, GA', rate: 0, type: 'Crew', owner: 'Line Crews Co. (demo)' }
 ];
 const demoJobs = [
   { id: 'J1', name: 'Transmission lineworker', openings: 5, place: 'Savannah, GA', lat: 32.0809, lon: -81.0912, pay: '$34–$42/hr', dates: 'Dec 2026–Mar 2027', quals: ['OSHA 30', 'CDL Class A', 'Aerial lift'], owner: 'Southeast Power Co. (demo)' },
@@ -142,7 +142,9 @@ const PLACES = {
   'Okatie, SC': [32.3363, -80.9387], 'Jesup, GA': [31.6074, -81.8854], 'Augusta, GA': [33.4735, -82.0105],
   'Charleston, SC': [32.7765, -79.9311]
 };
-const CATEGORIES = { 'Bucket trucks': 'Equipment', 'Digger derricks': 'Equipment', 'Cranes': 'Equipment', 'Excavators': 'Equipment', 'Line crew': 'Crew', 'Materials': 'Materials', 'Other': 'Equipment' };
+const CATEGORIES = { 'Bucket trucks': 'Equipment', 'Digger derricks': 'Equipment', 'Cranes': 'Equipment', 'Excavators': 'Equipment', 'Trenchers': 'Equipment', 'Line crew': 'Crew', 'Materials': 'Materials', 'Other': 'Equipment' };
+// Photos per category; categories without one fall back to the drawn icon.
+const CATEGORY_PHOTOS = { 'Bucket trucks': 'assets/inventory/bucket-truck.jpg', 'Cranes': 'assets/inventory/crane.jpg', 'Digger derricks': 'assets/inventory/digger-derrick.jpg', 'Excavators': 'assets/inventory/excavator.jpg', 'Trenchers': 'assets/inventory/trencher.jpg', 'Line crew': 'assets/inventory/line-crew.jpg', 'Materials': 'assets/inventory/materials.jpg' };
 const RADII = [10, 25, 50, 100];
 const MONTHS = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
 function milesBetween([lat1, lon1], [lat2, lon2]) {
@@ -163,6 +165,7 @@ function resourceMissing(d) {
     .filter(([k]) => !d[k]).map(([, label]) => label);
 }
 function resourceIcon(category) {
+  if (CATEGORY_PHOTOS[category]) return `<img src="${CATEGORY_PHOTOS[category]}" alt="${esc(category)}">`;
   const truck = '<path d="M8 50h52V34H40l-6-10H8z" fill="#0d3554"/><path d="M60 50h14l6-10-8-6H60z" fill="#1199a9"/><path d="M22 24 46 6l4 4-22 16" stroke="#df9c17" stroke-width="4" fill="none"/><rect x="44" y="2" width="10" height="8" rx="2" fill="#df9c17"/><circle cx="22" cy="52" r="7" fill="#113a53" stroke="#fff" stroke-width="3"/><circle cx="66" cy="52" r="7" fill="#113a53" stroke="#fff" stroke-width="3"/>';
   const crew = '<circle cx="26" cy="22" r="10" fill="#1199a9"/><circle cx="56" cy="22" r="10" fill="#df9c17"/><path d="M8 58c0-12 8-20 18-20s18 8 18 20zM38 58c0-12 8-20 18-20s18 8 18 20z" fill="#0d3554"/><path d="M15 16h22M45 16h22" stroke="#df9c17" stroke-width="4"/>';
   const crate = '<rect x="12" y="14" width="56" height="40" rx="4" fill="#0d3554"/><path d="M12 28h56M40 14v40" stroke="#1199a9" stroke-width="4"/>';
@@ -216,11 +219,11 @@ function resourceModal() {
   </div>`;
 }
 function resourceFromText(text) {
-  const d = state.resourceDraft, n = '(\\d+|two|three|four|five|six|seven|eight|nine|ten)';
-  const words = { two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
-  const cat = /bucket/i.test(text) ? 'Bucket trucks' : /digger|derrick/i.test(text) ? 'Digger derricks' : /crane/i.test(text) ? 'Cranes' : /excavator/i.test(text) ? 'Excavators' : /lineworker|crew|workers?\b/i.test(text) ? 'Line crew' : /material|pole|conductor|wire|transformer/i.test(text) ? 'Materials' : '';
+  const d = state.resourceDraft, n = '(\\d+|an?|one|two|three|four|five|six|seven|eight|nine|ten)';
+  const words = { a: 1, an: 1, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
+  const cat = /bucket/i.test(text) ? 'Bucket trucks' : /digger|derrick/i.test(text) ? 'Digger derricks' : /crane/i.test(text) ? 'Cranes' : /excavator/i.test(text) ? 'Excavators' : /trench/i.test(text) ? 'Trenchers' : /lineworker|crew|workers?\b/i.test(text) ? 'Line crew' : /material|pole|conductor|wire|transformer/i.test(text) ? 'Materials' : '';
   if (cat) d.category = cat;
-  const q = text.match(new RegExp(`\\b${n}\\s+(?:certified\\s+)?(?:bucket|truck|crane|digger|excavator|lineworker|worker|crew)`, 'i'));
+  const q = text.match(new RegExp(`\\b${n}\\s+(?:certified\\s+)?(?:bucket|truck|crane|digger|excavator|trencher|lineworker|worker|crew)`, 'i'));
   if (q) d.quantity = words[q[1].toLowerCase()] || Number(q[1]);
   const place = Object.keys(PLACES).find(k => new RegExp(k.split(',')[0], 'i').test(text));
   if (place) d.location = place;
@@ -236,14 +239,16 @@ function resourceFromText(text) {
   if (d.category) {
     const plural = d.category.toLowerCase();
     d.name = d.category === 'Line crew' ? 'Certified line crew' : d.operator === 'Yes' ? `${d.category} with operators` : d.category;
-    d.description = `${d.quantity ? (words[d.quantity] ? d.quantity : Object.keys(words).find(w => words[w] === Number(d.quantity)) || d.quantity) : 'Some'} ${d.category === 'Line crew' ? 'crew members' : plural} available${d.location ? ' near ' + d.location.split(',')[0] : ''}${d.operator === 'Yes' && d.category !== 'Line crew' ? ' with experienced operators' : ''}.`;
+    const qty = Number(d.quantity), countWord = Object.keys(words).find(w => w.length > 2 && words[w] === qty) || d.quantity || 'Some';
+    const noun = d.category === 'Line crew' ? (qty === 1 ? 'crew member' : 'crew members') : qty === 1 && d.category !== 'Materials' ? plural.replace(/s$/, '') : plural;
+    d.description = `${countWord} ${noun} available${d.location ? ' near ' + d.location.split(',')[0] : ''}${d.operator === 'Yes' && d.category !== 'Line crew' ? ' with experienced operator' + (qty === 1 ? '' : 's') : ''}.`;
     d.description = d.description.charAt(0).toUpperCase() + d.description.slice(1);
   }
 }
 const clockTime = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 function inventoryPage(){
   const tab=(label,action,on)=>`<button class="inv-tab ${on?'active':''}" data-action="${action}" aria-pressed="${on}">${label}</button>`;
-  return head('Inventory','Share equipment and crews, or find what other contractors have available.',`<div class="inv-tabs">${tab('+ Add inventory','invAdd',state.resourceModal)}${tab('⌕ Find inventory','invFind',state.invFind)}</div>`)+(state.resourceModal?resourceModal():state.invFind?findSheet():'');
+  return head('Inventory','Share equipment and crews, or find what other contractors have available.',`<div class="inv-tabs">${tab('Add inventory','invAdd',state.resourceModal)}${tab('Find inventory','invFind',state.invFind)}</div>`)+(state.resourceModal?resourceModal():state.invFind?findSheet():'');
 }
 // Bottom sheet: vertical list of listings on the left, details and order form for the selected one on the right.
 function findSheet(){
@@ -252,12 +257,11 @@ function findSheet(){
   if(sel)state.invSelected=sel.id;
   const rate=r=>r.rate?'$'+r.rate.toLocaleString()+'/day':'Rate on request';
   const rows=state.resources.map(r=>`<button class="inv-row ${r.id===sel?.id?'active':''}" data-action="invSelect:${r.id}" data-type="${esc(r.type)}" data-start="${r.start||''}" data-end="${r.end||''}" data-text="${esc([r.name,r.place,r.owner,r.type].join(' ').toLowerCase())}">
-      <span class="inv-row-top"><strong>${esc(r.name)}</strong>${pill(r.type)}</span>
-      <small>${r.quantity} available · ${esc(r.date)}</small><small>⌖ ${esc(r.place)} · ${rate(r)}</small><span class="inv-partial" hidden>Partly covers your dates</span></button>`).join('');
+      <span class="inv-thumb">${resourceIcon(r.category)}</span><span class="inv-row-body"><span class="inv-row-top"><strong>${esc(r.name)}</strong>${pill(r.type)}</span>
+      <small>${r.quantity} available · ${esc(r.date)}</small><small>⌖ ${esc(r.place)} · ${rate(r)}</small><span class="inv-partial" hidden>Partly covers your dates</span></span></button>`).join('');
   const mine=state.reservations.filter(x=>x.id===sel?.id);
   const detail=sel?`<div class="inv-detail-head"><div>${pill(sel.type)}<h2>${esc(sel.name)}</h2><p class="muted">${esc(sel.owner)}</p></div><div class="inv-price">${rate(sel)}<small>per unit</small></div></div>
       <div class="inv-facts"><div><span>Available</span><strong>${sel.quantity}</strong></div><div><span>Dates</span><strong>${esc(sel.date)}</strong></div><div><span>Pickup</span><strong>${esc(sel.place)}</strong></div></div>
-      <div class="note">Illustrative listing. Confirm availability, rates and terms with the owner before relying on this order.</div>
       <form class="inv-order" onsubmit="return false"><h3>Place an order</h3>
         <div class="inv-order-grid"><label>Quantity<input id="orderQty" class="field" type="number" min="1" max="${sel.quantity}" value="1"></label>
         <label>Dates<input id="orderDates" class="field" value="${esc(state.invFrom&&state.invTo?`${fmtDate(state.invFrom)} – ${fmtDate(state.invTo)}`:sel.date)}"></label>
@@ -299,7 +303,9 @@ function applyInvFilter(){
 }
 function jobsPage(){return head('Staff your projects','Post worker requirements and review applicants.',btn('+ Describe job requirement','addJob','primary'))+`<div class="grid two"><div class="card"><h2>Open job postings ${demo}</h2>${state.jobs.map(j=>`<div class="item"><div class="statusline"><h3>${esc(j.name)}</h3>${pill(j.openings+' openings','amber')}</div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><p class="tiny">${esc(j.owner)}</p>${btn('View role','job:'+j.id)}</div>`).join('')}</div><div class="card stack"><h2>Chat-led posting</h2><div class="bubble">Tell me the role, headcount, project, dates and qualifications. I will prepare a draft for your review.</div><div class="bubble user">We need five certified lineworkers in Savannah this winter.</div><div class="bubble">Which project and pay range should I include?</div>${btn('Continue in chat','addJob','primary accent')}<div class="note">Manual entry remains available from the draft screen.</div></div></div>`;}
 function messagesPage(){const t=costTotals(),s=t.separate-t.coordinated;return head('Contractor messages','Discuss inventory and project coordination with another company.',btn('Call contact','call','secondary'))+`<div class="message-layout"><div class="card"><h2>Conversations</h2><div class="item"><strong>Demo Contractor B</strong><p class="muted">Bucket trucks · Jasper–Okatie ↔ McIntosh–Purrysburg</p></div><div class="item"><strong>Coastal Crane (demo)</strong><p class="muted">Crane availability near Savannah</p></div></div><div class="card message-thread"><h2>Resource discussion ${demo}</h2><div class="bubble">We have two bucket trucks available June 3–10. Can you confirm the project window?</div><div class="bubble user">We are still checking the schedule. Could we review a shared-resource scenario?</div><div class="item"><div class="statusline"><strong>Coordination scenario · for review</strong>${pill('Illustrative','amber')}</div><p>Separate $${t.separate.toLocaleString()} · coordinated $${t.coordinated.toLocaleString()}</p><div class="metric green">$${s.toLocaleString()} potential savings</div><p class="tiny">Assumptions have not been agreed by either contractor.</p>${btn('Open cost comparison','cost')}</div><div class="chat-entry"><input class="field" id="messageText" placeholder="Write a message or ask Gridlock to draft one"><button class="primary" data-action="sendMessage">Send</button></div></div><div class="card"><h2>Opportunity context</h2>${mapHtml({small:true,hover:false})}<div class="stats"><span><b>5.65 mi</b>starter distance</span><span><b>152 days</b>date gap</span></div><p class="muted">No real contractor contact was provided. Phone and messaging are interface concepts.</p>${btn('Discuss assumptions','cost','primary accent')}</div></div>`;}
-function jobCard(j){const saved=state.savedJobs.includes(j.id);return `<div class="item job-card ${j.id===state.selectedJob.id?'selected':''}" data-job="${j.id}"><div class="statusline"><h3>${esc(j.name)}</h3><div class="row wrap">${pill(j.openings+' openings','amber')}<button class="save-heart ${saved?'saved':''}" data-save-job="${j.id}" aria-label="${saved?'Remove from saved jobs':'Save job'}" title="${saved?'Remove from saved jobs':'Save job'}">${saved?'♥':'♡'}</button></div></div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><div class="row wrap">${j.quals.map(q=>pill(q,'gray')).join('')}</div><div class="action">${btn('View job','job:'+j.id,'primary accent')}</div></div>`;}
+// Photo shown on the left of a job posting, matched by role name.
+const JOB_PHOTOS={'Transmission lineworker':'assets/jobs/transmission-lineworker.jpg','Substation electrician':'assets/jobs/substation-electrician.jpg','Bucket truck operator':'assets/jobs/bucket-truck-operator.jpg'};
+function jobCard(j){const saved=state.savedJobs.includes(j.id),photo=JOB_PHOTOS[j.name];return `<div class="item job-card ${photo?'has-photo':''} ${j.id===state.selectedJob.id?'selected':''}" data-job="${j.id}">${photo?`<img class="job-photo" src="${photo}" alt="${esc(j.name)}">`:''}<div class="job-body"><div class="statusline"><h3>${esc(j.name)}</h3><div class="row wrap">${pill(j.openings+' openings','amber')}<button class="save-heart ${saved?'saved':''}" data-save-job="${j.id}" aria-label="${saved?'Remove from saved jobs':'Save job'}" title="${saved?'Remove from saved jobs':'Save job'}">${saved?'♥':'♡'}</button></div></div><p class="muted">${esc(j.place)} · ${esc(j.dates)} · ${esc(j.pay)}</p><div class="row wrap">${j.quals.map(q=>pill(q,'gray')).join('')}</div><div class="action">${btn('View job','job:'+j.id,'primary accent')}</div></div></div>`;}
 function workerJobsPage(){return `<div class="joblayout"><div class="card"><div class="row"><input class="field" id="jobSearch" placeholder="Search trade or qualification" aria-label="Search jobs"><button class="primary" data-action="searchJobs">Search</button></div><p class="muted">${state.jobs.length} sample jobs · ${demo}</p>${state.jobs.map(jobCard).join('')}</div>${mapHtml({jobs:true})}</div>`;}
 function savedJobsPage(){const jobs=state.jobs.filter(j=>state.savedJobs.includes(j.id));return `<div class="card saved-jobs"><h2>Saved postings</h2>${jobs.length?jobs.map(jobCard).join(''):'<div class="note">No saved jobs yet. Select the heart on a job posting to save it here.</div>'}</div>`;}
 function workerJobDetail(){const j=state.selectedJob;return head(j.name,`${j.owner} · ${j.place} · ${demo}`,btn('Back to jobs','findjobs'))+`<div class="grid two"><div class="card stack"><h2>${j.openings} openings · ${j.pay}</h2><p>${j.dates}</p><h3>Requirements</h3><div class="row wrap">${j.quals.map(q=>pill(q)).join('')}</div><p class="muted">Detailed scope, employer verification and actual worksite must be confirmed before applying.</p>${mapHtml({small:true,jobs:true,hover:false})}</div><div class="card"><h2>Apply to this role</h2><div class="fieldgroup"><label>Name</label><input class="field" id="applicantName" value="Jordan Davis"></div><div class="fieldgroup"><label>Qualifications</label><input class="field" id="applicantSkills" value="OSHA 30, CDL Class A"></div><div class="fieldgroup"><label>Availability</label><input class="field" id="applicantAvailability" value="Available for the listed dates"></div><div class="note">Demo action only. No application is sent to an employer.</div><div style="margin-top:18px">${btn('Review and apply','apply','primary accent')}</div></div></div>`;}
@@ -414,7 +420,7 @@ function handleAction(act){
     const kind=act.split(':')[1],d=kind==='project'?(state.projectUpload?.draft||{}):kind==='resource'?state.resourceDraft:state.jobDraft;
     if(!Object.values(d).some(Boolean)){toast('Describe the item or fill its fields first.');return}
     if(kind==='project'){const project={...state.projectUpload.draft,project_id:'UPLOAD_'+Date.now(),project_name:state.projectUpload.draft.project_name||state.projectUpload.name.replace(/\.pdf$/i,''),source:'contract-upload'};state.companyProjects.unshift(project);state.selectedProject=project;state.projectUpload=null;state.page='projectDetail';toast('Contract details added to your company projects.');}
-    else if(kind==='resource'){const miss=resourceMissing(d);if(miss.length){toast('Add '+miss.join(', ')+' before publishing.');return}state.resources.unshift({id:'NEW'+Date.now(),name:d.name||d.category,quantity:Number(d.quantity)||1,date:d.end?`${fmtDate(d.start)} – ${fmtDate(d.end)}`:fmtDate(d.start),start:d.start,end:d.end||d.start,place:d.location,rate:Number(d.rate)||0,type:CATEGORIES[d.category]||'Equipment',owner:'Your company (demo)'});state.resourceDraft={};state.resourceChat=[];state.resourceModal=false;state.invFind=true;state.page='inventory';toast('Demo resource listing added locally.')}
+    else if(kind==='resource'){const miss=resourceMissing(d);if(miss.length){toast('Add '+miss.join(', ')+' before publishing.');return}state.resources.unshift({id:'NEW'+Date.now(),category:d.category,name:d.name||d.category,quantity:Number(d.quantity)||1,date:d.end?`${fmtDate(d.start)} – ${fmtDate(d.end)}`:fmtDate(d.start),start:d.start,end:d.end||d.start,place:d.location,rate:Number(d.rate)||0,type:CATEGORIES[d.category]||'Equipment',owner:'Your company (demo)'});state.resourceDraft={};state.resourceChat=[];state.resourceModal=false;state.invFind=true;state.page='inventory';toast('Demo resource listing added locally.')}
     else{state.jobs.unshift({id:'NEW'+Date.now(),name:d.role||'Untitled opening',openings:Number(d.openings)||1,place:'Location to confirm',pay:'Rate to confirm',dates:d.dates||'Dates to confirm',quals:d.requirements?[d.requirements]:[],owner:'Your company (demo)'});state.page='jobs';toast('Demo job posting added locally.')}
     render();return;
   }
