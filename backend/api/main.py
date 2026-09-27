@@ -113,7 +113,9 @@ def create_app(skip_startup=False):
     app = FastAPI(title="ContractMap API", version="1.0", lifespan=lifespan)
     app.state.skip_startup = skip_startup
     origins = [o.strip() for o in os.environ.get("CORS_ORIGINS", "*").split(",") if o.strip()]
-    app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=False,
+    # Optional pattern, e.g. every Render address of the site: https://contractmap-site(-xxxx)?.onrender.com
+    origin_regex = os.environ.get("CORS_ORIGIN_REGEX") or None
+    app.add_middleware(CORSMiddleware, allow_origins=origins, allow_origin_regex=origin_regex, allow_credentials=False,
                        allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
                        allow_headers=["Content-Type", "X-Company-Id", "X-Worker-Id"])
 

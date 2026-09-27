@@ -1,7 +1,8 @@
-# Render Blueprint for ContractMap: New -> Blueprint -> pick this repo. Secrets marked "sync: false" are entered
-# in the Render dashboard (never committed).
+# Render Blueprint for ContractMap. Render dashboard -> New -> Blueprint -> pick this repo (branch main).
+# You are asked for the four secrets marked "sync: false"; everything else is set here.
 services:
-  # Backend API (FastAPI). ~435 MB in memory (road network, traffic model, ML models): Standard plan (2 GB).
+  # ---------------- Backend API (FastAPI) ----------------
+  # Uses ~450 MB of memory (road network, traffic model, ML models), so it needs the Standard plan (2 GB).
   - type: web
     name: contractmap-api
     runtime: python
@@ -14,44 +15,50 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
-      - key: MONGO_URI
+      - key: MONGO_URI            # secret: MongoDB Atlas connection string
         sync: false
       - key: MONGO_DB
         value: gridlock
-      - key: GEMINI_API_KEY
+      - key: GEMINI_API_KEY       # secret
         sync: false
       - key: GEMINI_MODEL
         value: gemini-3.8-flash
       - key: GEMINI_TIMEOUT_S
         value: "20"
-      - key: NOMINATIM_EMAIL
+      - key: NOMINATIM_EMAIL      # secret: contact email for the address lookup service
         sync: false
-      # Only the ContractMap site (and local testing) may call the API from a browser.
+      # Browsers may call the API only from the ContractMap site. The pattern accepts whatever Render address the
+      # site gets (contractmap-site.onrender.com, or contractmap-site-xxxx.onrender.com if that name is taken);
+      # localhost:5500 keeps local testing working.
       - key: CORS_ORIGINS
-
-        value: https://contractmap-site.onrender.com
-
-      # Pre-compute (or load from the database) traffic congestion for every project at startup.
+        value: http://localhost:5500
+      - key: CORS_ORIGIN_REGEX
+        value: https://contractmap-site(-[a-z0-9]+)?\.onrender\.com
+      # Load (or compute) traffic congestion for every project at startup so the map is instant.
       - key: GRIDLOCK_WARM_CONGESTION
         value: "1"
 
-  # Landing page (index.html) + app (app.html): a static site. config.js is written at build time from the
-  # settings below, so the Maps key is never committed.
+  # ---------------- Website: landing page (index.html) + app (app.html) ----------------
+  # A static site. config.js is written at build time: the Maps key is never committed, and the API address is
+  # taken from the API service above (whatever address Render gives it).
   - type: web
     name: contractmap-site
     runtime: static
     rootDir: frontend
     buildCommand: >-
-      printf "window.GRIDLOCK_CONFIG = { apiUrl: '%s', googleMapsApiKey: '%s', googleMapsMapId: 'DEMO_MAP_ID' };\n"
-      "$API_URL" "$MAPS_KEY" > config.js
+      printf "window.GRIDLOCK_CONFIG = { apiUrl: 'https://%s', googleMapsApiKey: '%s', googleMapsMapId: 'DEMO_MAP_ID' };\n"
+      "$API_HOST" "$MAPS_KEY" > config.js && echo "config.js written, apiUrl https://$API_HOST"
     staticPublishPath: .
     headers:
-      # HTML and scripts are re-checked on every visit so a new deploy shows up immediately.
+      # Pages and scripts are re-checked on every visit, so a new deploy shows up immediately.
       - path: /*
         name: Cache-Control
         value: no-cache
     envVars:
-      - key: API_URL
-        value: https://contractmap-api.onrender.com
-      - key: MAPS_KEY
+      - key: API_HOST             # e.g. contractmap-api.onrender.com, filled in by Render from the API service
+        fromService:
+          type: web
+          name: contractmap-api
+          property: host
+      - key: MAPS_KEY             # secret: Google Maps JavaScript API key
         sync: false
