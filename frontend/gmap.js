@@ -44,8 +44,19 @@
   };
 
   // Called from render() so markers follow role and selection changes.
+  // If Google's marker code fails (e.g. an expired or over-quota key), fall back to the schematic map
+  // instead of breaking the whole page.
   window.syncGoogleMap = () => {
     if (!map) return;
+    try { syncMarkers(); } catch (e) {
+      console.warn('Google Maps failed; showing the schematic map instead.', e);
+      map = null; window.gridlockMap = null;
+      window.gridlockMapLive = false;
+      document.body.classList.remove('has-gmap');
+      if (!window.gmapFailedNotice) { window.gmapFailedNotice = true; setTimeout(() => toast('Google Maps is not working (check the API key). Showing the schematic map instead.'), 0); }
+    }
+  };
+  function syncMarkers() {
     markers.forEach(m => (m.map = null));
     const worker = state.role === 'worker';
     const items = worker
@@ -57,13 +68,13 @@
       : projects.filter(hasCoords).filter(projectVisible).map(p => ({
           id: p.project_id, title: p.project_name, lat: p.lat_center, lng: p.lon_center,
           cls: `${pinClass(p)} ${selectedPinIds().includes(p.project_id) ? 'selected' : ''}`, z: p.mine ? 1000 : undefined,
-          onClick: () => { focusMyProject(p.project_id, { zoom: false }); render(); }
+          onClick: () => { selectSite(p.project_id); render(); }
         }));
     markers = items.map(it => {
       const el = document.createElement('div');
       el.className = `gpin ${it.cls}`;
       el.dataset.pid = it.id;
-      const marker = new AdvancedMarker({ map, position: { lat: it.lat, lng: it.lng }, content: el, title: it.title, gmpClickable: true, zIndex: it.z });
+      const marker = new AdvancedMarker({ map, position: { lat: it.lat, lng: it.lng }, content: el, title: it.title, gmpClickable: true, ...(it.z != null ? { zIndex: it.z } : {}) });
       marker.addEventListener('gmp-click', it.onClick);
       return marker;
     });
@@ -82,7 +93,7 @@
       if (pin && pin.getBoundingClientRect().width) positionHovercard();
       else if (tries++ < 60) requestAnimationFrame(waitForPin);
     })();
-  };
+  }
 
   // Screen area not covered by the sidebar, floating cards, top bar and chat bar.
   function openArea() {
@@ -108,10 +119,10 @@
     google.maps.event.addListenerOnce(map, 'idle', () => { if (map.getZoom() > 13) map.setZoom(13); positionHovercard(); });
   }
 
-  // Predicted congestion: colored road lines around your focused project, with a popup per road.
+  // Predicted congestion (Traffic & timing only): colored road lines around the project opened there, with a popup per road.
   const LEVEL_COLOR = { heavy: '#d93025', moderate: '#f29900', light: '#f4c20d' };
   function drawCongestion(worker) {
-    const id = !worker && state.page === 'map' && state.myFocus;
+    const id = !worker && state.page === 'feasibility' && state.trafficProject;
     const c = id && (state.congestion || {})[id];
     const key = c && c.roads ? id + ':' + c.roads.length + ':' + (c.summary || '').length : '';
     if (key === roadsKey) return;
@@ -164,13 +175,7 @@
       if (road) m.addListener('gmp-click', () => popup(road, { lat: x.point.lat, lng: x.point.lon }));
       roadLines.push(m);
     });
-    // Open the popup on the most congested road that is drawn.
-    const worst = c.roads.find(r => (r.lines || []).length && r.level !== 'light') || c.roads.find(r => (r.lines || []).length);
-    if (worst) {
-      const part = worst.lines[0];
-      const mid = part[Math.floor(part.length / 2)];
-      popup(worst, { lat: mid[0], lng: mid[1] });
-    }
+    // Popups open when a road is clicked; the Congestion card already lists every road.
     // Make sure the colored roads are in view too.
     if (pts.length) {
       const b = new google.maps.LatLngBounds();

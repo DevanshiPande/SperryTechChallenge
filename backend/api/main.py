@@ -110,7 +110,7 @@ async def lifespan(app):
 
 def create_app(skip_startup=False):
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
-    app = FastAPI(title="Gridlock API", version="1.0", lifespan=lifespan)
+    app = FastAPI(title="ContractMap API", version="1.0", lifespan=lifespan)
     app.state.skip_startup = skip_startup
     origins = [o.strip() for o in os.environ.get("CORS_ORIGINS", "*").split(",") if o.strip()]
     app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=False,

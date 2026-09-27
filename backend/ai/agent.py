@@ -35,7 +35,7 @@ def _model_history(messages):
     out = []
     for m in msgs:
         if m["role"] == "note":
-            m = {"role": "user", "text": f"[Gridlock update] {m['text']}"}
+            m = {"role": "user", "text": f"[ContractMap update] {m['text']}"}
         if m["role"] == "user" and out and out[-1]["role"] == "user":
             out[-1] = {"role": "user", "text": out[-1]["text"] + "\n" + m["text"]}
         else:

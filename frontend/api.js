@@ -16,7 +16,7 @@ window.GridlockAPI = (() => {
     try {
       res = await fetch(BASE + path, { method, headers, body: body === undefined ? undefined : JSON.stringify(body), signal: ctrl.signal });
     } catch (e) {
-      const err = new Error(e.name === 'AbortError' ? 'The server took too long to answer.' : `Cannot reach the Gridlock backend at ${BASE}. Is it running?`);
+      const err = new Error(e.name === 'AbortError' ? 'The server took too long to answer.' : `Cannot reach the ContractMap backend at ${BASE}. Is it running?`);
       err.code = 'NETWORK'; err.status = 0; throw err;
     } finally { clearTimeout(timer); }
     const text = await res.text();

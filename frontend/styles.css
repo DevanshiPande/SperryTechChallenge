@@ -30,7 +30,6 @@
 
 .page-projectDetail .grid.two{grid-template-columns:minmax(0,1fr) 430px}
 .page-projectDetail .grid.two>.stack>.card{max-width:620px}
-.page-feasibility .grid.three{grid-template-columns:355px minmax(220px,1fr) 355px}
 .page-addProject .page-chat,.page-addResource .page-chat,.page-addJob .page-chat,.workspace[class*="manual:"] .page-chat{max-width:1200px}
 .chatbar{left:215px;right:20px;bottom:20px;max-width:none;background:#fffffff5;backdrop-filter:blur(22px);border:1px solid white;box-shadow:0 10px 40px #143c5838}
 @media(max-width:1100px){.workspace .grid.three{grid-template-columns:310px 1fr}.workspace .grid.three>.card:last-child{grid-column:1/-1}.stage-map .hovercard{left:50%;top:42%}.top-search{display:none}}
@@ -70,18 +69,18 @@
 @media(min-width:741px){html:has(.page-map),html:has(.page-map) body,html:has(.page-inventory),html:has(.page-inventory) body{overflow:hidden;height:100%}}
 
 /* Top bar: compact, capsule-shaped, frosted glass */
-.topbar{height:52px;min-height:0;gap:10px;padding:0 7px 0 22px;border-radius:999px;border:.5px solid #ffffffcc;background:#ffffffb8;backdrop-filter:saturate(180%) blur(30px);-webkit-backdrop-filter:saturate(180%) blur(30px);box-shadow:0 1px 1px #0000000a,0 8px 28px #1a3b5a1f}
+.topbar{height:52px;min-height:0;gap:10px;padding:0 7px;border-radius:999px;border:.5px solid #ffffffcc;background:#ffffffb8;backdrop-filter:saturate(180%) blur(30px);-webkit-backdrop-filter:saturate(180%) blur(30px);box-shadow:0 1px 1px #0000000a,0 8px 28px #1a3b5a1f}
 .top-title{font-size:15px;font-weight:650;letter-spacing:-.2px;min-width:0;white-space:nowrap}
-.top-search{position:relative;max-width:340px}
+.top-search{position:relative;flex:1;max-width:720px;margin-left:0}
 .top-search:before{content:'';position:absolute;left:13px;top:50%;width:11px;height:11px;margin-top:-7px;border:1.6px solid #8a96a0;border-radius:50%}
 .top-search:after{content:'';position:absolute;left:24px;top:50%;width:5px;height:1.6px;margin-top:4px;background:#8a96a0;transform:rotate(45deg);border-radius:1px}
 .top-search input{height:36px;padding:0 14px 0 34px;border:0;border-radius:999px;background:#7676801a;font-size:13.5px}
 .top-search input:focus{background:#fff;box-shadow:0 0 0 3px #1199a933}
-.segmented{display:inline-flex;padding:2px;border-radius:999px;background:#7676801f}
+.segmented{margin-left:auto;display:inline-flex;padding:2px;border-radius:999px;background:#7676801f}
 .segmented .switch{border:0;background:transparent;border-radius:999px;padding:0 14px;height:32px;font-size:13px;font-weight:600;color:#3a4d5c;transition:background .2s,box-shadow .2s}
 .segmented .switch.active{background:#fff;color:#0d3554;box-shadow:0 1px 3px #0000001f,0 1px 1px #0000000d}
 .topbar .primary{height:38px;padding:0 16px;border-radius:999px;font-size:13.5px;font-weight:600}
-@media(max-width:740px){.topbar{height:auto;min-height:0;padding:6px 6px 6px 16px;border-radius:26px;flex-wrap:nowrap}.top-title{flex:1;overflow:hidden;text-overflow:ellipsis}.segmented,.topbar .primary{flex:none}.segmented .switch{padding:0 10px}.topbar .primary{padding:0 12px}}
+@media(max-width:740px){.topbar{height:auto;min-height:0;padding:6px;border-radius:26px;flex-wrap:nowrap}.top-title{flex:1;overflow:hidden;text-overflow:ellipsis}.segmented,.topbar .primary{flex:none}.segmented .switch{padding:0 10px}.topbar .primary{padding:0 12px}}
 
 /* Inventory: resource listing pop-up */
 .rm-backdrop{position:fixed;inset:0;z-index:25;background:#0d2a3f59;backdrop-filter:blur(3px)}
@@ -184,12 +183,12 @@
 
 /* Find inventory: vertical list on the left, selected listing + order form on the right */
 .inv-sheet{height:min(600px,calc(100vh - 200px));max-height:none}
-.inv-split{flex:1;min-height:0;display:grid;grid-template-columns:minmax(300px,1fr) minmax(0,1fr);gap:12px}
+.inv-split{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .inv-list,.inv-detail{min-height:0;display:flex;flex-direction:column;gap:10px}
 .inv-list .inv-find-head{padding-right:0}
-.inv-filters{display:flex;gap:8px}
+.inv-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .inv-filters input{flex:1;border-radius:999px;padding:9px 14px}
-.inv-filters select{width:auto;border-radius:999px;padding:9px 12px}
+.inv-filters select{width:100%;border-radius:999px;padding:9px 12px}
 .inv-rows{flex:1;overflow:auto;display:flex;flex-direction:column;gap:8px;padding:2px}
 .inv-row{display:flex;flex-direction:column;gap:3px;text-align:left;border:1px solid transparent;background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;box-shadow:0 1px 3px #0f2d4412}
 .inv-row[hidden]{display:none}
@@ -250,8 +249,7 @@
 .opp-filter .field{width:auto;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;color:#0d3554}
 
 /* Map legend sits bottom-right; shifts left of the coordination panel when that panel is open */
-.stage-map .map-legend{left:auto;right:16px;bottom:100px}
-@media(min-width:1101px){.stage-map.pair-open .map-legend{right:387px}}
+.stage-map .map-legend{left:auto;right:20px;bottom:100px}
 @media(max-width:740px){.stage-map .map-legend{left:auto;right:10px;bottom:95px}}
 
 /* Inventory photos: Add inventory preview and Find inventory list thumbnails */
@@ -270,12 +268,16 @@
 
 /* Cost comparison: summary, component bars, notes */
 .page-cost .cost-page{max-width:1000px;display:grid;gap:14px;pointer-events:none}
-.cost-summary{display:grid;grid-template-columns:minmax(260px,1fr) minmax(0,1.4fr);gap:14px 24px;align-items:end}
-.cost-pick{display:grid;gap:6px}
+.cost-summary{display:grid;gap:16px}
+.cost-summary h2{margin:0 0 4px}.cost-summary p{margin:0}
+.cost-pick{display:grid;gap:6px;max-width:560px}
+.cost-pick-label{font-size:13px;font-weight:700;color:#4d6478}
+.cost-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.cost-pair>div{background:#f5f8f9;border-radius:12px;padding:10px 12px;display:grid;gap:3px;font-size:14px;line-height:1.35}
+.cost-pair-link{display:grid;justify-items:center;gap:2px;font-size:18px;color:#0f98a8}.cost-pair-link small{font-size:11px;color:#708397;white-space:nowrap}
 .cost-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .cost-tiles>div{background:#f5f8f9;border-radius:12px;padding:10px 12px;display:grid;gap:3px}
 .cost-tiles strong{font-size:20px;letter-spacing:-.4px}.cost-tiles strong.green{color:#17866c}.cost-tiles small{font-size:12px;color:#8092a1}
-.cost-pair-names{grid-column:1/-1;margin:0}
 .cost-line{display:grid;grid-template-columns:minmax(180px,1fr) minmax(160px,1.3fr) 150px;gap:16px;align-items:center;padding:12px 0;border-top:1px solid #edf0f1}
 .cost-line:first-of-type{border-top:0}
 .cost-line-label,.cost-line-value{display:grid;gap:2px}.cost-line-value{text-align:right}
@@ -285,7 +287,7 @@
 .cost-notes{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 .cost-notes summary{cursor:pointer}.cost-notes ul{margin:10px 0 0;padding-left:18px;line-height:1.55}
 .cost-disclaimer{margin:0;pointer-events:auto}
-@media(max-width:900px){.cost-summary,.cost-notes{grid-template-columns:1fr}.cost-line{grid-template-columns:1fr}.cost-line-value{text-align:left}}
+@media(max-width:900px){.cost-notes,.cost-pair,.cost-tiles{grid-template-columns:1fr}.cost-line{grid-template-columns:1fr}.cost-line-value{text-align:left}}
 
 /* Your company's projects: purple, drawn above other pins */
 .gpin.mine,.map .pin.mine{background:#7c3aed}
@@ -305,25 +307,15 @@
 
 /* Your project panel (map focus) */
 .pill.purple{background:#efe7ff;color:#6d28d9}
-.page-map .grid.three>.my-panel{max-height:calc(100vh - 226px);overflow:auto}
+.page-map .grid.three>.my-panel{align-self:start;max-height:calc(100vh - 226px);overflow:auto}
 /* Project detail: keep both columns inside the screen */
 .page-projectDetail .grid.two>.card,.page-projectDetail .grid.two>.stack>.card{max-height:calc(100vh - 250px);overflow:auto}
 
-/* Predicted congestion (your project panel + map popup) */
-.congestion-block{border-top:1px solid #edf0f1;padding-top:12px}
-.congestion-block h3{font-size:15px;margin:0 0 6px}
-.congestion-summary{font-size:13px;line-height:1.5;color:#1f3a50;margin:0 0 8px}
-.congestion-roads{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:7px}
-.congestion-roads li{display:flex;gap:9px;align-items:center}
-.congestion-roads li span{display:grid;font-size:13px}.congestion-roads small{color:#708397;font-size:11px}
-.congestion-roads .pill{min-width:74px;text-align:center}
+/* Predicted congestion map popup */
 .congestion-pop{max-width:260px;font:13px/1.45 Inter,Arial,sans-serif;color:#142b40}
 .congestion-pop b{text-transform:none}.congestion-pop p{margin:6px 0 0}
 
 /* Inventory: Suggested for you column */
-.inv-split.with-suggest{grid-template-columns:minmax(250px,.75fr) minmax(300px,1fr) minmax(0,1fr)}
-.inv-suggest{min-height:0;display:flex;flex-direction:column;gap:8px}
-.workspace .inv-suggest{background:#fffffff2;border:1px solid #fff;border-radius:20px;box-shadow:0 13px 42px #173e5a2b;backdrop-filter:blur(19px);padding:18px}
 .suggest-rows{overflow:auto;display:grid;gap:10px;align-content:start}
 .suggest-card{text-align:left;border:1px solid #e2e9ea;background:#fbf9ff;border-radius:15px;padding:12px;display:grid;gap:7px;color:inherit}
 .suggest-card:hover,.suggest-card.active{border-color:#7c3aed;background:#f6f1ff}
@@ -363,3 +355,97 @@
 .project-plain{margin:-4px 0 4px;font-size:13px;color:#34506a;line-height:1.45}
 .cost-line.cost-total{border-top:2px solid #0d3554}
 .cost-line.cost-total b{font-size:16px}
+/* Upload page: compact project details form that fits one screen */
+.project-draft{padding:16px 18px}
+.project-draft .statusline p{margin:0}
+.project-draft .fieldgroup{margin-bottom:9px}
+.project-draft .fieldgroup>span{margin-bottom:4px;font-size:12px}
+.project-draft .field{padding:8px 12px;border-radius:10px}
+.project-draft textarea.field{resize:vertical;min-height:0}
+.project-draft .date-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.project-draft .row{margin-top:12px}
+.workspace.page-addProject{padding-top:16px;padding-bottom:0;min-height:0}
+/* Upload page fills the space between the top bar and the chat bar, 16px from every edge */
+.workspace.page-addProject .project-upload-layout{grid-template-columns:minmax(300px,420px) minmax(0,1fr);max-width:none;height:calc(100vh - 184px);min-height:560px}
+.workspace.page-addProject .upload-col{grid-template-rows:1fr;min-height:0}
+.workspace.page-addProject .upload-card,.workspace.page-addProject .project-draft{align-self:stretch}
+.workspace.page-addProject .project-draft{overflow:auto}
+@media(max-width:900px){.workspace.page-addProject .project-upload-layout{grid-template-columns:1fr;height:auto}}
+/* Keep the top bar margin inside the shell so pages are exactly one screen tall, not 100vh + 16px */
+.shell{display:flow-root}
+/* Upload card: the PDF drop area grows to fill the card, keeping the card padding below it */
+.workspace.page-addProject .upload-card{display:flex;flex-direction:column;min-height:0}
+.workspace.page-addProject .upload-drop{flex:1;min-height:160px;margin-bottom:0}
+.workspace.page-addProject .upload-card>.warning,.workspace.page-addProject .upload-card>.note{margin-top:12px}
+/* Project details: breathing room under the heading; Save sits on the same bottom line as the drop area */
+.workspace.page-addProject .project-draft{display:flex;flex-direction:column;padding:18px}
+.workspace.page-addProject .project-draft>.statusline{margin-bottom:22px}
+.workspace.page-addProject .project-draft .fieldgroup{margin-bottom:13px}
+.workspace.page-addProject .project-draft>.row{margin-top:auto;padding-top:16px}
+/* Project details always fits in its card: spacing and field heights scale with the window height, no inner scroll */
+.workspace.page-addProject .project-upload-layout{min-height:0}
+.workspace.page-addProject .project-draft{overflow:hidden}
+.workspace.page-addProject .project-draft>.statusline{margin-bottom:clamp(8px,2.4vh,22px)}
+.workspace.page-addProject .project-draft .fieldgroup{margin-bottom:clamp(5px,1.45vh,13px)}
+.workspace.page-addProject .project-draft .fieldgroup>span{margin-bottom:clamp(2px,.45vh,4px)}
+.workspace.page-addProject .project-draft .field{padding:clamp(4px,.9vh,8px) 12px}
+.workspace.page-addProject .project-draft textarea.field{height:clamp(34px,6.4vh,58px);resize:none}
+.workspace.page-addProject .project-draft>.row{padding-top:clamp(6px,1.8vh,16px)}
+.workspace.page-addProject .project-draft>.row .primary{padding-top:clamp(8px,1.3vh,12px);padding-bottom:clamp(8px,1.3vh,12px)}
+/* Text boxes take whatever height is left, so the whole form fits at any window height */
+.workspace.page-addProject .project-draft .field{font-size:14px;padding:clamp(5px,.9vh,8px) 12px}
+.workspace.page-addProject .project-draft .fieldgroup{margin-bottom:clamp(6px,1.4vh,13px)}
+.workspace.page-addProject .project-draft .fieldgroup.grow{flex:1 1 0;min-height:40px;display:flex;flex-direction:column}
+.workspace.page-addProject .project-draft .fieldgroup.grow textarea.field{flex:1;height:auto;min-height:20px}
+.workspace.page-addProject .project-draft>.row{margin-top:0}
+/* Explore map project panel: voltage, contractor, location on their own lines */
+.panel-facts{margin-left:0;margin-right:0;margin-bottom:0;display:grid;gap:6px}
+.panel-facts div{display:grid;grid-template-columns:86px 1fr;gap:8px;font-size:13px;line-height:1.4}
+.panel-facts dt{color:#708397}.panel-facts dd{margin:0;color:#142b40;font-weight:600}
+/* Map project panel: "Your project" badge lines up with the left card title and the close buttons */
+.my-panel>.close-x+div{margin-top:-4px}
+/* Coordination pair panel: priority as plain text at the top, companies under it, score highlighted below the title */
+.pair-kicker{margin-top:-4px;padding-right:34px}
+.pair-score{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#e6f6f7;border:1px solid #b4e5ea;border-radius:14px;padding:12px 14px}
+.pair-score>div{display:grid;gap:2px}
+.pair-score strong{font-size:28px;font-weight:800;letter-spacing:-1px;color:#087d8e;line-height:1}
+.pair-score strong small{font-size:14px;font-weight:700;letter-spacing:0;color:#4d8f99}
+.pair-score>.tiny{color:#3f6f78}
+/* Pair panel sizes to its content (no inner scroll); close it with the x */
+.page-map .grid.three>.pair-panel{align-self:start;max-height:none;overflow:visible}
+/* Traffic & timing: title on the left, suggested time to work filling the right side, map clickable in between */
+.workspace.page-feasibility{padding-top:16px;padding-bottom:0;min-height:0}
+.traffic-page{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;align-items:start;height:calc(100vh - 184px)}
+.traffic-page>.heading{margin:0;min-width:0;justify-self:start}
+.traffic-side{align-self:start;max-height:100%;min-height:0;display:flex}
+.traffic-side>.timing-card{flex:0 1 auto;min-height:0;overflow:auto;margin:0}
+@media(max-width:900px){.traffic-page{grid-template-columns:1fr;height:auto}.traffic-side{height:auto}}
+/* Project page ("View full project"): one details card floating over the map, 16px below the top bar */
+.workspace.page-projectDetail{padding-top:16px;padding-bottom:0;min-height:0}
+.project-page{width:min(520px,100%);max-height:calc(100vh - 184px);overflow:auto}
+.project-page>div:first-child{margin-top:-2px}
+.project-page h2{font-size:21px;margin:10px 0 12px}
+.project-pick{display:grid;gap:4px;margin-bottom:16px}.project-pick .field{padding:8px 12px;border-radius:10px;font-size:14px}
+.project-page .panel-facts{gap:9px;margin-bottom:14px}
+.project-page .panel-facts div{grid-template-columns:120px 1fr}
+.project-page .row{margin-top:16px}
+
+/* ContractMap brand in the sidebar */
+.sidebar .brand{display:flex;align-items:center;gap:6px;font-size:18px;letter-spacing:-.5px;white-space:nowrap;padding-left:8px;padding-right:0}
+.sidebar .brand .brand-mark{width:32px;height:auto;flex:none}
+.sidebar .brand .brand-name{display:inline;width:auto;height:auto;border:0;margin:0;color:#0d1b33}
+.sidebar .brand .brand-name i{font-style:normal;background:linear-gradient(90deg,#1669f2,#14b39a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cost-pair-util{font-size:12px;color:#708397}
+.cost-tile-label{font-size:13px;color:#5d7285}
+.cost-tiles strong{font-weight:650}
+
+/* Inventory: suggestions folded above the listings */
+.inv-suggest-fold{flex:none;border:1px solid #e4dcf7;background:#fbf9ff;border-radius:14px;padding:10px 12px;margin-bottom:10px}
+.inv-suggest-fold summary{cursor:pointer;font-size:14px}
+.inv-suggest-fold .suggest-rows{max-height:260px;margin-top:10px;padding-right:2px}
+.suggest-card{gap:4px;padding:10px 12px;background:#fff}
+.suggest-avail{font-size:12px;color:#18765e}.suggest-avail.warn{color:#9a6504}
+
+/* Inventory: Add / Find switch at the top left */
+.inv-head-row{display:flex;justify-content:flex-start;align-items:center;gap:12px;margin-bottom:16px}
+.inv-head-row .inv-tabs{pointer-events:auto;padding:4px;background:#fffffff2;border:1px solid #fff;box-shadow:0 8px 28px #244b621c;backdrop-filter:blur(18px)}
