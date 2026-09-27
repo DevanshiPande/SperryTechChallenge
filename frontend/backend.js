@@ -130,7 +130,7 @@ async function onRoleChange() {
 
 // ---- Contract upload ----
 async function analyzeContract(file) {
-  state.projectUpload = { name: file.name, status: 'Reading the contract with Gridlock AI…', draft: {} }; render();
+  state.projectUpload = { name: file.name, status: 'Reading the contract with ContractMap AI…', draft: {} }; render();
   try {
     const fd = new FormData(); fd.append('file', file);
     const r = await fetch(API.base + '/contracts/analyze', { method: 'POST', body: fd, headers: { 'X-Company-Id': COMPANY_ID } });
@@ -147,7 +147,7 @@ async function analyzeContract(file) {
     // Backend unavailable: fall back to reading the PDF in the browser; the project is then saved with POST /projects.
     try {
       const draft = await parseProjectPdf(file);
-      state.projectUpload = { name: file.name, status: 'Read in the browser (Gridlock AI unavailable)', parsed: true, draft, error: e.message };
+      state.projectUpload = { name: file.name, status: 'Read in the browser (ContractMap AI unavailable)', parsed: true, draft, error: e.message };
     } catch (e2) {
       state.projectUpload = { name: file.name, status: 'Could not read the PDF', error: e2.message, draft: {} };
     }

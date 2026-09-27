@@ -119,7 +119,7 @@ def scenario(message):
                         "label": f"Use {m2.group(1)} shared truck-days"})
     if re.search(r"yard|laydown", t):
         changes.append({"path": "coordinated.laydown_sites", "value": 1, "label": "Share a single laydown yard"})
-    return {"changes": changes, "note": "These are inputs only; totals are recomputed by Gridlock."}
+    return {"changes": changes, "note": "These are inputs only; totals are recomputed by ContractMap."}
 
 
 def agent_turn(messages, read_only=False):
