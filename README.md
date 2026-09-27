@@ -1,31 +1,130 @@
-# Gridlock design handoff
+# ContractMap
 
-This is an editable, local frontend prototype of the Gridlock application. Open `index.html` in a browser. No build step, account, or API key is required for the base experience. The optional Google Maps layer and contract PDF extraction load browser libraries over the network; without them, the base experience and illustrative map still work. The map fills the entire viewport; navigation, search, opportunity cards, project previews, and chat float above it. Use the left navigation and role switch to view each screen.
+**Every utility project. One shared map.**
 
-The Figma design remains at https://www.figma.com/design/uG5z5D3tOYbP3OxkvENwxm. The Figma Starter plan blocked export, so this package is **not** a native `.fig` file and does not contain a byte-for-byte export of that design. It recreates the screen structure and flows in HTML, CSS, and JavaScript for transfer to another developer or account.
+ContractMap puts the planned transmission work of **Dominion Energy South Carolina** and **Georgia Power** on one map, finds the projects that are close enough to coordinate, and shows contractors what working together would save, when to do road work, and who has the equipment and crews they need.
 
-## Included flows
+Built for the **Sperry Tech "Gridlock" challenge** at ShellHacks 2026.
 
-- Contractor: explore both utilities on an interactive schematic map; inspect ranked overlaps and project detail; check project feasibility; compare cost scenarios; upload a contract PDF to extract an editable project record; list equipment; request a reservation; post jobs; discuss a shared cost scenario in messages.
-- Worker: search jobs on cards and map; inspect a role; apply; review applications and profile.
+**Live demo:** https://contractmap.onrender.com
 
-The map uses coordinates in the supplied starter workbook, plotted over an illustrative Lowcountry background image. Its geography, roads, and pin alignment are schematic, not an authoritative GIS map. The workbook contains in-service dates, not construction start/end windows. Resource listings, jobs, contacts, road closures, traffic, and savings are labeled demo data or illustrative assumptions. No data is sent to a server. The assistant is a local scripted prototype, not a Gemini connection.
+---
 
-Contract uploads use PDF.js in the browser to extract selectable text and suggest project name, company or utility, location, dates, scope, roads, and contact fields. The extracted record remains editable and requires review before it is added to the company project page. Scanned image-only PDFs are not supported by this prototype because OCR is not included.
+## What it does
 
-## Google Maps
+| | |
+|---|---|
+| **Upload a contract** | Drop in a contract PDF. Gemini reads it and fills in the project details (name, location, dates, voltage, budget, equipment, roads affected). You review every field before saving. Missing start/end dates and budgets are predicted by our ML models and clearly labeled *predicted*. |
+| **Explore the map** | All 182 public projects on Google Maps, and the **55 Dominion ↔ Georgia Power pairs** that are within 25 miles of each other, ranked by a coordination score. Click any pin to see that project's ranked partners and details. |
+| **Traffic & timing** | For any project: the roads its line crosses, predicted congestion if a lane is closed (heavy / moderate / light), the crossroads that absorb the backup, and a plain-English **best time to do the work**, from real traffic counts and other construction nearby. |
+| **Cost comparison** | Estimated savings from coordinating a pair (shared mobilization, logistics, shared right-of-way, one road closure instead of two), with a low–likely–high range and the sources behind every number. |
+| **Inventory** | Contractors list equipment and crews. For the selected project, ContractMap works out **what it needs**, uses your own equipment first, then suggests other companies' listings that fill the gaps, and shows what is still missing. |
+| **Staffing & jobs** | Contractors post jobs; workers search, save and apply, and get a confirmation. |
+| **Assistant** | Ask questions in plain English ("What could these projects share?"). Any change it proposes waits for your confirmation. |
 
-To use a real-world map instead of the illustrative image, copy `config.example.js` to `config.js` and set `googleMapsApiKey`. The key needs the **Maps JavaScript API** enabled in Google Cloud. Restrict it by HTTP referrer (for example `http://localhost:8000/*`). Without a key, or if Google rejects it, the prototype shows the illustrative image. Serve the folder with `python3 -m http.server 8000` rather than opening the file directly, so the key's referrer restriction matches.
+## How it works
 
-## Files
+### The rule that shapes everything
+**Numbers come from code, words come from Gemini.** Distances, dates, scores, savings and congestion levels are computed by deterministic code. Gemini reads messy PDFs, writes summaries and understands requests, and everything it returns is checked: a number it writes must appear in the facts it was given, a road or record it names must exist, and anything it wants to change needs the user's OK. If Gemini is unavailable, template text is used instead.
 
-- `index.html` — entry point
-- `config.example.js` — copy to `config.js` (gitignored) and add a Google Maps API key to use a real map background
-- `gmap.js` — Google Maps background layer; falls back to the illustrative image when no key is set
-- `styles.css` — visual system and responsive layout
-- `app.js` — navigation and interactions
-- `data/challenge.js` — public-plan starter project and overlap records converted from the supplied workbook
-- `assets/lowcountry-map-background.png` — illustrative full-screen map artwork
-- `reference-mockups/` — five generated concept images for visual direction; these are not exports from the Figma file or screenshots of the HTML prototype
+### Data
+- **Dominion Energy SC** 10-year transmission plan and **Georgia Power** IRP Technical Appendix, Volume 3 (both PDFs), parsed into 182 projects (44 Dominion, 138 Georgia Power). Substations are located with OpenStreetMap.
+- The **starter workbook** from the challenge (`Projects_Overlaps.xlsx`): our results include all of its overlaps (checked by the tests), and the Excel export keeps its template columns.
+- **Roads** from OpenStreetMap; **traffic counts** from SCDOT (2025) and GDOT.
+- **Cost inputs** with sources: MoDOT (mobilization, work-zone capacity), ATRI (trucking cost per mile), BLS (wages), USDA (land values), USDOT (value of time). All listed in `backend/config/cost_sources.json`.
 
-To connect a backend, replace the local data arrays and action handlers in `app.js` with API calls. Preserve source provenance and require human review before publishing AI-generated drafts or accepting proposed traffic and cost estimates.
+### Matching and ranking
+- Two projects **match** when their closest points (edge to edge) are under **25 miles**, the distance crews and equipment actually travel. Sperry's original center-to-center rule is kept alongside: every pair under Sperry's rule is included, and the export marks which pairs meet it.
+- **Coordination score (0–100)** = proximity (40, what they can share at that distance) + savings (40, relative to the smaller budget) + timing (20, months of overlapping construction).
+
+### Traffic
+For each road a project's line crosses, a work-zone **queue model** (MoDOT lane capacities, a typical hourly traffic profile) predicts the backups from a daytime lane closure and finds the window with the least delay. Results are stored in the database, so the map loads them instantly; a newly uploaded project is computed right after it is saved.
+
+### Machine learning
+- **Construction duration** (random forest, trained on 205 Georgia Power projects with filed start and in-service dates): fills in a missing start or end date. Typical error about 8.5 months.
+- **Project cost** (ridge regression on log cost, trained on Dominion's 44 filed budgets): fills in Georgia Power's redacted budgets and missing contract budgets. Typical error about 47%.
+- Both are cross-validated (5-fold, repeated 10 times) and beat simple baselines. Every prediction is shown with its range and labeled *predicted*. Details in `backend/ml/ML_README.md`; live metrics at `GET /ml/status`.
+
+---
+
+## Run it locally
+
+**Requirements:** Python 3.11+. Optional: a MongoDB Atlas database, a Gemini API key, a Google Maps JavaScript API key.
+
+### 1. Backend (port 8000)
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate            # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+copy .env.example .env            # macOS/Linux: cp .env.example .env, then fill in the keys
+uvicorn api.main:app --port 8000
+```
+
+`backend/.env`:
+
+| Variable | What it is |
+|---|---|
+| `MONGO_URI` | MongoDB Atlas connection string. Without it the app runs read-only (the map, pairs, cost and traffic still work). |
+| `MONGO_DB` | Database name (default `gridlock`). On first start the challenge data and a demo setup (3 companies, a worker, listings, jobs) are created automatically. |
+| `GEMINI_API_KEY` | Enables contract reading, summaries and the assistant. Without it, template text is used. |
+| `NOMINATIM_EMAIL` | Contact email for OpenStreetMap address lookup. |
+
+Check it: http://localhost:8000/health should return `{"status":"ok","db":"connected"}`.
+
+### 2. Frontend (port 5500)
+```bash
+cd frontend
+copy config.example.js config.js   # macOS/Linux: cp; then paste your Google Maps key
+python -m http.server 5500
+```
+Open **http://localhost:5500** for the landing page, or **http://localhost:5500/app.html** to go straight to the app. The app talks to `http://localhost:8000` by default (set `apiUrl` in `config.js` to change it). Without a Maps key the app shows a schematic map instead.
+
+`backend/.env` and `frontend/config.js` hold keys and are **git-ignored**. Never commit them.
+
+### 3. Tests
+```bash
+cd backend
+python -m pytest -q
+```
+171 tests covering the challenge's answer key, the PDF parsers, matching, the score, the cost model, traffic and congestion, ML predictions, contract upload, inventory suggestions and the API contract.
+
+---
+
+## Project layout
+
+```
+frontend/
+  index.html          landing page (3D map of the matches)
+  app.html            the app
+  app.js              pages and interactions
+  backend.js          connects the pages to the API
+  gmap.js             Google Maps layer (pins, project lines, congestion roads)
+  styles.css
+backend/
+  api/                FastAPI app and routes
+  services/           projects, contracts, congestion, suggestions, needs, jobs, ...
+  engine/             pure logic: geometry, matching and score, cost model, traffic queue model, timing
+  ai/                 Gemini calls, prompts and output checks
+  ml/                 trained models, training scripts, metrics
+  pipeline/           offline: PDFs -> projects.json and overlaps.json
+  data/               parsed projects and pairs, road network, traffic counts, raw filings
+  config/             sourced cost inputs, typical equipment needs
+  contract/           API reference (API_README.md) and example responses
+  tests/
+```
+
+More on the backend, the API and each design decision: `backend/README.md`, `backend/contract/API_README.md`, `backend/OPEN_QUESTIONS.md`.
+
+## Limitations
+
+- Transmission lines are drawn as straight lines between their substations, so road crossings are approximate.
+- Dominion's filings have no construction start dates and Georgia Power redacts its budgets, so those values are predictions, shown with ranges.
+- Congestion levels are predictions from traffic counts and a queue model, not live traffic.
+- There is no real login: you act as a demo contractor or a demo worker.
+
+## Team
+
+Built at ShellHacks 2026 by **@DevanshiPande**, **@jasminek12**, **@Lavanya275** and **@aadraxe**.
+
+Landing-page map: [USGS The National Map](https://www.usgs.gov/programs/national-geospatial-program/national-map). Map data © Google and OpenStreetMap contributors.
