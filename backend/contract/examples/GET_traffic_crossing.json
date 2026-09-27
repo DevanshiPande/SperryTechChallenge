@@ -20,9 +20,18 @@
   "point_approximate": true,
   "est_closure_hours": 8,
   "work_window": {
-    "start": "2023-01-01",
+    "start": "2023-08-31",
     "end": "2025-12-31",
-    "source": "desc_spend_years"
+    "source": "predicted",
+    "prediction": {
+      "months": 27.8,
+      "low": 19.3,
+      "high": 36.3,
+      "typical_error_months": 8.5,
+      "method": "random_forest",
+      "trained_on": "205 Georgia Power projects (filed start and need dates)",
+      "label": "predicted"
+    }
   },
   "owner": "DESC",
   "closure_type": "lane_closure",

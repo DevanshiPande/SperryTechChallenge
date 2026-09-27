@@ -1,6 +1,6 @@
 {
   "project": {
-    "id": "USR_J7QJFE",
+    "id": "USR_H010FE",
     "utility": "USER",
     "utility_name": "Demo Contractor B",
     "state": "SC",
@@ -45,10 +45,10 @@
     },
     "quality_flags": [],
     "overlap_ids": [
-      "OVL_USR_J7QJFE__DESC_3",
-      "OVL_USR_J7QJFE__DESC_5",
-      "OVL_USR_J7QJFE__GPC_2",
-      "OVL_USR_J7QJFE__GPC_3"
+      "OVL_USR_H010FE__DESC_3",
+      "OVL_USR_H010FE__DESC_5",
+      "OVL_USR_H010FE__GPC_2",
+      "OVL_USR_H010FE__GPC_3"
     ],
     "short_name": "Corridor upgrade",
     "work_type_label": "Roadway improvement",
@@ -71,16 +71,17 @@
       "source": "gazetteer (test)"
     },
     "contract_text_hash": null,
+    "line_miles": null,
     "budget_usd": null,
     "budget_source": null,
     "budget_note": "No budget available",
-    "created_at": "2026-09-26T22:27:31.297482+00:00",
-    "updated_at": "2026-09-26T22:27:31.297482+00:00"
+    "created_at": "2026-09-27T00:11:01.751145+00:00",
+    "updated_at": "2026-09-27T00:11:01.751145+00:00"
   },
   "overlaps": [
     {
-      "id": "OVL_USR_J7QJFE__DESC_3",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__DESC_3",
+      "project_a": "USR_H010FE",
       "project_b": "DESC_3",
       "center_distance_mi": 4.1,
       "closest_distance_km": 6.27,
@@ -100,6 +101,7 @@
       "time_gap_days": 714,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 24.0,
       "score_breakdown": {
         "proximity": 24.0,
@@ -223,8 +225,8 @@
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__DESC_5",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__DESC_5",
+      "project_a": "USR_H010FE",
       "project_b": "DESC_5",
       "center_distance_mi": 7.95,
       "closest_distance_km": 6.78,
@@ -244,6 +246,7 @@
       "time_gap_days": 927,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 23.8,
       "score_breakdown": {
         "proximity": 23.8,
@@ -367,8 +370,8 @@
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__GPC_2",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__GPC_2",
+      "project_a": "USR_H010FE",
       "project_b": "GPC_2",
       "center_distance_mi": 7.19,
       "closest_distance_km": 11.57,
@@ -388,6 +391,7 @@
       "time_gap_days": 562,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 12.0,
       "score_breakdown": {
         "proximity": 12.0,
@@ -511,8 +515,8 @@
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__GPC_3",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__GPC_3",
+      "project_a": "USR_H010FE",
       "project_b": "GPC_3",
       "center_distance_mi": 6.88,
       "closest_distance_km": 11.05,
@@ -532,6 +536,7 @@
       "time_gap_days": 197,
       "window_overlap_months": 0,
       "schedule_shift_possible": true,
+      "timing_confidence": "filed",
       "score": 18.1,
       "score_breakdown": {
         "proximity": 12.1,

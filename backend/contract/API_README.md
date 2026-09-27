@@ -1353,8 +1353,8 @@ Response `200`:
       "lon": -81.0912
     },
     "phone": "(555) 010-0101",
-    "created_at": "2026-09-26T22:27:31.231190+00:00",
-    "updated_at": "2026-09-26T22:27:31.231190+00:00"
+    "created_at": "2026-09-27T00:11:01.665158+00:00",
+    "updated_at": "2026-09-27T00:11:01.665158+00:00"
   }
 }
 ```
@@ -1390,7 +1390,7 @@ Response `201`:
 ```json
 {
   "project": {
-    "id": "USR_J7QJFE",
+    "id": "USR_H010FE",
     "utility": "USER",
     "utility_name": "Demo Contractor B",
     "state": "SC",
@@ -1435,10 +1435,10 @@ Response `201`:
     },
     "quality_flags": [],
     "overlap_ids": [
-      "OVL_USR_J7QJFE__DESC_3",
-      "OVL_USR_J7QJFE__DESC_5",
-      "OVL_USR_J7QJFE__GPC_2",
-      "OVL_USR_J7QJFE__GPC_3"
+      "OVL_USR_H010FE__DESC_3",
+      "OVL_USR_H010FE__DESC_5",
+      "OVL_USR_H010FE__GPC_2",
+      "OVL_USR_H010FE__GPC_3"
     ],
     "short_name": "Corridor upgrade",
     "work_type_label": "Roadway improvement",
@@ -1461,16 +1461,17 @@ Response `201`:
       "source": "gazetteer (test)"
     },
     "contract_text_hash": null,
+    "line_miles": null,
     "budget_usd": null,
     "budget_source": null,
     "budget_note": "No budget available",
-    "created_at": "2026-09-26T22:27:31.297482+00:00",
-    "updated_at": "2026-09-26T22:27:31.297482+00:00"
+    "created_at": "2026-09-27T00:11:01.751145+00:00",
+    "updated_at": "2026-09-27T00:11:01.751145+00:00"
   },
   "overlaps": [
     {
-      "id": "OVL_USR_J7QJFE__DESC_3",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__DESC_3",
+      "project_a": "USR_H010FE",
       "project_b": "DESC_3",
       "center_distance_mi": 4.1,
       "closest_distance_km": 6.27,
@@ -1490,6 +1491,7 @@ Response `201`:
       "time_gap_days": 714,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 24.0,
       "score_breakdown": {
         "proximity": 24.0,
@@ -1613,8 +1615,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__DESC_5",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__DESC_5",
+      "project_a": "USR_H010FE",
       "project_b": "DESC_5",
       "center_distance_mi": 7.95,
       "closest_distance_km": 6.78,
@@ -1634,6 +1636,7 @@ Response `201`:
       "time_gap_days": 927,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 23.8,
       "score_breakdown": {
         "proximity": 23.8,
@@ -1757,8 +1760,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__GPC_2",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__GPC_2",
+      "project_a": "USR_H010FE",
       "project_b": "GPC_2",
       "center_distance_mi": 7.19,
       "closest_distance_km": 11.57,
@@ -1778,6 +1781,7 @@ Response `201`:
       "time_gap_days": 562,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 12.0,
       "score_breakdown": {
         "proximity": 12.0,
@@ -1901,8 +1905,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__GPC_3",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__GPC_3",
+      "project_a": "USR_H010FE",
       "project_b": "GPC_3",
       "center_distance_mi": 6.88,
       "closest_distance_km": 11.05,
@@ -1922,6 +1926,7 @@ Response `201`:
       "time_gap_days": 197,
       "window_overlap_months": 0,
       "schedule_shift_possible": true,
+      "timing_confidence": "filed",
       "score": 18.1,
       "score_breakdown": {
         "proximity": 12.1,
@@ -2078,7 +2083,7 @@ Response `200`:
 ```json
 {
   "project": {
-    "id": "USR_J7QJFE",
+    "id": "USR_H010FE",
     "utility": "USER",
     "utility_name": "Demo Contractor B",
     "state": "SC",
@@ -2123,10 +2128,10 @@ Response `200`:
     },
     "quality_flags": [],
     "overlap_ids": [
-      "OVL_USR_J7QJFE__DESC_3",
-      "OVL_USR_J7QJFE__DESC_5",
-      "OVL_USR_J7QJFE__GPC_2",
-      "OVL_USR_J7QJFE__GPC_3"
+      "OVL_USR_H010FE__DESC_3",
+      "OVL_USR_H010FE__DESC_5",
+      "OVL_USR_H010FE__GPC_2",
+      "OVL_USR_H010FE__GPC_3"
     ],
     "short_name": "Corridor upgrade",
     "work_type_label": "Roadway improvement",
@@ -2149,16 +2154,17 @@ Response `200`:
       "source": "gazetteer (test)"
     },
     "contract_text_hash": null,
+    "line_miles": null,
     "budget_usd": null,
     "budget_source": null,
     "budget_note": "No budget available",
-    "created_at": "2026-09-26T22:27:31.297482+00:00",
-    "updated_at": "2026-09-26T22:27:31.341843+00:00"
+    "created_at": "2026-09-27T00:11:01.751145+00:00",
+    "updated_at": "2026-09-27T00:11:01.793588+00:00"
   },
   "overlaps": [
     {
-      "id": "OVL_USR_J7QJFE__DESC_3",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__DESC_3",
+      "project_a": "USR_H010FE",
       "project_b": "DESC_3",
       "center_distance_mi": 4.1,
       "closest_distance_km": 6.27,
@@ -2178,6 +2184,7 @@ Response `200`:
       "time_gap_days": 762,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 24.0,
       "score_breakdown": {
         "proximity": 24.0,
@@ -2301,8 +2308,8 @@ Response `200`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__DESC_5",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__DESC_5",
+      "project_a": "USR_H010FE",
       "project_b": "DESC_5",
       "center_distance_mi": 7.95,
       "closest_distance_km": 6.78,
@@ -2322,6 +2329,7 @@ Response `200`:
       "time_gap_days": 975,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 23.8,
       "score_breakdown": {
         "proximity": 23.8,
@@ -2445,8 +2453,8 @@ Response `200`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__GPC_2",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__GPC_2",
+      "project_a": "USR_H010FE",
       "project_b": "GPC_2",
       "center_distance_mi": 7.19,
       "closest_distance_km": 11.57,
@@ -2466,6 +2474,7 @@ Response `200`:
       "time_gap_days": 610,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 12.0,
       "score_breakdown": {
         "proximity": 12.0,
@@ -2589,8 +2598,8 @@ Response `200`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_J7QJFE__GPC_3",
-      "project_a": "USR_J7QJFE",
+      "id": "OVL_USR_H010FE__GPC_3",
+      "project_a": "USR_H010FE",
       "project_b": "GPC_3",
       "center_distance_mi": 6.88,
       "closest_distance_km": 11.05,
@@ -2610,6 +2619,7 @@ Response `200`:
       "time_gap_days": 245,
       "window_overlap_months": 0,
       "schedule_shift_possible": true,
+      "timing_confidence": "filed",
       "score": 18.1,
       "score_breakdown": {
         "proximity": 12.1,
@@ -2759,8 +2769,8 @@ An **array** (4 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "OVL_USR_J7QJFE__DESC_3",
-    "project_a": "USR_J7QJFE",
+    "id": "OVL_USR_H010FE__DESC_3",
+    "project_a": "USR_H010FE",
     "project_b": "DESC_3",
     "center_distance_mi": 4.1,
     "closest_distance_km": 6.27,
@@ -2780,6 +2790,7 @@ An **array** (4 items here). First item shown; every item has the same shape.
     "time_gap_days": 762,
     "window_overlap_months": 0,
     "schedule_shift_possible": false,
+    "timing_confidence": "filed",
     "score": 24.0,
     "score_breakdown": {
       "proximity": 24.0,
@@ -2901,8 +2912,8 @@ An **array** (4 items here). First item shown; every item has the same shape.
       ]
     },
     "kind": "user_project",
-    "created_at": "2026-09-26T22:27:31.355507+00:00",
-    "updated_at": "2026-09-26T22:27:31.355507+00:00"
+    "created_at": "2026-09-27T00:11:01.810047+00:00",
+    "updated_at": "2026-09-27T00:11:01.810047+00:00"
   }
 ]
 ```
@@ -2937,7 +2948,7 @@ Response `201`:
 
 ```json
 {
-  "id": "RES_60DSMQ",
+  "id": "RES_VN17K4",
   "company_id": "CMP_C",
   "company_name": "Coastal Crane (demo)",
   "name": "60-ton crane",
@@ -2956,13 +2967,13 @@ Response `201`:
   "notes": "Operator included",
   "nearby_project_ids": [
     "GPC_3",
-    "USR_J7QJFE",
+    "USR_H010FE",
     "GPC_2",
     "DESC_3",
     "DESC_5"
   ],
-  "created_at": "2026-09-26T22:27:31.445569+00:00",
-  "updated_at": "2026-09-26T22:27:31.445569+00:00"
+  "created_at": "2026-09-27T00:11:01.870472+00:00",
+  "updated_at": "2026-09-27T00:11:01.870472+00:00"
 }
 ```
 
@@ -2981,32 +2992,32 @@ An **array** (4 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "RES_60DSMQ",
+    "id": "RES_DEMO2",
     "company_id": "CMP_C",
     "company_name": "Coastal Crane (demo)",
     "name": "60-ton crane",
     "type": "equipment",
-    "quantity": 2,
+    "quantity": 1,
     "location": {
       "label": "Pooler, GA",
       "lat": 32.1155,
       "lon": -81.247
     },
-    "available_from": "2027-06-01",
-    "available_to": "2027-06-30",
-    "date_label": "Jun 1–30, 2027",
-    "daily_rate": 1250,
-    "rate_label": "$1,250/day per unit",
-    "notes": "Operator included",
+    "available_from": "2027-05-01",
+    "available_to": "2027-08-31",
+    "date_label": "May 1 – Aug 31, 2027",
+    "daily_rate": null,
+    "rate_label": "Rate on request",
+    "notes": "Demo listing. Operator and rigger available.",
     "nearby_project_ids": [
       "GPC_3",
-      "USR_J7QJFE",
       "GPC_2",
       "DESC_3",
       "DESC_5"
     ],
-    "created_at": "2026-09-26T22:27:31.445569+00:00",
-    "updated_at": "2026-09-26T22:27:31.445569+00:00",
+    "demo": true,
+    "created_at": "2026-09-27T00:11:01.670063+00:00",
+    "updated_at": "2026-09-27T00:11:01.670063+00:00",
     "distance_km": 0.0
   }
 ]
@@ -3033,7 +3044,7 @@ Response `200`:
 
 ```json
 {
-  "id": "RES_60DSMQ",
+  "id": "RES_VN17K4",
   "company_id": "CMP_C",
   "company_name": "Coastal Crane (demo)",
   "name": "60-ton crane",
@@ -3052,13 +3063,13 @@ Response `200`:
   "notes": "Operator included",
   "nearby_project_ids": [
     "GPC_3",
-    "USR_J7QJFE",
+    "USR_H010FE",
     "GPC_2",
     "DESC_3",
     "DESC_5"
   ],
-  "created_at": "2026-09-26T22:27:31.445569+00:00",
-  "updated_at": "2026-09-26T22:27:31.462420+00:00"
+  "created_at": "2026-09-27T00:11:01.870472+00:00",
+  "updated_at": "2026-09-27T00:11:01.896931+00:00"
 }
 ```
 
@@ -3088,8 +3099,8 @@ Response `201`:
 
 ```json
 {
-  "id": "RSV_B03RZ0",
-  "resource_id": "RES_60DSMQ",
+  "id": "RSV_EBCH8Q",
+  "resource_id": "RES_VN17K4",
   "resource_name": "60-ton crane",
   "owner_company_id": "CMP_C",
   "requester_company_id": "CMP_A",
@@ -3100,8 +3111,8 @@ Response `201`:
   "project_id": null,
   "note": "For the Hardeeville corridor work",
   "status": "pending",
-  "created_at": "2026-09-26T22:27:31.471280+00:00",
-  "updated_at": "2026-09-26T22:27:31.471280+00:00"
+  "created_at": "2026-09-27T00:11:01.918460+00:00",
+  "updated_at": "2026-09-27T00:11:01.918460+00:00"
 }
 ```
 
@@ -3122,8 +3133,8 @@ An **array** (1 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "RSV_B03RZ0",
-    "resource_id": "RES_60DSMQ",
+    "id": "RSV_EBCH8Q",
+    "resource_id": "RES_VN17K4",
     "resource_name": "60-ton crane",
     "owner_company_id": "CMP_C",
     "requester_company_id": "CMP_A",
@@ -3134,8 +3145,8 @@ An **array** (1 items here). First item shown; every item has the same shape.
     "project_id": null,
     "note": "For the Hardeeville corridor work",
     "status": "pending",
-    "created_at": "2026-09-26T22:27:31.471280+00:00",
-    "updated_at": "2026-09-26T22:27:31.471280+00:00"
+    "created_at": "2026-09-27T00:11:01.918460+00:00",
+    "updated_at": "2026-09-27T00:11:01.918460+00:00"
   }
 ]
 ```
@@ -3161,8 +3172,8 @@ Response `200`:
 
 ```json
 {
-  "id": "RSV_B03RZ0",
-  "resource_id": "RES_60DSMQ",
+  "id": "RSV_EBCH8Q",
+  "resource_id": "RES_VN17K4",
   "resource_name": "60-ton crane",
   "owner_company_id": "CMP_C",
   "requester_company_id": "CMP_A",
@@ -3173,8 +3184,8 @@ Response `200`:
   "project_id": null,
   "note": "For the Hardeeville corridor work",
   "status": "accepted",
-  "created_at": "2026-09-26T22:27:31.471280+00:00",
-  "updated_at": "2026-09-26T22:27:31.493895+00:00"
+  "created_at": "2026-09-27T00:11:01.918460+00:00",
+  "updated_at": "2026-09-27T00:11:01.941228+00:00"
 }
 ```
 
@@ -3241,7 +3252,7 @@ Response `201`:
 
 ```json
 {
-  "id": "JOB_Z3RS60",
+  "id": "JOB_TMHGR1",
   "company_id": "CMP_B",
   "company_name": "Demo Contractor B",
   "title": "Transmission lineworker",
@@ -3263,8 +3274,8 @@ Response `201`:
   ],
   "project_id": null,
   "status": "open",
-  "created_at": "2026-09-26T22:27:31.520419+00:00",
-  "updated_at": "2026-09-26T22:27:31.520419+00:00"
+  "created_at": "2026-09-27T00:11:01.977719+00:00",
+  "updated_at": "2026-09-27T00:11:01.977719+00:00"
 }
 ```
 
@@ -3283,7 +3294,7 @@ An **array** (3 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "JOB_Z3RS60",
+    "id": "JOB_TMHGR1",
     "company_id": "CMP_B",
     "company_name": "Demo Contractor B",
     "title": "Transmission lineworker",
@@ -3305,8 +3316,8 @@ An **array** (3 items here). First item shown; every item has the same shape.
     ],
     "project_id": null,
     "status": "open",
-    "created_at": "2026-09-26T22:27:31.520419+00:00",
-    "updated_at": "2026-09-26T22:27:31.520419+00:00"
+    "created_at": "2026-09-27T00:11:01.977719+00:00",
+    "updated_at": "2026-09-27T00:11:01.977719+00:00"
   }
 ]
 ```
@@ -3332,8 +3343,8 @@ Response `201`:
 
 ```json
 {
-  "id": "APP_2OBL1H",
-  "job_id": "JOB_Z3RS60",
+  "id": "APP_2ZPGWZ",
+  "job_id": "JOB_TMHGR1",
   "job_title": "Transmission lineworker",
   "company_id": "CMP_B",
   "worker_id": "WRK_1",
@@ -3347,8 +3358,8 @@ Response `201`:
     "availability": "Available from June 2027"
   },
   "status": "submitted",
-  "created_at": "2026-09-26T22:27:31.536758+00:00",
-  "updated_at": "2026-09-26T22:27:31.536758+00:00"
+  "created_at": "2026-09-27T00:11:01.997615+00:00",
+  "updated_at": "2026-09-27T00:11:01.997615+00:00"
 }
 ```
 
@@ -3369,8 +3380,8 @@ An **array** (1 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "APP_2OBL1H",
-    "job_id": "JOB_Z3RS60",
+    "id": "APP_2ZPGWZ",
+    "job_id": "JOB_TMHGR1",
     "job_title": "Transmission lineworker",
     "company_id": "CMP_B",
     "worker_id": "WRK_1",
@@ -3384,8 +3395,8 @@ An **array** (1 items here). First item shown; every item has the same shape.
       "availability": "Available from June 2027"
     },
     "status": "submitted",
-    "created_at": "2026-09-26T22:27:31.536758+00:00",
-    "updated_at": "2026-09-26T22:27:31.536758+00:00"
+    "created_at": "2026-09-27T00:11:01.997615+00:00",
+    "updated_at": "2026-09-27T00:11:01.997615+00:00"
   }
 ]
 ```
@@ -3411,8 +3422,8 @@ Response `200`:
 
 ```json
 {
-  "id": "APP_2OBL1H",
-  "job_id": "JOB_Z3RS60",
+  "id": "APP_2ZPGWZ",
+  "job_id": "JOB_TMHGR1",
   "job_title": "Transmission lineworker",
   "company_id": "CMP_B",
   "worker_id": "WRK_1",
@@ -3426,8 +3437,8 @@ Response `200`:
     "availability": "Available from June 2027"
   },
   "status": "reviewed",
-  "created_at": "2026-09-26T22:27:31.536758+00:00",
-  "updated_at": "2026-09-26T22:27:31.545235+00:00"
+  "created_at": "2026-09-27T00:11:01.997615+00:00",
+  "updated_at": "2026-09-27T00:11:02.014605+00:00"
 }
 ```
 
@@ -3462,21 +3473,21 @@ Response `201`:
 ```json
 {
   "conversation": {
-    "id": "CNV_YSLD28",
+    "id": "CNV_JAZOWS",
     "participant_company_ids": [
       "CMP_A",
       "CMP_C"
     ],
     "topic": "Crane for the corridor work",
     "overlap_id": "OVL_DESC_3__GPC_2",
-    "last_message_at": "2026-09-26T22:27:31.563868+00:00",
+    "last_message_at": "2026-09-27T00:11:02.036047+00:00",
     "last_message_preview": "Could we share your crane in June 2027?",
-    "created_at": "2026-09-26T22:27:31.561712+00:00",
-    "updated_at": "2026-09-26T22:27:31.563868+00:00"
+    "created_at": "2026-09-27T00:11:02.035048+00:00",
+    "updated_at": "2026-09-27T00:11:02.036047+00:00"
   },
   "message": {
-    "id": "MSG_BGS8WX",
-    "conversation_id": "CNV_YSLD28",
+    "id": "MSG_MYVJQG",
+    "conversation_id": "CNV_JAZOWS",
     "sender_company_id": "CMP_A",
     "sender_name": "Demo Contractor A",
     "text": "Could we share your crane in June 2027?",
@@ -3498,8 +3509,8 @@ Response `201`:
         }
       }
     },
-    "created_at": "2026-09-26T22:27:31.563868+00:00",
-    "updated_at": "2026-09-26T22:27:31.563868+00:00"
+    "created_at": "2026-09-27T00:11:02.036047+00:00",
+    "updated_at": "2026-09-27T00:11:02.036047+00:00"
   }
 }
 ```
@@ -3525,14 +3536,14 @@ Response `201`:
 
 ```json
 {
-  "id": "MSG_D0YNPG",
-  "conversation_id": "CNV_YSLD28",
+  "id": "MSG_0AUZW3",
+  "conversation_id": "CNV_JAZOWS",
   "sender_company_id": "CMP_C",
   "sender_name": "Coastal Crane (demo)",
   "text": "Yes, both units are free June 5-10.",
   "attachment": null,
-  "created_at": "2026-09-26T22:27:31.570089+00:00",
-  "updated_at": "2026-09-26T22:27:31.570089+00:00"
+  "created_at": "2026-09-27T00:11:02.045701+00:00",
+  "updated_at": "2026-09-27T00:11:02.045701+00:00"
 }
 ```
 
@@ -3553,17 +3564,17 @@ An **array** (2 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "CNV_YSLD28",
+    "id": "CNV_JAZOWS",
     "participant_company_ids": [
       "CMP_A",
       "CMP_C"
     ],
     "topic": "Crane for the corridor work",
     "overlap_id": "OVL_DESC_3__GPC_2",
-    "last_message_at": "2026-09-26T22:27:31.570089+00:00",
+    "last_message_at": "2026-09-27T00:11:02.045701+00:00",
     "last_message_preview": "Yes, both units are free June 5-10.",
-    "created_at": "2026-09-26T22:27:31.561712+00:00",
-    "updated_at": "2026-09-26T22:27:31.570089+00:00",
+    "created_at": "2026-09-27T00:11:02.035048+00:00",
+    "updated_at": "2026-09-27T00:11:02.045701+00:00",
     "participants": [
       {
         "id": "CMP_A",
@@ -3595,8 +3606,8 @@ An **array** (2 items here). First item shown; every item has the same shape.
 ```json
 [
   {
-    "id": "MSG_BGS8WX",
-    "conversation_id": "CNV_YSLD28",
+    "id": "MSG_MYVJQG",
+    "conversation_id": "CNV_JAZOWS",
     "sender_company_id": "CMP_A",
     "sender_name": "Demo Contractor A",
     "text": "Could we share your crane in June 2027?",
@@ -3618,8 +3629,8 @@ An **array** (2 items here). First item shown; every item has the same shape.
         }
       }
     },
-    "created_at": "2026-09-26T22:27:31.563868+00:00",
-    "updated_at": "2026-09-26T22:27:31.563868+00:00"
+    "created_at": "2026-09-27T00:11:02.036047+00:00",
+    "updated_at": "2026-09-27T00:11:02.036047+00:00"
   }
 ]
 ```
@@ -3650,11 +3661,11 @@ Response `200`:
 
 ```json
 {
-  "thread_id": "THR_S7NGFC",
+  "thread_id": "THR_BG8MGV",
   "reply": "I can add 2 cranes to your inventory at your Savannah yard. Confirm below.",
   "pending_actions": [
     {
-      "id": "ACT_1D31EJ",
+      "id": "ACT_LNND6Y",
       "tool": "add_resource",
       "summary": "Add 2 cranes to Demo Contractor A's inventory at Savannah, GA, available Sep 26, 2026 to Oct 26, 2026, rate on request. (location defaulted to the company yard (Savannah, GA); dates defaulted to today for 30 days; edit if needed.)",
       "preview": {
@@ -3680,7 +3691,7 @@ Response `200`:
           "lon": -81.0912
         }
       },
-      "expires_at": "2026-09-26T22:57:31+00:00"
+      "expires_at": "2026-09-27T00:41:02+00:00"
     }
   ],
   "changes": [],
@@ -3718,8 +3729,8 @@ Response `200`:
 ```json
 {
   "action": {
-    "id": "ACT_1D31EJ",
-    "thread_id": "THR_S7NGFC",
+    "id": "ACT_LNND6Y",
+    "thread_id": "THR_BG8MGV",
     "company_id": "CMP_A",
     "tool": "add_resource",
     "args": {
@@ -3752,10 +3763,10 @@ Response `200`:
       }
     },
     "status": "confirmed",
-    "created_at": "2026-09-26T22:27:31.602573+00:00",
-    "expires_at": "2026-09-26T22:57:31+00:00",
+    "created_at": "2026-09-27T00:11:02.098284+00:00",
+    "expires_at": "2026-09-27T00:41:02+00:00",
     "result": {
-      "id": "RES_AZT7KB",
+      "id": "RES_AB4MPO",
       "company_id": "CMP_A",
       "company_name": "Demo Contractor A",
       "name": "Crane",
@@ -3774,19 +3785,19 @@ Response `200`:
       "notes": null,
       "nearby_project_ids": [
         "GPC_3",
-        "USR_J7QJFE",
+        "USR_H010FE",
         "DESC_5",
         "DESC_3",
         "GPC_2"
       ],
-      "created_at": "2026-09-26T22:27:31.611877+00:00",
-      "updated_at": "2026-09-26T22:27:31.611877+00:00"
+      "created_at": "2026-09-27T00:11:02.112146+00:00",
+      "updated_at": "2026-09-27T00:11:02.112146+00:00"
     },
     "error": null,
-    "updated_at": "2026-09-26T22:27:31.611877+00:00"
+    "updated_at": "2026-09-27T00:11:02.112146+00:00"
   },
   "result": {
-    "id": "RES_AZT7KB",
+    "id": "RES_AB4MPO",
     "company_id": "CMP_A",
     "company_name": "Demo Contractor A",
     "name": "Crane",
@@ -3805,19 +3816,19 @@ Response `200`:
     "notes": null,
     "nearby_project_ids": [
       "GPC_3",
-      "USR_J7QJFE",
+      "USR_H010FE",
       "DESC_5",
       "DESC_3",
       "GPC_2"
     ],
-    "created_at": "2026-09-26T22:27:31.611877+00:00",
-    "updated_at": "2026-09-26T22:27:31.611877+00:00"
+    "created_at": "2026-09-27T00:11:02.112146+00:00",
+    "updated_at": "2026-09-27T00:11:02.112146+00:00"
   },
   "changes": [
     {
       "collection": "resources",
       "op": "insert",
-      "id": "RES_AZT7KB"
+      "id": "RES_AB4MPO"
     }
   ],
   "reply": "Added 2 cranes to your inventory. They're now visible to other companies."
@@ -3839,8 +3850,8 @@ Response `200`:
 ```json
 {
   "action": {
-    "id": "ACT_RQCH5K",
-    "thread_id": "THR_S7NGFC",
+    "id": "ACT_EBAMVD",
+    "thread_id": "THR_BG8MGV",
     "company_id": "CMP_A",
     "tool": "add_resource",
     "args": {
@@ -3873,11 +3884,11 @@ Response `200`:
       }
     },
     "status": "cancelled",
-    "created_at": "2026-09-26T22:27:31.625171+00:00",
-    "expires_at": "2026-09-26T22:57:31+00:00",
+    "created_at": "2026-09-27T00:11:02.120147+00:00",
+    "expires_at": "2026-09-27T00:41:02+00:00",
     "result": null,
     "error": null,
-    "updated_at": "2026-09-26T22:27:31.631478+00:00"
+    "updated_at": "2026-09-27T00:11:02.126662+00:00"
   }
 }
 ```
@@ -3896,13 +3907,13 @@ Response `200`:
 
 ```json
 {
-  "id": "THR_S7NGFC",
+  "id": "THR_BG8MGV",
   "company_id": "CMP_A",
   "messages": [
     {
       "role": "user",
       "text": "I have 2 cranes",
-      "ts": "2026-09-26T22:27:31.602573+00:00"
+      "ts": "2026-09-27T00:11:02.097285+00:00"
     },
     {
       "role": "model",
@@ -3917,7 +3928,7 @@ Response `200`:
           }
         }
       ],
-      "ts": "2026-09-26T22:27:31.602573+00:00"
+      "ts": "2026-09-27T00:11:02.097285+00:00"
     },
     {
       "role": "tool",
@@ -3925,28 +3936,28 @@ Response `200`:
         {
           "name": "add_resource",
           "response": {
-            "pending_action_id": "ACT_1D31EJ",
+            "pending_action_id": "ACT_LNND6Y",
             "summary": "Add 2 cranes to Demo Contractor A's inventory at Savannah, GA, available Sep 26, 2026 to Oct 26, 2026, rate on request. (location defaulted to the company yard (Savannah, GA); dates defaulted to today for 30 days; edit if needed.)",
             "note": "Not executed yet. The user must confirm this action in the app."
           }
         }
       ],
-      "ts": "2026-09-26T22:27:31.602573+00:00"
+      "ts": "2026-09-27T00:11:02.098284+00:00"
     },
     {
       "role": "model",
       "text": "I can add 2 cranes to your inventory at your Savannah yard. Confirm below.",
-      "ts": "2026-09-26T22:27:31.602573+00:00"
+      "ts": "2026-09-27T00:11:02.098284+00:00"
     },
     {
       "role": "note",
-      "text": "Action ACT_1D31EJ confirmed: insert RES_AZT7KB",
-      "ts": "2026-09-26T22:27:31.611877+00:00"
+      "text": "Action ACT_LNND6Y confirmed: insert RES_AB4MPO",
+      "ts": "2026-09-27T00:11:02.112146+00:00"
     },
     {
       "role": "user",
       "text": "add a bucket truck",
-      "ts": "2026-09-26T22:27:31.625171+00:00"
+      "ts": "2026-09-27T00:11:02.120147+00:00"
     },
     {
       "role": "model",
@@ -3961,7 +3972,7 @@ Response `200`:
           }
         }
       ],
-      "ts": "2026-09-26T22:27:31.625171+00:00"
+      "ts": "2026-09-27T00:11:02.120147+00:00"
     },
     {
       "role": "tool",
@@ -3969,31 +3980,31 @@ Response `200`:
         {
           "name": "add_resource",
           "response": {
-            "pending_action_id": "ACT_RQCH5K",
+            "pending_action_id": "ACT_EBAMVD",
             "summary": "Add 1 bucket truck to Demo Contractor A's inventory at Savannah, GA, available Sep 26, 2026 to Oct 26, 2026, rate on request. (location defaulted to the company yard (Savannah, GA); dates defaulted to today for 30 days; edit if needed.)",
             "note": "Not executed yet. The user must confirm this action in the app."
           }
         }
       ],
-      "ts": "2026-09-26T22:27:31.625171+00:00"
+      "ts": "2026-09-27T00:11:02.120655+00:00"
     },
     {
       "role": "model",
       "text": "I can add 1 bucket truck. Confirm below.",
-      "ts": "2026-09-26T22:27:31.625171+00:00"
+      "ts": "2026-09-27T00:11:02.120655+00:00"
     },
     {
       "role": "note",
-      "text": "Action ACT_RQCH5K cancelled by the user.",
-      "ts": "2026-09-26T22:27:31.631478+00:00"
+      "text": "Action ACT_EBAMVD cancelled by the user.",
+      "ts": "2026-09-27T00:11:02.126662+00:00"
     }
   ],
-  "created_at": "2026-09-26T22:27:31.602573+00:00",
-  "updated_at": "2026-09-26T22:27:31.631478+00:00",
+  "created_at": "2026-09-27T00:11:02.097285+00:00",
+  "updated_at": "2026-09-27T00:11:02.126662+00:00",
   "pending_actions": [
     {
-      "id": "ACT_1D31EJ",
-      "thread_id": "THR_S7NGFC",
+      "id": "ACT_LNND6Y",
+      "thread_id": "THR_BG8MGV",
       "company_id": "CMP_A",
       "tool": "add_resource",
       "args": {
@@ -4026,10 +4037,10 @@ Response `200`:
         }
       },
       "status": "confirmed",
-      "created_at": "2026-09-26T22:27:31.602573+00:00",
-      "expires_at": "2026-09-26T22:57:31+00:00",
+      "created_at": "2026-09-27T00:11:02.098284+00:00",
+      "expires_at": "2026-09-27T00:41:02+00:00",
       "result": {
-        "id": "RES_AZT7KB",
+        "id": "RES_AB4MPO",
         "company_id": "CMP_A",
         "company_name": "Demo Contractor A",
         "name": "Crane",
@@ -4048,20 +4059,20 @@ Response `200`:
         "notes": null,
         "nearby_project_ids": [
           "GPC_3",
-          "USR_J7QJFE",
+          "USR_H010FE",
           "DESC_5",
           "DESC_3",
           "GPC_2"
         ],
-        "created_at": "2026-09-26T22:27:31.611877+00:00",
-        "updated_at": "2026-09-26T22:27:31.611877+00:00"
+        "created_at": "2026-09-27T00:11:02.112146+00:00",
+        "updated_at": "2026-09-27T00:11:02.112146+00:00"
       },
       "error": null,
-      "updated_at": "2026-09-26T22:27:31.611877+00:00"
+      "updated_at": "2026-09-27T00:11:02.112146+00:00"
     },
     {
-      "id": "ACT_RQCH5K",
-      "thread_id": "THR_S7NGFC",
+      "id": "ACT_EBAMVD",
+      "thread_id": "THR_BG8MGV",
       "company_id": "CMP_A",
       "tool": "add_resource",
       "args": {
@@ -4094,11 +4105,11 @@ Response `200`:
         }
       },
       "status": "cancelled",
-      "created_at": "2026-09-26T22:27:31.625171+00:00",
-      "expires_at": "2026-09-26T22:57:31+00:00",
+      "created_at": "2026-09-27T00:11:02.120147+00:00",
+      "expires_at": "2026-09-27T00:41:02+00:00",
       "result": null,
       "error": null,
-      "updated_at": "2026-09-26T22:27:31.631478+00:00"
+      "updated_at": "2026-09-27T00:11:02.126662+00:00"
     }
   ]
 }
@@ -4139,24 +4150,25 @@ Response `200`:
   "time_gap_days": 152,
   "window_overlap_months": 24,
   "schedule_shift_possible": false,
-  "score": 64.4,
+  "timing_confidence": "predicted",
+  "score": 64.6,
   "score_breakdown": {
     "proximity": 24.4,
-    "savings": 20.0,
+    "savings": 20.2,
     "timing": 20.0
   },
   "rank": 1,
   "cost_estimate": {
-    "total_estimated_savings_usd": 595897,
+    "total_estimated_savings_usd": 127061,
     "range_usd": [
-      238214,
-      1193726
+      34660,
+      373655
     ],
     "components": {
       "mobilization": {
-        "low": 237874,
-        "point": 594686,
-        "high": 1189371,
+        "low": 34320,
+        "point": 125850,
+        "high": 369300,
         "applies": true,
         "requires_schedule_shift": false
       },
@@ -4180,18 +4192,19 @@ Response `200`:
         "applies": false
       }
     },
-    "reference_budget_usd": 23787423,
-    "reference_budget_source": "filing",
+    "reference_budget_usd": 5034000,
+    "reference_budget_source": "predicted (ridge, Dominion budgets)",
     "shared_row_acres": null,
-    "mobilization_savings_usd": 594686,
+    "mobilization_savings_usd": 125850,
     "assumptions": [
+      "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
       "Share of one mobilization that can be shared: 25%–50% (assumption)",
       "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
     ],
     "sources": [
       {
-        "name": "Dominion Energy SC filing (budget): Jasper–Okatie",
-        "value_used": "$23,787,423"
+        "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+        "value_used": "$5,034,000"
       },
       {
         "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -4212,7 +4225,7 @@ Response `200`:
     "illustrative": true,
     "defaults_source": "cost_sources.json",
     "unit_rates": {
-      "mobilization_per_event": 594700,
+      "mobilization_per_event": 125800,
       "bucket_truck_per_day": 1500,
       "laydown_per_site": 5000,
       "crew_size": 4,
@@ -4223,7 +4236,7 @@ Response `200`:
         "mobilization_events": 1,
         "truck_days": 10,
         "laydown_sites": 1,
-        "start_date": "2023-01-01"
+        "start_date": "2023-08-31"
       },
       "b": {
         "mobilization_events": 1,
@@ -4237,31 +4250,31 @@ Response `200`:
       "mobilization_events_b": 1,
       "shared_truck_days": 12,
       "laydown_sites": 1,
-      "start_date_a": "2023-01-01",
+      "start_date_a": "2023-08-31",
       "start_date_b": "2024-01-01"
     },
     "totals": {
-      "separate": 1229400,
-      "coordinated": 1212400,
+      "separate": 291600,
+      "coordinated": 274600,
       "savings": 17000,
-      "savings_pct": 1.4,
+      "savings_pct": 5.8,
       "separate_by_project": {
-        "a": 614700,
-        "b": 614700
+        "a": 145800,
+        "b": 145800
       },
       "coordinated_by_project": {
-        "a": 606200,
-        "b": 606200
+        "a": 137300,
+        "b": 137300
       }
     },
     "range": {
       "separate": [
-        1044990,
-        1413810
+        247860,
+        335340
       ],
       "coordinated": [
-        1030540,
-        1394260
+        233410,
+        315790
       ],
       "savings": [
         12750,
@@ -4315,24 +4328,25 @@ An **array** (11 items here). First item shown; every item has the same shape.
     "time_gap_days": 152,
     "window_overlap_months": 24,
     "schedule_shift_possible": false,
-    "score": 64.4,
+    "timing_confidence": "predicted",
+    "score": 64.6,
     "score_breakdown": {
       "proximity": 24.4,
-      "savings": 20.0,
+      "savings": 20.2,
       "timing": 20.0
     },
     "rank": 1,
     "cost_estimate": {
-      "total_estimated_savings_usd": 595897,
+      "total_estimated_savings_usd": 127061,
       "range_usd": [
-        238214,
-        1193726
+        34660,
+        373655
       ],
       "components": {
         "mobilization": {
-          "low": 237874,
-          "point": 594686,
-          "high": 1189371,
+          "low": 34320,
+          "point": 125850,
+          "high": 369300,
           "applies": true,
           "requires_schedule_shift": false
         },
@@ -4356,18 +4370,19 @@ An **array** (11 items here). First item shown; every item has the same shape.
           "applies": false
         }
       },
-      "reference_budget_usd": 23787423,
-      "reference_budget_source": "filing",
+      "reference_budget_usd": 5034000,
+      "reference_budget_source": "predicted (ridge, Dominion budgets)",
       "shared_row_acres": null,
-      "mobilization_savings_usd": 594686,
+      "mobilization_savings_usd": 125850,
       "assumptions": [
+        "The reference budget is an ML prediction (likely $3,432,000–$7,386,000); the savings range uses that budget range",
         "Share of one mobilization that can be shared: 25%–50% (assumption)",
         "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
       ],
       "sources": [
         {
-          "name": "Dominion Energy SC filing (budget): Jasper–Okatie",
-          "value_used": "$23,787,423"
+          "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+          "value_used": "$5,034,000"
         },
         {
           "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -4388,7 +4403,7 @@ An **array** (11 items here). First item shown; every item has the same shape.
       "illustrative": true,
       "defaults_source": "cost_sources.json",
       "unit_rates": {
-        "mobilization_per_event": 594700,
+        "mobilization_per_event": 125800,
         "bucket_truck_per_day": 1500,
         "laydown_per_site": 5000,
         "crew_size": 4,
@@ -4399,7 +4414,7 @@ An **array** (11 items here). First item shown; every item has the same shape.
           "mobilization_events": 1,
           "truck_days": 10,
           "laydown_sites": 1,
-          "start_date": "2023-01-01"
+          "start_date": "2023-08-31"
         },
         "b": {
           "mobilization_events": 1,
@@ -4413,31 +4428,31 @@ An **array** (11 items here). First item shown; every item has the same shape.
         "mobilization_events_b": 1,
         "shared_truck_days": 12,
         "laydown_sites": 1,
-        "start_date_a": "2023-01-01",
+        "start_date_a": "2023-08-31",
         "start_date_b": "2024-01-01"
       },
       "totals": {
-        "separate": 1229400,
-        "coordinated": 1212400,
+        "separate": 291600,
+        "coordinated": 274600,
         "savings": 17000,
-        "savings_pct": 1.4,
+        "savings_pct": 5.8,
         "separate_by_project": {
-          "a": 614700,
-          "b": 614700
+          "a": 145800,
+          "b": 145800
         },
         "coordinated_by_project": {
-          "a": 606200,
-          "b": 606200
+          "a": 137300,
+          "b": 137300
         }
       },
       "range": {
         "separate": [
-          1044990,
-          1413810
+          247860,
+          335340
         ],
         "coordinated": [
-          1030540,
-          1394260
+          233410,
+          315790
         ],
         "savings": [
           12750,
@@ -4574,9 +4589,18 @@ An **array** (12 items here). First item shown; every item has the same shape.
     "point_approximate": true,
     "est_closure_hours": 8,
     "work_window": {
-      "start": "2023-01-01",
+      "start": "2023-08-31",
       "end": "2025-12-31",
-      "source": "desc_spend_years"
+      "source": "predicted",
+      "prediction": {
+        "months": 27.8,
+        "low": 19.3,
+        "high": 36.3,
+        "typical_error_months": 8.5,
+        "method": "random_forest",
+        "trained_on": "205 Georgia Power projects (filed start and need dates)",
+        "label": "predicted"
+      }
     },
     "owner": "DESC",
     "closure_type": "lane_closure",
@@ -4624,9 +4648,18 @@ Response `200`:
   "point_approximate": true,
   "est_closure_hours": 8,
   "work_window": {
-    "start": "2023-01-01",
+    "start": "2023-08-31",
     "end": "2025-12-31",
-    "source": "desc_spend_years"
+    "source": "predicted",
+    "prediction": {
+      "months": 27.8,
+      "low": 19.3,
+      "high": 36.3,
+      "typical_error_months": 8.5,
+      "method": "random_forest",
+      "trained_on": "205 Georgia Power projects (filed start and need dates)",
+      "label": "predicted"
+    }
   },
   "owner": "DESC",
   "closure_type": "lane_closure",
@@ -5114,7 +5147,7 @@ Response `201`:
 
 ```json
 {
-  "contract_id": "CTR_KVJ70G",
+  "contract_id": "CTR_TJYZLK",
   "filename": "sample_contract_hardeeville.pdf",
   "status": "needs_review",
   "fields": {
@@ -5243,9 +5276,9 @@ Response `200`:
 
 ```json
 {
-  "contract_id": "CTR_KVJ70G",
+  "contract_id": "CTR_TJYZLK",
   "project": {
-    "id": "CTR_KVJ70G",
+    "id": "CTR_TJYZLK",
     "utility": "USER",
     "utility_name": "Lowcountry Line Builders LLC (fictional)",
     "state": null,
@@ -5380,7 +5413,7 @@ Response `200`:
         "shared_roads": []
       },
       {
-        "project_id": "USR_J7QJFE",
+        "project_id": "USR_H010FE",
         "short_name": "Corridor upgrade",
         "window": {
           "start": "2027-06-01",
@@ -5396,7 +5429,7 @@ Response `200`:
   },
   "matches": [
     {
-      "project_id": "USR_J7QJFE",
+      "project_id": "USR_H010FE",
       "short_name": "Corridor upgrade",
       "name": "Corridor upgrade",
       "utility": "USER",
@@ -5503,16 +5536,16 @@ Response `200`:
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 124127,
+        "total_estimated_savings_usd": 93427,
         "range_usd": [
-          49451,
-          250255
+          25401,
+          275180
         ],
         "components": {
           "mobilization": {
-            "low": 49250,
-            "point": 123125,
-            "high": 246250,
+            "low": 25200,
+            "point": 92425,
+            "high": 271175,
             "applies": true,
             "requires_schedule_shift": true
           },
@@ -5536,19 +5569,20 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7394000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 123125,
+        "mobilization_savings_usd": 92425,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,040,000–$10,847,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Mobilization savings halved: the construction windows only overlap after a schedule shift",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+            "value_used": "$7,394,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -5746,16 +5780,16 @@ Response `200`:
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 247072,
+        "total_estimated_savings_usd": 185297,
         "range_usd": [
-          98581,
-          496206
+          50381,
+          544956
         ],
         "components": {
           "mobilization": {
-            "low": 98500,
-            "point": 246250,
-            "high": 492500,
+            "low": 50300,
+            "point": 184475,
+            "high": 541250,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -5779,18 +5813,19 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7379000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 246250,
+        "mobilization_savings_usd": 184475,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,030,000–$10,825,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Dean Forest",
+            "value_used": "$7,379,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -5922,16 +5957,16 @@ Response `200`:
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 246985,
+        "total_estimated_savings_usd": 156485,
         "range_usd": [
-          98523,
-          496061
+          42493,
+          460561
         ],
         "components": {
           "mobilization": {
-            "low": 98500,
-            "point": 246250,
-            "high": 492500,
+            "low": 42470,
+            "point": 155750,
+            "high": 457000,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -5955,18 +5990,19 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 6230000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 246250,
+        "mobilization_savings_usd": 155750,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $4,247,000–$9,140,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+            "value_used": "$6,230,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -6010,16 +6046,16 @@ Response `200`:
       },
       "potential": "moderate",
       "cost_estimate": {
-        "total_estimated_savings_usd": 165734,
+        "total_estimated_savings_usd": 131709,
         "range_usd": [
-          66022,
-          333559
+          35732,
+          387859
         ],
         "components": {
           "mobilization": {
-            "low": 66000,
-            "point": 165000,
-            "high": 330000,
+            "low": 35710,
+            "point": 130975,
+            "high": 384300,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -6043,18 +6079,19 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 6600000,
-        "reference_budget_source": "estimated_miso",
+        "reference_budget_usd": 5239000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 165000,
+        "mobilization_savings_usd": 130975,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $3,571,000–$7,686,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
-            "value_used": "$6,600,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+            "value_used": "$5,239,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -6173,16 +6210,16 @@ Response `200`:
       },
       "potential": "lower",
       "cost_estimate": {
-        "total_estimated_savings_usd": 124089,
+        "total_estimated_savings_usd": 108676,
         "range_usd": [
-          49425,
-          250193
+          29545,
+          319968
         ],
         "components": {
           "mobilization": {
-            "low": 49250,
-            "point": 123125,
-            "high": 246250,
+            "low": 29370,
+            "point": 107712,
+            "high": 316025,
             "applies": true,
             "requires_schedule_shift": true
           },
@@ -6206,19 +6243,20 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 8617000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 123125,
+        "mobilization_savings_usd": 107712,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,874,000–$12,641,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Mobilization savings halved: the construction windows only overlap after a schedule shift",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–Kraft",
+            "value_used": "$8,617,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -6295,15 +6333,15 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 5034000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+            "value_used": "$5,034,000"
           }
         ]
       },
@@ -6370,15 +6408,15 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7838000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Deptford",
+            "value_used": "$7,838,000"
           }
         ]
       },
@@ -6445,15 +6483,15 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 6333000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+            "value_used": "$6,333,000"
           }
         ]
       },
@@ -6520,15 +6558,15 @@ Response `200`:
             "applies": false
           }
         },
-        "reference_budget_usd": 6600000,
-        "reference_budget_source": "estimated_miso",
+        "reference_budget_usd": 5239000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
-            "value_used": "$6,600,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Meldrim",
+            "value_used": "$5,239,000"
           }
         ]
       },
@@ -6768,12 +6806,12 @@ Response `200`:
       "shared_roads": []
     }
   ],
-  "best_match": "USR_J7QJFE",
+  "best_match": "USR_H010FE",
   "traffic": {
     "crossings": [
       {
-        "id": "XING_CTR_KVJ70G_1",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_1",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Deerfield Road",
         "road_ref": "US-321",
         "road_refs": [
@@ -6808,8 +6846,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_2",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_2",
+        "project_id": "CTR_TJYZLK",
         "road_name": "North Whyte Hardee Boulevard",
         "road_ref": "US-17",
         "road_refs": [
@@ -6845,8 +6883,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_3",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_3",
+        "project_id": "CTR_TJYZLK",
         "road_name": null,
         "road_ref": "I-95",
         "road_refs": [
@@ -6881,8 +6919,8 @@ Response `200`:
         "worst_delay_veh_hours": 25582.5
       },
       {
-        "id": "XING_CTR_KVJ70G_4",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_4",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Tradition Avenue",
         "road_ref": null,
         "road_refs": [],
@@ -6915,8 +6953,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_5",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_5",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Independence Boulevard",
         "road_ref": "US-278",
         "road_refs": [
@@ -6951,8 +6989,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_6",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_6",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Okatie Highway",
         "road_ref": "SC-170",
         "road_refs": [
@@ -6987,8 +7025,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_7",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_7",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Hampton Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -7021,8 +7059,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_8",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_8",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bluffton Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -7055,8 +7093,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_9",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_9",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Buckwalter Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -7089,8 +7127,8 @@ Response `200`:
         "worst_delay_veh_hours": 24879.2
       },
       {
-        "id": "XING_CTR_KVJ70G_10",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_10",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bluffton Parkway",
         "road_ref": null,
         "road_refs": [],
@@ -7123,8 +7161,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_11",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_11",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Buck Island Road",
         "road_ref": null,
         "road_refs": [],
@@ -7157,8 +7195,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_12",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_12",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Simmonsville Road",
         "road_ref": null,
         "road_refs": [],
@@ -7191,8 +7229,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_13",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_13",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bluffton Road",
         "road_ref": "SC-46",
         "road_refs": [
@@ -7227,8 +7265,8 @@ Response `200`:
         "worst_delay_veh_hours": 4125.9
       },
       {
-        "id": "XING_CTR_KVJ70G_14",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_14",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Bruin Road",
         "road_ref": null,
         "road_refs": [],
@@ -7261,8 +7299,8 @@ Response `200`:
         "worst_delay_veh_hours": 0.0
       },
       {
-        "id": "XING_CTR_KVJ70G_15",
-        "project_id": "CTR_KVJ70G",
+        "id": "XING_CTR_TJYZLK_15",
+        "project_id": "CTR_TJYZLK",
         "road_name": "Burnt Church Road",
         "road_ref": null,
         "road_refs": [],
@@ -7305,7 +7343,7 @@ Response `200`:
       496874
     ],
     "best_savings_usd": 247473,
-    "best_savings_project_id": "USR_J7QJFE",
+    "best_savings_project_id": "USR_H010FE",
     "savings_range_basis": "best single partner (savings from several partners are not added: they mostly share the same mobilization of this contract, which happens once)",
     "high_potential": 0
   }
@@ -7326,9 +7364,9 @@ Response `201`:
 
 ```json
 {
-  "contract_id": "CTR_KVJ70G",
+  "contract_id": "CTR_TJYZLK",
   "project": {
-    "id": "USR_KI52MI",
+    "id": "USR_TKKP71",
     "utility": "USER",
     "utility_name": "Demo Contractor A",
     "state": null,
@@ -7387,23 +7425,23 @@ Response `201`:
     },
     "quality_flags": [],
     "overlap_ids": [
-      "OVL_USR_KI52MI__DESC_3",
-      "OVL_USR_KI52MI__DESC_6",
-      "OVL_USR_KI52MI__DESC_7",
-      "OVL_USR_KI52MI__DESC_10",
-      "OVL_USR_KI52MI__DESC_23",
-      "OVL_USR_KI52MI__GPC_20067",
-      "OVL_USR_KI52MI__GPC_20066",
-      "OVL_USR_KI52MI__GPC_20277",
-      "OVL_USR_KI52MI__GPC_20785",
-      "OVL_USR_KI52MI__GPC_20065",
-      "OVL_USR_KI52MI__GPC_20783",
-      "OVL_USR_KI52MI__GPC_20407",
-      "OVL_USR_KI52MI__GPC_21006",
-      "OVL_USR_KI52MI__GPC_21023",
-      "OVL_USR_KI52MI__GPC_20784",
-      "OVL_USR_KI52MI__GPC_20796",
-      "OVL_USR_KI52MI__USR_J7QJFE"
+      "OVL_USR_TKKP71__DESC_3",
+      "OVL_USR_TKKP71__DESC_6",
+      "OVL_USR_TKKP71__DESC_7",
+      "OVL_USR_TKKP71__DESC_10",
+      "OVL_USR_TKKP71__DESC_23",
+      "OVL_USR_TKKP71__GPC_20067",
+      "OVL_USR_TKKP71__GPC_20066",
+      "OVL_USR_TKKP71__GPC_20277",
+      "OVL_USR_TKKP71__GPC_20785",
+      "OVL_USR_TKKP71__GPC_20065",
+      "OVL_USR_TKKP71__GPC_20783",
+      "OVL_USR_TKKP71__GPC_20407",
+      "OVL_USR_TKKP71__GPC_21006",
+      "OVL_USR_TKKP71__GPC_21023",
+      "OVL_USR_TKKP71__GPC_20784",
+      "OVL_USR_TKKP71__GPC_20796",
+      "OVL_USR_TKKP71__USR_H010FE"
     ],
     "short_name": "Hardeeville Area Reliability Project - …",
     "work_type_label": "Transmission line rebuild",
@@ -7421,16 +7459,17 @@ Response `201`:
     "location_text": null,
     "geocoded": null,
     "contract_text_hash": "2d93bbbbfa1b6cfc5f26657dce78de245db5059ea9435ab9d5868bf372d85ca6",
+    "line_miles": 17.5,
     "budget_usd": 9850000,
     "budget_source": "contract",
     "budget_note": "Stated in the uploaded contract",
-    "created_at": "2026-09-26T22:27:32.254421+00:00",
-    "updated_at": "2026-09-26T22:27:32.254421+00:00"
+    "created_at": "2026-09-27T00:11:02.755887+00:00",
+    "updated_at": "2026-09-27T00:11:02.755887+00:00"
   },
   "overlaps": [
     {
-      "id": "OVL_USR_KI52MI__DESC_3",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__DESC_3",
+      "project_a": "USR_TKKP71",
       "project_b": "DESC_3",
       "center_distance_mi": 3.56,
       "closest_distance_km": 1.51,
@@ -7450,6 +7489,7 @@ Response `201`:
       "time_gap_days": 1079,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "predicted",
       "score": 33.4,
       "score_breakdown": {
         "proximity": 33.4,
@@ -7527,7 +7567,7 @@ Response `201`:
             "mobilization_events": 1,
             "truck_days": 10,
             "laydown_sites": 1,
-            "start_date": "2023-01-01"
+            "start_date": "2022-12-31"
           }
         },
         "coordinated": {
@@ -7536,7 +7576,7 @@ Response `201`:
           "shared_truck_days": 20,
           "laydown_sites": 1,
           "start_date_a": "2027-06-01",
-          "start_date_b": "2023-01-01"
+          "start_date_b": "2022-12-31"
         },
         "totals": {
           "separate": 532400,
@@ -7576,8 +7616,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__DESC_6",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__DESC_6",
+      "project_a": "USR_TKKP71",
       "project_b": "DESC_6",
       "center_distance_mi": 18.33,
       "closest_distance_km": 25.57,
@@ -7597,6 +7637,7 @@ Response `201`:
       "time_gap_days": 1079,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "predicted",
       "score": 9.5,
       "score_breakdown": {
         "proximity": 9.5,
@@ -7674,7 +7715,7 @@ Response `201`:
             "mobilization_events": 1,
             "truck_days": 10,
             "laydown_sites": 1,
-            "start_date": "2023-01-01"
+            "start_date": "2022-09-30"
           }
         },
         "coordinated": {
@@ -7683,7 +7724,7 @@ Response `201`:
           "shared_truck_days": 20,
           "laydown_sites": 2,
           "start_date_a": "2027-06-01",
-          "start_date_b": "2023-01-01"
+          "start_date_b": "2022-09-30"
         },
         "totals": {
           "separate": 469000,
@@ -7723,8 +7764,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__DESC_7",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__DESC_7",
+      "project_a": "USR_TKKP71",
       "project_b": "DESC_7",
       "center_distance_mi": 18.33,
       "closest_distance_km": 25.57,
@@ -7744,6 +7785,7 @@ Response `201`:
       "time_gap_days": 714,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "predicted",
       "score": 9.5,
       "score_breakdown": {
         "proximity": 9.5,
@@ -7821,7 +7863,7 @@ Response `201`:
             "mobilization_events": 1,
             "truck_days": 10,
             "laydown_sites": 1,
-            "start_date": "2023-01-01"
+            "start_date": "2023-10-31"
           }
         },
         "coordinated": {
@@ -7830,7 +7872,7 @@ Response `201`:
           "shared_truck_days": 20,
           "laydown_sites": 2,
           "start_date_a": "2027-06-01",
-          "start_date_b": "2023-01-01"
+          "start_date_b": "2023-10-31"
         },
         "totals": {
           "separate": 386200,
@@ -7870,8 +7912,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__DESC_10",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__DESC_10",
+      "project_a": "USR_TKKP71",
       "project_b": "DESC_10",
       "center_distance_mi": 2.83,
       "closest_distance_km": 0.0,
@@ -7891,6 +7933,7 @@ Response `201`:
       "time_gap_days": 927,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "predicted",
       "score": 40.0,
       "score_breakdown": {
         "proximity": 40.0,
@@ -7970,7 +8013,7 @@ Response `201`:
             "mobilization_events": 1,
             "truck_days": 10,
             "laydown_sites": 1,
-            "start_date": "2023-01-01"
+            "start_date": "2023-03-01"
           }
         },
         "coordinated": {
@@ -7979,7 +8022,7 @@ Response `201`:
           "shared_truck_days": 20,
           "laydown_sites": 1,
           "start_date_a": "2027-06-01",
-          "start_date_b": "2023-01-01"
+          "start_date_b": "2023-03-01"
         },
         "totals": {
           "separate": 532400,
@@ -8019,8 +8062,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__DESC_23",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__DESC_23",
+      "project_a": "USR_TKKP71",
       "project_b": "DESC_23",
       "center_distance_mi": 6.24,
       "closest_distance_km": 0.0,
@@ -8040,6 +8083,7 @@ Response `201`:
       "time_gap_days": 714,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "predicted",
       "score": 40.0,
       "score_breakdown": {
         "proximity": 40.0,
@@ -8119,7 +8163,7 @@ Response `201`:
             "mobilization_events": 1,
             "truck_days": 10,
             "laydown_sites": 1,
-            "start_date": "2023-01-01"
+            "start_date": "2023-08-31"
           }
         },
         "coordinated": {
@@ -8128,7 +8172,7 @@ Response `201`:
           "shared_truck_days": 20,
           "laydown_sites": 1,
           "start_date_a": "2027-06-01",
-          "start_date_b": "2023-01-01"
+          "start_date_b": "2023-08-31"
         },
         "totals": {
           "separate": 532400,
@@ -8168,8 +8212,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20067",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20067",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20067",
       "center_distance_mi": 18.08,
       "closest_distance_km": 25.18,
@@ -8189,6 +8233,7 @@ Response `201`:
       "time_gap_days": 927,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 9.6,
       "score_breakdown": {
         "proximity": 9.6,
@@ -8230,15 +8275,15 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 6333000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Deptford–Magnolia",
+            "value_used": "$6,333,000"
           }
         ]
       },
@@ -8249,7 +8294,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 158300,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -8278,27 +8323,27 @@ Response `201`:
           "start_date_b": "2023-01-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 532400,
+          "separate": 356600,
+          "coordinated": 356600,
           "savings": 0,
           "savings_pct": 0.0,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 178300,
+            "b": 178300
           },
           "coordinated_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 178300,
+            "b": 178300
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            303110,
+            410090
           ],
           "coordinated": [
-            452540,
-            612260
+            303110,
+            410090
           ],
           "savings": [
             0,
@@ -8315,8 +8360,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20066",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20066",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20066",
       "center_distance_mi": 17.99,
       "closest_distance_km": 25.18,
@@ -8336,6 +8381,7 @@ Response `201`:
       "time_gap_days": 562,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 9.6,
       "score_breakdown": {
         "proximity": 9.6,
@@ -8377,15 +8423,15 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7838000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Deptford",
+            "value_used": "$7,838,000"
           }
         ]
       },
@@ -8396,7 +8442,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 196000,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -8425,27 +8471,27 @@ Response `201`:
           "start_date_b": "2025-06-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 532400,
+          "separate": 432000,
+          "coordinated": 432000,
           "savings": 0,
           "savings_pct": 0.0,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 216000,
+            "b": 216000
           },
           "coordinated_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 216000,
+            "b": 216000
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            367200,
+            496800
           ],
           "coordinated": [
-            452540,
-            612260
+            367200,
+            496800
           ],
           "savings": [
             0,
@@ -8462,8 +8508,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20277",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20277",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20277",
       "center_distance_mi": 11.51,
       "closest_distance_km": 4.89,
@@ -8483,6 +8529,7 @@ Response `201`:
       "time_gap_days": 562,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 24.4,
       "score_breakdown": {
         "proximity": 24.4,
@@ -8524,15 +8571,15 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 5034000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): McIntosh–Purrysburg",
+            "value_used": "$5,034,000"
           }
         ]
       },
@@ -8543,7 +8590,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 125800,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -8572,27 +8619,27 @@ Response `201`:
           "start_date_b": "2024-01-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 527400,
+          "separate": 291600,
+          "coordinated": 286600,
           "savings": 5000,
-          "savings_pct": 0.9,
+          "savings_pct": 1.7,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 145800,
+            "b": 145800
           },
           "coordinated_by_project": {
-            "a": 263700,
-            "b": 263700
+            "a": 143300,
+            "b": 143300
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            247860,
+            335340
           ],
           "coordinated": [
-            448290,
-            606510
+            243610,
+            329590
           ],
           "savings": [
             3750,
@@ -8609,8 +8656,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20785",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20785",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20785",
       "center_distance_mi": 13.01,
       "closest_distance_km": 14.79,
@@ -8630,6 +8677,7 @@ Response `201`:
       "time_gap_days": 197,
       "window_overlap_months": 0,
       "schedule_shift_possible": true,
+      "timing_confidence": "filed",
       "score": 27.5,
       "score_breakdown": {
         "proximity": 11.4,
@@ -8638,16 +8686,16 @@ Response `201`:
       },
       "rank": 10,
       "cost_estimate": {
-        "total_estimated_savings_usd": 124089,
+        "total_estimated_savings_usd": 108676,
         "range_usd": [
-          49425,
-          250193
+          29545,
+          319968
         ],
         "components": {
           "mobilization": {
-            "low": 49250,
-            "point": 123125,
-            "high": 246250,
+            "low": 29370,
+            "point": 107712,
+            "high": 316025,
             "applies": true,
             "requires_schedule_shift": true
           },
@@ -8671,19 +8719,20 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 8617000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 123125,
+        "mobilization_savings_usd": 107712,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,874,000–$12,641,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Mobilization savings halved: the construction windows only overlap after a schedule shift",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–Kraft",
+            "value_used": "$8,617,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -8704,7 +8753,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 215400,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -8733,27 +8782,27 @@ Response `201`:
           "start_date_b": "2024-06-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 532400,
+          "separate": 470800,
+          "coordinated": 470800,
           "savings": 0,
           "savings_pct": 0.0,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 235400,
+            "b": 235400
           },
           "coordinated_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 235400,
+            "b": 235400
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            400180,
+            541420
           ],
           "coordinated": [
-            452540,
-            612260
+            400180,
+            541420
           ],
           "savings": [
             0,
@@ -8770,8 +8819,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20065",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20065",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20065",
       "center_distance_mi": 11.89,
       "closest_distance_km": 4.89,
@@ -8791,6 +8840,7 @@ Response `201`:
       "time_gap_days": 197,
       "window_overlap_months": 0,
       "schedule_shift_possible": true,
+      "timing_confidence": "filed",
       "score": 40.5,
       "score_breakdown": {
         "proximity": 24.4,
@@ -8799,16 +8849,16 @@ Response `201`:
       },
       "rank": 2,
       "cost_estimate": {
-        "total_estimated_savings_usd": 124127,
+        "total_estimated_savings_usd": 93427,
         "range_usd": [
-          49451,
-          250255
+          25401,
+          275180
         ],
         "components": {
           "mobilization": {
-            "low": 49250,
-            "point": 123125,
-            "high": 246250,
+            "low": 25200,
+            "point": 92425,
+            "high": 271175,
             "applies": true,
             "requires_schedule_shift": true
           },
@@ -8832,19 +8882,20 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7394000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 123125,
+        "mobilization_savings_usd": 92425,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,040,000–$10,847,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Mobilization savings halved: the construction windows only overlap after a schedule shift",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Goshen–McIntosh",
+            "value_used": "$7,394,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -8865,7 +8916,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 184800,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -8894,27 +8945,27 @@ Response `201`:
           "start_date_b": "2025-06-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 527400,
+          "separate": 409600,
+          "coordinated": 404600,
           "savings": 5000,
-          "savings_pct": 0.9,
+          "savings_pct": 1.2,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 204800,
+            "b": 204800
           },
           "coordinated_by_project": {
-            "a": 263700,
-            "b": 263700
+            "a": 202300,
+            "b": 202300
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            348160,
+            471040
           ],
           "coordinated": [
-            448290,
-            606510
+            343910,
+            465290
           ],
           "savings": [
             3750,
@@ -8931,8 +8982,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20783",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20783",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20783",
       "center_distance_mi": 17.23,
       "closest_distance_km": 25.27,
@@ -8952,6 +9003,7 @@ Response `201`:
       "time_gap_days": 169,
       "window_overlap_months": 6,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 39.7,
       "score_breakdown": {
         "proximity": 9.6,
@@ -8960,16 +9012,16 @@ Response `201`:
       },
       "rank": 5,
       "cost_estimate": {
-        "total_estimated_savings_usd": 247072,
+        "total_estimated_savings_usd": 185297,
         "range_usd": [
-          98581,
-          496206
+          50381,
+          544956
         ],
         "components": {
           "mobilization": {
-            "low": 98500,
-            "point": 246250,
-            "high": 492500,
+            "low": 50300,
+            "point": 184475,
+            "high": 541250,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -8993,18 +9045,19 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 7379000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 246250,
+        "mobilization_savings_usd": 184475,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $5,030,000–$10,825,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Dean Forest",
+            "value_used": "$7,379,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -9025,7 +9078,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 184500,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -9054,27 +9107,27 @@ Response `201`:
           "start_date_b": "2025-06-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 520400,
+          "separate": 409000,
+          "coordinated": 397000,
           "savings": 12000,
-          "savings_pct": 2.3,
+          "savings_pct": 2.9,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 204500,
+            "b": 204500
           },
           "coordinated_by_project": {
-            "a": 260200,
-            "b": 260200
+            "a": 198500,
+            "b": 198500
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            347650,
+            470350
           ],
           "coordinated": [
-            442340,
-            598460
+            337450,
+            456550
           ],
           "savings": [
             9000,
@@ -9091,8 +9144,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20407",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20407",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20407",
       "center_distance_mi": 19.85,
       "closest_distance_km": 31.19,
@@ -9112,6 +9165,7 @@ Response `201`:
       "time_gap_days": 169,
       "window_overlap_months": 6,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 38.6,
       "score_breakdown": {
         "proximity": 8.5,
@@ -9120,16 +9174,16 @@ Response `201`:
       },
       "rank": 8,
       "cost_estimate": {
-        "total_estimated_savings_usd": 165734,
+        "total_estimated_savings_usd": 131709,
         "range_usd": [
-          66022,
-          333559
+          35732,
+          387859
         ],
         "components": {
           "mobilization": {
-            "low": 66000,
-            "point": 165000,
-            "high": 330000,
+            "low": 35710,
+            "point": 130975,
+            "high": 384300,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -9153,18 +9207,19 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 6600000,
-        "reference_budget_source": "estimated_miso",
+        "reference_budget_usd": 5239000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 165000,
+        "mobilization_savings_usd": 130975,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $3,571,000–$7,686,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Magnolia–Truman Parkway",
-            "value_used": "$6,600,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Magnolia–Truman Parkway",
+            "value_used": "$5,239,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -9185,7 +9240,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 165000,
+          "mobilization_per_event": 131000,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -9214,27 +9269,27 @@ Response `201`:
           "start_date_b": "2025-06-01"
         },
         "totals": {
-          "separate": 370000,
-          "coordinated": 358000,
+          "separate": 302000,
+          "coordinated": 290000,
           "savings": 12000,
-          "savings_pct": 3.2,
+          "savings_pct": 4.0,
           "separate_by_project": {
-            "a": 185000,
-            "b": 185000
+            "a": 151000,
+            "b": 151000
           },
           "coordinated_by_project": {
-            "a": 179000,
-            "b": 179000
+            "a": 145000,
+            "b": 145000
           }
         },
         "range": {
           "separate": [
-            314500,
-            425500
+            256700,
+            347300
           ],
           "coordinated": [
-            304300,
-            411700
+            246500,
+            333500
           ],
           "savings": [
             9000,
@@ -9251,8 +9306,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_21006",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_21006",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_21006",
       "center_distance_mi": 19.81,
       "closest_distance_km": 31.19,
@@ -9272,6 +9327,7 @@ Response `201`:
       "time_gap_days": 534,
       "window_overlap_months": 6,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 38.6,
       "score_breakdown": {
         "proximity": 8.5,
@@ -9280,16 +9336,16 @@ Response `201`:
       },
       "rank": 7,
       "cost_estimate": {
-        "total_estimated_savings_usd": 246985,
+        "total_estimated_savings_usd": 156485,
         "range_usd": [
-          98523,
-          496061
+          42493,
+          460561
         ],
         "components": {
           "mobilization": {
-            "low": 98500,
-            "point": 246250,
-            "high": 492500,
+            "low": 42470,
+            "point": 155750,
+            "high": 457000,
             "applies": true,
             "requires_schedule_shift": false
           },
@@ -9313,18 +9369,19 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 9850000,
-        "reference_budget_source": "contract",
+        "reference_budget_usd": 6230000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
-        "mobilization_savings_usd": 246250,
+        "mobilization_savings_usd": 155750,
         "assumptions": [
+          "The reference budget is an ML prediction (likely $4,247,000–$9,140,000); the savings range uses that budget range",
           "Share of one mobilization that can be shared: 25%–50% (assumption)",
           "Hauling: 4–10 equipment loads per project, contractor base 25–100 miles from site, road miles = 1.2 x straight-line (assumptions)"
         ],
         "sources": [
           {
-            "name": "Uploaded contract (budget): Hardeeville Area Reliability Project - …",
-            "value_used": "$9,850,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Boulevard–Magnolia",
+            "value_used": "$6,230,000"
           },
           {
             "name": "MoDOT Engineering Policy Guide, Category 618 Mobilization",
@@ -9345,7 +9402,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 246200,
+          "mobilization_per_event": 155800,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -9374,27 +9431,27 @@ Response `201`:
           "start_date_b": "2027-01-01"
         },
         "totals": {
-          "separate": 532400,
-          "coordinated": 520400,
+          "separate": 351600,
+          "coordinated": 339600,
           "savings": 12000,
-          "savings_pct": 2.3,
+          "savings_pct": 3.4,
           "separate_by_project": {
-            "a": 266200,
-            "b": 266200
+            "a": 175800,
+            "b": 175800
           },
           "coordinated_by_project": {
-            "a": 260200,
-            "b": 260200
+            "a": 169800,
+            "b": 169800
           }
         },
         "range": {
           "separate": [
-            452540,
-            612260
+            298860,
+            404340
           ],
           "coordinated": [
-            442340,
-            598460
+            288660,
+            390540
           ],
           "savings": [
             9000,
@@ -9411,8 +9468,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_21023",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_21023",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_21023",
       "center_distance_mi": 22.12,
       "closest_distance_km": 29.89,
@@ -9432,6 +9489,7 @@ Response `201`:
       "time_gap_days": 534,
       "window_overlap_months": 6,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 38.9,
       "score_breakdown": {
         "proximity": 8.8,
@@ -9571,8 +9629,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20784",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20784",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20784",
       "center_distance_mi": 18.98,
       "closest_distance_km": 25.27,
@@ -9592,6 +9650,7 @@ Response `201`:
       "time_gap_days": 1630,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 9.6,
       "score_breakdown": {
         "proximity": 9.6,
@@ -9633,15 +9692,15 @@ Response `201`:
             "applies": false
           }
         },
-        "reference_budget_usd": 6600000,
-        "reference_budget_source": "estimated_miso",
+        "reference_budget_usd": 5239000,
+        "reference_budget_source": "predicted (ridge, Dominion budgets)",
         "shared_row_acres": null,
         "mobilization_savings_usd": null,
         "assumptions": [],
         "sources": [
           {
-            "name": "MISO per-mile estimate (Georgia Power budget is redacted): Coleman–Meldrim",
-            "value_used": "$6,600,000"
+            "name": "ML cost model trained on 44 Dominion filed budgets (budget predicted): Coleman–Meldrim",
+            "value_used": "$5,239,000"
           }
         ]
       },
@@ -9652,7 +9711,7 @@ Response `201`:
         "illustrative": true,
         "defaults_source": "cost_sources.json",
         "unit_rates": {
-          "mobilization_per_event": 165000,
+          "mobilization_per_event": 131000,
           "bucket_truck_per_day": 1500,
           "laydown_per_site": 5000,
           "crew_size": 4,
@@ -9681,27 +9740,27 @@ Response `201`:
           "start_date_b": "2029-06-01"
         },
         "totals": {
-          "separate": 370000,
-          "coordinated": 370000,
+          "separate": 302000,
+          "coordinated": 302000,
           "savings": 0,
           "savings_pct": 0.0,
           "separate_by_project": {
-            "a": 185000,
-            "b": 185000
+            "a": 151000,
+            "b": 151000
           },
           "coordinated_by_project": {
-            "a": 185000,
-            "b": 185000
+            "a": 151000,
+            "b": 151000
           }
         },
         "range": {
           "separate": [
-            314500,
-            425500
+            256700,
+            347300
           ],
           "coordinated": [
-            314500,
-            425500
+            256700,
+            347300
           ],
           "savings": [
             0,
@@ -9718,8 +9777,8 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__GPC_20796",
-      "project_a": "USR_KI52MI",
+      "id": "OVL_USR_TKKP71__GPC_20796",
+      "project_a": "USR_TKKP71",
       "project_b": "GPC_20796",
       "center_distance_mi": 24.28,
       "closest_distance_km": 32.37,
@@ -9739,6 +9798,7 @@ Response `201`:
       "time_gap_days": 1995,
       "window_overlap_months": 0,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 8.3,
       "score_breakdown": {
         "proximity": 8.3,
@@ -9865,9 +9925,9 @@ Response `201`:
       "kind": "user_project"
     },
     {
-      "id": "OVL_USR_KI52MI__USR_J7QJFE",
-      "project_a": "USR_KI52MI",
-      "project_b": "USR_J7QJFE",
+      "id": "OVL_USR_TKKP71__USR_H010FE",
+      "project_a": "USR_TKKP71",
+      "project_b": "USR_H010FE",
       "center_distance_mi": 5.32,
       "closest_distance_km": 5.13,
       "closest_points": {
@@ -9886,6 +9946,7 @@ Response `201`:
       "time_gap_days": 48,
       "window_overlap_months": 6,
       "schedule_shift_possible": false,
+      "timing_confidence": "filed",
       "score": 54.4,
       "score_breakdown": {
         "proximity": 24.3,
@@ -10027,7 +10088,7 @@ Response `201`:
   ],
   "closure_conflicts": [
     {
-      "project_id": "USR_J7QJFE",
+      "project_id": "USR_H010FE",
       "short_name": "Corridor upgrade",
       "road": "US-17",
       "overlap_start": "2027-06-01",
@@ -10059,374 +10120,374 @@ Response `200`:
   "events": [
     {
       "seq": 1,
-      "ts": "2026-09-26T22:27:31.297482+00:00",
+      "ts": "2026-09-27T00:11:01.752241+00:00",
       "company_id": "CMP_B",
       "collection": "projects",
       "op": "insert",
-      "doc_id": "USR_J7QJFE",
+      "doc_id": "USR_H010FE",
       "summary": "Demo Contractor B added project Corridor upgrade",
       "visibility": "all",
       "id": "EVT_1"
     },
     {
       "seq": 2,
-      "ts": "2026-09-26T22:27:31.328525+00:00",
+      "ts": "2026-09-27T00:11:01.782680+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_J7QJFE__DESC_3",
+      "doc_id": "OVL_USR_H010FE__DESC_3",
       "summary": "Overlap Corridor upgrade ↔ Jasper–Okatie",
       "visibility": "all",
       "id": "EVT_2"
     },
     {
       "seq": 3,
-      "ts": "2026-09-26T22:27:31.330537+00:00",
+      "ts": "2026-09-27T00:11:01.782680+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_J7QJFE__DESC_5",
+      "doc_id": "OVL_USR_H010FE__DESC_5",
       "summary": "Overlap Corridor upgrade ↔ Okatie–Bluffton",
       "visibility": "all",
       "id": "EVT_3"
     },
     {
       "seq": 4,
-      "ts": "2026-09-26T22:27:31.330537+00:00",
+      "ts": "2026-09-27T00:11:01.782680+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_J7QJFE__GPC_2",
+      "doc_id": "OVL_USR_H010FE__GPC_2",
       "summary": "Overlap Corridor upgrade ↔ McIntosh–Purrysburg",
       "visibility": "all",
       "id": "EVT_4"
     },
     {
       "seq": 5,
-      "ts": "2026-09-26T22:27:31.330537+00:00",
+      "ts": "2026-09-27T00:11:01.782680+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_J7QJFE__GPC_3",
+      "doc_id": "OVL_USR_H010FE__GPC_3",
       "summary": "Overlap Corridor upgrade ↔ Goshen–McIntosh",
       "visibility": "all",
       "id": "EVT_5"
     },
     {
       "seq": 6,
-      "ts": "2026-09-26T22:27:31.341843+00:00",
+      "ts": "2026-09-27T00:11:01.794586+00:00",
       "company_id": "CMP_B",
       "collection": "projects",
       "op": "update",
-      "doc_id": "USR_J7QJFE",
+      "doc_id": "USR_H010FE",
       "summary": "Demo Contractor B updated project Corridor upgrade",
       "visibility": "all",
       "id": "EVT_6"
     },
     {
       "seq": 7,
-      "ts": "2026-09-26T22:27:31.355507+00:00",
+      "ts": "2026-09-27T00:11:01.812037+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "update",
-      "doc_id": "OVL_USR_J7QJFE__DESC_3",
+      "doc_id": "OVL_USR_H010FE__DESC_3",
       "summary": "Overlap Corridor upgrade ↔ Jasper–Okatie",
       "visibility": "all",
       "id": "EVT_7"
     },
     {
       "seq": 8,
-      "ts": "2026-09-26T22:27:31.355507+00:00",
+      "ts": "2026-09-27T00:11:01.813034+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "update",
-      "doc_id": "OVL_USR_J7QJFE__DESC_5",
+      "doc_id": "OVL_USR_H010FE__DESC_5",
       "summary": "Overlap Corridor upgrade ↔ Okatie–Bluffton",
       "visibility": "all",
       "id": "EVT_8"
     },
     {
       "seq": 9,
-      "ts": "2026-09-26T22:27:31.355507+00:00",
+      "ts": "2026-09-27T00:11:01.813034+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "update",
-      "doc_id": "OVL_USR_J7QJFE__GPC_2",
+      "doc_id": "OVL_USR_H010FE__GPC_2",
       "summary": "Overlap Corridor upgrade ↔ McIntosh–Purrysburg",
       "visibility": "all",
       "id": "EVT_9"
     },
     {
       "seq": 10,
-      "ts": "2026-09-26T22:27:31.355507+00:00",
+      "ts": "2026-09-27T00:11:01.813034+00:00",
       "company_id": "CMP_B",
       "collection": "overlaps",
       "op": "update",
-      "doc_id": "OVL_USR_J7QJFE__GPC_3",
+      "doc_id": "OVL_USR_H010FE__GPC_3",
       "summary": "Overlap Corridor upgrade ↔ Goshen–McIntosh",
       "visibility": "all",
       "id": "EVT_10"
     },
     {
       "seq": 11,
-      "ts": "2026-09-26T22:27:31.445569+00:00",
+      "ts": "2026-09-27T00:11:01.871520+00:00",
       "company_id": "CMP_C",
       "collection": "resources",
       "op": "insert",
-      "doc_id": "RES_60DSMQ",
+      "doc_id": "RES_VN17K4",
       "summary": "Coastal Crane (demo) listed 2 x 60-ton crane",
       "visibility": "all",
       "id": "EVT_11"
     },
     {
       "seq": 12,
-      "ts": "2026-09-26T22:27:31.462420+00:00",
+      "ts": "2026-09-27T00:11:01.896931+00:00",
       "company_id": "CMP_C",
       "collection": "resources",
       "op": "update",
-      "doc_id": "RES_60DSMQ",
+      "doc_id": "RES_VN17K4",
       "summary": "Coastal Crane (demo) updated 60-ton crane",
       "visibility": "all",
       "id": "EVT_12"
     },
     {
       "seq": 17,
-      "ts": "2026-09-26T22:27:31.520419+00:00",
+      "ts": "2026-09-27T00:11:01.977719+00:00",
       "company_id": "CMP_B",
       "collection": "jobs",
       "op": "insert",
-      "doc_id": "JOB_Z3RS60",
+      "doc_id": "JOB_TMHGR1",
       "summary": "Demo Contractor B posted Transmission lineworker",
       "visibility": "all",
       "id": "EVT_17"
     },
     {
       "seq": 18,
-      "ts": "2026-09-26T22:27:31.536758+00:00",
+      "ts": "2026-09-27T00:11:01.997615+00:00",
       "company_id": null,
       "collection": "applications",
       "op": "insert",
-      "doc_id": "APP_2OBL1H",
+      "doc_id": "APP_2ZPGWZ",
       "summary": "New application for Transmission lineworker",
       "visibility": "CMP_B",
       "id": "EVT_18"
     },
     {
       "seq": 19,
-      "ts": "2026-09-26T22:27:31.545235+00:00",
+      "ts": "2026-09-27T00:11:02.015597+00:00",
       "company_id": "CMP_B",
       "collection": "applications",
       "op": "update",
-      "doc_id": "APP_2OBL1H",
+      "doc_id": "APP_2ZPGWZ",
       "summary": "Application for Transmission lineworker reviewed",
       "visibility": "CMP_B",
       "id": "EVT_19"
     },
     {
       "seq": 26,
-      "ts": "2026-09-26T22:27:31.611877+00:00",
+      "ts": "2026-09-27T00:11:02.112146+00:00",
       "company_id": "CMP_A",
       "collection": "resources",
       "op": "insert",
-      "doc_id": "RES_AZT7KB",
+      "doc_id": "RES_AB4MPO",
       "summary": "Demo Contractor A listed 2 x Crane",
       "visibility": "all",
       "id": "EVT_26"
     },
     {
       "seq": 28,
-      "ts": "2026-09-26T22:27:32.254421+00:00",
+      "ts": "2026-09-27T00:11:02.755887+00:00",
       "company_id": "CMP_A",
       "collection": "projects",
       "op": "insert",
-      "doc_id": "USR_KI52MI",
+      "doc_id": "USR_TKKP71",
       "summary": "Demo Contractor A added project Hardeeville Area Reliability Project - Jasper to Bluffton 115 kV Line Rebuild",
       "visibility": "all",
       "id": "EVT_28"
     },
     {
       "seq": 29,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.801006+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__DESC_3",
+      "doc_id": "OVL_USR_TKKP71__DESC_3",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Okatie",
       "visibility": "all",
       "id": "EVT_29"
     },
     {
       "seq": 30,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.802011+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__DESC_6",
+      "doc_id": "OVL_USR_TKKP71__DESC_6",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Burton–St Helena",
       "visibility": "all",
       "id": "EVT_30"
     },
     {
       "seq": 31,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.802011+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__DESC_7",
+      "doc_id": "OVL_USR_TKKP71__DESC_7",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Burton–St Helena",
       "visibility": "all",
       "id": "EVT_31"
     },
     {
       "seq": 32,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.802011+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__DESC_10",
+      "doc_id": "OVL_USR_TKKP71__DESC_10",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Okatie–Bluffton",
       "visibility": "all",
       "id": "EVT_32"
     },
     {
       "seq": 33,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.803017+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__DESC_23",
+      "doc_id": "OVL_USR_TKKP71__DESC_23",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Jasper–Okatie",
       "visibility": "all",
       "id": "EVT_33"
     },
     {
       "seq": 34,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.803017+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20067",
+      "doc_id": "OVL_USR_TKKP71__GPC_20067",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Deptford–Magnolia",
       "visibility": "all",
       "id": "EVT_34"
     },
     {
       "seq": 35,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.803017+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20066",
+      "doc_id": "OVL_USR_TKKP71__GPC_20066",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Boulevard–Deptford",
       "visibility": "all",
       "id": "EVT_35"
     },
     {
       "seq": 36,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.803017+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20277",
+      "doc_id": "OVL_USR_TKKP71__GPC_20277",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ McIntosh–Purrysburg",
       "visibility": "all",
       "id": "EVT_36"
     },
     {
       "seq": 37,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804009+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20785",
+      "doc_id": "OVL_USR_TKKP71__GPC_20785",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Goshen–Kraft",
       "visibility": "all",
       "id": "EVT_37"
     },
     {
       "seq": 38,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804009+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20065",
+      "doc_id": "OVL_USR_TKKP71__GPC_20065",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Goshen–McIntosh",
       "visibility": "all",
       "id": "EVT_38"
     },
     {
       "seq": 39,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20783",
+      "doc_id": "OVL_USR_TKKP71__GPC_20783",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Coleman–Dean Forest",
       "visibility": "all",
       "id": "EVT_39"
     },
     {
       "seq": 40,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20407",
+      "doc_id": "OVL_USR_TKKP71__GPC_20407",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Magnolia–Truman Parkway",
       "visibility": "all",
       "id": "EVT_40"
     },
     {
       "seq": 41,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_21006",
+      "doc_id": "OVL_USR_TKKP71__GPC_21006",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Boulevard–Magnolia",
       "visibility": "all",
       "id": "EVT_41"
     },
     {
       "seq": 42,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_21023",
+      "doc_id": "OVL_USR_TKKP71__GPC_21023",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Dean Forest–Little Ogeechee",
       "visibility": "all",
       "id": "EVT_42"
     },
     {
       "seq": 43,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20784",
+      "doc_id": "OVL_USR_TKKP71__GPC_20784",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Coleman–Meldrim",
       "visibility": "all",
       "id": "EVT_43"
     },
     {
       "seq": 44,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__GPC_20796",
+      "doc_id": "OVL_USR_TKKP71__GPC_20796",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Meldrim",
       "visibility": "all",
       "id": "EVT_44"
     },
     {
       "seq": 45,
-      "ts": "2026-09-26T22:27:32.304395+00:00",
+      "ts": "2026-09-27T00:11:02.804666+00:00",
       "company_id": "CMP_A",
       "collection": "overlaps",
       "op": "insert",
-      "doc_id": "OVL_USR_KI52MI__USR_J7QJFE",
+      "doc_id": "OVL_USR_TKKP71__USR_H010FE",
       "summary": "Overlap Hardeeville Area Reliability Project - … ↔ Corridor upgrade",
       "visibility": "all",
       "id": "EVT_45"

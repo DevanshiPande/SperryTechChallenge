@@ -183,6 +183,9 @@ def cost_estimate_v2(a, b, tier, closest_km, center_mi, window_overlap_months, s
     traffic: optional {"delay_usd": point, "setup_usd": point, "veh_hours": ...} from the traffic module."""
     from engine import sources as S
     budget, budget_src, budget_pid = reference_budget(a, b)
+    ref = a if budget_pid == a.get("id") else b
+    # A predicted budget is uncertain: use its low/high for the low/high savings (ML_README U6 step 4).
+    b_low, b_high = (ref.get("budget_range_usd") or [budget, budget]) if budget else (None, None)
     timing_ok = window_overlap_months > 0 or shift_possible
     shift_only = window_overlap_months == 0 and shift_possible
     assumptions, cites = [], []
@@ -191,8 +194,11 @@ def cost_estimate_v2(a, b, tier, closest_km, center_mi, window_overlap_months, s
     mob_pct, share = S.get("mobilization_pct"), S.get("shareable_fraction")
     if budget and closest_km is not None and closest_km < 40 and timing_ok:
         k = 0.5 if shift_only else 1.0
-        mob = {**_rng(budget * mob_pct["low"] * share["low"] * k, budget * mob_pct["point"] * share["point"] * k,
-                      budget * mob_pct["high"] * share["high"] * k), "applies": True, "requires_schedule_shift": shift_only}
+        mob = {**_rng(b_low * mob_pct["low"] * share["low"] * k, budget * mob_pct["point"] * share["point"] * k,
+                      b_high * mob_pct["high"] * share["high"] * k), "applies": True, "requires_schedule_shift": shift_only}
+        if (budget_src or "").startswith("predicted"):
+            assumptions.append(f"The reference budget is an ML prediction (likely ${b_low:,}–${b_high:,}); the savings "
+                               "range uses that budget range")
         cites.append(S.cite("mobilization_pct", f"{mob_pct['low']:.0%}–{mob_pct['high']:.0%} of the budget"))
         assumptions.append(f"Share of one mobilization that can be shared: {share['low']:.0%}–{share['high']:.0%} (assumption)")
         if shift_only:
@@ -256,7 +262,10 @@ def cost_estimate_v2(a, b, tier, closest_km, center_mi, window_overlap_months, s
     if budget:
         pb = a if a["id"] == budget_pid else b
         label = {"filing": "Dominion Energy SC filing (budget)", "contract": "Uploaded contract (budget)",
+                 "user": "Company-entered budget",
                  "estimated_miso": "MISO per-mile estimate (Georgia Power budget is redacted)"}.get(budget_src, budget_src)
+        if (budget_src or "").startswith("predicted"):
+            label = "ML cost model trained on 44 Dominion filed budgets (budget predicted)"
         cites.insert(0, {"name": f"{label}: {pb.get('short_name') or pb['id']}", "value_used": f"${budget:,}"})
     return {
         "total_estimated_savings_usd": max(0, int(point)),

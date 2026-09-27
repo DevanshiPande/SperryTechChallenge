@@ -47,3 +47,12 @@ Each item lists the conservative default we built. Questions 1–4 are for Sperr
 26. **Contracts without a database** are kept in memory (lost on restart) so the upload demo works in read-only mode.
 27. **Sample contract.** `data/samples/sample_contract_hardeeville.pdf` was not provided, so `scripts/make_sample_contract.py` generates a clearly fictional one (Jasper–Bluffton 115 kV rebuild through Hardeeville).
 28. **Site focus.** `GET /overlaps?project_id=` returns every opportunity a site is part of. The frontend's map uses it when a site is selected: the list re-ranks to that site's partners and opens the best one.
+
+## ML integration (ml/ML_README.md step U6)
+
+29. **Where predictions are used.** Dominion start dates (filing has none) and redacted Georgia Power line budgets in the pipeline; missing start dates and missing budgets on `POST /projects` and contract upload. Dates and budgets from a filing, contract or user are never replaced. The spending-years start is kept only as a sanity check (`WINDOW_DISAGREEMENT` when more than 24 months apart; 3 projects).
+30. **Budgets predicted only for transmission work.** On `POST /projects` a missing budget is predicted only when `voltage_kv` is given; on contracts, when a voltage is stated or the work runs between two substations. Road work gets no predicted transmission budget.
+31. **Equipment work on lines.** ML_README says to predict every GPC *line* project, so equipment work on a line (e.g. McIntosh–Purrysburg reactors) now gets a predicted budget; the old MISO rule skipped it. MISO per-mile stays as the fallback if the models can't load.
+32. **`start_date` is now optional** on `POST /projects` (predicted when missing, never before today). `end_date` is still required. This relaxes validation; no existing request breaks.
+33. **Model features** are computed with the same rules as `ml/build_datasets.py` (verified identical on all 252 training rows).
+34. **scikit-learn is pinned to 1.8.0**, the version the models were saved with; newer versions warn the pickles may give invalid results.

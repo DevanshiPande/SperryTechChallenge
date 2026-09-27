@@ -1,0 +1,119 @@
+{
+  "duration": {
+    "target": "months from filed Start Date to Need Date (Georgia Power 10-year plan detail pages)",
+    "rows_used": 205,
+    "rows_excluded_bad_dates": [
+      {
+        "teams": 21069,
+        "title": "SMART VALVES AT EAST VILLA RICA SWITCHING STATION",
+        "start_date": "2028-06-01",
+        "need_date": "2028-06-01"
+      },
+      {
+        "teams": 21138,
+        "title": "GLENWOOD SPRINGS - PORTERDALE PRIMARY 230KV LINE SWITCH REPL",
+        "start_date": "2029-06-01",
+        "need_date": "2029-06-01"
+      },
+      {
+        "teams": 20248,
+        "title": "BAY CREEK - CONYERS 230KV REBUILD",
+        "start_date": "2031-06-01",
+        "need_date": "2029-12-31"
+      }
+    ],
+    "features": [
+      "project_type",
+      "work_type",
+      "voltage_kv",
+      "line_miles (log, with missing flag)",
+      "years_ahead = need year - filing year"
+    ],
+    "cv": "5-fold, repeated 10 times",
+    "results": {
+      "baseline_median": {
+        "mae_months": 13.01,
+        "median_abs_error_months": 12.0
+      },
+      "baseline_median_by_work_type": {
+        "mae_months": 13.83,
+        "median_abs_error_months": 12.0
+      },
+      "ridge": {
+        "mae_months": 11.39,
+        "median_abs_error_months": 8.63
+      },
+      "random_forest": {
+        "mae_months": 11.19,
+        "median_abs_error_months": 8.5
+      }
+    },
+    "prediction_interval_months": {
+      "p25_abs_error": 4.0,
+      "p50_abs_error": 8.5,
+      "p75_abs_error": 16.8
+    },
+    "note": "Start Date in the filing is the project start (engineering + construction), so this predicts the planned project window, not field-construction days only.",
+    "best_baseline": "baseline_median",
+    "best_model": "random_forest",
+    "used": "random_forest",
+    "improvement_over_best_baseline_pct": 14.0,
+    "target_stats_months": {
+      "mean": 38.3,
+      "std": 17.5,
+      "min": 4.9,
+      "50%": 36.0,
+      "max": 102.0
+    }
+  },
+  "cost": {
+    "target": "total estimated project cost, Dominion Energy SC filing (44 projects)",
+    "rows_used": 44,
+    "features": [
+      "project_type",
+      "work_type",
+      "voltage_kv",
+      "line_miles (log, with missing flag)"
+    ],
+    "cv": "5-fold, repeated 10 times; model trained on log(cost)",
+    "results": {
+      "baseline_median": {
+        "median_abs_pct_error": 71.4,
+        "mae_usd": 11011142,
+        "within_50pct_share": 38.6
+      },
+      "baseline_median_by_work_type": {
+        "median_abs_pct_error": 64.5,
+        "mae_usd": 11490316,
+        "within_50pct_share": 38.6
+      },
+      "ridge_log": {
+        "median_abs_pct_error": 46.7,
+        "mae_usd": 10004223,
+        "within_50pct_share": 54.5
+      },
+      "random_forest_log": {
+        "median_abs_pct_error": 62.3,
+        "mae_usd": 10977467,
+        "within_50pct_share": 36.4
+      }
+    },
+    "subset_with_known_miles": {
+      "rows": 14,
+      "median_abs_pct_error": {
+        "baseline_median": 66.5,
+        "ridge_log": 26.5,
+        "random_forest_log": 50.7,
+        "miso_per_mile": 74.2
+      }
+    },
+    "best_baseline": "baseline_median_by_work_type",
+    "best_model": "ridge_log",
+    "used": "ridge_log",
+    "prediction_interval_pct": {
+      "p50_abs_pct_error": 46.7,
+      "p75_abs_pct_error": 83.0
+    },
+    "caveat": "44 projects is very small; Dominion (SC) costs are used to estimate Georgia Power (GA) projects, a different utility."
+  }
+}
