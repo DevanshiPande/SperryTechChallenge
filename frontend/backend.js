@@ -195,6 +195,7 @@ async function publishProject() {
     state.contractResults = state.contractResults || {};
     if (match) state.contractResults[project.id] = match;
     state.selectedProject = byId[project.id] || toProject(project);
+    if (up.timing) state.savedTiming = { ...up, saving: false, stale: false }; // keep the suggestion for Traffic & timing
     state.projectUpload = null;
     // Go to the map, zoomed to the saved project, with its coordination partners.
     if (byId[project.id]) focusMyProject(project.id); else state.page = 'projectDetail';
@@ -220,8 +221,6 @@ async function loadCongestion(id, force = false) {
   if (state.congestion[id] && !force) return;
   try {
     state.congestion[id] = await API.get(`/projects/${id}/congestion`);
-    // The congestion popup takes over from the project's info card on the map.
-    if (state.myFocus === id && !state.pairFocus) state.hoverClosed = true;
   } catch (e) {
     state.congestion[id] = { error: 'Could not predict congestion: ' + e.message, roads: [] };
   }
@@ -253,7 +252,6 @@ function apiAction(act) {
   if (act.startsWith('agentConfirm:')) { agentDecide(act.split(':')[1], 'confirm'); return true; }
   if (act.startsWith('agentCancel:')) { agentDecide(act.split(':')[1], 'cancel'); return true; }
   if (act === 'closeAgent') { state.agent = null; render(); return true; }
-  if (act === 'analyze') { analyzeFeasibility(); return true; }
   if (act === 'saveProfile') { saveProfile(); return true; }
   if (act === 'searchJobs') { searchJobs(); return true; }
   if (act.startsWith('rsv:')) { const [, id, status] = act.split(':'); updateReservation(id, status); return true; }
@@ -332,21 +330,6 @@ async function saveProfile() {
     await API.patch('/me', { trade: v('pfTrade'), certifications: String(v('pfCerts') || '').split(',').map(s => s.trim()).filter(Boolean), experience: v('pfExp'), availability: v('pfAvail') });
     await loadRoleData(); render(); toast('Profile saved.');
   } catch (e) { toast(e.message); }
-}
-
-// ---- Feasibility: nearby planned work, road traffic and the best time to work ----
-async function analyzeFeasibility() {
-  const p = state.proposed;
-  if (!p.location || !p.start || !p.end) { toast('Add a location, start date and end date.'); return; }
-  state.feas = { loading: true }; render();
-  try {
-    const w = await API.post('/whatif', { name: p.name || 'Proposed project', location_text: p.location, construction_window: { start: p.start, end: p.end }, lane_closures: Number(state.closure.lanes) || undefined, work_hours: state.closure.hours || undefined });
-    let plan = null;
-    const c = w.proposed?.center;
-    if (c) plan = await API.post('/traffic/plan', { point: { lat: c.lat, lon: c.lon } }).catch(() => null);
-    state.feas = { result: w, plan };
-  } catch (e) { state.feas = { error: e.message }; }
-  render();
 }
 
 // ---- Gridlock assistant (bottom chat bar) ----

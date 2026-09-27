@@ -30,7 +30,6 @@
 
 .page-projectDetail .grid.two{grid-template-columns:minmax(0,1fr) 430px}
 .page-projectDetail .grid.two>.stack>.card{max-width:620px}
-.page-feasibility .grid.three{grid-template-columns:355px minmax(220px,1fr) 355px}
 .page-addProject .page-chat,.page-addResource .page-chat,.page-addJob .page-chat,.workspace[class*="manual:"] .page-chat{max-width:1200px}
 .chatbar{left:215px;right:20px;bottom:20px;max-width:none;background:#fffffff5;backdrop-filter:blur(22px);border:1px solid white;box-shadow:0 10px 40px #143c5838}
 @media(max-width:1100px){.workspace .grid.three{grid-template-columns:310px 1fr}.workspace .grid.three>.card:last-child{grid-column:1/-1}.stage-map .hovercard{left:50%;top:42%}.top-search{display:none}}
@@ -250,8 +249,7 @@
 .opp-filter .field{width:auto;padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;color:#0d3554}
 
 /* Map legend sits bottom-right; shifts left of the coordination panel when that panel is open */
-.stage-map .map-legend{left:auto;right:16px;bottom:100px}
-@media(min-width:1101px){.stage-map.pair-open .map-legend{right:387px}}
+.stage-map .map-legend{left:auto;right:20px;bottom:100px}
 @media(max-width:740px){.stage-map .map-legend{left:auto;right:10px;bottom:95px}}
 
 /* Inventory photos: Add inventory preview and Find inventory list thumbnails */
@@ -305,18 +303,11 @@
 
 /* Your project panel (map focus) */
 .pill.purple{background:#efe7ff;color:#6d28d9}
-.page-map .grid.three>.my-panel{max-height:calc(100vh - 226px);overflow:auto}
+.page-map .grid.three>.my-panel{align-self:start;max-height:calc(100vh - 226px);overflow:auto}
 /* Project detail: keep both columns inside the screen */
 .page-projectDetail .grid.two>.card,.page-projectDetail .grid.two>.stack>.card{max-height:calc(100vh - 250px);overflow:auto}
 
-/* Predicted congestion (your project panel + map popup) */
-.congestion-block{border-top:1px solid #edf0f1;padding-top:12px}
-.congestion-block h3{font-size:15px;margin:0 0 6px}
-.congestion-summary{font-size:13px;line-height:1.5;color:#1f3a50;margin:0 0 8px}
-.congestion-roads{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:7px}
-.congestion-roads li{display:flex;gap:9px;align-items:center}
-.congestion-roads li span{display:grid;font-size:13px}.congestion-roads small{color:#708397;font-size:11px}
-.congestion-roads .pill{min-width:74px;text-align:center}
+/* Predicted congestion map popup */
 .congestion-pop{max-width:260px;font:13px/1.45 Inter,Arial,sans-serif;color:#142b40}
 .congestion-pop b{text-transform:none}.congestion-pop p{margin:6px 0 0}
 
@@ -332,3 +323,78 @@
 .suggest-card .inv-thumb{width:46px;height:40px;flex:none}
 .suggest-card ul{margin:0;padding-left:16px;font-size:12px;line-height:1.45;color:#34506a}
 @media(max-width:1200px){.inv-split.with-suggest{grid-template-columns:1fr 1fr}.inv-split.with-suggest>.inv-suggest{grid-column:1/-1;max-height:260px}}
+
+/* Upload page: compact project details form that fits one screen */
+.project-draft{padding:16px 18px}
+.project-draft .statusline p{margin:0}
+.project-draft .fieldgroup{margin-bottom:9px}
+.project-draft .fieldgroup>span{margin-bottom:4px;font-size:12px}
+.project-draft .field{padding:8px 12px;border-radius:10px}
+.project-draft textarea.field{resize:vertical;min-height:0}
+.project-draft .date-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.project-draft .row{margin-top:12px}
+.workspace.page-addProject{padding-top:16px;padding-bottom:0;min-height:0}
+/* Upload page fills the space between the top bar and the chat bar, 16px from every edge */
+.workspace.page-addProject .project-upload-layout{grid-template-columns:minmax(300px,420px) minmax(0,1fr);max-width:none;height:calc(100vh - 184px);min-height:560px}
+.workspace.page-addProject .upload-col{grid-template-rows:1fr;min-height:0}
+.workspace.page-addProject .upload-card,.workspace.page-addProject .project-draft{align-self:stretch}
+.workspace.page-addProject .project-draft{overflow:auto}
+@media(max-width:900px){.workspace.page-addProject .project-upload-layout{grid-template-columns:1fr;height:auto}}
+/* Keep the top bar margin inside the shell so pages are exactly one screen tall, not 100vh + 16px */
+.shell{display:flow-root}
+/* Upload card: the PDF drop area grows to fill the card, keeping the card padding below it */
+.workspace.page-addProject .upload-card{display:flex;flex-direction:column;min-height:0}
+.workspace.page-addProject .upload-drop{flex:1;min-height:160px;margin-bottom:0}
+.workspace.page-addProject .upload-card>.warning,.workspace.page-addProject .upload-card>.note{margin-top:12px}
+/* Project details: breathing room under the heading; Save sits on the same bottom line as the drop area */
+.workspace.page-addProject .project-draft{display:flex;flex-direction:column;padding:18px}
+.workspace.page-addProject .project-draft>.statusline{margin-bottom:22px}
+.workspace.page-addProject .project-draft .fieldgroup{margin-bottom:13px}
+.workspace.page-addProject .project-draft>.row{margin-top:auto;padding-top:16px}
+/* Project details always fits in its card: spacing and field heights scale with the window height, no inner scroll */
+.workspace.page-addProject .project-upload-layout{min-height:0}
+.workspace.page-addProject .project-draft{overflow:hidden}
+.workspace.page-addProject .project-draft>.statusline{margin-bottom:clamp(8px,2.4vh,22px)}
+.workspace.page-addProject .project-draft .fieldgroup{margin-bottom:clamp(5px,1.45vh,13px)}
+.workspace.page-addProject .project-draft .fieldgroup>span{margin-bottom:clamp(2px,.45vh,4px)}
+.workspace.page-addProject .project-draft .field{padding:clamp(4px,.9vh,8px) 12px}
+.workspace.page-addProject .project-draft textarea.field{height:clamp(34px,6.4vh,58px);resize:none}
+.workspace.page-addProject .project-draft>.row{padding-top:clamp(6px,1.8vh,16px)}
+.workspace.page-addProject .project-draft>.row .primary{padding-top:clamp(8px,1.3vh,12px);padding-bottom:clamp(8px,1.3vh,12px)}
+/* Text boxes take whatever height is left, so the whole form fits at any window height */
+.workspace.page-addProject .project-draft .field{font-size:14px;padding:clamp(5px,.9vh,8px) 12px}
+.workspace.page-addProject .project-draft .fieldgroup{margin-bottom:clamp(6px,1.4vh,13px)}
+.workspace.page-addProject .project-draft .fieldgroup.grow{flex:1 1 0;min-height:40px;display:flex;flex-direction:column}
+.workspace.page-addProject .project-draft .fieldgroup.grow textarea.field{flex:1;height:auto;min-height:20px}
+.workspace.page-addProject .project-draft>.row{margin-top:0}
+/* Explore map project panel: voltage, contractor, location on their own lines */
+.panel-facts{margin-left:0;margin-right:0;margin-bottom:0;display:grid;gap:6px}
+.panel-facts div{display:grid;grid-template-columns:86px 1fr;gap:8px;font-size:13px;line-height:1.4}
+.panel-facts dt{color:#708397}.panel-facts dd{margin:0;color:#142b40;font-weight:600}
+/* Map project panel: "Your project" badge lines up with the left card title and the close buttons */
+.my-panel>.close-x+div{margin-top:-4px}
+/* Coordination pair panel: priority as plain text at the top, companies under it, score highlighted below the title */
+.pair-kicker{margin-top:-4px;padding-right:34px}
+.pair-score{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#e6f6f7;border:1px solid #b4e5ea;border-radius:14px;padding:12px 14px}
+.pair-score>div{display:grid;gap:2px}
+.pair-score strong{font-size:28px;font-weight:800;letter-spacing:-1px;color:#087d8e;line-height:1}
+.pair-score strong small{font-size:14px;font-weight:700;letter-spacing:0;color:#4d8f99}
+.pair-score>.tiny{color:#3f6f78}
+/* Pair panel sizes to its content (no inner scroll); close it with the x */
+.page-map .grid.three>.pair-panel{align-self:start;max-height:none;overflow:visible}
+/* Traffic & timing: title on the left, suggested time to work filling the right side, map clickable in between */
+.workspace.page-feasibility{padding-top:16px;padding-bottom:0;min-height:0}
+.traffic-page{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;align-items:start;height:calc(100vh - 184px)}
+.traffic-page>.heading{margin:0;min-width:0;justify-self:start}
+.traffic-side{align-self:start;max-height:100%;min-height:0;display:flex}
+.traffic-side>.timing-card{flex:0 1 auto;min-height:0;overflow:auto;margin:0}
+@media(max-width:900px){.traffic-page{grid-template-columns:1fr;height:auto}.traffic-side{height:auto}}
+/* Project page ("View full project"): one details card floating over the map, 16px below the top bar */
+.workspace.page-projectDetail{padding-top:16px;padding-bottom:0;min-height:0}
+.project-page{width:min(520px,100%);max-height:calc(100vh - 184px);overflow:auto}
+.project-page>div:first-child{margin-top:-2px}
+.project-page h2{font-size:21px;margin:10px 0 12px}
+.project-pick{display:grid;gap:4px;margin-bottom:16px}.project-pick .field{padding:8px 12px;border-radius:10px;font-size:14px}
+.project-page .panel-facts{gap:9px;margin-bottom:14px}
+.project-page .panel-facts div{grid-template-columns:120px 1fr}
+.project-page .row{margin-top:16px}

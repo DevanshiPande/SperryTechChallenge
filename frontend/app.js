@@ -7,8 +7,6 @@ const state = {
   hoverProject: null, hoverClosed: true, pairClosed: true, pairFocus: false, oppRadius: 25, chat: [], chatMode: null, draft: {}, resourceDraft: {}, resourceModal: false, invFind: true, invSelected: null, invQuery: '', invCat: 'All', invFrom: '', invTo: '', resourceManual: false, resourceChat: [], jobDraft: {}, projectUpload: null,
   companyProjects: [], resources: [], jobs: [], myJobs: [], savedJobs: [], reservations: [], applications: [], userOverlaps: [], companies: [], convs: [], thread: [], feas: null, agent: null,
   cost: { mobilization: 3000, truckRate: 1300, separateDays: 20, coordinatedDays: 12, yard: 5000 },
-  closure: { lanes: 1, start: '2027-06-01', end: '2027-12-15', hours: '21:00–05:00' },
-  proposed: { name: 'Savannah corridor upgrade', location: 'Hardeeville, SC', start: '2027-06-01', end: '2027-12-15' },
   toast: ''
 };
 const $ = q => document.querySelector(q);
@@ -18,7 +16,7 @@ const pill = (label, cls = '') => `<span class="pill ${cls}">${esc(label)}</span
 const demo = '';
 function nav() {
   const items = state.role === 'contractor' ? [
-    ['addProject','⇪','Upload contract'],['map','◫','Explore map'],['projects','▦','My projects'],['feasibility','△','Feasibility'],['cost','▥','Cost comparison'],['inventory','♧','Inventory'],['jobs','♙','Staffing']
+    ['addProject','⇪','Upload contract'],['map','◫','Explore map'],['feasibility','△','Traffic & timing'],['cost','▥','Cost comparison'],['inventory','♧','Inventory'],['jobs','♙','Staffing']
   ] : [['findjobs','⌕','Find jobs'],['saved','♡','Saved'],['applications','▤','Applications'],['workerprofile','♙','Profile']];
   return `<aside class="sidebar"><div class="brand"><span>G</span>Gridlock</div><div class="role">${state.role === 'contractor' ? 'CONTRACT MANAGEMENT COMPANY' : 'PROSPECTIVE WORKER'}</div>${items.map(([id,icon,name]) => `<button class="nav ${state.page === id ? 'active' : ''}" data-page="${id}"><span class="icon">${icon}</span>${name}</button>`).join('')}<div class="sidefoot">Design prototype<br>Public plan fields and illustrative data are labeled separately.</div></aside>`;
 }
@@ -64,13 +62,11 @@ function opportunityButton(o, n) {
 function pairPanel() {
   if(state.pairClosed && state.page==='map') return '<div></div>';
   const o=state.selectedOverlap; if(!o) return '<div></div>';
-  const a=byId[o.project_id_a], b=byId[o.project_id_b], ce=o.cost_estimate||{}, sb=o.score_breakdown||{}, [pl,pc]=POTENTIAL[o.potential]||['Potential coordination','coral'];
-  const win=p=>{const w=p.construction_window||{};return w.start?`${fmtDate(w.start)} – ${fmtDate(w.end)}${w.source==='predicted'?' (start predicted)':''}`:'Dates not filed'};
-  const timing=o.window_overlap_months>0?`Construction windows overlap for ${o.window_overlap_months} months${o.timing_confidence==='predicted'?' (based on predicted start dates)':''}.`:o.schedule_shift_possible?'Windows do not overlap now, but a shift of up to 12 months would make them overlap.':'Construction windows do not overlap.';
-  return `<div class="card stack closable"><button class="close-x" data-action="closePair" aria-label="Close" title="Close">×</button><div class="row wrap">${pill(pl,pc)}${pill('Score '+(o.score??'–')+'/100','gray')}</div><h2>${esc(pairName(o))}</h2><div class="row wrap">${pill(utilLabel(a))}${pill(utilLabel(b),'amber')}</div><hr class="divider"><div class="metric-grid"><div><strong>${o.distance_mi} mi</strong><div class="tiny">apart at the closest points · ${o.center_distance_mi} mi center to center</div></div><div><strong>${o.window_overlap_months||0} mo</strong><div class="tiny">construction overlap</div></div></div><p class="tiny"><b>${esc(a.short_name||shortName(a.project_name))}</b>: ${esc(win(a))}<br><b>${esc(b.short_name||shortName(b.project_name))}</b>: ${esc(win(b))}</p><div class="note">${esc(o.tier_explanation||'')}. ${esc(timing)}</div><div class="card" style="background:#fff5f2"><div class="muted">Estimated savings from coordinating</div><div class="metric green">$${Number(ce.total_estimated_savings_usd||0).toLocaleString()}</div><div class="tiny">Likely range $${Number(ce.range_usd?.[0]||0).toLocaleString()} – $${Number(ce.range_usd?.[1]||0).toLocaleString()}. Score: proximity ${sb.proximity??'–'}/40 · savings ${sb.savings??'–'}/40 · timing ${sb.timing??'–'}/20.</div></div><div class="row wrap">${btn('See cost breakdown','cost','primary')}${btn('Check feasibility','feasibility','secondary')}${state.myFocus&&byId[state.myFocus]?btn('← Back to '+esc(focusName(byId[state.myFocus])),'backToMine','secondary'):''}</div></div>`;
+  const ce=o.cost_estimate||{}, [pl,pc]=POTENTIAL[o.potential]||['Potential','coral'];
+  return `<div class="card stack closable pair-panel"><button class="close-x" data-action="closePair" aria-label="Close" title="Close">×</button><div class="pair-kicker">${pill(pl+' coordination',pc)}</div><h2>${esc(pairName(o))}</h2><div class="pair-score"><div><span class="tiny">Coordination score</span><strong>${o.score??'–'}<small>/100</small></strong></div></div><div class="metric-grid"><div><strong>${o.distance_mi} mi</strong><div class="tiny">apart at the closest points · ${o.center_distance_mi} mi center to center</div></div><div><strong>${o.window_overlap_months||0} mo</strong><div class="tiny">construction overlap</div></div></div>${o.tier_explanation?`<div class="note">${esc(o.tier_explanation)}.</div>`:''}<div class="card" style="background:#fff5f2"><div class="muted">Estimated savings from coordinating</div><div class="metric green">$${Number(ce.total_estimated_savings_usd||0).toLocaleString()}</div></div><div class="row wrap">${btn('See cost breakdown','cost','primary')}</div></div>`;
 }
 // ---- Your project on the map (after saving a contract, or from My projects) ----
-// Focus a project on the map: its ranked partners (left), summary + predicted congestion (right), congestion roads.
+// Focus a project on the map: its ranked partners (left), project summary (right). Congestion lives on Traffic & timing.
 // Works for any project; `zoom` is for arriving from elsewhere (after saving, My projects), not for pin clicks.
 function focusMyProject(id,{zoom=true}={}){
   const p=byId[id];if(!p)return;
@@ -78,28 +74,24 @@ function focusMyProject(id,{zoom=true}={}){
   Object.assign(state,{page:'map',myFocus:id,pairFocus:false,pairClosed:true,hoverClosed:false,oppsClosed:false,hoverProject:p,selectedProject:p});
   if(top)state.selectedOverlap=top; // Cost comparison follows the focused project's best pair
   if(zoom)state.zoomTo={id,n:Date.now()};
-  window.loadCongestion?.(id);
   window.loadSuggestions?.(id);
 }
-const focusName=p=>p.mine?'your project':(p.short_name||shortName(p.project_name));
-const LEVEL_PILL={heavy:['Heavy','coral'],moderate:['Moderate','amber'],light:['Light','green']};
-// Predicted congestion on the roads around your project (from GET /projects/{id}/congestion).
-function congestionBlock(id){
-  const c=(state.congestion||{})[id];
-  if(!c)return `<div class="note">Predicting traffic congestion around this project…</div>`;
-  if(c.error)return `<div class="warning">${esc(c.error)}</div>`;
-  const roads=c.roads.filter(r=>r.role!=='crossroad'||r.level!=='light').slice(0,6);
-  return `<div class="congestion-block"><h3>Predicted congestion</h3><p class="congestion-summary">${esc(c.summary)}</p>${roads.length?`<ul class="congestion-roads">${roads.map(r=>`<li>${pill(LEVEL_PILL[r.level][0],LEVEL_PILL[r.level][1])}<span><b>${esc(r.road_label)}</b><small>${r.role==='crossroad'?'crossroad of '+esc(r.meets):r.role==='access'?'road to the site':'your work crosses it'}${r.backed_up_hours&&r.level!=='light'?' · '+esc(r.backed_up_hours):''}</small></span></li>`).join('')}</ul>`:''}<p class="tiny">${c.summary_source==='gemini'?'Summary written by Gemini from the traffic model; ':''}${esc(c.basis)}</p></div>`;
+// Pin clicks: on Traffic & timing, stay on the page and show that site's popup and timing; elsewhere, focus it on Explore map.
+function selectSite(id){
+  if(state.page!=='feasibility')return focusMyProject(id,{zoom:false});
+  const p=byId[id];if(!p)return;
+  Object.assign(state,{trafficProject:id,hoverProject:p,selectedProject:p,hoverClosed:false,pairFocus:false});
+  window.loadCongestion?.(id);
 }
+const focusName=p=>p.mine?'your project':(p.short_name||shortName(p.project_name));
 function myOppList(p){
   const list=projectOverlaps(p.project_id);
   const rows=list.map((o,i)=>{const q=partnerOf(o,p.project_id),ce=o.cost_estimate||{},sel=state.pairFocus&&state.selectedOverlap?.overlap_id===o.overlap_id;return `<button class="opportunity ${sel?'selected':''}" data-overlap="${o.overlap_id}"><strong>#${i+1} ${esc(q?.short_name||shortName(q?.project_name||''))}</strong><span class="muted">${esc(utilLabel(q))} · score ${o.score??'–'}/100</span><div class="stats"><span><b>${o.distance_mi} mi</b>apart, edge to edge</span><span><b>$${Number(ce.total_estimated_savings_usd||0).toLocaleString()}</b>likely savings</span></div></button>`}).join('');
   return `<div class="card closable"><button class="close-x" data-action="clearMyFocus" aria-label="Show all pairs" title="Show all pairs">×</button><h2>Coordination for ${esc(focusName(p))}</h2><p class="muted">${list.length} planned project${list.length===1?'':'s'} within 25 miles · highest priority first</p>${rows||'<div class="note">No other planned projects within 25 miles.</div>'}<button class="ghostlink" data-action="clearMyFocus">Show all Dominion ↔ Georgia Power pairs</button></div>`;
 }
 function myProjectPanel(p){
-  const w=p.construction_window||{},t=(state.contractResults||{})[p.project_id]?.work_timing||(state.congestion||{})[p.project_id]?.best_time,top=projectOverlaps(p.project_id)[0];
-  const budget=p.budget_usd?`${String(p.budget_source||'').startsWith('predicted')?'≈ ':''}$${Number(p.budget_usd).toLocaleString()}`:'Not provided';
-  return `<div class="card stack closable my-panel"><button class="close-x" data-action="clearMyFocus" aria-label="Close" title="Close">×</button><div>${p.mine?pill('Your project','purple'):pill(utilLabel(p),p.utility.includes('Dominion')?'':'amber')}</div><h2>${esc(p.project_name)}</h2><div class="metric-grid"><div><strong>${w.start?esc(fmtDate(w.start)):'–'}</strong><div class="tiny">start${w.source==='predicted'?' (predicted)':''}</div></div><div><strong>${w.end?esc(fmtDate(w.end)):'–'}</strong><div class="tiny">end</div></div></div><p class="muted">${esc(p.location||'')}${p.voltage_kv?' · '+p.voltage_kv+' kV':''} · budget ${budget}</p>${t?`<div class="note"><b>Best time to work:</b> ${esc(t.headline||'')}</div>`:''}${congestionBlock(p.project_id)}${top?`<div class="card" style="background:#f6f1ff"><div class="muted">Top coordination partner</div><strong>${esc(partnerOf(top,p.project_id)?.short_name||'')}</strong><div class="metric green">$${Number(top.cost_estimate?.total_estimated_savings_usd||0).toLocaleString()}</div><div class="tiny">likely savings · ${top.distance_mi} mi apart</div></div>`:''}<div class="row wrap">${btn('Full project details','projectDetail:'+p.project_id,'primary')}${btn('Check feasibility','feasibility','secondary')}</div></div>`;
+  const w=p.construction_window||{},top=projectOverlaps(p.project_id)[0];
+  return `<div class="card stack closable my-panel"><button class="close-x" data-action="clearMyFocus" aria-label="Close" title="Close">×</button><div>${p.mine?pill('Your project','purple'):pill(utilLabel(p),p.utility.includes('Dominion')?'':'amber')}</div><h2>${esc(p.project_name)}</h2><div class="metric-grid"><div><strong>${w.start?esc(fmtDate(w.start)):'–'}</strong><div class="tiny">start${w.source==='predicted'?' (predicted)':''}</div></div><div><strong>${w.end?esc(fmtDate(w.end)):'–'}</strong><div class="tiny">end</div></div></div><dl class="panel-facts"><div><dt>Voltage</dt><dd>${p.voltage_kv?p.voltage_kv+' kV':'Not provided'}</dd></div><div><dt>Contractor</dt><dd>${esc(p.utility_name||(p.company_id?companyName(p.company_id):utilLabel(p))||'Not provided')}</dd></div><div><dt>Location</dt><dd>${esc(p.location||'Not provided')}</dd></div></dl>${top?`<div class="card" style="background:#f6f1ff"><div class="muted">Top coordination partner</div><strong>${esc(partnerOf(top,p.project_id)?.short_name||'')}</strong><div class="metric green">$${Number(top.cost_estimate?.total_estimated_savings_usd||0).toLocaleString()}</div><div class="tiny">likely savings · ${top.distance_mi} mi apart</div></div>`:''}<div class="row wrap">${btn('Traffic & congestion','traffic:'+p.project_id,'primary')}</div></div>`;
 }
 const OPP_RADII=[0,5,10,15,25,50]; // 0 = any distance
 // Radius = distance between the two projects of a pair, measured edge to edge (closest points).
@@ -120,23 +112,15 @@ function mapPage() {
     : `<div class="card closable"><button class="close-x" data-action="closeOpps" aria-label="Close" title="Close">×</button><h2>Coordination opportunities</h2><div class="opp-filter"><label for="oppRadius">Projects within</label><select id="oppRadius" class="field">${OPP_RADII.map(r=>`<option value="${r}" ${r===state.oppRadius?'selected':''}>${r?r+' mi of each other':'any distance'}</option>`).join('')}</select></div><p class="muted">${shown.length} of ${overlaps.length} Dominion ↔ Georgia Power pairs${state.oppRadius?` within ${state.oppRadius} mi, edge to edge`:''} · highest priority first</p>${shown.map((o,i)=>opportunityButton(o,i+1)).join('')||`<div class="note">No pairs within ${state.oppRadius} mi. Try a larger radius.</div>`}</div>`;
   return `<div class="grid three">${list}${mapHtml()}${pairPanel()}</div>`;
 }
-function feasibilityPage() {return head('Check project feasibility','Contractor-led review of nearby work and a proposed closure.',btn('Describe a new project','addProject','primary'))+`<div class="grid three"><div class="card"><h2>Proposed work</h2><p class="muted">Describe the work you are planning</p>${[['Project name','name'],['Location','location'],['Start date','start'],['End date','end']].map(([l,k])=>`<div class="fieldgroup"><label>${l}</label><input class="field" data-proposed="${k}" value="${esc(state.proposed[k])}" type="${k==='start'||k==='end'?'date':'text'}"></div>`).join('')}<div class="formgrid"><div class="fieldgroup"><label>Closed lanes</label><input class="field" type="number" min="0" max="4" data-closure="lanes" value="${state.closure.lanes}"></div><div class="fieldgroup"><label>Work hours</label><input class="field" data-closure="hours" value="${esc(state.closure.hours)}"></div></div>${btn('Analyze scenario','analyze','primary accent')}</div>${mapHtml({hover:false})}${feasibilityResults()}</div>`;}
-function feasibilityResults(){
-  const f=state.feas;
-  if(!f)return `<div class="card stack"><h2>Feasibility review</h2><div class="note">Enter the location and dates, then select <b>Analyze scenario</b>. Gridlock checks planned utility work within 25 miles, road traffic at the site, and closure conflicts.</div></div>`;
-  if(f.loading)return `<div class="card stack"><h2>Feasibility review</h2><div class="note">Analyzing…</div></div>`;
-  if(f.error)return `<div class="card stack"><h2>Feasibility review</h2><div class="warning">${esc(f.error)}</div></div>`;
-  const w=f.result,near=[...(w.overlaps||[])].sort((a,b)=>(b.window_overlap_months>0)-(a.window_overlap_months>0)||(a.closest_distance_mi??a.center_distance_mi)-(b.closest_distance_mi??b.center_distance_mi)),active=near.filter(o=>o.window_overlap_months>0),pl=f.plan,sg=w.suggestion;
-  const nearList=near.slice(0,5).map(o=>`<div class="item"><strong>${esc(o.short_name||o.name)}</strong><p class="muted">${esc(o.utility_name||o.utility)} · ${o.closest_distance_mi??o.center_distance_mi} mi · ${o.window_overlap_months>0?`overlaps your dates by ${o.window_overlap_months} months`:'not active during your dates'}</p></div>`).join('');
-  const road=pl?.road;
-  return `<div class="card stack"><h2>Feasibility review</h2>
-    <div class="item"><h3>Planned utility work nearby</h3><p class="muted">${near.length} project${near.length===1?'':'s'} within 25 miles; ${active.length} under construction during your dates.</p>${nearList}${near.length>5?`<p class="tiny">+ ${near.length-5} more</p>`:''}</div>
-    ${road?`<div class="item"><h3>Road traffic at the site</h3><p class="muted">Nearest road: ${esc(road.road_name||road.road_ref||'unnamed road')}${road.road_ref&&road.road_name?` (${esc(road.road_ref)})`:''} · about ${Number(road.aadt||0).toLocaleString()} vehicles/day.</p><p><b>Best time for a lane closure: ${esc(pl.recommended_window)}</b> — ${pl.delay_veh_hours?`about ${pl.delay_veh_hours} vehicle-hours of delay`:'little to no queueing'}. Worst time: ${esc(pl.worst_window)}${pl.worst_delay_cost_usd?` (≈ $${Number(pl.worst_delay_cost_usd).toLocaleString()} delay cost)`:''}.</p><p class="tiny">${esc(road.aadt_source||'')}</p></div>`:''}
-    <div class="item"><h3>Closure conflicts</h3><p class="muted">${(w.closure_conflicts||[]).length?w.closure_conflicts.map(c=>esc(c.message||c.road||JSON.stringify(c))).join('<br>'):'No conflicting road closures found for these dates.'}</p><p class="tiny">${esc(w.closure_note||'')}</p></div>
-    ${sg?`<div class="note"><b>Suggestion:</b> ${esc(sg.explanation)}</div>`:''}
-    ${btn('Compare cost impact','cost')}</div>`;
+function feasibilityPage(){return `<div class="traffic-page"><div class="heading"><div><h1>Traffic &amp; timing</h1></div></div><div class="traffic-side">${timingCard(trafficTiming())}</div></div>`;}
+// Suggested time to work: the site selected on this page's map, else a contract being uploaded, else the last saved contract.
+function trafficTiming(){
+  const p=byId[state.trafficProject],c=p&&(state.congestion||{})[p.project_id];
+  if(p&&!c)return {parsed:true,timingLoading:true};
+  if(c?.error)return {parsed:true,timingError:c.error};
+  if(c?.best_time)return {parsed:true,timing:c.best_time,name:p.project_name,draft:{project_name:p.project_name}};
+  return state.projectUpload||state.savedTiming;
 }
-const COST_PARTS=[['mobilization','Shared mobilization','Crews and equipment mobilize once for both projects'],['logistics','Logistics','Shorter trips between the two sites'],['shared_land','Shared right-of-way','Land both lines can use'],['traffic_delay','Traffic delay avoided','One combined road closure instead of two']];
 function costPage(){
   const o=state.selectedOverlap;if(!o)return head('Estimate the value of coordination','Select a coordination opportunity on the map first.','');
   const ce=o.cost_estimate||{},comp=ce.components||{},a=byId[o.project_id_a],b=byId[o.project_id_b];
@@ -154,16 +138,30 @@ function costPage(){
     <div class="card"><h2>Where the savings come from</h2>${rows}${skipped.length?`<p class="tiny">Not applicable for this pair: ${skipped.map(([,l])=>l.toLowerCase()).join(', ')}.</p>`:''}${ce.reference_budget_usd?`<p class="tiny">Based on a reference budget of ${usd(ce.reference_budget_usd)} (${esc(ce.reference_budget_source||'')}).</p>`:''}<p class="tiny">Planning estimates. Confirm rates, schedules and scope with the other company before relying on them.</p></div>
     <div class="cost-notes"><details class="card" open><summary><b>Assumptions</b></summary><ul class="tiny">${(ce.assumptions||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details><details class="card"><summary><b>Sources</b> <span class="tiny">(${(ce.sources||[]).length})</span></summary><ul class="tiny">${(ce.sources||[]).map(s=>`<li>${src(s)}</li>`).join('')}</ul></details></div>
   </div>`;}
-function projectsPage(){const all=[...state.companyProjects,...projects.filter(p=>!p.mine)];return head('My projects','Your company\'s projects first, then public utility plans.',btn('Upload contract PDF','addProject','primary'))+`<div class="grid two"><div class="card"><h2>Project portfolio</h2>${state.companyProjects.length?'':'<div class="note">No company projects yet. Upload a contract PDF to add one.</div>'}${all.map(p=>`<div class="item"><div class="statusline"><div><h3>${esc(p.project_name)}</h3><div class="muted">${esc(p.utility||'Your company')} · ${esc(p.state||p.location||'Location to confirm')} · ${p.in_service_date?'in-service '+String(p.in_service_date).slice(0,10):esc(p.start_date||'Dates to confirm')}</div></div>${pill(p.mine?'Your project':p.source==='contract-upload'?'Other company':'Public plan',p.mine?'':'amber')}</div>${p.description?`<p class="muted">${esc(p.description)}</p>`:''}<div class="action">${btn('View project','selectProject:'+p.project_id)}</div></div>`).join('')}</div>${mapHtml({hover:false})}</div>`;}
+// ---- Project page ("View full project"): everything about one project; your own projects can be switched here ----
 function projectDetailPage(){
-  const p=state.selectedProject;if(!p)return head('Project','Select a project first.',btn('Back to projects','projects'));
-  const uploaded=p.source==='contract-upload',w=p.construction_window||{},cr=(state.contractResults||{})[p.project_id];
-  const matches=projectOverlaps(p.project_id).slice(0,6);
-  const matchList=matches.map(o=>{const q=partnerOf(o,p.project_id),ce=o.cost_estimate||{};return `<button class="opportunity" data-overlap="${o.overlap_id}"><strong>${esc(q?.short_name||shortName(q?.project_name||''))}</strong><span class="muted">${esc(utilLabel(q))} · ${o.distance_mi} mi · score ${o.score??'–'}</span><div class="stats"><span><b>$${Number(ce.total_estimated_savings_usd||0).toLocaleString()}</b>likely savings</span><span><b>${o.window_overlap_months||0} mo</b>overlap</span></div></button>`}).join('')||'<div class="note">No other planned projects within 25 miles.</div>';
-  const wt=cr?.work_timing;
-  const timing=wt?`<div class="item"><h3>Best time to work</h3><p><b>${esc(wt.headline||'')}</b></p>${(wt.reasons||[]).map(r=>`<p class="muted">• ${esc(r)}</p>`).join('')}</div>`:'';
-  const budget=p.budget_usd?`<p>Budget: ${String(p.budget_source||'').startsWith('predicted')?'≈ ':''}$${Number(p.budget_usd).toLocaleString()}${p.budget_range_usd?` (likely $${Number(p.budget_range_usd[0]).toLocaleString()} – $${Number(p.budget_range_usd[1]).toLocaleString()}, predicted)`:''}</p>`:'';
-  return head(esc(p.project_name),p.mine?'Your company project.':uploaded?'Project posted by another company.':`Public plan · ${esc(p.utility)}`,btn('Back to projects','projects'))+`<div class="grid two"><div class="stack">${mapHtml({hover:false})}<div class="card"><h2>Project details</h2><p>${esc(utilLabel(p))}${p.state?' · '+esc(p.state):''}${p.voltage_kv?' · '+p.voltage_kv+' kV':''}</p><p>Construction: ${w.start?`${esc(fmtDate(w.start))} – ${esc(fmtDate(w.end))}${w.source==='predicted'?' (start date predicted by the Gridlock model)':''}`:'Dates not provided'}</p>${budget}${p.location?`<p>Location: ${esc(p.location)}</p>`:''}<p class="muted">${esc(p.description||'')}</p></div></div><div class="card stack"><h2>Coordination partners</h2>${timing}${matchList}<div class="row wrap">${btn('Check feasibility','feasibility')}${btn('Open inventory','inventory')}</div></div></div>`;}
+  const p=state.selectedProject;
+  if(!p)return `<div class="card project-page"><h2>Project</h2><p class="muted">Select a site on the map first.</p>${btn('Back to map','map','primary')}</div>`;
+  const w=p.construction_window||{},money=n=>'$'+Number(n).toLocaleString();
+  const facts=[
+    ['Contractor',p.utility_name||(p.company_id?companyName(p.company_id):utilLabel(p))],
+    ['Work type',p.work_type_label&&p.work_type_label!==p.description&&p.work_type_label!=='User project'?p.work_type_label:''],
+    ['Voltage',p.voltage_kv&&p.voltage_kv+' kV'],
+    ['Location',p.location],
+    ['Counties',(p.counties||[]).join(', ')],
+    ['State',p.state],
+    ['Construction',w.start?`${fmtDate(w.start)} – ${fmtDate(w.end)}${w.source==='predicted'?' (start predicted)':''}`:''],
+    ['In service',p.in_service_date&&fmtDate(p.in_service_date)],
+    ['Budget',p.budget_usd&&`${String(p.budget_source||'').startsWith('predicted')?'≈ ':''}${money(p.budget_usd)}`],
+    ['Roads affected',(p.roads_affected||[]).map(r=>r.name||r.ref||r).join(', ')],
+    ['Lane closures',p.lane_closures],
+    ['Work hours',p.work_hours],
+    ['Status',p.status]
+  ].filter(([,v])=>v!==undefined&&v!==null&&v!=='');
+  const own=state.companyProjects;
+  const picker=p.mine&&own.length>1?`<label class="project-pick"><span class="tiny">Switch project</span><select id="projectPick" class="field">${own.map(q=>`<option value="${q.project_id}" ${q.project_id===p.project_id?'selected':''}>${esc(q.project_name)}</option>`).join('')}</select></label>`:'';
+  const badge=p.mine?pill('Your project','purple'):pill(utilLabel(p),String(p.utility||'').includes('Dominion')?'':'amber');
+  return `<div class="card project-page"><div>${badge}</div><h2>${esc(p.project_name)}</h2>${picker}<dl class="panel-facts">${facts.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>${p.description?`<p class="muted">${esc(p.description)}</p>`:''}<div class="row wrap">${btn('Show on map','showOnMap:'+p.project_id,'primary')}${btn('Traffic & timing','traffic:'+p.project_id,'secondary')}</div></div>`;}
 function chatPage(kind,manual=false){
   const resource=kind==='resource', job=kind==='job';
   const title=resource?'Describe an available resource':job?'Describe a job requirement':'Describe a new project';
@@ -177,19 +175,20 @@ function chatPage(kind,manual=false){
 
 function projectUploadPage(){
   const upload=state.projectUpload, d=upload?.draft||{};
-  const fields=[['project_name','Project name'],['utility','Company / utility'],['location','Location'],['start_date','Start date'],['end_date','End date'],['description','Scope of work'],['roads','Affected roads'],['contact','Contract contact']];
-  return head('Upload your contract','Gridlock reads the PDF, fills in the project details, and suggests the best time to do the work.')+`<div class="project-upload-layout"><div class="upload-col"><div class="card upload-card"><div class="upload-icon">PDF</div><h2>Upload contract details</h2><p class="muted">Choose a project contract or scope PDF. Gridlock AI reads it and prepares the project details for your review.</p><label class="upload-drop"><input id="projectPdf" type="file" accept="application/pdf"><strong>${upload?.name?esc(upload.name):'Choose a PDF contract'}</strong><span>${upload?.status||'PDF files only · maximum 15 MB'}</span></label>${upload?.error?`<div class="warning">${esc(upload.error)}</div>`:''}${upload?.note?`<div class="note">${esc(upload.note)}</div>`:''}</div>${timingCard(upload)}</div><div class="card project-draft"><div class="statusline"><div><h2>Project details</h2><p class="muted">${upload?'Review the extracted information below.':'Your extracted details will appear here.'}</p></div>${pill(upload?.parsed?'Needs review':'Waiting for PDF','amber')}</div>${fields.map(([key,label])=>`<label class="fieldgroup"><span>${label}</span>${key==='description'||key==='roads'?`<textarea class="field" rows="3" data-project-draft="${key}" placeholder="Not found in document">${esc(d[key]||'')}</textarea>`:`<input class="field" data-project-draft="${key}" value="${esc(d[key]||'')}" placeholder="Not found in document" type="${key.includes('date')?'date':'text'}">`}</label>`).join('')}${upload?.saveError?`<div class="warning">Could not save: ${esc(upload.saveError)}</div>`:''}<div class="row wrap">${upload?.saving?'<button class="primary accent" disabled>Saving… finding coordination partners</button>':btn('Save my project','publish:project','primary accent')}${upload&&!upload.saving?btn('Clear upload','clearProjectUpload'):''}</div></div></div>`;
+  const field=(key,label)=>`<label class="fieldgroup${key==='description'||key==='roads'?' grow':''}"><span>${label}</span>${key==='description'||key==='roads'?`<textarea class="field" rows="2" data-project-draft="${key}" placeholder="Not found in document">${esc(d[key]||'')}</textarea>`:`<input class="field" data-project-draft="${key}" value="${esc(d[key]||'')}" placeholder="Not found in document" type="${key.includes('date')?'date':'text'}">`}</label>`;
+  const fields=[['project_name','Project name'],[['utility','Company / utility'],['location','Location']],[['start_date','Start date'],['end_date','End date']],['description','Scope of work'],['roads','Affected roads'],['contact','Contract contact']];
+  return `<div class="project-upload-layout"><div class="upload-col"><div class="card upload-card"><div class="upload-icon">PDF</div><h2>Upload contract details</h2><p class="muted">Choose a project contract or scope PDF. Gridlock AI reads it and prepares the project details for your review.</p><label class="upload-drop"><input id="projectPdf" type="file" accept="application/pdf"><strong>${upload?.name?esc(upload.name):'Choose a PDF contract'}</strong><span>${upload?.status||'PDF files only · maximum 15 MB'}</span></label>${upload?.error?`<div class="warning">${esc(upload.error)}</div>`:''}${upload?.note?`<div class="note">${esc(upload.note)}</div>`:''}</div></div><div class="card project-draft"><div class="statusline"><div><h2>Project details</h2><p class="muted">${upload?'Review the extracted information below.':'Your extracted details will appear here.'}</p></div>${upload?.parsed?pill('Needs review','amber'):''}</div>${fields.map(f=>Array.isArray(f[0])?`<div class="date-pair">${f.map(g=>field(...g)).join('')}</div>`:field(...f)).join('')}${upload?.saveError?`<div class="warning">Could not save: ${esc(upload.saveError)}</div>`:''}<div class="row wrap">${upload?.saving?'<button class="primary accent" disabled>Saving… finding coordination partners</button>':btn('Save my project','publish:project','primary accent')}${upload&&!upload.saving?btn('Clear upload','clearProjectUpload'):''}</div></div></div>`;
 }
 // Suggested time to work, shown as soon as the contract is read (from POST /contracts/{id}/match; nothing is saved).
 function timingCard(upload){
-  if(!upload?.parsed)return `<div class="card timing-card muted-card"><h2>Suggested time to work</h2><p class="muted">Upload a contract to see when to do the work, based on traffic on the roads your project crosses and other construction nearby.</p></div>`;
+  if(!upload?.parsed)return `<div class="card timing-card muted-card"><h2>Suggested time to work</h2><p class="muted">Select a project site on the map to see when to do the work, based on traffic on the roads it crosses and other construction nearby.</p></div>`;
   const t=upload.timing;
   if(upload.timingLoading)return `<div class="card timing-card"><h2>Suggested time to work</h2><p class="muted">Checking road traffic and nearby construction…</p></div>`;
   if(upload.timingError)return `<div class="card timing-card"><h2>Suggested time to work</h2><div class="note">${esc(upload.timingError)}</div>${btn('Update suggestion','refreshTiming','secondary')}</div>`;
   if(!t)return '';
   const chips=[t.best_hours?.label&&`<div><span class="tiny">Best hours</span><strong>${esc(t.best_hours.label)}</strong></div>`,(t.best_months||[]).length&&`<div><span class="tiny">Best months</span><strong>${esc(t.best_months.join(', '))}</strong></div>`].filter(Boolean).join('');
   const m=upload.summary;
-  return `<div class="card timing-card"><div class="statusline"><h2>Suggested time to work</h2>${upload.stale?pill('Details changed','amber'):pill('From traffic data','green')}</div><p class="timing-headline">${esc(t.headline||'')}</p>${chips?`<div class="timing-chips">${chips}</div>`:''}${(t.reasons||[]).length?`<details open><summary class="tiny">Why</summary><ul class="timing-reasons">${t.reasons.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></details>`:''}${m?`<p class="tiny">${m.matches_count} coordination match${m.matches_count===1?'':'es'} within 25 miles${m.best_savings_usd?` · best likely savings $${Number(m.best_savings_usd).toLocaleString()}`:''}.</p>`:''}${upload.stale?btn('Update suggestion','refreshTiming','secondary'):''}<p class="tiny">${esc(t.basis||'')}</p></div>`;
+  return `<div class="card timing-card"><div class="statusline"><h2>Suggested time to work</h2>${upload.stale?pill('Details changed','amber'):pill('From traffic data','green')}</div>${upload.name?`<p class="tiny">For ${esc(upload.draft?.project_name||upload.name)}</p>`:''}<p class="timing-headline">${esc(t.headline||'')}</p>${chips?`<div class="timing-chips">${chips}</div>`:''}${(t.reasons||[]).length?`<details open><summary class="tiny">Why</summary><ul class="timing-reasons">${t.reasons.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></details>`:''}${m?`<p class="tiny">${m.matches_count} coordination match${m.matches_count===1?'':'es'} within 25 miles${m.best_savings_usd?` · best likely savings $${Number(m.best_savings_usd).toLocaleString()}`:''}.</p>`:''}${upload.stale?btn('Update suggestion','refreshTiming','secondary'):''}<p class="tiny">${esc(t.basis||'')}</p></div>`;
 }
 
 function projectFromPdfText(text, fileName){
@@ -443,10 +442,10 @@ function toast(msg){state.toast=msg;render();setTimeout(()=>{state.toast='';cons
 function assistantHint(){return state.role==='worker'?'Find jobs matching my qualifications':({map:'What could these projects share?',cost:'Try a different cost scenario',feasibility:'Test another work window',inventory:'Find nearby bucket trucks',jobs:'Draft a job posting'}[state.page]||'Describe what you need');}
 function render(){
   if(!state.loaded){$('#app').innerHTML=`<div style="position:fixed;inset:0;display:grid;place-items:center;background:#f4f8f9;z-index:50"><div class="card stack" style="max-width:420px;text-align:center"><h2>Gridlock</h2>${state.loadError?`<div class="warning">${esc(state.loadError)}</div>${btn('Try again','retryLoad','primary')}`:'<p class="muted">Loading projects and coordination opportunities…</p>'}</div></div>`;return}
-  const pages={map:mapPage,feasibility:feasibilityPage,cost:costPage,projects:projectsPage,projectDetail:projectDetailPage,inventory:inventoryPage,jobs:jobsPage,findjobs:workerJobsPage,saved:savedJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
+  const pages={map:mapPage,feasibility:feasibilityPage,cost:costPage,projectDetail:projectDetailPage,inventory:inventoryPage,jobs:jobsPage,findjobs:workerJobsPage,saved:savedJobsPage,jobDetail:workerJobDetail,applications:applicationsPage,workerprofile:workerProfilePage};
   const content=state.page==='addProject'?projectUploadPage():state.page==='addResource'?chatPage('resource'):state.page==='addJob'?chatPage('job'):state.page.startsWith('manual:')?chatPage(state.page.split(':')[1],true):(pages[state.page]||mapPage)();
   const mapFocus=state.page==='map'||state.page==='findjobs';
-  $('#app').innerHTML=`<a href="#main" class="skip">Skip to content</a><div class="stage-map ${mapFocus?'map-focus':''} ${state.page==='map'&&!state.pairClosed?'pair-open':''}">${mapHtml({hover:mapFocus,jobs:state.role==='worker'})}</div><div class="shell">${nav()}<div class="main">${topbar()}<main class="workspace page-${state.page}" id="main">${content}</main></div></div><div class="chatbar"><span class="spark">✦</span><input id="globalChat" placeholder="Ask Gridlock: ${assistantHint()}" aria-label="Ask Gridlock"><button class="primary" data-action="globalChat">➜</button></div>${window.agentPanel?agentPanel():''}${state.toast?`<div id="toast" role="status" style="position:fixed;top:85px;right:25px;z-index:30;background:#113a53;color:white;padding:14px 44px 14px 18px;border-radius:13px;box-shadow:0 8px 30px #2345">${esc(state.toast)}<button class="close-x light" data-action="closeToast" aria-label="Close" title="Close">×</button></div>`:''}`;
+  $('#app').innerHTML=`<a href="#main" class="skip">Skip to content</a><div class="stage-map ${mapFocus?'map-focus':''} ${state.page==='map'&&!state.pairClosed?'pair-open':''}">${mapHtml({hover:mapFocus||state.page==='feasibility',jobs:state.role==='worker'})}</div><div class="shell">${nav()}<div class="main">${topbar()}<main class="workspace page-${state.page}" id="main">${content}</main></div></div><div class="chatbar"><span class="spark">✦</span><input id="globalChat" placeholder="Ask Gridlock: ${assistantHint()}" aria-label="Ask Gridlock"><button class="primary" data-action="globalChat">➜</button></div>${window.agentPanel?agentPanel():''}${state.toast?`<div id="toast" role="status" style="position:fixed;top:85px;right:25px;z-index:30;background:#113a53;color:white;padding:14px 44px 14px 18px;border-radius:13px;box-shadow:0 8px 30px #2345">${esc(state.toast)}<button class="close-x light" data-action="closeToast" aria-label="Close" title="Close">×</button></div>`:''}`;
   window.syncGoogleMap?.();
   requestAnimationFrame(positionHovercard);
   if(state.invFind)applyInvFilter();
@@ -487,12 +486,13 @@ function handleAction(act){
     state.resourceChat.push({by:'assistant',time:clockTime(),text:missing.length?`I updated the listing. To make it accurate and complete, can you share ${missing.join(', ')}?`:'The listing is complete based on your information. Please review every field before publishing. Anything else to add, like special notes or travel radius?'});
     render();setTimeout(()=>$('#chatText')?.focus());return;
   }
+  if(act.startsWith('traffic:')){state.page='feasibility';selectSite(act.split(':')[1]);render();return}
   if(act.startsWith('projectDetail:')){state.selectedProject=byId[act.split(':')[1]]||state.selectedProject;state.page='projectDetail';render();return}
   if(act==='clearMyFocus'){state.myFocus=null;state.pairFocus=false;state.pairClosed=true;render();window.loadSuggestions?.(null);return}
+  if(act.startsWith('showOnMap:')){focusMyProject(act.split(':')[1]);render();return}
   if(act==='backToMine'){focusMyProject(state.myFocus,{zoom:false});render();return}
   if(act.startsWith('selectProject:')){
     const id=act.split(':')[1];
-    if(byId[id]?.mine&&state.page!=='map'){focusMyProject(id);render();return}
     state.selectedProject=state.companyProjects.find(p=>p.project_id===id)||byId[id];
     state.page='projectDetail';
     render();
@@ -537,7 +537,6 @@ function handleAction(act){
   if(act==='apply'){const j=state.selectedJob;state.applications.unshift({name:j.name,place:j.place,date:new Date().toLocaleDateString(),status:'Submitted (demo)'});state.page='applications';toast('Demo application saved locally. Nothing was sent to an employer.');return}
   if(act.startsWith('toggleSaveJob:')){const id=act.split(':')[1],index=state.savedJobs.indexOf(id);if(index===-1){state.savedJobs.push(id);toast('Job saved.')}else{state.savedJobs.splice(index,1);toast('Job removed from saved.')}render();return}
   if(act==='globalChat'){const text=$('#globalChat')?.value.trim();if(!text)return; if(/resource|truck|crane|crew/i.test(text)){state.page='inventory';toast('Showing demo resources.')}else if(/cost|sav/i.test(text)){state.page='cost';toast('Opening the editable cost scenario.')}else if(state.role==='worker'&&/job|work|certification/i.test(text)){state.page='findjobs';toast('Showing sample job listings.')}else if(/project|draft|add/i.test(text)){state.page='addProject';state.chatMode='project';state.chat=[{by:'user',text}];draftFromText('project',text);render();toast('Review the project draft before publishing.')}else toast(state.role==='worker'?'Try asking about jobs, trades, or certifications.':'Try asking about projects, cost, or inventory.');return}
-  if(act==='analyze'){toast('Scenario refreshed. Traffic values remain illustrative until a data source is connected.');return}
   if(act==='saveProfile'){toast('Demo profile saved for this session.');return}
   if(act==='clearProjectUpload'){state.projectUpload=null;render();return}
   if(act==='filterResource'||act==='searchJobs'){toast('Filter UI is a prototype; all demo records remain visible.');return}
@@ -554,7 +553,7 @@ document.addEventListener('click',e=>{
   const role=e.target.closest('[data-role]');if(role){state.role=role.dataset.role;state.page=state.role==='worker'?'findjobs':'addProject';state.agent=null;render();window.onRoleChange?.();return}
   const page=e.target.closest('[data-page]');if(page){state.page=page.dataset.page;render();return}
   const over=e.target.closest('[data-overlap]');if(over){const o=[...overlaps,...(state.userOverlaps||[])].find(x=>x.overlap_id===over.dataset.overlap);if(!o)return;state.pairClosed=state.hoverClosed=false;state.pairFocus=true;state.selectedOverlap=o;state.hoverProject=state.selectedProject=byId[o.project_id_a];if(state.page!=='map')state.page='map';render();return}
-  const project=e.target.closest('[data-project]');if(project){const p=byId[project.dataset.project];if(p){focusMyProject(p.project_id,{zoom:false});render();return}state.hoverClosed=false;state.pairFocus=false;state.hoverProject=p;state.selectedProject=p;render();return}
+  const project=e.target.closest('[data-project]');if(project){const p=byId[project.dataset.project];if(p){selectSite(p.project_id);render();return}state.hoverClosed=false;state.pairFocus=false;state.hoverProject=p;state.selectedProject=p;render();return}
   const saved=e.target.closest('[data-save-job]');if(saved){handleAction('toggleSaveJob:'+saved.dataset.saveJob);return}
   const job=e.target.closest('[data-job]');if(job){state.hoverClosed=false;state.selectedJob=state.jobs.find(j=>j.id===job.dataset.job);render();return}
   const suggest=e.target.closest('[data-suggest]');if(suggest){$('#chatText').value=suggest.dataset.suggest;$('#chatText').focus();return}
@@ -567,6 +566,7 @@ document.addEventListener('change',e=>{
     analyzeContract(file);
     return;
   }
+  if(e.target.id==='projectPick'){state.selectedProject=byId[e.target.value]||state.selectedProject;render();return}
   if(e.target.id==='costPair'){state.selectedOverlap=overlaps.find(o=>o.overlap_id===e.target.value)||state.selectedOverlap;render();return}
   if(e.target.id==='oppRadius'){
     state.oppRadius=Number(e.target.value);
@@ -579,8 +579,6 @@ document.addEventListener('change',e=>{
   if(e.target.id==='invFrom'||e.target.id==='invTo'){state[e.target.id]=e.target.value;if(state.invFrom&&state.invTo&&state.invTo<state.invFrom)state.invTo=state.invFrom;render();return}
   const rd=e.target.dataset.rdraft;if(rd){const d=state.resourceDraft;d[rd]=rd==='radius'?Number(e.target.value):e.target.value;d.updated=clockTime();if(['category','location','radius','operator'].includes(rd))render();else{const t=document.querySelector('.rm-listing .tiny');if(t)t.textContent='Last updated '+d.updated}return}
   const c=e.target.dataset.cost;if(c){state.cost[c]=Math.max(0,Number(e.target.value)||0);render();return}
-  const p=e.target.dataset.proposed;if(p){state.proposed[p]=e.target.value;return}
-  const cl=e.target.dataset.closure;if(cl){state.closure[cl]=e.target.value;return}
   const d=e.target.dataset.draft;if(d){const kind=e.target.dataset.kind,target=kind==='project'?state.draft:kind==='resource'?state.resourceDraft:state.jobDraft;target[d]=e.target.value;const copies=document.querySelectorAll(`[data-draft="${d}"][data-kind="${kind}"]`);copies.forEach(x=>{if(x!==e.target)x.value=e.target.value})}
   const projectDraft=e.target.dataset.projectDraft;if(projectDraft&&state.projectUpload){state.projectUpload.draft[projectDraft]=e.target.value;if(state.projectUpload.contractId&&!state.projectUpload.stale){state.projectUpload.stale=true;render()}}
 });
