@@ -15,6 +15,11 @@ def list_jobs(q: Optional[str] = None, near: Optional[str] = None, radius_km: Op
     return svc.list_jobs(q, near, radius_km, qualification, None if status in (None, "", "all") else status)
 
 
+@router.get("/saved-jobs")
+def list_saved_jobs(who=Depends(ident)):
+    return svc.list_saved_jobs(who)
+
+
 @router.post("/jobs")
 def create_job(body: dict = Depends(json_body), who=Depends(ident)):
     return JSONResponse(svc.create_job(who, body), status_code=201)
@@ -23,6 +28,16 @@ def create_job(body: dict = Depends(json_body), who=Depends(ident)):
 @router.get("/jobs/{jid}")
 def get_job(jid: str):
     return svc.get_job(jid)
+
+
+@router.post("/jobs/{jid}/save")
+def save_job(jid: str, who=Depends(ident)):
+    return JSONResponse(svc.save_job(who, jid), status_code=201)
+
+
+@router.delete("/jobs/{jid}/save")
+def unsave_job(jid: str, who=Depends(ident)):
+    return svc.unsave_job(who, jid)
 
 
 @router.patch("/jobs/{jid}")

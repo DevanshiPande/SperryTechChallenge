@@ -116,6 +116,34 @@ def get_job(jid):
     return doc
 
 
+def list_saved_jobs(ident):
+    db = require_db()
+    if not ident.worker:
+        raise ApiError("UNAUTHORIZED", "Select a worker profile first (X-Worker-Id)")
+    saved = [mongo.clean(d) for d in db.saved_jobs.find({"worker_id": ident.worker_id})]
+    jobs = {job["id"]: job for job in list_jobs(status="open")}
+    return [jobs[s["job_id"]] for s in saved if s["job_id"] in jobs]
+
+
+def save_job(ident, jid):
+    db = require_db()
+    if not ident.worker:
+        raise ApiError("UNAUTHORIZED", "Select a worker profile first (X-Worker-Id)")
+    job = get_job(jid)
+    now = mongo.now()
+    db.saved_jobs.update_one({"worker_id": ident.worker_id, "job_id": jid},
+                             {"$set": {"updated_at": now}, "$setOnInsert": {"worker_id": ident.worker_id, "job_id": jid, "created_at": now}}, upsert=True)
+    return job
+
+
+def unsave_job(ident, jid):
+    db = require_db()
+    if not ident.worker:
+        raise ApiError("UNAUTHORIZED", "Select a worker profile first (X-Worker-Id)")
+    db.saved_jobs.delete_one({"worker_id": ident.worker_id, "job_id": jid})
+    return {"status": "removed", "job_id": jid}
+
+
 def create_job(ident, data):
     db = require_db()
     company = ident.require_company()

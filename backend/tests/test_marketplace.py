@@ -173,6 +173,18 @@ def test_jobs_and_applications(client):
     assert client.get("/jobs?qualification=cdl").json()[0]["id"] in {j["id"], "JOB_DEMO1", "JOB_DEMO3"}
 
 
+def test_saved_jobs(client):
+    W = {"X-Worker-Id": "WRK_1"}
+    assert client.get("/saved-jobs", headers=A).status_code == 401
+    assert client.post("/jobs/JOB_DEMO1/save", headers=A).status_code == 401
+    assert client.post("/jobs/NOPE/save", headers=W).status_code == 404
+    assert client.post("/jobs/JOB_DEMO1/save", headers=W).status_code == 201
+    assert client.post("/jobs/JOB_DEMO1/save", headers=W).status_code == 201  # idempotent
+    assert [j["id"] for j in client.get("/saved-jobs", headers=W).json()] == ["JOB_DEMO1"]
+    assert client.delete("/jobs/JOB_DEMO1/save", headers=W).json() == {"status": "removed", "job_id": "JOB_DEMO1"}
+    assert client.get("/saved-jobs", headers=W).json() == []
+
+
 def test_messages(client):
     r = client.post("/conversations", json={"to_company_id": "CMP_C", "topic": "Crane", "text": "Hi",
                                             "overlap_id": "OVL_DESC_3__GPC_2",

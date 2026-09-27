@@ -48,22 +48,25 @@ General: JSON everywhere except the Excel export. CORS is open for local develop
 
 | Screen in the prototype | Backend | Endpoint |
 |---|---|---|
-| Explore map (pins, hover card, ranked list, pair panel) | Real | `GET /projects`, `GET /overlaps` |
-| Top filters (utilities, 2025 to 2033, within 25 mi, search) | Real | query params on `/projects` and `/overlaps` |
-| Opportunity detail | Real | `GET /overlaps/{id}`, `GET /projects/{id}` |
-| Suggestion chips: Draft coordination plan, Identify risks | Real (Gemini) | `POST /overlaps/{id}/brief` with `mode` |
-| Cost comparison (inputs, totals, chart, cost details table) | Real defaults, computed live in the browser | `cost_scenario` on each overlap |
-| Cost page assistant ("Try sharing 2 bucket trucks for 5 days") | Real (Gemini) | `POST /scenario/assist` |
-| + Describe project (chat to draft, field confidence, follow-up questions) | Real (Gemini) | `POST /draft` with `kind: "project"` |
-| Nearby projects for a proposed project / Feasibility | Real | `POST /whatif` |
-| Closure conflicts, historical traffic, Road Closures | **No data source.** Keep illustrative and labeled | `/whatif` returns `closure_data_available: false` |
-| Describe resource / Describe job requirement (chat to draft) | Real (Gemini) | `POST /draft` with `kind: "resource"` or `"job"` |
-| Inventory listings, reservations, jobs, messages, calls, worker role, applications, profile | **Frontend only, demo data.** No backend | none |
+| Explore map (pins, hover card, ranked list, pair panel) | Real | `GET /projects`, `GET /overlaps?sort=distance` |
+| Pair panel: Summarize, Draft coordination plan, Identify risks | Real (Gemini) | `POST /overlaps/{id}/brief` with `mode` |
+| Export (opportunities list) | Real | `GET /export/overlaps.xlsx` |
+| Project detail (quality flags, road crossings, nearby matches, delete own project) | Real | `GET /projects/{id}`, `GET /overlaps?project_id=`, `DELETE /projects/{id}` |
+| My projects, contract upload | Real | `POST /contracts/analyze` → `/match` → `/save`; `POST /projects` when parsed in the browser |
+| Cost comparison (inputs, totals) | Real defaults, computed live in the browser | `cost_scenario` on each overlap |
+| Cost page assistant ("Try sharing 2 bucket trucks for 5 days", Apply to scenario) | Real (Gemini) | `POST /scenario/assist` |
+| Feasibility (nearby projects, schedule suggestion, road crossings, closure conflicts, Save as my project) | Real | `POST /whatif`, `POST /projects` |
+| Describe resource / Describe job requirement (chat to draft) | Real (Gemini), local parsing as fallback | `POST /draft` with `kind: "resource"` or `"job"` |
+| Inventory: listings, orders, requests (accept, decline, cancel), remove listing | Real | `GET/POST/DELETE /resources`, `POST /resources/{id}/reservations`, `GET/PATCH /reservations` |
+| Staffing: postings, applicants (review, accept, reject), close posting | Real | `GET/POST/PATCH /jobs`, `GET/PATCH /applications` |
+| Messages: conversations, threads, new conversation with cost-scenario attachment | Real | `GET/POST /conversations`, `GET/POST /conversations/{id}/messages` |
+| Worker: find jobs, search, saved jobs, apply, applications, profile | Real | `GET /jobs?q=`, `GET /saved-jobs`, `POST/DELETE /jobs/{id}/save`, `POST /jobs/{id}/applications`, `GET /applications`, `GET/PATCH /me` |
+| Acting-as company picker | Real | `GET /companies`; requests send `X-Company-Id` (contractor) or `X-Worker-Id` (worker), never both |
+| Live updates from other companies | Real | `GET /events?since=` polled every 15 s |
 | Global "Ask Gridlock" bar | Real (Gemini) | `POST /ask` (returns an `intent` to navigate) |
-| Data quality | Real | `GET /quality` |
-| Export | Real | `GET /export/overlaps.xlsx` |
+| Data quality | Real | Each project's `quality_flags`, shown on the project detail page (`GET /quality` lists all of them) |
 
-The marketplace, jobs and messaging screens stay as they are: local state, clearly labeled demo. They are not part of Sperry's requirements and have no real data behind them.
+The frontend adapter is `frontend/api-adapter.js`; `contract/api-adapter.js` is the original read-only reference. Every screen falls back to the bundled demo data when `apiUrl` is not set or the API is unreachable.
 
 ---
 
