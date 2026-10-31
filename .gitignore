@@ -1,1 +1,16 @@
 config.js
+
+# Secrets: never commit. backend/.gitignore has the same rules; these also cover the repo root and any other folder.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local environments, caches and tools (a captured .venv once ended up in a local stash)
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.tools/
