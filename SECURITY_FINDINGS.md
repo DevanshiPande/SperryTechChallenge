@@ -77,3 +77,64 @@ These are in files added by this change (they were not in the repo before), and 
 | Semgrep (new pipeline config) | – | – | 2 | 6 | – | 8 |
 | pip-audit | – | 2 | – | – | – | 2 |
 | Manual review | – | 1 | – | – | – | 1 |
+
+## After
+
+All scans re-run on the `security-pipeline` branch on 2026-10-31:
+
+| Tool | Result |
+|---|---|
+| Gitleaks, full history (`gitleaks git .`, every commit on all refs, including this branch's fix commits) | **No leaks found** |
+| Gitleaks, working tree (`gitleaks dir .`, includes untracked files) | **No leaks found** |
+| Semgrep `--config auto --error` (494 rules, 190 files) | **0 findings**, exit code 0 |
+| pip-audit `-r backend/requirements.txt` | **No known vulnerabilities found** |
+| Backend test suite (`pytest`, Python 3.11) | **171 passed** |
+
+### Gitleaks
+
+| Finding | Action taken |
+|---|---|
+| #1 Gemini API key + MongoDB URI with credentials in `backend/.env` (local stash) | Both credentials were **rotated** by the repo owner (new Gemini key; new Atlas database user password) and updated in Render. The stash was checked first: it held no source-code changes, only added files. The poppler tool and pipeline text output it held were extracted back into their (git-ignored) folders, and then the stash was **dropped** (`git stash drop stash@{0}`). The secrets were already read from environment variables (`ai/gemini.py`, `db/mongo.py`) with placeholders in `backend/.env.example`, so no code change was needed. No history rewrite was needed: the commit was never on a branch or pushed. |
+| #2–24 false positives in `backend/.venv/` | Went away with the stash. No allowlist was added, so Gitleaks would still flag similar matches if a `.venv` were ever committed. |
+| Root cause | The repo-root `.gitignore` now ignores `.env`, `.env.*` (except `.env.example`), `*.pem`, `*.key`, `.venv/`, `venv/`, `env/`, `__pycache__/`, `*.py[cod]` and `.tools/` in every folder, not only under `backend/`. The CI Gitleaks job also catches secrets that are force-added past `.gitignore`. |
+
+Note: the dropped stash's objects remain in the local `.git` folder as unreachable objects until Git garbage-collects them (by default, after two weeks). They are not on any ref, are never pushed, and Gitleaks no longer sees them. The credentials in them are revoked.
+
+### Semgrep (app code)
+
+| # | Finding | Verdict | Fix |
+|---|---|---|---|
+| 1 | `frontend/app.html` pdf.js without SRI | Real | Added `integrity="sha512-..."` (the hash published by cdnjs, checked against the downloaded file), `crossorigin="anonymous"` and `referrerpolicy="no-referrer"`. The browser now refuses the script if the CDN serves anything else. |
+| 2 | `frontend/app.js` `new RegExp(label + ...)` | False positive | `label` is only ever one of six hard-coded patterns in the same function; the user's PDF text is the string being searched, not the pattern. Marked with an explanatory comment and `nosemgrep`. |
+| 3 | `frontend/app.js` `new RegExp(k...)` | False positive | `k` comes from the fixed `PLACES` table of place names in the code, not from input. Marked with an explanatory comment and `nosemgrep`. |
+| 4 | `backend/contract/mock-server.js` plain HTTP | False positive | A mock API for local frontend development that serves canned example JSON; it is never deployed (the deployed app is the FastAPI service behind Render's HTTPS). Marked with an explanatory comment and `nosemgrep`. |
+
+### Semgrep (new pipeline config)
+
+| # | Finding | Fix |
+|---|---|---|
+| 5–6 | Dependabot without cooldown | Added `cooldown: default-days: 7` to both ecosystems. Security updates are not delayed by it. |
+| 7–12 | Actions pinned to tags | Pinned every action to its full commit SHA, with the release tag in a comment: `actions/checkout` v7.0.1, `actions/setup-python` v7.1.0, `pypa/gh-action-pip-audit` v1.1.0. The gitleaks binary is pinned to v8.30.1 and its SHA-256 is verified against the release checksums before it runs. |
+
+### pip-audit
+
+| Package | Change | Check |
+|---|---|---|
+| pymongo | 4.18.2 → **4.18.3** (minimum fixed version) | `pip check` clean; 171 tests pass; app starts and serves `/health`, `/projects`, `/overlaps`, the site and `/config.js`. |
+| dnspython | 2.8.0 → **2.9.0** (minimum fixed version) | Same as above. dnspython resolves the `mongodb+srv://` address. |
+
+### Manual review
+
+| Finding | Fix |
+|---|---|
+| pdf.js 3.11.174, CVE-2024-4367 | `getDocument` is now called with `isEvalSupported: false`, the mitigation documented for this CVE; the font code path that ran attacker-controlled script is no longer used. Checked with the same cdnjs build in Node: it still extracts the full text of `backend/data/samples/sample_contract_hardeeville.pdf`. Upgrading pdf.js to 4.x would remove the vulnerable code entirely, but 4.x ships only as ES modules, which changes how the page loads it, so that upgrade is left as a follow-up. |
+
+### Totals after
+
+| Tool | Before | Fixed | False positive (documented) | Remaining |
+|---|---|---|---|---|
+| Gitleaks | 24 | 1 (rotated + removed) | 23 | 0 |
+| Semgrep (app code) | 4 | 1 | 3 | 0 |
+| Semgrep (new pipeline config) | 8 | 8 | 0 | 0 |
+| pip-audit | 2 | 2 | 0 | 0 |
+| Manual review | 1 | 1 (mitigated) | 0 | 0 |

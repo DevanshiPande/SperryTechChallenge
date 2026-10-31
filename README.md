@@ -123,6 +123,43 @@ More on the backend, the API and each design decision: `backend/README.md`, `bac
 - Congestion levels are predictions from traffic counts and a queue model, not live traffic.
 - There is no real login: you act as a demo contractor or a demo worker.
 
+## Security
+
+Every push and pull request runs the **Security Scan** workflow (`.github/workflows/security.yml`). Any finding fails the check.
+
+| Scan | What it checks | Why it matters here |
+|---|---|---|
+| **Gitleaks** (secrets) | Every commit in the full git history for API keys, passwords, tokens and connection strings. | ContractMap holds a Gemini key, a MongoDB Atlas login and a Google Maps key. A leaked Gemini key can run up the bill; a leaked Atlas login exposes every company's listings, jobs and messages. A key deleted in a later commit is still in history, so the whole history is scanned. |
+| **Semgrep** (SAST) | The Python, JavaScript, HTML and workflow code against Semgrep's community rules (`--config auto`): injection, unsafe deserialization, insecure transport, missing integrity checks, CI supply-chain mistakes. | Catches insecure patterns before they ship, including in the frontend that opens uploaded PDFs. |
+| **pip-audit** (dependencies) | `backend/requirements.txt` against the PyPI/OSV vulnerability databases. | Most of the code that runs is third-party (FastAPI, pymongo, pdfplumber, google-genai...). Pinned versions stay pinned even after a CVE is published. |
+| **Trivy** (container image) | Not run: there is no Dockerfile. Render builds ContractMap as a native Python service, so there is no image to scan. Add the job if the app moves to a container. | – |
+
+**Dependabot** (`.github/dependabot.yml`) opens weekly update PRs for the Python packages and the workflow's actions, after a 7-day cooldown on new releases. Actions are pinned to commit SHAs.
+
+### Before and after
+
+The first scan found **2 vulnerable dependencies, 4 code issues and 1 real secret** (plus 23 false-positive secret matches and 8 issues in the new CI config). A manual review found **1 more**, in the PDF library the frontend loads from a CDN. All were fixed or documented; every scan now passes. Full details: [`SECURITY_FINDINGS.md`](SECURITY_FINDINGS.md).
+
+| | Before | After | What was done |
+|---|---|---|---|
+| Secrets (Gitleaks) | 1 real (Gemini key + MongoDB URI in a never-pushed local stash), 23 false positives | 0 | Both credentials rotated, stash dropped, `.gitignore` hardened at the repo root |
+| Vulnerable dependencies (pip-audit) | 2 High: pymongo 4.18.2, dnspython 2.8.0 | 0 | Upgraded to 4.18.3 and 2.9.0; 171 tests pass |
+| Code issues (Semgrep) | 4 (1 real, 3 false positives) + 8 in the new CI config | 0 | Subresource Integrity on pdf.js; false positives annotated inline; actions pinned to SHAs; Dependabot cooldown |
+| Manual review | 1 High: pdf.js CVE-2024-4367 | 0 | `isEvalSupported: false` when opening uploaded PDFs |
+
+### Threat model
+
+STRIDE categories: **S**poofing, **T**ampering, **R**epudiation, **I**nformation disclosure, **D**enial of service, **E**levation of privilege.
+
+| Threat | STRIDE | Risk | Current mitigation | Recommended next step |
+|---|---|---|---|---|
+| **Malicious file upload.** A crafted PDF sent to `POST /contracts/analyze` or opened in the browser. | T, D, E | Parser bugs, script running in the page (pdf.js CVE-2024-4367), or a huge PDF tying up the server. | Server: 10 MB cap, `%PDF` magic-byte check, text-only extraction with pdfplumber, the file is never stored (only a hash and the extracted fields). Browser: pdf.js loaded with an SRI hash and `isEvalSupported: false`. pip-audit tracks pdfplumber/pdfminer CVEs. | Cap the page count and the parse time (run extraction in a worker with a timeout); upgrade pdf.js to 4.x or newer. |
+| **Prompt injection through contract text.** The uploaded text is pasted into the Gemini extraction prompt, so a contract can say "ignore previous instructions...". | T, I | Wrong or planted field values saved as a project. | The extraction call has no tools, so injected text cannot act. Its output must match a JSON schema. Each field must quote an evidence snippet that code finds in the document, and every number must appear in that snippet; anything else is dropped. A person reviews every field before saving. | Wrap the contract in clear delimiters and tell the model it is untrusted data. Flag text that looks like instructions to the model. Keep the review step required. |
+| **Abuse of the function-calling assistant.** A user (or injected text the assistant reads) tries to get it to change data or reach other companies' data. | T, E, I | Unwanted creates/updates/deletes, or reading another company's records. | **Approval gate:** write tools never run from chat; they create a pending action with a summary and preview. The change only happens after `POST /agent/actions/{id}/confirm`, which checks the action belongs to the caller's company, is still pending (single use) and under 30 minutes old, and re-validates the arguments. Threads and actions are scoped per company; at most 5 model turns per message; replies are checked so cited numbers and IDs must exist. | The gate stops the *model* from changing data, but it relies on knowing who the caller is (see next row). Add rate limits per caller on `/agent/chat` and the Gemini routes to protect the Gemini quota. |
+| **Spoofed identity.** Callers pick a demo company with the `X-Company-Id` header; there is no real login. | S, E, R | Anyone can act as any company: see its inventory, threads and messages, make changes as it, and confirm its pending actions if they know the action ID (6 random characters). | It is a demo with seeded demo companies; the README states there is no real login. | Add real authentication (e.g. OAuth or signed sessions) and take the company from the session, not a header. Log who confirmed each action. |
+| **Exposed secrets.** Gemini key, MongoDB URI, Maps key. | I | Bill abuse on the Gemini key; full read/write of the database with the Atlas login. | Secrets live only in environment variables (Render `sync: false`, local `backend/.env`, git-ignored at every level). Gitleaks scans full history on every push. The one leak found was in a never-pushed local stash and has been rotated. The Maps key is served to the browser on purpose (`/config.js`). | Restrict the Maps key to the site's HTTP referrer and the Maps JavaScript API. Restrict the Gemini key to the Generative Language API. Use a least-privilege Atlas user. Add a pre-commit Gitleaks hook so secrets are caught before they are committed. |
+| **Dependency and supply-chain risk.** A vulnerable or malicious package, CDN script or CI action. | T, E | Known CVEs in pinned packages; a hijacked release or action running in CI or production. | Exact version pins; pip-audit in CI; Dependabot with a 7-day cooldown; actions pinned to commit SHAs; gitleaks binary verified by checksum; SRI on the CDN script. | Pin transitive dependencies with hashes (`pip-compile --generate-hashes`, then `pip install --require-hashes`). Treat the committed `.joblib` model files as code: they are loaded with joblib (pickle), so only load files this repo produced. |
+
 ## Team
 
 Built at ShellHacks 2026 by **@DevanshiPande**, **@jasminek12**, **@Lavanya275** and **@aadraxe**.
