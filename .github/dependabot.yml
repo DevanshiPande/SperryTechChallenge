@@ -1,11 +1,15 @@
 # Weekly update PRs for Python packages and the GitHub Actions used in .github/workflows.
 # No Docker entry: the app has no Dockerfile (Render builds it as a native Python service).
+# Cooldown: wait a week after a release before proposing it, so a malicious or broken release has time to be
+# caught and pulled. Security updates are not delayed by the cooldown.
 version: 2
 updates:
   - package-ecosystem: pip
     directory: /backend
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 10
     groups:
       python-minor-and-patch:
@@ -15,3 +19,5 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
