@@ -225,6 +225,8 @@ function projectFromPdfText(text, fileName){
   const datePattern='(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\s+\\d{1,2}(?:,?\\s+\\d{4})?';
   const dates=[...clean.matchAll(new RegExp(datePattern,'gi'))].map(m=>m[0]);
   const isoDate=value=>{const parsed=new Date(value);return Number.isNaN(parsed.getTime())?'':parsed.toISOString().slice(0,10)};
+  // Semgrep false positive: `label` is only ever one of the fixed patterns below, never user input; the PDF text is the matched string, not the pattern.
+  // nosemgrep: javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp
   const valueAfter=label=>{const match=clean.match(new RegExp(label+'\\s*[:\\-]\\s*([^.;]{2,100})','i'));return match?match[1].trim():''};
   const location=valueAfter('(?:project )?location|worksite|service area')||((clean.match(/(?:near|in) ([A-Z][A-Za-z]+(?:,? [A-Z]{2})?)/)||[])[1]||'');
   const name=valueAfter('project name|project title|contract name')||fileName.replace(/\.pdf$/i,'').replace(/[_-]+/g,' ');
@@ -240,7 +242,8 @@ async function parseProjectPdf(file){
   if(!window.pdfjsLib) throw new Error('The PDF parser could not load. Check your internet connection and try again.');
   if(file.size>15*1024*1024) throw new Error('This PDF is larger than 15 MB.');
   const buffer=await file.arrayBuffer();
-  const pdf=await window.pdfjsLib.getDocument({data:buffer}).promise;
+  // isEvalSupported:false blocks CVE-2024-4367 (a crafted PDF running script in this page) in pdf.js 3.x.
+  const pdf=await window.pdfjsLib.getDocument({data:buffer,isEvalSupported:false}).promise;
   const pages=[];
   for(let pageNumber=1;pageNumber<=pdf.numPages;pageNumber++){
     const page=await pdf.getPage(pageNumber), content=await page.getTextContent();
@@ -340,6 +343,8 @@ function resourceFromText(text) {
   if (cat) d.category = cat;
   const q = text.match(new RegExp(`\\b${n}\\s+(?:certified\\s+)?(?:bucket|truck|crane|digger|excavator|trencher|lineworker|worker|crew)`, 'i'));
   if (q) d.quantity = words[q[1].toLowerCase()] || Number(q[1]);
+  // Semgrep false positive: `k` comes from the fixed PLACES table (plain place names), never from user input.
+  // nosemgrep: javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp
   const place = Object.keys(PLACES).find(k => new RegExp(k.split(',')[0], 'i').test(text));
   if (place) d.location = place;
   const dm = text.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:\s*(?:–|-|to)\s*(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+)?(\d{1,2}))?/i);

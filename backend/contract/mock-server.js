@@ -396,5 +396,8 @@ async function handle(req, res) {
   return err(res, 404, "NOT_FOUND", `No route for ${req.method} ${url.pathname}`);
 }
 
+// Semgrep false positive: a throwaway mock API for local frontend development (see API_README.md), never deployed;
+// it serves canned example JSON with no real data or credentials, so TLS adds nothing here.
+// nosemgrep: problem-based-packs.insecure-transport.js-node.using-http-server.using-http-server
 http.createServer((req, res) => handle(req, res).catch((e) => err(res, 500, "INTERNAL", e.message)))
   .listen(PORT, () => console.log(`Gridlock mock API on http://localhost:${PORT}  (Gemini latency ${GEMINI_LATENCY_MS} ms${GEMINI_FAIL ? ", Gemini FAILING" : ""})`));
